@@ -1,0 +1,89 @@
+.caseparameters {
+    position: absolute;
+    width: 500px;
+    height: 380px;
+    top: 0px;
+    left: 0px;
+    /*top and left in tableEditor.js */
+    background-color: #f5f5f5;
+}
+
+.caseparameters .parameterscontainer {
+    position: absolute;
+    height: 600px;
+    width: 100%;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+.caseparameters .input {
+    height: 300px;
+}
+
+.caseparameters .output {
+    top: 300px;
+    border-top: 3px solid rgb(66, 68, 70);
+}
+
+.caseparameters .parameters h4 {
+    margin-left: 5px;
+}
+
+.caseparameters .parameters>div {
+    position: absolute;
+    top: 44px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.caseparameters .parameterbox table {
+    width: 100%;
+}
+
+.caseparameters .parameterbox thead {
+    background-color: #f5f5f5;
+}
+
+.caseparameters .parameterbox th {
+    font-weight: normal;
+    height: 18px;
+    padding-left: 4px;
+}
+
+.caseparameters .parameterbox tr {
+    border-bottom: 1px solid #DDDDDD;
+    height: 25px;
+}
+
+.caseparameters .parameterbox tr td {
+    border-right: 1px solid #DDDDDD;
+}
+
+.caseparameters .parameterbox input {
+    margin: 2px;
+    padding: 3px;
+}
+
+.caseparameters .parameterbox select {
+    height: 22px;
+    width: 100%;
+    margin-top: -1px;
+}
+
+.caseparameters .parameterbox div {
+    padding-top: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.caseparameters .parameterbox textarea {
+    width: 100%;
+    position: relative;
+    height: 22px;
+}
+
+.caseparameters .parameterbox button {
+    margin: 2px 2px 4px 2px;
+}

@@ -1,0 +1,136 @@
+﻿/*Zoom fields in properties menu
+*/
+
+.zoomRow {
+    background-color: #f5f5f5;
+    position: relative;
+}
+
+.zoomSingleRow {
+    height: 22px;
+    margin: 2px 0px 2px 2px;
+}
+
+.zoomSingleRow .zoomlabel {
+    display: none;
+}
+
+.zoomDoubleRow {
+    height: 38px;
+}
+
+.zoomDoubleRow .zoomlabel {
+    margin: 4px;
+}
+
+.zoomRow .valuelabel {
+    position: absolute;
+    bottom: 2px;
+    left: 5px;
+    right: 42px;
+    top: 2px;
+    border: 1px solid #DDDDDD;
+    margin: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 2px 0px 0px 2px;
+}
+
+.zoomDoubleRow .valuelabel,
+.zoomDoubleRow button {
+    top: 18px;
+}
+
+.properties-container .zoomSingleRow .valuelabel,
+.properties-container .zoomSingleRow button {
+    top: 2px;
+}
+
+.zoomRow button {
+    position: absolute;
+    height: 18px;
+    width: 18px;
+}
+
+.zoomRow .btnDelete {
+    right: 2px;
+}
+
+.zoomRow img {
+    height: 14px;
+    width: 14px;
+    position: relative;
+    left: -6px;
+    top: -1px;
+}
+
+/* get file for case in case task */
+
+.propertymodelzoomfield {
+    height: 50px;
+    padding: 3px;
+    background-color: #f5f5f5;
+}
+
+.propertymodelzoomfield select {
+    width: 98%;
+}
+
+.deleteRowButton {
+    right: 2px;
+    top: 0px;
+    height:20px;
+    width:20px;
+    margin-left:2px;
+    background-image: url(/images/delete_32.png);
+    background-position: center;
+    background-size: 90%;
+    background-repeat: no-repeat;
+    border: 1px solid rgb(221,221,221);
+}
+
+.removeReferenceButton {
+    right: 2px;
+    top: -1px;
+    background-image: url(/images/close_black_32.png);
+    background-position: center;
+    background-size: 70%;
+    background-repeat: no-repeat;
+    border: 1px solid rgb(129, 129, 129);
+}
+
+.zoombt {
+    right: 22px; /* most zoombuttons have an extra button to their right. So we take that into account by default */
+    top: -1px;
+    background-image: url(/images/zoomin_32.png);
+    background-position: center;
+    background-size: 70%;
+    background-repeat: no-repeat;
+    border: 1px solid rgb(129, 129, 129);
+}
+
+.openBindingReferenceButton {
+    right: 22px;
+    top: -1px;
+    background-image: url(/images/cfinotused_24.png);
+    background-position: center;
+    background-size: 70%;
+    background-repeat: no-repeat;
+    border: 1px solid rgb(129, 129, 129);
+}
+
+.properties_filefield>div button {
+    height: 18px;
+    width: 18px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.properties_filefield img {
+    height: 14px;
+    width: 14px;
+    position: relative;
+    left: -6px;
+    top: -1px;
+}

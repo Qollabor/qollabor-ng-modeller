@@ -1,0 +1,16 @@
+
+.properties-container .propertySelect {
+    padding: 3px 2px 2px 4px;
+    background-color: #f5f5f5;
+}
+
+.properties-container .propertySelect label {
+    display: block;
+    height: 10px;
+}
+
+.properties-container .propertySelect select {
+    display: block !important;
+    width: 98%;
+    height: 18px;
+}

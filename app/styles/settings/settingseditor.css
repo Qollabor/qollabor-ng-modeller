@@ -1,0 +1,10 @@
+.settings-editor .top-bar {
+    position: absolute;
+    top: 5px;
+    left: 20px;
+}
+
+.settings-editor .error-message {
+    font-weight: strong;
+    color: red;
+}

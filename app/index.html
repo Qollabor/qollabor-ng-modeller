@@ -1,0 +1,301 @@
+﻿<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Cafienne IDE</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+
+    <link rel="stylesheet" href="bower_components/joint/dist/joint.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/jquery-ui/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" href="bower_components/jquery.fancytree/dist/skin-lion/ui.fancytree.css" />
+    <link rel="stylesheet" href="bower_components/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="bower_components/codemirror/addon/hint/show-hint.css">
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css styles/ide.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="styles/ide/ide.css" />
+    <link rel="stylesheet" href="styles/ide/dragdata.css" />
+    <link rel="stylesheet" href="styles/ide/splitter.css" />
+    <link rel="stylesheet" href="styles/repository/repositorybrowser.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css styles/util.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="styles/util/zoomfield.css" />
+    <link rel="stylesheet" href="styles/util/messagebox.css" />
+    <link rel="stylesheet" href="styles/util/basicform.css" />
+    <link rel="stylesheet" href="styles/util/generic_ui.css" />
+    <link rel="stylesheet" href="styles/util/standardform.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css styles/scripts.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="styles/properties/properties.css" />
+    <link rel="stylesheet" href="styles/properties/planitemproperties.css" />
+    <link rel="stylesheet" href="styles/properties/caseplanproperties.css" />
+    <link rel="stylesheet" href="styles/properties/planningtableproperties.css" />
+    <link rel="stylesheet" href="styles/properties/sentryproperties.css" />
+    <link rel="stylesheet" href="styles/properties/stageproperties.css" />
+    <link rel="stylesheet" href="styles/properties/timereventproperties.css" />
+    <link rel="stylesheet" href="styles/elements/elements.css" />
+    <link rel="stylesheet" href="styles/editors/casefileitemseditor.css" />
+    <link rel="stylesheet" href="styles/editors/treeeditor.css" />
+    <link rel="stylesheet" href="styles/editors/roleseditor.css" />
+    <link rel="stylesheet" href="styles/editors/tableeditor.css" />
+    <link rel="stylesheet" href="styles/editors/jsoneditor.css" />
+    <link rel="stylesheet" href="styles/editors/task/taskmappingseditor.css" />
+    <link rel="stylesheet" href="styles/modeleditors/modeleditor.css" />
+    <link rel="stylesheet" href="styles/modeleditors/xmleditor/xmlmodeleditor.css" />
+    <link rel="stylesheet" href="styles/modeleditors/case/casemodeleditor.css" />
+    <link rel="stylesheet" href="styles/modeleditors/case/caseparameters.css" />
+    <link rel="stylesheet" href="styles/modeleditors/case/deploy.css" />
+    <link rel="stylesheet" href="styles/debugger/debugger.css" />
+    <link rel="stylesheet" href="styles/modeleditors/case/undoredobox.css" />
+    <link rel="stylesheet" href="styles/modeleditors/case/shapebox.css" />
+    <link rel="stylesheet" href="styles/modeleditors/case/casesourceeditor.css" />
+    <link rel="stylesheet" href="styles/modeleditors/case/resizer.css" />
+    <link rel="stylesheet" href="styles/modeleditors/case/halo/halo.css" />
+    <link rel="stylesheet" href="styles/validate/validate.css" />
+    <link rel="stylesheet" href="styles/modeleditors/cfid/casefileitemdefinition.css" />
+    <link rel="stylesheet" href="styles/settings/settingseditor.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/backbone/backbone.js"></script>
+    <script src="bower_components/joint/dist/joint.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+    <script src="bower_components/jquery.fancytree/dist/jquery.fancytree-all.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/codemirror/lib/codemirror.js"></script>
+    <script src="bower_components/codemirror/addon/hint/show-hint.js"></script>
+    <script src="bower_components/codemirror/addon/fold/foldcode.js"></script>
+    <script src="bower_components/codemirror/addon/fold/foldgutter.js"></script>
+    <script src="bower_components/codemirror/addon/fold/brace-fold.js"></script>
+    <script src="bower_components/codemirror/addon/fold/xml-fold.js"></script>
+    <script src="bower_components/codemirror/addon/hint/xml-hint.js"></script>
+    <script src="bower_components/codemirror/mode/xml/xml.js"></script>
+    <script src="bower_components/jsonpath-plus/lib/jsonpath-min.js"></script>
+    <script src="bower_components/codemirror/mode/javascript/javascript.js"></script>
+    <script src="bower_components/codemirror/addon/edit/matchbrackets.js"></script>
+    <script src="bower_components/codemirror/addon/edit/closebrackets.js"></script>
+    <script src="bower_components/codemirror/addon/hint/javascript-hint.js"></script>
+    <script src="bower_components/col-resizable/colResizable-1.6.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    
+    <!-- build:js scripts/ide.js -->
+    <!-- bower:js -->
+    <script src="scripts/ide/ide.js"></script>
+    <script src="scripts/ide/ideheader.js"></script>
+    <script src="scripts/ide/idemain.js"></script>
+    <script src="scripts/ide/idefooter.js"></script>
+    <script src="scripts/ide/dragdata.js"></script>
+    <script src="scripts/ide/messagebox.js"></script>
+    <script src="scripts/ide/coverpanel.js"></script>
+    <script src="scripts/editors/movableeditor.js"></script>
+    <script src="scripts/editors/standardform.js"></script>
+    <script src="scripts/editors/tableeditor.js"></script>
+    <script src="scripts/editors/table/tablerenderer.js"></script>
+    <script src="scripts/editors/table/rowrenderer.js"></script>
+    <script src="scripts/editors/table/columnrenderer.js"></script>
+    <script src="scripts/settings/settings.js"></script>
+    <script src="scripts/settings/settingseditor.js"></script>
+    <script src="scripts/settings/settingsstorage.js"></script>
+    <script src="scripts/util/util.js"></script>
+    <script src="scripts/util/xml.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js scripts/splitter.js -->
+    <!-- bower:js -->
+    <script src="scripts/ide/splitter/splittersettings.js"></script>
+    <script src="scripts/ide/splitter/splitter.js"></script>
+    <script src="scripts/ide/splitter/horizontalsplitter.js"></script>
+    <script src="scripts/ide/splitter/leftsplitter.js"></script>
+    <script src="scripts/ide/splitter/rightsplitter.js"></script>
+    <script src="scripts/ide/splitter/verticalsplitter.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js scripts/elements.js -->
+    <!-- bower:js -->
+    <script src="scripts/elements/elements.js"></script>
+    <script src="scripts/elements/properties/properties.js"></script>
+    <script src="scripts/elements/properties/casefileitemproperties.js"></script>
+    <script src="scripts/elements/properties/planitemproperties.js"></script>
+    <script src="scripts/elements/properties/planningtableproperties.js"></script>
+    <script src="scripts/elements/properties/sentryproperties.js"></script>
+    <script src="scripts/elements/properties/taskstageproperties.js"></script>
+    <script src="scripts/elements/properties/stageproperties.js"></script>
+    <script src="scripts/elements/properties/caseplanproperties.js"></script>
+    <script src="scripts/elements/properties/milestoneproperties.js"></script>
+    <script src="scripts/elements/properties/taskproperties.js"></script>
+    <script src="scripts/elements/properties/humantaskproperties.js"></script>
+    <script src="scripts/elements/properties/textboxproperties.js"></script>
+    <script src="scripts/elements/properties/timereventproperties.js"></script>
+    <script src="scripts/elements/properties/usereventproperties.js"></script>
+    <script src="scripts/elements/halo/halo.js"></script>
+    <script src="scripts/elements/halo/halobar.js"></script>
+    <script src="scripts/elements/halo/item/haloitem.js"></script>
+    <script src="scripts/elements/halo/item/halodragitems.js"></script>
+    <script src="scripts/elements/halo/item/haloclickitems.js"></script>
+    <script src="scripts/elements/halo/casefileitemhalo.js"></script>
+    <script src="scripts/elements/halo/caseplanhalo.js"></script>
+    <script src="scripts/elements/halo/planitemhalo.js"></script>
+    <script src="scripts/elements/halo/planningtablehalo.js"></script>
+    <script src="scripts/elements/halo/sentryhalo.js"></script>
+    <script src="scripts/elements/halo/taskhalo.js"></script>
+    <script src="scripts/elements/cmmnelement.js"></script>
+    <script src="scripts/elements/planitemview.js"></script>
+    <script src="scripts/elements/taskstage.js"></script>
+    <script src="scripts/elements/task.js"></script>
+    <script src="scripts/elements/casetask.js"></script>
+    <script src="scripts/elements/humantask.js"></script>
+    <script src="scripts/elements/processtask.js"></script>
+    <script src="scripts/elements/eventlistener.js"></script>
+    <script src="scripts/elements/timerevent.js"></script>
+    <script src="scripts/elements/userevent.js"></script>
+    <script src="scripts/elements/sentry.js"></script>
+    <script src="scripts/elements/casefileitem.js"></script>
+    <script src="scripts/elements/milestone.js"></script>
+    <script src="scripts/elements/stage.js"></script>
+    <script src="scripts/elements/caseplanmodel.js"></script>
+    <script src="scripts/elements/textbox.js"></script>
+    <script src="scripts/elements/planningtable.js"></script>
+    <script src="scripts/elements/case.js"></script>
+    <script src="scripts/elements/connector.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js scripts/cmmn-lib.js -->
+    <!-- bower:js -->
+    <script src="scripts/definition/definitionparser.js"></script>
+    <script src="scripts/definition/modeldocument.js"></script>
+    <script src="scripts/definition/definitiondocument.js"></script>
+    <script src="scripts/definition/xmlelementdefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/cmmnelementdefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/unnamedcmmnelementdefinition.js"></script>
+    <script src="scripts/definition/modeldefinition.js"></script>
+    <script src="scripts/definition/typecounter.js"></script>
+    <script src="scripts/definition/cmmn/dimensions/dimensions.js"></script>
+    <script src="scripts/definition/cmmn/dimensions/diagramelement.js"></script>
+    <script src="scripts/definition/cmmn/dimensions/bounds.js"></script>
+    <script src="scripts/definition/cmmn/dimensions/edge.js"></script>
+    <script src="scripts/definition/cmmn/dimensions/shape.js"></script>
+    <script src="scripts/definition/cmmn/dimensions/vertex.js"></script>
+    <script src="scripts/definition/cmmn/definitions/cafienneextension.js"></script>
+    <script src="scripts/definition/cmmn/definitions/caseplan/planitem.js"></script>
+    <script src="scripts/definition/cmmn/definitions/itemcontroldefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/casedefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/casefile/casefileitemcollection.js"></script>
+    <script src="scripts/definition/cmmn/definitions/casefile/casefiledefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/casefile/casefileitemdefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/constraintdefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/parameterdefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/parametermappingdefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/planningtabledefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/sentry/sentrydefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/sentry/criteriondefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/sentry/entrycriteriondefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/sentry/exitcriteriondefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/sentry/ifpartdefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/sentry/onpartdefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/sentry/planitemonpartdefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/sentry/casefileitemonpartdefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/caseplan/planitemdefinitiondefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/caseplan/stagedefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/caseplan/task/taskdefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/caseplan/task/casetaskdefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/caseplan/task/humantaskdefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/caseplan/task/assignmentdefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/caseplan/task/duedatedefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/caseplan/task/processtaskdefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/caseplan/caseplandefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/caseplan/milestonedefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/caseplan/eventlistenerdefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/caseplan/timereventdefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/caseplan/usereventdefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/caseteam/caseroledefinition.js"></script>
+    <script src="scripts/definition/cmmn/definitions/caseteam/caserolereference.js"></script>
+    <script src="scripts/repository/serverfile.js"></script>
+    <script src="scripts/repository/repository.js"></script>
+    <script src="scripts/repository/repositorybrowser.js"></script>
+    <script src="scripts/repository/modellistpanel.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->    
+    <!-- build:js scripts/definitions.js -->
+    <!-- bower:js -->
+    <script src="scripts/definition/humantask/humantaskmodeldefinition.js"></script>
+    <script src="scripts/definition/humantask/humantaskmodelelementdefinition.js"></script>
+    <script src="scripts/definition/humantask/humantaskimplementationdefinition.js"></script>
+    <script src="scripts/definition/humantask/taskmodeldefinition.js"></script>
+    
+    <script src="scripts/definition/process/processmodeldefinition.js"></script>
+    <script src="scripts/definition/process/processimplementationdefinition.js"></script>
+
+    <script src="scripts/definition/cfid/casefileitemdefinitiondefinition.js"></script>
+    <script src="scripts/definition/cfid/propertydefinition.js"></script>
+    
+    <script src="scripts/modeleditors/cfid/casefileitemdefinitioneditor.js"></script>
+    <script src="scripts/modeleditors/cfid/cfidefinitionunspecified.js"></script>
+    <script src="scripts/modeleditors/cfid/cfidefinitionxmlelement.js"></script>
+    <script src="scripts/modeleditors/cfid/cfidefinitionunknown.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js scripts/validate.js -->
+    <!-- bower:js -->
+    <script src="scripts/validate/problemtype.js"></script>
+    <script src="scripts/validate/problem.js"></script>
+    <script src="scripts/validate/validator.js"></script>
+    <script src="scripts/validate/validationsettings.js"></script>
+    <script src="scripts/validate/validateform.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js scripts/editors.js -->
+    <!-- bower:js -->
+    <script src="scripts/editors/casefileitemseditor.js"></script>
+    <script src="scripts/editors/case/caseparameterseditor.js"></script>
+    <script src="scripts/editors/case/cfizoom.js"></script>
+    <script src="scripts/editors/case/expressionchanger.js"></script>
+    <script src="scripts/editors/case/namechanger.js"></script>
+    <script src="scripts/editors/case/parameterdeleter.js"></script>
+    <script src="scripts/editors/task/taskmappingseditor.js"></script>
+    <script src="scripts/editors/task/mappingcomponents.js"></script>
+    <script src="scripts/editors/task/bindingrefinementeditor.js"></script>
+    <script src="scripts/editors/roleseditor.js"></script>
+    
+    <script src="scripts/modeleditors/modeleditor.js"></script>
+    <script src="scripts/modeleditors/modeleditormetadata.js"></script>
+    <script src="scripts/modeleditors/xmleditor/xmlmodeleditor.js"></script>
+    <script src="scripts/modeleditors/xmleditor/modelsourceeditor.js"></script>
+    <script src="scripts/modeleditors/case/casemodeleditor.js"></script>
+    <script src="scripts/modeleditors/xmleditor/processmodeleditor.js"></script>
+    <script src="scripts/modeleditors/xmleditor/humantaskmodeleditor.js"></script>
+
+    <script src="scripts/modeleditors/case/casesourceeditor.js"></script>
+    <script src="scripts/modeleditors/case/shapebox.js"></script>
+    <script src="scripts/modeleditors/case/resizer.js"></script>
+    <script src="scripts/modeleditors/case/undoredo.js"></script>
+    <script src="scripts/modeleditors/case/action.js"></script>
+    <script src="scripts/modeleditors/case/grid.js"></script>
+    <script src="scripts/debugger/debugger.js"></script>
+    <script src="scripts/modeleditors/case/deploy.js"></script>
+    <script src="scripts/editors/modelparameters.js"></script>
+    <script src="scripts/editors/startcaseeditor.js"></script>
+    <script src="scripts/editors/expressioneditor.js"></script>
+    <script src="scripts/editors/intellisense.js"></script>
+
+    <!-- endbower -->
+    <!-- endbuild -->
+</head>
+<body>
+    <div class="iIDE" />
+</body>
+</html>

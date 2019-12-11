@@ -1,0 +1,236 @@
+﻿body {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.basicbox {
+    position: absolute;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.0470588) 0px 1px 1px 0px;
+    background-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(221, 221, 221);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-image-outset: 0px;
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 1;
+    border-left-color: rgb(221, 221, 221);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-right-color: rgb(221, 221, 221);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-top-color: rgb(221, 221, 221);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-top-style: solid;
+    border-top-width: 1px;
+    box-shadow: rgba(0, 0, 0, 0.0470588) 0px 1px 1px 0px;
+    box-sizing: border-box;
+    color: rgb(51, 51, 51);
+    display: block;
+}
+
+.ide-header {
+    left: 4px;
+    right: 4px;
+    height: 40px;
+    top: 4px;
+    background-color: rgb(66, 68, 70);
+    padding: 6px;
+}
+
+.ide-header .appname label {
+    color: white;
+}
+
+.ide-header .btn-group {
+    margin-left: 12px !important;
+}
+
+.ide-header .btn {
+    color: white;
+    padding: 1px 4px 1px 4px !important;
+    background-color: rgb(66, 68, 70);
+    border-color: rgb(66, 68, 70) !important;
+}
+
+.ide-header label {
+    padding: 3px 10px 0px 0px;
+    color: white;
+    font-weight: normal;
+}
+
+.ide-header .btn:hover {
+    border-bottom-color: white !important;
+}
+
+.ide-header .active {
+    box-shadow: inset 0 10px 10px rgba(0, 0, 0, .5);
+}
+
+.ide-header .btn img {
+    width: 24px;
+    height: 24px;
+}
+
+.ide-main {
+    position: absolute;
+    left: 4px;
+    right: 5px; /* Apparently needed to align properly with header */
+    bottom: 38px;
+    top: 45px;
+    height: auto;
+}
+
+.divCoverPanel {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.divCoverPanel>div:first-child {
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(221, 221, 221);
+}
+
+.divCoverPanel>div:last-child {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    width: 200px;
+    height: 60px;
+    background-color: white;
+    padding: 10px;
+}
+
+.idefooter {
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    height: 30px !important;
+    padding: 3px;
+    text-align: center;
+}
+
+.idefooter .globalWarning {
+    position: absolute;
+    color: red;
+    left: 100px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.ideCaseFooter {
+    position: absolute;
+    right: 0px;
+    display: flex;
+    flex-flow: row-reverse;
+}
+
+.ideCaseFooter .gridsettings {
+    font-weight: normal;
+    border-left: 1px solid rgb(221, 221, 221);
+    padding-left: 25px;
+    right: 25px;
+    width: 275px;
+}
+
+.ideCaseFooter .gridsettings label {
+    font-weight: normal;
+    position: relative;
+    padding-right: 10px;
+}
+
+.ideCaseFooter .gridsettings input {
+    position: relative;
+    top: 2px;
+}
+
+.ideCaseFooter .gridsettings input[type="number"] {
+    border: 1px dashed rgb(221, 221, 221);
+    width: 40px;
+    top: -0.8px;
+    text-align: center;
+    margin-right: 10px
+}
+
+.ideCaseFooter .validatemessage {
+    font-weight: normal;
+    border-left: 1px solid rgb(221, 221, 221);
+    width: 560px;
+}
+
+.ideCaseFooter .validatemessage .validateLabel {
+    cursor: pointer;
+    font-weight: bold;
+    color: grey;
+    position: relative;
+    top: -1px;
+}
+
+/* Extra bootstrap css */
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+
+/* Overruled JointJS classes (joint.css) */
+
+
+/* overrules line 98 joint.css */
+
+.connection-wrap {
+    fill: none;
+    stroke: black;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0;
+    cursor: move;
+}
+
+
+/*HCM CMMN added: do not show the arrow heads while hovering -> user is prevented to drag the line to other element */
+
+.link:hover .marker-arrowheads {
+    display: none;
+}

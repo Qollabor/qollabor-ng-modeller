@@ -1,0 +1,14 @@
+cmmn-modeler.iml
+.idea
+node_modules
+dist
+.tmp
+.sass-cache
+bower_components
+test/bower_components
+.project
+.settings
+**/*.sln
+**/*.suo
+repository/hcmtest*
+repository_deploy/hcmtest*

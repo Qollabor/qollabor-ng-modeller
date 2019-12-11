@@ -1,0 +1,35 @@
+<CMMNDI>
+    <CMMNDiagram>
+        <CMMNShape cmmnElementRef="cm_testPlanningTable.case_0">
+            <Bounds x="10" y="10" width="734" height="742"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_testPlanningTable.case_4">
+            <Bounds x="290" y="120" width="100" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_testPlanningTable.case_8">
+            <Bounds x="250" y="220" width="420" height="140"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_testPlanningTable.case_10">
+            <Bounds x="307" y="253" width="100" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_testPlanningTable.case_2">
+            <Bounds x="85" y="89" width="100" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_testPlanningTable.case_12">
+            <Bounds x="54" y="228" width="100" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_testPlanningTable.case_14">
+            <Bounds x="132" y="391" width="100" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pt_cm_testPlanningTable.case_1">
+            <Bounds x="190" y="23" width="24" height="16"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pt_cm_testPlanningTable.case_3">
+            <Bounds x="107" y="80" width="24" height="16"/>
+        </CMMNShape>
+        <CMMNEdge sourceCMMNElementRef="cm_testPlanningTable.case_12" targetCMMNElementRef="cm_testPlanningTable.case_2"/>
+        <CMMNEdge sourceCMMNElementRef="cm_testPlanningTable.case_14" targetCMMNElementRef="cm_testPlanningTable.case_2"/>
+        <CMMNEdge sourceCMMNElementRef="cm_testPlanningTable.case_12" targetCMMNElementRef="cm_testPlanningTable.case_2"/>
+        <CMMNEdge sourceCMMNElementRef="cm_testPlanningTable.case_14" targetCMMNElementRef="cm_testPlanningTable.case_2"/>
+    </CMMNDiagram>
+</CMMNDI>

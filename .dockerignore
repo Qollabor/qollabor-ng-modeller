@@ -1,0 +1,14 @@
+node_modules
+.bowerrc
+.editorconfig
+.gitattributes
+.gitignore
+.yo-rc.json
+bower.json
+gulpfile.babel.js
+.git
+.tmp
+dist
+Dockerfile
+wercker.yml
+README.md

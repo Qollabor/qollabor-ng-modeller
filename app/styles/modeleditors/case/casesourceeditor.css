@@ -1,0 +1,58 @@
+.case-source-editor {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    overflow: hidden;
+    display: none;
+    background-color: #f5f5f5;
+}
+
+.sourcecontainer {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    top: 0px;
+    bottom: 50px;
+}
+
+.sourcecontainer .left {
+    position: absolute;
+    left: 0px;
+    width: 54%;
+    height: 100%;
+}
+
+.sourcecontainer .right {
+    position: absolute;
+    right: 0px;
+    width: 44%;
+    height: 100%;
+}
+
+.codemirrorsource {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    top: 35px;
+    font: 0.8em "myriad-pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+.codemirrorsource .CodeMirror {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: auto;
+}
+
+.sourcefooter {
+    padding-left: 10px;
+    position: absolute;
+    bottom: 2px;
+    left: 10px;
+    right: 10px;
+    height: 40px;
+}

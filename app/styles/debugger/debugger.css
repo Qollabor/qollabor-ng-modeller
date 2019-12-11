@@ -1,0 +1,95 @@
+﻿.debug-form {
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+}
+
+.debug-form .standardformheader {
+    text-align: center;
+}
+
+.debug-form .current-user-token {
+    position: relative;
+    top: 5px;
+    margin-left: 410px;
+}
+
+.debug-form .token-copy-button {
+    margin-left: 5px;
+    height: 16px;
+    position: relative;
+    top: 6px;
+}
+
+.debug-form .standardformcontainer {
+    bottom: 0px;
+    background-color: #F5F5F5;
+}
+
+.debug-form .standardformcontainer>div {
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+}
+
+.debug-container {
+    position: absolute;
+    top: 45px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+}
+
+.debug-container .horizontal-splitter {
+    background-color: rgb(169, 169, 169);
+    width: 3px;
+    margin-left: 4px;
+    top: 18px;
+}
+
+.event-list {
+    position: absolute;
+    overflow-y: auto;
+}
+
+.event-list table {
+    width: 100%;
+}
+
+.event-list td {
+    border: 1px solid rgb(169, 169, 169);
+    padding: 4px;
+}
+
+.event-content {
+    margin-left: 10px;
+    padding-left: 10px;
+    position: absolute;
+}
+
+.event-content .codeMirrorSource {
+    position: absolute;
+    top: 18px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    border: 1px solid rgb(169, 169, 169);
+}
+
+.event-content .codeMirrorSource .CodeMirror {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: auto;
+}
+
+.debug_timestamp {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}

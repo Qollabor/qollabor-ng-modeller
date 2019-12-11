@@ -1,0 +1,39 @@
+.onparts-block label {
+    font-weight: bold;
+}
+
+.onparts-block th {
+    font-weight: normal;
+}
+
+.onpart .source-ref {
+    width: 130px;
+    margin: 2px 15px 2px 2px;
+}
+
+.onpart .standard-event {
+    width: 100px;
+    margin: 2px 5px 2px 2px;
+}
+
+.onpart input {
+    position: relative;
+    top: -1px;
+}
+
+.onpart .btnDelete {
+    width: 14px;
+}
+
+.onpart .btnDelete img {
+    left: -7px;
+}
+
+.onpart .valuelabel {
+    width: 110px;
+    left: 0px;
+}
+
+.onpart .zoombt {
+    right: 0px;
+}

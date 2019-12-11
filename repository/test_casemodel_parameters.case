@@ -1,0 +1,49 @@
+<case description="Case model for testing all options in a case" id="test_casemodel_parameters.case" name="test_casemodel_parameters">
+    <caseFileModel>
+        <caseFileItem definitionRef="test_cfi_def_01.cfid" id="cfi_csARK_0" multiplicity="ExactlyOne" name="cfi_1" />
+    </caseFileModel>
+    <casePlanModel id="cm_test_casemodel_parameters.case_test_casemodel_parameters_0" name="test_casemodel_parameters" />
+    <input bindingRef="cfi_csARK_0" id="csARK_inCPs_0" name="case_input_parameter_01">
+        <bindingRefinement language="spel">
+            <body>
+                
+                    expression
+multiple lines
+                
+            </body>
+        </bindingRefinement>
+    </input>
+    <input id="csARK_inCPs_1" name="case_input_parameter_02">
+        <bindingRefinement language="spel">
+            <body>
+                
+                    expression
+                
+            </body>
+        </bindingRefinement>
+    </input>
+    <input id="csARK_inCPs_2" name="ht_input_parameter_03" />
+    <output id="csARK_outCPs_0" name="case_output_parameter_01" />
+    <output bindingRef="cfi_csARK_0" id="csARK_outCPs_1" name="case_output_parameter_02">
+        <bindingRefinement language="spel">
+            <body>
+                
+                    expression
+multiplelines
+                
+            </body>
+        </bindingRefinement>
+    </output>
+    <output id="csARK_outCPs_2" name="case_output_parameter_03" />
+    <extensionElements>
+        <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+  "schema":{
+    "title": "",
+    "type": "object",
+    "properties":{
+    }
+  }
+}
+            </cafienne:start-case-model>
+    </extensionElements>
+</case>

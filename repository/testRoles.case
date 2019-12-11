@@ -1,0 +1,58 @@
+<case id="testRoles.case" name="testRoles" guid="_3GznZ">
+    <caseFileModel/>
+    <casePlanModel id="cm__3GznZ_0" name="testRoles" autoComplete="true">
+        <planItem id="pi_ht__3GznZ_0" name="HumanTask_0" definitionRef="ht__3GznZ_0">
+            <itemControl id="_3GznZ_1">
+                <repetitionRule id="_3GznZ_12">
+                    <condition id="_3GznZ_13" language="spel">
+                        <body>
+                            <![CDATA[true]]>
+                        </body>
+                    </condition>
+                </repetitionRule>
+            </itemControl>
+        </planItem>
+        <planItem id="pi_ht__3GznZ_1" name="HumanTask_1" definitionRef="ht__3GznZ_1">
+            <itemControl id="_3GznZ_2">
+                <repetitionRule id="_3GznZ_10">
+                    <condition id="_3GznZ_11" language="spel">
+                        <body>
+                            <![CDATA[true]]>
+                        </body>
+                    </condition>
+                </repetitionRule>
+            </itemControl>
+        </planItem>
+        <planItem id="pi_ue__3GznZ_0" name="UserEvent_0 " description="UserEvent_0&#10;" definitionRef="ue__3GznZ_0"/>
+        <planningTable id="_3GznZ_3">
+            <discretionaryItem id="pi_ht__3GznZ_2" name="HumanTask_2" definitionRef="ht__3GznZ_2" authorizedRoleRefs="_3GznZ_6 _3GznZ_7">
+                <itemControl id="_3GznZ_0">
+                    <repetitionRule id="_3GznZ_8">
+                        <condition id="_3GznZ_9" language="spel">
+                            <body>
+                                <![CDATA[true]]>
+                            </body>
+                        </condition>
+                    </repetitionRule>
+                </itemControl>
+            </discretionaryItem>
+        </planningTable>
+        <humanTask id="ht__3GznZ_0" name="HumanTask_0" isBlocking="true" performerRef="_3GznZ_4">
+            <inputs id="_3GznZ_14" name="Greeting"/>
+            <outputs id="_3GznZ_20" name="Response"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="sendresponse.humantask">
+                    <parameterMapping id="_3GznZ_15" sourceRef="_3GznZ_14" targetRef="Greeting"/>
+                    <parameterMapping id="_3GznZ_21" sourceRef="Response" targetRef="_3GznZ_20"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__3GznZ_1" name="HumanTask_1" isBlocking="true"/>
+        <humanTask id="ht__3GznZ_2" name="HumanTask_2" isBlocking="true"/>
+        <userEvent id="ue__3GznZ_0" name="UserEvent_0 " description="UserEvent_0&#10;" authorizedRoleRefs="_3GznZ_6 _3GznZ_4 _3GznZ_4 _3GznZ_4 _3GznZ_7"/>
+    </casePlanModel>
+    <caseRoles id="_3GznZ_4" name="Role1" description="Role ABC"/>
+    <caseRoles id="_3GznZ_5" name="Role2" description="Role 2"/>
+    <caseRoles id="_3GznZ_6" name="Role 3"/>
+    <caseRoles id="_3GznZ_7" name="Role - With - Character"/>
+</case>

@@ -1,0 +1,21 @@
+<CMMNDI>
+    <CMMNDiagram>
+        <CMMNShape cmmnElementRef="cm_HelloWorld.case_HelloWorld_0" name="HelloWorld">
+            <Bounds x="9" y="9" width="632" height="333"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csVQy_167" name="Receive Greeting and&#10;Send response">
+            <Bounds x="65" y="80" width="122" height="68"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cs3hg_196" name="Read response">
+            <Bounds x="316" y="84" width="100" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cs3hg_198">
+            <Bounds x="310" y="106" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNEdge sourceCMMNElementRef="cm_csVQy_167" targetCMMNElementRef="cm_cs3hg_198"/>
+    </CMMNDiagram>
+    <validation>
+        <hiddennotices/>
+        <hiddenproblems/>
+    </validation>
+</CMMNDI>

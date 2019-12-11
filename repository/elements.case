@@ -1,0 +1,110 @@
+<case id="elements.case" name="elements" guid="_Z6eH1">
+    <caseFileModel>
+        <caseFileItem id="_Z6eH1_4" name="casefileitem" multiplicity="ExactlyOne" definitionRef="root.cfid"/>
+        <caseFileItem id="_Z6eH1_20" name="casefileitem2" multiplicity="ExactlyOne" definitionRef="root.cfid"/>
+    </caseFileModel>
+    <casePlanModel id="cm__Z6eH1_0" name="elements" autoComplete="true">
+        <planItem id="pi_pt__Z6eH1_0" name="ProcessTask_1" definitionRef="pt__Z6eH1_0">
+            <itemControl id="_Z6eH1_12" name="ItemControl_1">
+                <repetitionRule id="_Z6eH1_13" name="Constraint_1" contextRef="_Z6eH1_4"/>
+                <manualActivationRule id="_Z6eH1_14" name="Constraint_2">
+                    <condition id="_Z6eH1_18" name="Expression_1" language="spel">
+                        <body>
+                            <![CDATA[false]]>
+                        </body>
+                    </condition>
+                </manualActivationRule>
+            </itemControl>
+        </planItem>
+        <planItem id="pi_ms__Z6eH1_0" name="Milestone_1" definitionRef="ms__Z6eH1_0">
+            <itemControl id="_Z6eH1_19" name="ItemControl_2">
+                <requiredRule id="_Z6eH1_21" name="Constraint_4" contextRef="_Z6eH1_4">
+                    <condition id="_Z6eH1_22" name="Expression_2" language="spel">
+                        <body>
+                            <![CDATA[true]]>
+                        </body>
+                    </condition>
+                </requiredRule>
+            </itemControl>
+        </planItem>
+        <planItem id="pi__Z6eH1_0" name="Stage_1" definitionRef="_Z6eH1_0">
+            <entryCriterion id="_Z6eH1_23" name="EntryCriterion_0" sentryRef="crit__Z6eH1_0"/>
+            <exitCriterion id="_Z6eH1_24" name="ExitCriterion_0" sentryRef="crit__Z6eH1_1"/>
+        </planItem>
+        <planItem id="pi_ht__Z6eH1_2" name="HumanTask_3" definitionRef="ht__Z6eH1_2"/>
+        <planItem id="pi_ct__Z6eH1_0" name="CaseTask_1" definitionRef="ct__Z6eH1_0"/>
+        <planItem id="pi__Z6eH1_5" name="Stage_2" definitionRef="_Z6eH1_5"/>
+        <sentry id="crit__Z6eH1_0" name="Sentry_1">
+            <caseFileItemOnPart id="_Z6eH1_25" name="CaseFileItemOnPart_1" sourceRef="_Z6eH1_20">
+                <standardEvent>create</standardEvent>
+            </caseFileItemOnPart>
+            <caseFileItemOnPart id="_Z6eH1_39" name="CaseFileItemOnPart_0" sourceRef="_Z6eH1_4">
+                <standardEvent>create</standardEvent>
+            </caseFileItemOnPart>
+            <planItemOnPart id="_Z6eH1_2" name="PlanItemOnPart_1" sourceRef="pi_pt__Z6eH1_0">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__Z6eH1_1" name="Sentry_2">
+            <planItemOnPart id="_Z6eH1_3" name="PlanItemOnPart_2" sourceRef="pi_ct__Z6eH1_0">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <planningTable id="_Z6eH1_6" name="PlanningTable_1">
+            <discretionaryItem id="pi_ht__Z6eH1_0" name="HumanTask_1" definitionRef="ht__Z6eH1_0" authorizedRoleRefs="_Z6eH1_16"/>
+            <discretionaryItem id="pi_ht__Z6eH1_3" name="HumanTask_4" definitionRef="ht__Z6eH1_3"/>
+            <discretionaryItem id="pi__Z6eH1_37" name="Discretionary Stage" definitionRef="_Z6eH1_37"/>
+            <applicabilityRule id="_Z6eH1_7" name="ApplicabilityRule_1"/>
+            <applicabilityRule id="_Z6eH1_8" name="ApplicabilityRule_2" contextRef="_Z6eH1_4"/>
+        </planningTable>
+        <humanTask id="ht__Z6eH1_0" name="HumanTask_1" isBlocking="true"/>
+        <humanTask id="ht__Z6eH1_1" name="HumanTask_2" isBlocking="true"/>
+        <humanTask id="ht__Z6eH1_2" name="HumanTask_3" isBlocking="true">
+            <planningTable id="_Z6eH1_9" name="PlanningTable_2"/>
+        </humanTask>
+        <humanTask id="ht__Z6eH1_3" name="HumanTask_4" isBlocking="true"/>
+        <caseTask id="ct__Z6eH1_0" name="CaseTask_1" isBlocking="true">
+            <outputs id="_Z6eH1_27" name="ydyy"/>
+            <outputs id="_Z6eH1_29" name="snv"/>
+            <outputs id="_Z6eH1_32" name="abc"/>
+            <outputs id="_Z6eH1_34" name="tab" bindingRef="_Z6eH1_4"/>
+            <parameterMapping id="_Z6eH1_31" name="ParameterMapping_5" targetRef="_Z6eH1_34">
+                <transformation id="_Z6eH1_33" name="Expression_4" language="spel">
+                    <body>
+                        <![CDATA[test]]>
+                    </body>
+                </transformation>
+            </parameterMapping>
+        </caseTask>
+        <processTask id="pt__Z6eH1_0" name="ProcessTask_1" isBlocking="true" processRef="checkapprover.process">
+            <inputs id="_Z6eH1_42" name="projectmanager"/>
+            <inputs id="_Z6eH1_44" name="chiefserviceline"/>
+            <inputs id="_Z6eH1_46" name="startdate"/>
+            <inputs id="_Z6eH1_48" name="enddate"/>
+            <outputs id="_Z6eH1_50" name="availability"/>
+            <parameterMapping id="_Z6eH1_43" name="ParameterMapping_0" sourceRef="_Z6eH1_42" targetRef="projectmanager"/>
+            <parameterMapping id="_Z6eH1_45" name="ParameterMapping_1" sourceRef="_Z6eH1_44" targetRef="chiefserviceline"/>
+            <parameterMapping id="_Z6eH1_47" name="ParameterMapping_2" sourceRef="_Z6eH1_46" targetRef="startdate"/>
+            <parameterMapping id="_Z6eH1_49" name="ParameterMapping_3" sourceRef="_Z6eH1_48" targetRef="enddate"/>
+            <parameterMapping id="_Z6eH1_51" name="ParameterMapping_4" sourceRef="availability" targetRef="_Z6eH1_50"/>
+        </processTask>
+        <milestone id="ms__Z6eH1_0" name="Milestone_1"/>
+        <userEvent id="ue__Z6eH1_0" name="UserEvent_1" authorizedRoleRefs="_Z6eH1_17 _Z6eH1_16"/>
+        <timerEvent id="tmr__Z6eH1_0" name="TimerEvent_1">
+            <planItemStartTrigger id="_Z6eH1_1" name="PlanItemStartTrigger_4" sourceRef="cm__Z6eH1_0">
+                <standardEvent>create</standardEvent>
+            </planItemStartTrigger>
+        </timerEvent>
+        <stage id="_Z6eH1_0" name="Stage_1" autoComplete="true">
+            <planItem id="pi_tmr__Z6eH1_0" name="TimerEvent_1" definitionRef="tmr__Z6eH1_0"/>
+            <planItem id="pi_ue__Z6eH1_0" name="UserEvent_1" definitionRef="ue__Z6eH1_0"/>
+        </stage>
+        <stage id="_Z6eH1_5" name="Stage_2" autoComplete="true">
+            <planItem id="pi_ht__Z6eH1_1" name="HumanTask_2" definitionRef="ht__Z6eH1_1"/>
+        </stage>
+        <stage id="_Z6eH1_37" name="Discretionary Stage" autoComplete="true"/>
+    </casePlanModel>
+    <caseRoles id="_Z6eH1_15" name="CaseRole_1"/>
+    <caseRoles id="_Z6eH1_16" name="CaseRole_2"/>
+    <caseRoles id="_Z6eH1_17" name="CaseRole_3"/>
+</case>

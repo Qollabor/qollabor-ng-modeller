@@ -1,0 +1,51 @@
+
+box: 
+  id: node:6-alpine
+  cmd: /bin/sh
+build:
+    steps:
+        - script:
+          name: npm install build dependencies
+          code: |
+            apk --no-cache add git
+            npm install -g bower
+            bower --allow-root install
+        - script:
+          name: system information (node, npm, bower)
+          code: |
+            echo "node version $(node --version) running"
+            echo "npm version $(npm --version) running"
+            echo "bower version $(bower --version) running"
+          
+deploy-modeler:
+  box:
+    id: nginx:alpine
+    cmd: /bin/sh
+  steps:
+    - script:
+        name: install nodejs
+        code: |
+          apk --no-cache add nodejs npm
+    - script:
+        name: create directories and copy config
+        code: |
+          rm -rf /usr/share/nginx/html/*
+          mkdir -p /usr/src/app /usr/src/app/repository_deploy
+          cp -Rp $WERCKER_SOURCE_DIR/config/nginx.conf /etc/nginx/nginx.conf
+    - script: 
+        name: install nodejs production dependencies
+        code: |
+          cp -Rp $WERCKER_SOURCE_DIR/* /usr/src/app
+          cd /usr/src/app
+          npm install --production
+          rm -rf /usr/src/app/repository/*
+    - internal/docker-push:
+        disable-sync: true
+        author: Cafienne <info@cafienne.io>
+        tag: $DOCKER_HUB_TAG
+        username: $DOCKER_HUB_USERNAME
+        password: $DOCKER_HUB_PASSWORD
+        repository: $DOCKER_HUB_REPO
+        working-dir: /usr/src/app
+        ports: $DOCKER_PORTS
+        entrypoint: /usr/src/app/bin/entrypoint.sh

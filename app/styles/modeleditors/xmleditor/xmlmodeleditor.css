@@ -1,0 +1,191 @@
+/*CSS of the human task model editor*/
+
+.model-source-tabs {
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    left: 2px;
+    right: 2px;
+    height: auto;
+    font-size: 0.8em;
+}
+
+/* style the tabs*/
+.model-source-tabs ul {
+    background-color: white;
+    border: 0px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+.model-source-tabs li {
+    background-color: #f5f5f5 !important;
+}
+
+.model-source-tabs li a {
+    opacity: 0.8;
+}
+
+.model-source-tabs ul .ui-state-active {
+    border-color: rgb(221, 221, 221) !important;
+}
+
+.model-source-tabs ul .ui-state-active a {
+    color: #333333;
+}
+
+.xml-model-editor,
+.xml-source-editor {
+    background-color: #f5f5f5 !important;
+    position: absolute;
+    top: 33px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    min-width: 640px;
+    border: 0px;
+}
+
+.xml-source-editor {
+    display: none;
+}
+
+
+/*Source editor*/
+
+.xml-source-editor>div {
+    border: 1px solid rgb(169, 169, 169);
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    top: 10px;
+    height: auto;
+}
+
+.xml-model-editor>div {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+}
+
+/*name and description fields*/
+.xml-model-editor .modelgenericfields {
+    top: 10px;
+}
+
+.xml-model-editor .modelgenericfields div label:first-child,
+.xml-model-editor .modelgenericfields div input:first-child {
+    width: 200px;
+}
+
+.xml-model-editor .modelgenericfields div label:last-child,
+.xml-model-editor .modelgenericfields div input:last-child {
+    width: 417px;
+}
+
+/*Parameters tree tables*/
+.xml-model-editor .model-parameters {
+    top: 60px;
+    height: 180px;
+    min-width: 640px;
+}
+
+.xml-model-editor .model-parameters>div {
+    width: 300px;
+    border: 1px solid rgb(169, 169, 169);
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+}
+
+.xml-model-editor .model-parameters>div:first-child {
+    left: 0px;
+}
+
+.xml-model-editor .model-parameters>div:last-child {
+    left: 320px;
+}
+
+.xml-model-editor .modelparametertable {
+    padding: 10px;
+}
+
+.xml-model-editor .modelparametertable>label {
+    display: block;
+}
+
+.xml-model-editor .modelparametertable>button {
+    display: inline-block;
+    margin: 3px 5px 5px 0px;
+}
+
+.xml-model-editor .modelparametertable>div {
+    position: absolute;
+    top: 30px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.xml-model-editor .modelparametertable table colgroup .modelparameterdeletebtcol {
+    width: 20px;
+}
+
+.xml-model-editor .modelparametertable table .modelparameternamecol {
+    width: 100px;
+}
+
+.xml-model-editor .modelparametertable table .modelparameteridcol {
+    width: 80px;
+}
+
+.xml-model-editor .modelparametertable tbody tr {
+    border-color: none;
+}
+
+.xml-model-editor .modelparametertable tbody button {
+    height: 14px;
+    width: 14px;
+    background-image: url(/images/close_black_32.png);
+    background-position: 2px 2px;
+    background-repeat: no-repeat;
+    background-size: 8px 8px;
+    border: 1px solid rgb(221, 221, 221);
+}
+
+.xml-model-editor .modelparametertable tbody input {
+    margin: 1px 4px 1px 0px;
+    border: 1px solid rgb(169, 169, 169);
+    padding-left: 1px;
+}
+
+.xml-model-editor .modelparametertable tbody input.modelparameternamecol {
+    width: 156px;
+}
+
+.xml-model-editor .modelparametertable tbody input.modelparameteridcol {
+    width: 75px;
+    background-color: #f5f5f5;
+    border-width: 1px;
+}
+
+/*Task Model json editor*/
+.xml-model-editor .model-content-editor {
+    top: 255px;
+    bottom: 10px;
+}
+
+.xml-model-editor .model-content-editor>div {
+    position: absolute;
+    top: 15px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    border: 1px solid rgb(169, 169, 169);
+}
+
+.xml-model-editor .model-content-editor>div>div {
+    height: 100%;
+}

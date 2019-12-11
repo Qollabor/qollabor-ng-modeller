@@ -1,0 +1,58 @@
+﻿.basicform {
+    position: absolute;
+    height: auto;
+    display: none;
+    font: 0.8em "myriad-pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+.basicform label {
+    font-weight: normal;
+}
+
+.basicform .formheader {
+    height: 20px;
+    background-color: rgb(66, 68, 70);
+    color: white;
+    border-bottom: 1px solid #DDDDDD;
+    width: 100%;
+    white-space: nowrap;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.basicform .formheadernoradius {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.basicform .formheader label {
+    position: absolute;
+    left: 8px;
+    top: 4px;
+    cursor: move;
+    overflow: hidden;
+}
+
+.basicform .formheader .formclose {
+    position: absolute;
+    right: 3px;
+    top: 2px;
+    width: 17px;
+    height: 17px;
+}
+
+.basicform .formheader img {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 13px;
+    height: 13px;
+}
+
+.basicform .formheader div:hover {
+    border: 1px dotted white;
+}
+
+.basicform .formcontainer {
+    width: 100%;
+}

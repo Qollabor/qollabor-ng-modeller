@@ -1,0 +1,53 @@
+﻿/* Show message, info, warning, alerts */
+
+.messagebox {
+    display: none;
+    width: 500px;
+    position: absolute;
+    right: 20px;
+    top: 40px;
+    z-index: 10000;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.messagebox .btn-group {
+    width: 100%;
+}
+
+.messagebox .panel-heading {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.messagebox .btn-group button {
+    float: right;
+}
+
+.messagebox .validate {
+    font-size: 0.9em;
+}
+
+.messagebox .validate span {
+    position: relative;
+    top: -3px;
+    margin-right: 4px;
+}
+
+.messagebox .validate input {
+    margin-right: 4px;
+}
+
+.messagebox .validate input~span {
+    font-size: 0.8em;
+}
+
+.messagebox .alert-danger .separator {
+    border-bottom: 1px solid #a94442;
+    height: 5px;
+}
+
+.messagebox .alert-warning .separator {
+    border-bottom: 1px solid #8a6d3b;
+    height: 5px;
+}

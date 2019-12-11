@@ -1,0 +1,177 @@
+﻿.CodeMirror {
+    /* Set height, width, borders, and global font properties here */
+    font-family: monospace;
+    height: auto;
+    color: black;
+}
+
+.properties {
+    background-color: #f5f5f5;
+}
+
+.properties-footer {
+    width: 100%;
+    height: 5px;
+}
+
+.propertiespin {
+    position: absolute;
+    right: 20px;
+    top: 2px;
+    width: 17px;
+    height: 17px;
+}
+
+.pinned {
+    box-shadow: inset 0 10px 10px rgba(0, 0, 0, .5);
+}
+
+.properties-container {
+    width: 100%;
+}
+
+/* .properties-container div {
+    width: 100%;
+    /*position:relative;*/
+} */
+
+.properties-container .disabled {
+    opacity: 0.4;
+}
+
+.properties-container .propertyRow {
+    height: 22px;
+    display: block;
+}
+
+.properties-container .propertyRow input,
+.properties-container .propertyBlock input {
+    margin: 3px;
+    cursor: pointer;
+}
+
+.properties-container .propertyRow img {
+    height: 16px;
+    margin: 2px;
+    position: relative;
+    top: -4px;
+}
+
+.properties-container .propertyRow label {
+    margin: 2px;
+    position: relative;
+    top: -4px;
+}
+
+/*span for the separator*/
+.properties-container .separator {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid #DDDDDD;
+    display: block;
+    margin: 3px 0px 3px 0px;
+}
+
+/* For Item Control rules */
+.properties-container .propertyRule {
+    padding-left: 2px;
+    background-color: #f5f5f5;
+}
+
+.properties-container .propertyRule textarea {
+    display: block;
+    width: 98%;
+    height: 30px;
+    border: 1px solid #DDDDDD;
+    resize: vertical;
+}
+
+.properties-container .propertyRule select {
+    display: block !important;
+    width: 98%;
+    height: 20px;
+}
+
+.properties-container .propertyRule .single {
+    height: 18px;
+}
+
+.properties-container .propertyRule .multi {
+    height: 30px;
+}
+
+.properties-container .propertyBlock {
+    padding: 3px 2px 2px 4px;
+    background-color: #f5f5f5;
+}
+
+.properties-container .propertyBlock input {
+    display: block;
+    width: 98%;
+    margin: 0px;
+    border: 1px solid #DDDDDD;
+}
+
+.properties-container .propertyBlock textarea {
+    display: block;
+    width: 98%;
+    height: 30px;
+    border: 1px solid #DDDDDD;
+    resize: vertical;
+}
+
+.properties-container .propertyBlock select {
+    display: block !important;
+    width: 98%;
+    background-color: #f5f5f5;
+    height: 20px;
+}
+
+.properties-container .propertyBlock .single {
+    height: 18px;
+}
+
+.properties-container .propertyBlock .multi {
+    height: 30px;
+}
+
+.properties-container .propertyButton {
+    height: 42px;
+    background-color: #f5f5f5;
+}
+
+.properties-container .propertyButton label {
+    margin-left: 5px;
+}
+
+.properties-container .propertyButton div {
+    margin-left: 5px;
+}
+
+.properties-container .propertyButton button {
+    width: 50px;
+}
+
+.properties-container .propertyButton img {
+    width: 20px;
+    height: 20px;
+}
+
+.cmmn-element-id {
+    padding-right: 20px;
+    text-align: right;
+    font-size: smaller;
+    user-select: text;
+}
+
+.cmmn-element-description {
+    background-color: #f5f5f5;
+}
+
+.edit-cmmn-description {
+    background-color: white;
+}
+
+.textbox-properties textarea {
+    height: 120px !important;
+}

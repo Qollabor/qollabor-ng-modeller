@@ -1,0 +1,13 @@
+﻿/*small delete button, e.g. in properties menu, search field*/
+.btnDelete{
+    height:18px;
+    width:18px;
+}
+
+.btnDelete img{
+    height:14px;
+    width:14px;
+    position:relative;
+    left:-6px;
+    top:-1px;
+}

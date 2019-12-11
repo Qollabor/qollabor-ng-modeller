@@ -1,0 +1,2 @@
+class CaseRoleDefinition extends CMMNElementDefinition {
+}

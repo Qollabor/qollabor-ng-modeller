@@ -1,0 +1,65 @@
+﻿.halobox {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 5px;
+}
+
+.halobar {
+  position: absolute;
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  opacity: 0.6;
+}
+
+.halobar.right {
+  top: -10px;
+  right: -28px;
+  width: 24px;
+  flex-direction: column;
+}
+
+.halobar.top {
+  top: -24px;
+  height: 24px;
+}
+
+.halobar.left {
+  top: -10px;
+  left: -24px;
+  width: 24px;
+  flex-direction: column;
+}
+
+.halobar.bottom {
+  height: 24px;
+  bottom: -24px;
+  display:flex;
+  align-content: center;
+  align-items: center;
+}
+
+/* .halobox { border:1px solid black }
+.halobar.right { border:2px solid green}
+.halobar.top { border:2px solid red}
+.halobar.left { border:2px solid black}
+.halobar.bottom { border:2px solid blue} */
+
+.halobar img {
+  width: 21px;
+  height: 21px;
+  border: 1px dashed transparent;
+  pointer-events: auto;
+}
+
+.halobar img:hover {
+  border-color: black;
+}
+
+.halodragimgid {
+  position: absolute;
+  display: none;
+  width: 32px;
+  height: 32px;
+  z-index: 100;
+}

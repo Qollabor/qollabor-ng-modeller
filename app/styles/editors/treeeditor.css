@@ -1,0 +1,127 @@
+﻿.treeeditorform {
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    height: auto;
+    width: auto;
+}
+
+.treeeditorform .formheader label {
+    cursor: default;
+}
+
+.treeeditorform th {
+    font-weight: normal;
+    height: 18px;
+    padding-left: 4px;
+}
+
+.treeeditorform select {
+    height: 16px;
+    margin-top: 1px;
+}
+
+.dialogButtons {
+    display: none;
+}
+
+.treeeditorform button {
+    margin: 2px 2px 4px 2px;
+}
+
+.treeeditorform label {
+    position: absolute;
+    left: 5px;
+    right: 20px;
+    top: 3px;
+    cursor: move;
+}
+
+.treeeditorform #treeeditorcontainerid {
+    position: absolute;
+    top: 20px;
+    left: 0px;
+    right: 0px;
+    bottom: 30px;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+.treeeditorform .treeeditorfooter {
+    position: absolute;
+    height: 30px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    display: block;
+    background-color: #f5f5f5;
+}
+
+.treeeditorform .treeeditorfooter>button {
+    position: relative;
+    top: 4px;
+    left: 10px;
+}
+
+.treeeditorform .treeeditorfooter>div {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+}
+
+.treeeditorform .containerbox {
+    position: absolute;
+    top: 24px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.treeeditorform .containerbox input {
+    width: 90%;
+    height: 18px;
+    margin: 1px 0px 1px 0px;
+    border: 0px;
+    position: relative;
+    left: 4px;
+}
+
+.treeeditorform .containerbox textarea {
+    border: 0px;
+    resize: vertical;
+    width: 95%;
+    margin: 1px 1px 1px 2px;
+}
+
+.treeeditorform .containerbox .treetextfield {
+    border: 0px;
+    width: 99%;
+    margin-left: 2px;
+}
+
+
+/*the treeeditor uses properties from the propertiesmenu, see properties.css*/
+
+.treeeditorform tr {
+    border-bottom: 1px solid #EEEEEE;
+    height: 21px;
+}
+
+.treeeditorform thead {
+    background-color: #f5f5f5;
+}
+
+.treeeditorform .fancytree-title {
+    position: relative;
+    top: 2px;
+}
+
+
+/*cfidefinition select field; default width is 80px. Will expand automatically when it is opened with a longer name*/
+.treeeditorform .cfidefselect {
+    width: 80px;
+}

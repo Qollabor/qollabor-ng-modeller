@@ -1,0 +1,41 @@
+<case id="testTimerEvent.case" name="testTimerEvent" description="" guid="_nrtSA">
+    <caseFileModel>
+        <caseFileItem id="cfi_testTimerEvent.case_0" name="CFI" multiplicity="ExactlyOne" definitionRef="test_cfi_def_01.cfid"/>
+    </caseFileModel>
+    <casePlanModel id="cm_testTimerEvent.case_0" name="testTimerEvent" autoComplete="true">
+        <planItem id="cm_testTimerEvent.case_2" name="Task_1" definitionRef="pid_cm_testTimerEvent.case_2"/>
+        <planItem id="cm_testTimerEvent.case_4" name="CFI-StartedTimer" definitionRef="pid_cm_testTimerEvent.case_4"/>
+        <planItem id="cm_testTimerEvent.case_5" name="EventListener_2" definitionRef="pid_cm_testTimerEvent.case_5"/>
+        <humanTask id="pid_cm_testTimerEvent.case_2" name="Task_1" isBlocking="true"/>
+        <timerEvent id="pid_cm_testTimerEvent.case_4" name="CFI-StartedTimer">
+            <timerExpression language="spel">
+                <body>
+                    <![CDATA[cfi-expression]]>
+                </body>
+            </timerExpression>
+            <caseFileItemStartTrigger sourceRef="cfi_testTimerEvent.case_0">
+                <standardEvent>create</standardEvent>
+            </caseFileItemStartTrigger>
+        </timerEvent>
+        <timerEvent id="pid_cm_testTimerEvent.case_5" name="EventListener_2">
+            <timerExpression language="spel">
+                <body>
+                    <![CDATA[task-triggered-expression]]>
+                </body>
+            </timerExpression>
+            <planItemStartTrigger sourceRef="cm_testTimerEvent.case_2">
+                <standardEvent>complete</standardEvent>
+            </planItemStartTrigger>
+        </timerEvent>
+    </casePlanModel>
+    <extensionElements mustUnderstand="false">
+        <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+  "schema":{
+    "title": "",
+    "type": "object",
+    "properties":{
+    }
+  }
+}</cafienne:start-case-model>
+    </extensionElements>
+</case>

@@ -1,0 +1,51 @@
+{
+  "private": true,
+  "engines": {
+    "node": ">=0.12.0"
+  },
+  "dependencies": {
+    "body-parser": "~1.13.2",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "express": "~4.13.1",
+    "jade": "~1.11.0",
+    "lokijs": "~1.4.3",
+    "mkdirp": "~0.5.1",
+    "morgan": "~1.6.1",
+    "request": "^2.79.0",
+    "request-promise": "^4.1.1",
+    "serve-favicon": "~2.3.0",
+    "walk-sync": "~0.3.1",
+    "watch": "^1.0.2",
+    "xmldom": "^0.1.27"
+  },
+  "devDependencies": {
+    "babel-core": "^5.5.6",
+    "browser-sync": "^2.26.3",
+    "del": "^1.1.1",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-cache": "^0.2.8",
+    "gulp-directory-map": "^0.1.2",
+    "gulp-eslint": "^3.0.1",
+    "gulp-if": "^1.2.5",
+    "gulp-imagemin": "^2.2.1",
+    "gulp-load-plugins": "^0.10.0",
+    "gulp-minify-css": "^1.1.1",
+    "gulp-minify-html": "^1.0.0",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-size": "^1.2.1",
+    "gulp-sourcemaps": "^1.5.0",
+    "gulp-uglify": "^1.1.0",
+    "gulp-useref": "^1.1.1",
+    "main-bower-files": "^2.5.0",
+    "opn": "^1.0.1",
+    "wiredep": "^2.2.2"
+  },
+  "scripts": {
+    "deploy": "node server/repository/repository_cli.js deploy",
+    "start": "bin/www",
+    "eslint-fix": "eslint app/scripts/**/*.js  --fix",
+    "test": "node_modules/.bin/mocha server/test/*.js"
+  }
+}

@@ -1,0 +1,84 @@
+/*drawing area*/
+
+.divCaseModel {
+    position: absolute;
+    top: 0px;
+    left: 59px;
+    right: 0px;
+    bottom: 0px;
+    height: 100%;
+}
+
+.divCaseCanvas {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+    border: none;
+    background-color: white;
+    overflow: hidden;
+}
+
+.paper-container-scroller {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    overflow: hidden;
+}
+
+.paper-container {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    overflow: auto;
+}
+
+.paper-container svg {
+    width: 6000px;
+    height: 6000px;
+}
+
+.divCaseFileEditor {
+    position: absolute;
+    top: 0px;
+    left: 4px;
+    right: 0px;
+    bottom: 0px;
+    overflow:hidden; /* to avoid buttons to show when splitter is minimized */
+}
+
+.divCaseFileEditor .schemadatabox {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+}
+
+.divCaseFileEditor .schemadatabox>div {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+}
+
+.divCaseFileEditor .schemadatabox .divCaseFileDefinitions {
+    top: 4px;
+}
+
+/* Change width of connector hover area*/
+.joint-link.joint-theme-default .connection-wrap {
+    stroke-width: 8px;
+}
+
+
+/* Hide connector arrowheads (the big green ones)*/
+.joint-viewport .marker-arrowhead {
+    display: none;
+}

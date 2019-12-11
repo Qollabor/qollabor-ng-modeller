@@ -1,0 +1,104 @@
+﻿.markelementimage {
+    position: absolute;
+    background-image: url(/images/markelementcfi_red_16.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 16px;
+    height: 16px;
+}
+
+.cmmn-border {
+    stroke: #423d3d;
+}
+
+.cmmn-selected-element {
+    stroke: blue;
+    stroke-width: 1px;
+}
+
+.cmmn-discretionary-border {
+    stroke-dasharray: 10 5;
+}
+
+.cmmn-text {
+    fill:black;
+    font-size: 12px;
+}
+
+.cmmn-bold-text {
+    fill:black;
+    font-weight: bold;
+    font-size: 12px;
+    font-family: Arial, helvetica, sans-serif;
+}
+
+.cmmn-casefile-shape {
+    fill: transparent;
+}
+
+.cmmn-caseplan-header-shape {
+    fill: transparent;
+}
+
+.cmmn-caseplan-shape {
+    fill: transparent;
+}
+
+.cmmn-casetask-shape {
+    fill: rgb(129, 130, 131);
+    fill: rgb(156, 175, 226);
+    fill: rgb(103, 133, 216);
+}
+
+.cmmn-eventlistener-outershape {
+    fill: rgb(156, 175, 226);
+}
+
+.cmmn-eventlistener-innershape {
+    fill: rgb(156, 175, 226);
+}
+
+.cmmn-exitcriterion-shape {
+    fill: black;
+}
+
+.cmmn-entrycriterion-shape {
+    fill: white;
+}
+
+.cmmn-humantask-shape {
+    /* fill: rgb(156, 175, 226); This color needs a white font for contrast */
+    fill: rgb(156, 175, 226);
+}
+
+.cmmn-milestone-shape {
+    fill: rgb(156, 175, 226);
+}
+
+.cmmn-milestone-shape-text {
+    fill: black;
+    font-family: Arial, helvetica, sans-serif;
+}
+
+.cmmn-planningtable-shape {
+    fill: transparent;
+    width: 26px;
+    height: 18px;
+}
+
+.cmmn-stage-shape {
+    fill: transparent;
+}
+
+.cmmn-processtask-shape {
+    fill: rgb(236, 232, 241);
+    sfill: rgb(156, 175, 226);
+    fill: rgb(103, 133, 216);
+}
+
+.cmmn-textbox-shape {
+    fill: transparent;
+    stroke: rgb(221, 211, 211);
+    width: 100px;
+    height: 60px;
+}

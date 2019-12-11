@@ -1,0 +1,11 @@
+.togglePlanItemsButton {
+    width: 26px;
+    position:absolute;
+    font-size: larger;
+    font-weight: bold;
+    background-size: cover;
+}
+
+.planitems-table {
+    display: none;
+}

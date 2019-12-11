@@ -1,0 +1,85 @@
+﻿#validateformid{
+    width:500px;
+    height:200px;
+    top:300px;
+    left:640px;
+    overflow:hidden;
+    z-index:901;
+}
+
+#validateformid .formbody{
+    position:absolute;
+    top:38px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    overflow:auto;
+    
+}
+
+#validateformid #validateheadernoerrorsid{
+    color:red;
+}
+#validateformid #validateheadernowarningsid{
+    color:#FEE300;
+}
+
+#validateformid .headerrowmenu,
+#validateformid .headerrowlabels{
+    background-color:#f5f5f5;
+}
+
+#validateformid .problemrow, 
+#validateformid .headerrowmenu,
+#validateformid .headerrowlabels{
+    height:18px;
+    border-bottom:1px solid #DDDDDD;
+    width:4000px;
+}
+#validateformid .headerrowmenu label{
+    position:absolute;
+    right:4px;
+    top:22px;
+    white-space:nowrap;
+}
+#validateformid .headerrowmenu button{
+    height:15px;
+    margin:1px 0px 1px 5px;
+    padding:0px 4px 0px 4px;
+}
+
+#validateformid .problemrow div, 
+#validateformid .headerrowlabels div{
+    height:18px;
+    float:left;
+    padding:2px 0px 0px 2px;
+}
+
+#validateformid .problemrow input{
+     margin:0px 0px 0px 1px;  
+}
+
+#validateformid .problemrow .hideproblem, 
+#validateformid .headerrowlabels .hideproblem, 
+#validateformid .problemrow .problemtype,
+#validateformid .headerrowlabels .problemtype{
+    width:20px;    
+    border-right:1px solid #DDDDDD;
+}
+
+#validateformid .problemrow .problemtype img{
+    width:14px;
+    height:14px;
+    position:relative;
+    left:0px;
+    top:0px;
+}
+
+#validateformid .problemrow .problemdescription{
+   padding:2px 0px 0px 3px;
+   -webkit-user-select:auto;  
+   -khtml-user-select: auto;   
+   -moz-user-select:text; 
+   -o-user-select:text;   
+   user-select:text;
+}

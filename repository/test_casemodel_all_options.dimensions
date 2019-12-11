@@ -1,0 +1,252 @@
+<CMMNDI>
+    <CMMNDiagram>
+        <CMMNShape cmmnElementRef="cm_cs7Ha_2">
+            <Bounds x="10" y="24" width="1198" height="1919"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cseQf_34">
+            <Bounds x="78" y="783" width="197" height="77"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cscw1_35">
+            <Bounds x="346" y="666" width="775" height="442"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cscw1_49">
+            <Bounds x="393" y="736" width="541" height="297"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cscw1_51">
+            <Bounds x="703" y="788" width="173" height="70"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csPyw_54">
+            <Bounds x="448" y="796" width="148" height="57"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cscw1_53">
+            <Bounds x="985" y="790" width="100" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csPyw_56">
+            <Bounds x="447" y="905" width="124" height="72"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csJWl_57">
+            <Bounds x="621" y="904" width="245" height="76"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cs6iD_4">
+            <Bounds x="129" y="58" width="145" height="62"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cs6iD_6">
+            <Bounds x="309" y="59" width="181" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csPHe_7">
+            <Bounds x="525" y="59" width="146" height="61"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csPHe_9">
+            <Bounds x="711" y="59" width="148" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csPHe_14">
+            <Bounds x="60" y="150" width="796" height="242"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csPHe_16">
+            <Bounds x="95" y="190" width="171" height="53"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csPHe_17">
+            <Bounds x="307" y="195" width="170" height="48"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csPHe_18">
+            <Bounds x="565" y="196" width="32" height="32"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cs5MY_19">
+            <Bounds x="726" y="198" width="32" height="32"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cs5MY_24">
+            <Bounds x="560" y="286" width="32" height="32"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cs5MY_25">
+            <Bounds x="729" y="286" width="32" height="32"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cs5MY_26">
+            <Bounds x="50" y="420" width="806" height="167"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cs5MY_28">
+            <Bounds x="114" y="471" width="157" height="79"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cs5MY_30">
+            <Bounds x="315" y="473" width="156" height="76"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cseQf_31">
+            <Bounds x="528" y="475" width="149" height="71"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cscw1_45">
+            <Bounds x="76" y="892" width="199" height="76"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cscw1_47">
+            <Bounds x="196" y="1012" width="130" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cscw1_43">
+            <Bounds x="36" y="1013" width="129" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csOQA_58">
+            <Bounds x="141" y="1141" width="1020" height="698"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cslbG_62">
+            <Bounds x="165" y="1178" width="136" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cslbG_64">
+            <Bounds x="388" y="1179" width="221" height="63"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cslbG_67">
+            <Bounds x="165" y="1266" width="136" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cslbG_69">
+            <Bounds x="387" y="1263" width="223" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cslbG_72">
+            <Bounds x="161" y="1413" width="140" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cslbG_74">
+            <Bounds x="385" y="1369" width="223" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cslbG_76">
+            <Bounds x="389" y="1459" width="218" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csQ4n_80">
+            <Bounds x="691" y="1179" width="100" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csQ4n_82">
+            <Bounds x="693" y="1264" width="100" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csQ4n_84">
+            <Bounds x="931" y="1222" width="168" height="51"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csQ4n_90">
+            <Bounds x="904" y="1367" width="215" height="129"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csQ4n_94">
+            <Bounds x="171" y="1553" width="118" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csQ4n_97">
+            <Bounds x="393" y="1549" width="123" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csQ4n_100">
+            <Bounds x="172" y="1639" width="176" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csORX_106">
+            <Bounds x="203" y="1763" width="32" height="32"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csiGM_112">
+            <Bounds x="645" y="1334" width="223" height="232"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csQ4n_88">
+            <Bounds x="694" y="1445" width="100" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csQ4n_86">
+            <Bounds x="693" y="1371" width="100" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_tEZDU_0">
+            <Bounds x="135" y="1330" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_tEZDU_1">
+            <Bounds x="382" y="1199" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_tEZDU_2">
+            <Bounds x="381" y="1287" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_tEZDU_3">
+            <Bounds x="379" y="1389" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_tEZDU_4">
+            <Bounds x="383" y="1482" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_tEZDU_5">
+            <Bounds x="925" y="1234" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_tEZDU_6">
+            <Bounds x="898" y="1396" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_tEZDU_7">
+            <Bounds x="898" y="1442" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_tEZDU_8">
+            <Bounds x="283" y="1571" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_tEZDU_9">
+            <Bounds x="387" y="1572" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_tEZDU_10">
+            <Bounds x="342" y="1656" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_tEZDU_11">
+            <Bounds x="185" y="1689" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_tEZDU_12">
+            <Bounds x="4" y="1327" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cs5MY_20">
+            <Bounds x="95" y="272" width="232" height="86"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pt_cm_undefined_1">
+            <Bounds x="290" y="37" width="24" height="16"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pt_cm_36">
+            <Bounds x="396" y="657" width="24" height="16"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pt_cm_7">
+            <Bounds x="443" y="727" width="24" height="16"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pt_cm_52">
+            <Bounds x="725" y="779" width="24" height="16"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pt_cm_46">
+            <Bounds x="98" y="883" width="24" height="16"/>
+        </CMMNShape>
+        <textbox cmmnElementRef="cm_csPHe_13" parentId="cm_cs7Ha_2" content="Tasks :">
+            <Bounds x="18" y="59" width="100" height="60"/>
+        </textbox>
+        <textbox cmmnElementRef="cm_cseQf_33" parentId="cm_cs7Ha_2" content="Discretionary :&#10;(Discr)">
+            <Bounds x="84" y="664" width="100" height="60"/>
+        </textbox>
+        <casefileitem cmmnElementRef="cm_csQ4n_104" parentId="cm_csOQA_58" contextRef="cfi_csgXo_1">
+            <Bounds x="378" y="1750" width="25" height="40"/>
+        </casefileitem>
+        <casefileitem cmmnElementRef="cm_csQ4n_103" parentId="cm_csOQA_58" contextRef="cfi_csgXo_2">
+            <Bounds x="563" y="1643" width="25" height="40"/>
+        </casefileitem>
+        <casefileitem cmmnElementRef="cm_cs5MY_22" parentId="cm_csPHe_14" contextRef="cfi_csgXo_7">
+            <Bounds x="399" y="280" width="25" height="40"/>
+        </casefileitem>
+        <CMMNEdge sourceCMMNElementRef="cm_csPyw_54" targetCMMNElementRef="cm_cscw1_51"/>
+        <CMMNEdge sourceCMMNElementRef="cm_cscw1_53" targetCMMNElementRef="cm_cscw1_51"/>
+        <CMMNEdge sourceCMMNElementRef="cm_cscw1_45" targetCMMNElementRef="cm_cscw1_47"/>
+        <CMMNEdge sourceCMMNElementRef="cm_cscw1_45" targetCMMNElementRef="cm_cscw1_43"/>
+        <CMMNEdge sourceCMMNElementRef="cm_cslbG_62" targetCMMNElementRef="_tEZDU_1"/>
+        <CMMNEdge sourceCMMNElementRef="cm_cslbG_72" targetCMMNElementRef="_tEZDU_3">
+            <waypoint x="345" y="1431"/>
+            <waypoint x="344" y="1399"/>
+        </CMMNEdge>
+        <CMMNEdge sourceCMMNElementRef="cm_cslbG_72" targetCMMNElementRef="_tEZDU_4">
+            <waypoint x="344" y="1457"/>
+            <waypoint x="345" y="1494"/>
+        </CMMNEdge>
+        <CMMNEdge sourceCMMNElementRef="cm_csQ4n_80" targetCMMNElementRef="_tEZDU_5"/>
+        <CMMNEdge sourceCMMNElementRef="cm_csQ4n_82" targetCMMNElementRef="_tEZDU_5"/>
+        <CMMNEdge sourceCMMNElementRef="_tEZDU_0" targetCMMNElementRef="_tEZDU_12"/>
+        <CMMNEdge sourceCMMNElementRef="_tEZDU_8" targetCMMNElementRef="_tEZDU_9"/>
+        <CMMNEdge sourceCMMNElementRef="cm_cscw1_35" targetCMMNElementRef="cm_cseQf_33"/>
+        <CMMNEdge sourceCMMNElementRef="cm_cseQf_34" targetCMMNElementRef="cm_cseQf_33"/>
+        <CMMNEdge sourceCMMNElementRef="cm_csORX_106" targetCMMNElementRef="_tEZDU_11">
+            <waypoint x="219" y="1737"/>
+            <waypoint x="191" y="1741"/>
+        </CMMNEdge>
+        <CMMNEdge sourceCMMNElementRef="cm_csQ4n_104" targetCMMNElementRef="_tEZDU_10">
+            <waypoint x="436" y="1775"/>
+            <waypoint x="434" y="1708"/>
+        </CMMNEdge>
+        <CMMNEdge sourceCMMNElementRef="cm_csQ4n_104" targetCMMNElementRef="_tEZDU_11">
+            <waypoint x="311" y="1771"/>
+        </CMMNEdge>
+        <CMMNEdge sourceCMMNElementRef="cm_csQ4n_103" targetCMMNElementRef="_tEZDU_10">
+            <waypoint x="521" y="1667"/>
+            <waypoint x="522" y="1635"/>
+            <waypoint x="476" y="1636"/>
+            <waypoint x="475" y="1666"/>
+        </CMMNEdge>
+        <CMMNEdge sourceCMMNElementRef="cm_csQ4n_88" targetCMMNElementRef="_tEZDU_7"/>
+        <CMMNEdge sourceCMMNElementRef="cm_csQ4n_86" targetCMMNElementRef="_tEZDU_6"/>
+    </CMMNDiagram>
+</CMMNDI>

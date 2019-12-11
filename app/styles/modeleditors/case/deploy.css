@@ -1,0 +1,51 @@
+﻿.deployform {
+    width:800px;
+    height:350px;
+    top:80px;
+    left:200px;
+}
+
+.deployform .standardformcontainer {
+    bottom:0px;
+    background-color:#F5F5F5;
+}
+
+.deployform .standardformcontainer > div {
+    position:absolute;
+    top:20px;
+    bottom:20px;
+    left:20px;
+    right:20px;
+}
+
+.deploy_content {
+    position:absolute;
+    top:45px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+}
+
+.deploy_content .codeMirrorSource {
+    position:absolute;
+    top:20px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    border: 1px solid rgb(169, 169, 169);
+}
+
+.deploy_content .codeMirrorSource .CodeMirror {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: auto;
+}
+
+.deployed_timestamp {
+  position:absolute;
+  top:0px;
+  right:0px;
+}

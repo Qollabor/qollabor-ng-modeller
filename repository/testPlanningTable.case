@@ -1,0 +1,80 @@
+<case id="testPlanningTable.case" name="testPlanningTable" guid="_0LiAz">
+    <caseFileModel>
+        <caseFileItem id="cfi_testPlanningTable.case_0" name="test" multiplicity="ExactlyOne" definitionRef="greeting.cfid"/>
+    </caseFileModel>
+    <casePlanModel id="cm_testPlanningTable.case_0" name="testPlanningTable" description="testPlanningTable" autoComplete="true">
+        <planItem id="cm_testPlanningTable.case_2" name="Task_1" definitionRef="pid_cm_testPlanningTable.case_2"/>
+        <planningTable id="pt_cm_testPlanningTable.case_1">
+            <discretionaryItem id="cm_testPlanningTable.case_4" name="Task_2" definitionRef="pid_cm_testPlanningTable.case_4"/>
+            <discretionaryItem id="cm_testPlanningTable.case_8" name="Stage_1" definitionRef="pid_cm_testPlanningTable.case_8" applicabilityRuleRefs="rule_testPlanningTable.case_1"/>
+            <applicabilityRule id="rule_testPlanningTable.case_0" name="rule1">
+                <condition language="spel">
+                    <body>
+                        <![CDATA[r1==true]]>
+                    </body>
+                </condition>
+            </applicabilityRule>
+            <applicabilityRule id="rule_testPlanningTable.case_1" name="rule2">
+                <condition language="spel">
+                    <body>
+                        <![CDATA[r2]]>
+                    </body>
+                </condition>
+            </applicabilityRule>
+        </planningTable>
+        <humanTask id="pid_cm_testPlanningTable.case_2" name="Task_1" isBlocking="true">
+            <planningTable id="pt_cm_testPlanningTable.case_3">
+                <discretionaryItem id="cm_testPlanningTable.case_12" name="Task_4" definitionRef="pid_cm_testPlanningTable.case_12" applicabilityRuleRefs="rule_testPlanningTable.case_3 rule_testPlanningTable.case_4"/>
+                <discretionaryItem id="cm_testPlanningTable.case_14" name="Task_5" definitionRef="pid_cm_testPlanningTable.case_14"/>
+                <applicabilityRule id="rule_testPlanningTable.case_2" name="r4">
+                    <condition language="spel">
+                        <body>
+                            <![CDATA[]]>
+                        </body>
+                    </condition>
+                </applicabilityRule>
+                <applicabilityRule id="rule_testPlanningTable.case_3" name="r5">
+                    <condition language="spel">
+                        <body>
+                            <![CDATA[]]>
+                        </body>
+                    </condition>
+                </applicabilityRule>
+                <applicabilityRule id="rule_testPlanningTable.case_4" name="r6">
+                    <condition language="spel">
+                        <body>
+                            <![CDATA[]]>
+                        </body>
+                    </condition>
+                </applicabilityRule>
+                <applicabilityRule id="rule_testPlanningTable.case_5" name="r7">
+                    <condition language="spel">
+                        <body>
+                            <![CDATA[]]>
+                        </body>
+                    </condition>
+                </applicabilityRule>
+            </planningTable>
+        </humanTask>
+        <humanTask id="pid_cm_testPlanningTable.case_4" name="Task_2" isBlocking="true"/>
+        <humanTask id="pid_cm_testPlanningTable.case_10" name="Task_3" isBlocking="true"/>
+        <humanTask id="pid_cm_testPlanningTable.case_14" name="Task_5" isBlocking="true"/>
+        <caseTask id="pid_cm_testPlanningTable.case_12" name="Task_4" isBlocking="true"/>
+        <stage id="pid_cm_testPlanningTable.case_8" name="Stage_1" autoComplete="true">
+            <planItem id="cm_testPlanningTable.case_10" name="Task_3" definitionRef="pid_cm_testPlanningTable.case_10"/>
+        </stage>
+    </casePlanModel>
+    <caseRoles id="_j75iY_31" name="CaseRole_1" description="r1"/>
+    <caseRoles id="_j75iY_45" name="CaseRole_2"/>
+    <caseRoles id="_j75iY_50" name="CaseRole_3"/>
+    <extensionElements mustUnderstand="false">
+        <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+  "schema":{
+    "title": "",
+    "type": "object",
+    "properties":{
+    }
+  }
+}</cafienne:start-case-model>
+    </extensionElements>
+</case>

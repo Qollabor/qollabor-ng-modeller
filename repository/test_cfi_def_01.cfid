@@ -1,0 +1,5 @@
+<caseFileItemDefinition name="test_cfi_def_01" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified">
+    <property name="cfidefprop_01" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="cfidefprop_02" type="http://www.omg.org/spec/CMMN/PropertyType/boolean"/>
+    <property name="cfidefprop_03" type="http://www.omg.org/spec/CMMN/PropertyType/date"/>
+</caseFileItemDefinition>

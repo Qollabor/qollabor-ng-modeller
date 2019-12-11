@@ -1,0 +1,108 @@
+.mappingform {
+    width: 900px;
+    height: 400px;
+    top: 100px;
+    left: 80px;
+    min-width: 900px;
+}
+
+.task-mappings-separator {
+    background-color: rgb(66, 68, 70);
+    height: 3px;
+}
+
+.input-mappings {
+    height: 200px;
+    margin: 4px;
+}
+
+.output-mappings {
+    height: 200px;
+    margin: 4px;
+}
+
+.task-mappings .containerbox {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.task-mappings .containerbox input {
+    margin: 2px;
+    padding: 3px;
+}
+
+.task-mappings .containerbox select {
+    height: 22px;
+    width: 100%;
+    margin-top: -1px;
+}
+
+.task-mappings .containerbox div {
+    padding-top: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.task-mappings .containerbox textarea {
+    width: 100%;
+    height: 22px;
+}
+
+
+.upButton img {
+    width: 10px;
+    height: 12px;
+    margin-left: 1px;
+    margin-right: 1px;
+}
+
+.downButton img {
+    width: 10px;
+    height: 12px;
+    margin-left: 1px;
+    margin-right: 2px;
+}
+
+.mappingform .standardformcontainer {
+    bottom: 0px;
+}
+
+.cfiZoom {
+    background-color: #f5f5f5;
+    position: relative;
+    height: 26px;
+    top: 1px;
+    margin: 2px 0px 2px 2px;
+}
+
+.cfiZoom .cfiDescription {
+    position: absolute;
+    cursor: move;
+    bottom: 2px;
+    left: 2px;
+    right: 28px;
+    top: 1px;
+    border: 1px solid #DDDDDD;
+    margin: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 4px;
+}
+
+.cfiZoom button {
+    position: absolute;
+    height: 22px;
+    width: 22px;
+}
+
+.cfiZoom img {
+    height: 16px;
+    width: 16px;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+}
+
+.binding-refinement-filled {
+    border-bottom: 2px solid rgb(66, 68, 70);
+}

@@ -1,0 +1,41 @@
+/*shapes styling*/
+.shapebox {
+    left: 0px;
+    width: 55px;
+    bottom: 0px;
+    top: 32px;
+    display: block;
+}
+
+.shapebox .formheader {
+    border-top-left-radius: 0px !important;
+}
+
+.shapebox .formheader label {
+    cursor: default;
+}
+
+.shapesbody {
+    overflow: auto;
+    padding: 5px;
+    left: 0px;
+    right: 0px;
+    top: 20px;
+    bottom: 0px;
+    position: absolute;
+}
+
+.shapebox .shapesbody img {
+    position: relative;
+    top: 0px;
+    left: -5px;
+}
+
+.shapebox .shapesbody {
+    padding: 5px;
+}
+
+.shapebox .shapesbody li {
+    padding: 5px 10px;
+    border: none;
+}

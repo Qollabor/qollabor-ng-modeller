@@ -1,0 +1,41 @@
+.dragbox {
+    z-index: 1000;
+}
+
+.drag-image {
+    position: absolute;
+    display: block;
+    width: 32px;
+    height: 32px;
+    z-index: 100;
+}
+
+.drag-label {
+    position: relative;
+    font-size: 0.8em;
+    top: 35px;
+}
+
+.drop-allowed {
+    cursor: no-drop;
+}
+
+.drop-not-allowed {
+    cursor: not-allowed;
+}
+
+.drop-allowed img {
+    border: 2px solid green;
+}
+
+.drop-not-allowed img {
+    border: 2px solid grey;
+}
+
+.drop-allowed label {
+    color: green;
+}
+
+.drop-not-allowed label {
+    color: rgb(119, 90, 90);
+}

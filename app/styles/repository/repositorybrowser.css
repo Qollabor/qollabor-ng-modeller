@@ -1,0 +1,144 @@
+﻿.repository-browser {
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+}
+
+.repository-browser .divModelList {
+    display: block;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 130px;
+}
+
+.repository-browser .btnRefresh {
+    position: absolute;
+    right: 3px;
+    top: 2px;
+    width: 17px;
+    height: 17px;
+}
+
+/* .repository-browser .divModelList .formheader {
+    border-top-left-radius: 0px !important;
+} */
+
+.repository-browser .divModelList .formheader label {
+    cursor: auto;
+}
+
+.repository-browser .divModelList .formcontainer {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 46px;
+    bottom: 0px;
+    padding: 4px 4px 8px 4px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+.repository-browser .divModelList .formcontainer .ui-state-active,.ui-state-focus {
+    background-color: rgb(139, 138, 138);
+    border-color: gray;
+}
+
+.repository-browser .divModelList .divAccordionList div {
+    padding: 2px;
+    border: none;
+}
+
+.repository-browser .divModelList .divAccordionList>div div {
+    height: 24px;
+    padding: 2px 0px 0px 5px;
+    white-space: nowrap;
+    position: relative;
+}
+
+.repository-browser .divModelList .divAccordionList>div img {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: 2px;
+    top: 4px;
+    z-index: 0;
+}
+
+.repository-browser .divModelList .divAccordionList>div a {
+    text-indent: 20px;
+    padding-top: 3px;
+    font: 1.1em "myriad-pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    position: absolute;
+    top: 3px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.repository-browser .divModelList .divAccordionList>div .modelselected {
+    background-color: rgb(156, 175, 226);
+}
+
+.repository-browser .divModelList .formfooter {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    height: 26px;
+    top: 20px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+}
+
+.repository-browser .divModelList .formfooter div {
+    position: absolute;
+    left: 4px;
+    right: 4px;
+    top: 4px;
+    bottom: 4px;
+}
+
+.repository-browser .divModelList .formfooter input {
+    width: 85%;
+}
+
+.repository-browser .divModelList .formfooter button {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+
+.repository-browser .divCreateNewModel {
+    display: block;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    height: 130px;
+    bottom: 0px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #DDDDDD;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.repository-browser .divCreateNewModel .formheader label {
+    cursor: auto;
+}
+
+.repository-browser .divCreateNewModel .formcontainer {
+    padding: 4px;
+}
+
+.repository-browser .divCreateNewModel .formcontainer label {
+    display: block;
+}
+
+.repository-browser .divCreateNewModel .formcontainer input {
+    width: 100%;
+    margin-bottom: 3px;
+}
+
+.repository-browser .divCreateNewModel .formcontainer button {
+    margin: 3px 0px 3px 0px;
+}
