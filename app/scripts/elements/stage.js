@@ -20,12 +20,43 @@
 
     setDropHandlers() {
         super.setDropHandlers();
+        // allow for dropping tasks directly from repository browser ...
         this.case.editor.ide.repositoryBrowser.setDropHandler((dragData, e) => this.addTaskModel(dragData, e));
+        // ... and case file items to be dropped from the cfiEditor
+        this.case.cfiEditor.setDropHandler((dragData, e) => this.addCaseFileItem(dragData, e));
     }
 
     removeDropHandlers() {
         super.removeDropHandlers();
         this.case.editor.ide.repositoryBrowser.removeDropHandler();
+        this.case.cfiEditor.removeDropHandler();
+    }
+
+    /**
+     * Add a 'drag-dropped' case file item
+     * @param {DragData} dragData 
+     * @param {JQuery<Event>} e 
+     */
+    addCaseFileItem(dragData, e) {
+        const cfiDefinition = this.case.caseDefinition.getElement(dragData.fileName);
+        const coor = this.case.getCursorCoordinates(e);
+        cfiDefinition.__startPosition = coor;
+        const cfi = CaseFileItem.create(this, coor.x, coor.y);
+        // Associate the right definition
+        cfi.definition.contextRef = cfiDefinition.id;
+        // And add to the stage
+        this.__addCMMNChild(cfi);
+    }
+
+    /**
+     * Add a 'drag-dropped' task implementation
+     * @param {DragData} dragData 
+     * @param {*} e 
+     */
+    addTaskModel(dragData, e) {
+        /** @type {Task} */
+        const element = super.addShape(dragData.shapeType, e);
+        element.changeTaskImplementation(dragData, true);
     }
 
     /**
@@ -54,17 +85,6 @@
     surrounds(other) {
         // Note: this method is added here instead of directly invoking shape.surrounds because logic is different at caseplan level, so caseplan can override.
         return this.shape.surrounds(other.shape);
-    }
-
-    /**
-     * 
-     * @param {DragData} dragData 
-     * @param {*} e 
-     */
-    addTaskModel(dragData, e) {
-        /** @type {Task} */
-        const element = super.addShape(dragData.shapeType, e);
-        element.changeTaskImplementation(dragData, true);
     }
 
     createProperties() {

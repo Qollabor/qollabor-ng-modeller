@@ -79,11 +79,6 @@ class ShapeBox {
         }
     }
 
-    /** @param {Function} filter */
-    set dropFilter(filter) {
-        if (this.dragData) this.dragData.dropFilter = filter;
-    }
-
     /**
      * Handles the onmousedown event on a shape in the repository
      * The shape can be dragged to the canvas to create an element

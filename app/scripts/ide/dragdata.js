@@ -54,11 +54,6 @@ class DragData {
         }
     }
 
-    /** @param {Function} filter */
-    set dropFilter(filter) {
-        this._dropFilter = filter;
-    }    
-
     /**
      * Registers a drop handler with the repository browser.
      * If an item from the browser is moved over the canvas, elements can register a drop handler

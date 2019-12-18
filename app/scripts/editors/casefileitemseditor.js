@@ -167,14 +167,6 @@ class CaseFileItemsEditor {
     }
 
     /**
-     * Registers a function handler that is invoked upon dropping an element.
-     * @param {Function} handler
-     */
-    set dropHandler(handler) {
-        this._dropHandler = handler;
-    }
-
-    /**
      * Returns the CMMNElementDefinition associated with the fancy tree node.
      * @returns {CaseFileItemDef}
      */
@@ -473,59 +465,40 @@ class CaseFileItemsEditor {
      * Handles the dragging of a case file item from the cfi editor to a zoom field (cfi field)
      */
     handleDragStartCFIDataNode(node, data) {
-        //create the drag image: file icon + name of cfi, use styling fancy tree
-        const dragImage = $(`<div class="dragbox">
-                                <span class="fancytree-icon"></span>
-                                <span class="fancytree-title">${node.title}</span>
-                            </div>`);
-
-        $('body').append(dragImage);
-
-        //save the node which is dragged in dragData
-        $('body').on('pointermove', e => this.handleMousemoveCFI(e, dragImage));
-        $('body').on('pointerup', e => this.handleMouseupCFI(e, dragImage, node));
+        const cfi = this.getDefinitionElement(node);
+        this.dragData = new DragData(this.ide, this, cfi.description, CaseFileItem.name, CaseFileItem.smallImage, cfi.id);
     }
 
     /**
-     * handle the drag action/mouse move of cfi item, event attached to 'body'
+     * Registers a function handler that is invoked upon dropping an element.
+     * @param {Function} handler
      */
-    handleMousemoveCFI(e, dragImage) {
-        this.ide.dragging = true;
-        e.stopPropagation();
-
-        //position the drag image
-        dragImage.offset({
-            top: e.pageY,
-            left: e.pageX + 20 //+20 such that cursor is not above drag image, messes up the events
-        });
-
-        //check if cursor is over a cfi zoom field
-        if (this._dropHandler) {
-            dragImage.addClass('dropallowed');
+    set dropHandler(handler) {
+        if (handler === undefined) {
+            this.removeDropHandler();
         } else {
-            dragImage.removeClass('dropallowed')
+            this.setDropHandler(dragData => {
+                const cfi = this.case.caseDefinition.getElement(dragData.fileName);
+                handler(cfi);
+            });                
         }
     }
 
     /**
-     * handle drop of cfi, event attached to 'body'
-     * Used to drag and drop a case file item from the editor to a zoom field
+     * Registers a drop handler with the repository browser.
+     * If an item from the editor is moved over the canvas, stages will register themselves as a drop handler
+     * @param {Function} dropHandler
+     * @param {Function} filter
      */
-    handleMouseupCFI(e, dragImage, node) {
-        e.stopPropagation();
+    setDropHandler(dropHandler, filter = undefined) {
+        if (this.dragData) this.dragData.setDropHandler(dropHandler, filter);
+    }
 
-        if (this._dropHandler) {
-            const cfi = this.getDefinitionElement(node);
-            this._dropHandler(cfi);
-
-            //update the usedIn column
-            this.showUsedIn();
-        }
-
-        // Cleanup image and event handlers
-        dragImage.remove();
-        this.ide.dragging = false;
-        $('body').off('pointermove').off('pointerup');
+    /**
+     * Removes the active drop handler and filter
+     */
+    removeDropHandler() {
+        if (this.dragData) this.dragData.removeDropHandler();
     }
 
     /**
