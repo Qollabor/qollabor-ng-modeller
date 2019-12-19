@@ -151,6 +151,10 @@ class XMLModelEditor extends ModelEditor {
         }
     }
 
+    onHide() {
+        this._removeAutoSave();
+    }
+
     onShow() {
         //always start with editor tab
         this.html.find('.model-source-tabs').tabs('option', 'active', 0);
