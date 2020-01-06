@@ -52,4 +52,4 @@ class Milestone extends PlanItemView {
         return elementType == EntryCriterion.name;
     }
 }
-CMMNElement.registerType(Milestone, 'Milestone', 'images/milestone_32.png');
+CMMNElement.registerType(Milestone, 'Milestone', 'images/svg/milestone.svg');

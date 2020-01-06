@@ -1,0 +1,7 @@
+<!-- case task menu SVG to go into the repository browser and the shapesbox -->
+<svg viewBox="0,0,32,32" xmlns="http://www.w3.org/2000/svg">
+    <g  style="fill:none;stroke:black;stroke-width:1" >
+        <rect x="1" y="5.5" rx="5" ry="5" height="21" width="30" />
+        <polygon points="13,11 10,7.5 7,7.5 4,11 4,11 4,18 17,18 17,11 4,11" />
+    </g>
+</svg>

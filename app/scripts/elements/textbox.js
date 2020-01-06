@@ -43,4 +43,4 @@
         };
     }
 }
-CMMNElement.registerType(TextBox, 'Text Box', 'images/textbox_32.png');
+CMMNElement.registerType(TextBox, 'Text Box', 'images/svg/textbox.svg');

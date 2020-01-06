@@ -22,7 +22,7 @@ class UserEvent extends EventListener {
     }
 
     get imageURL() {
-        return 'images/userevent_32.png';;
+        return 'images/svg/userevent.svg';
     }
 
     /**
@@ -42,4 +42,4 @@ class UserEvent extends EventListener {
         return super.referencesDefinitionElement(definitionId);
     }
 }
-CMMNElement.registerType(UserEvent, 'User Event', 'images/usereventmenu_32.png');
+CMMNElement.registerType(UserEvent, 'User Event', 'images/svg/userevent.svg');

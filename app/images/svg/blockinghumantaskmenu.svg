@@ -1,0 +1,25 @@
+<!-- Blocking Human Task Menu (to be shown in the repository browser accordion) -->
+<svg viewBox="0,0,32,32" xmlns="http://www.w3.org/2000/svg">
+    <g style="fill:none;stroke:black;stroke-width:0.7">
+        <rect x="0.5" y="5.5" rx="5" ry="5" height="21" width="31" style="stroke-width:1" />
+        <!-- head -->
+        <circle cx="9.5" cy="13" r="4.2" />
+        <!-- hair -->
+        <path d="M6,13 a3.5,3.5 0 0 1 7,0 5.5,5 0 0 0 -7.5,0" style="fill:black" />
+        <!-- torso -->
+        <path d="M3,24 c -1,-9 14,-9 13,0" style="stroke-width:0.7" />
+        <g style="stroke-width:0.45" > <!-- collars -->
+            <path d="m 7.7,17.3 a 2.7,2.6 0 0 0 3.7,0" />
+            <path d="m 6.5,17.7 a 4,4 0 0 0 6,0" />
+        </g>
+        <g style="stroke:black;fill:none;stroke-width:0.6" > <!-- arms -->
+            <path d="m 5,24 c 1.4,-4 2,-2 2,0" />
+            <path d="m 14.2,24 c -1.4,-3.9 -2,-2 -2,0" />
+        </g>
+        <g style="stroke-width:0.6"> <!-- bottom lines --> 
+            <path d="M 6.8,24 H 12.4" />
+            <path d="M 2.8,24 H 5.3" />
+            <path d="M 14,24 H 16.3" />
+        </g>
+    </g>
+</svg>

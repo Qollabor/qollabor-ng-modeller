@@ -1,5 +1,5 @@
-const BLOCKINGHUMANTASK_IMG = 'images/blockinghumantask_32.png';
-const NONBLOCKINGHUMANTASK_IMG = 'images/nonblockinghumantask_32.png';
+const BLOCKINGHUMANTASK_IMG = 'images/svg/blockinghumantask.svg';
+const NONBLOCKINGHUMANTASK_IMG = 'images/svg/nonblockinghumantask.svg';
 class HumanTask extends Task {
     static get definitionClass() {
         return HumanTaskDefinition;
@@ -53,4 +53,4 @@ class HumanTask extends Task {
         return super.referencesDefinitionElement(definitionId);
     }
 }
-CMMNElement.registerType(HumanTask, 'Human Task', 'images/humantaskmenu_32.png');
+CMMNElement.registerType(HumanTask, 'Human Task', 'images/svg/blockinghumantaskmenu.svg', 'images/humantaskmenu_32.png');

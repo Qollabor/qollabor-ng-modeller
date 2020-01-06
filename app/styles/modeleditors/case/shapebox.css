@@ -27,6 +27,8 @@
 
 .shapebox .shapesbody img {
     position: relative;
+    width: 32px;
+    height: 32px;
     top: 0px;
     left: -5px;
 }

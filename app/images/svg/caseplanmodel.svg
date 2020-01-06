@@ -1,0 +1,4 @@
+<!-- case plan model SVG to be shown in the shapes box -->
+<svg viewBox="0,0,32,32" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="16,10 12.5,4.5 4.5,4.5 1,10 1,10 1,28.5 31,28.5 31,10 1.1,10" style="fill:none;stroke:black;stroke-width:1" />
+</svg>

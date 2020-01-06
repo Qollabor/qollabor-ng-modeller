@@ -20,11 +20,11 @@ class ProcessTask extends Task {
      * Returns the element type image for this task
      */
     get imageURL() {
-        return 'images/processtask_32.png';
+        return 'images/svg/processtask.svg';
     }
 
     get fileType() {
         return 'process';
     }
 }
-CMMNElement.registerType(ProcessTask, 'Process Task', 'images/processtaskmenu_32.png');
+CMMNElement.registerType(ProcessTask, 'Process Task', 'images/svg/processtaskmenu.svg', 'images/processtaskmenu_32.png');

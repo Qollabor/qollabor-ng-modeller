@@ -327,4 +327,4 @@
         return false;
     }
 }
-CMMNElement.registerType(Stage, 'Stage', 'images/collapsedstage_32.png');
+CMMNElement.registerType(Stage, 'Stage', 'images/svg/collapsedstage.svg');

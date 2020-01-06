@@ -22,7 +22,7 @@ class TimerEvent extends EventListener {
     }
 
     get imageURL() {
-        return 'images/timerevent_32.png';       
+        return 'images/svg/timerevent.svg';       
     }
 
     referencesDefinitionElement(definitionId) {
@@ -33,4 +33,4 @@ class TimerEvent extends EventListener {
         return super.referencesDefinitionElement(definitionId);
     }    
 }
-CMMNElement.registerType(TimerEvent, 'Timer Event', 'images/timereventmenu_32.png');
+CMMNElement.registerType(TimerEvent, 'Timer Event', 'images/svg/timerevent.svg');

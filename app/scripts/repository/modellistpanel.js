@@ -34,7 +34,7 @@ class ModelListPanel {
         Util.clearHTML(this.container);
 
         models.forEach(model => {
-            const shapeImg = shapeType.smallImage;
+            const shapeImg = shapeType.menuImage;
             const modelName = model.name;
             const fileType = model.fileType;
             const fileName = model.fileName;

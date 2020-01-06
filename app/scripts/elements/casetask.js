@@ -20,11 +20,11 @@ class CaseTask extends Task {
      * Returns the element type image for this task
      */
     get imageURL() {
-        return 'images/casetask_32.png';
+        return 'images/svg/casetask.svg';
     }
 
     get fileType() {
         return 'case';
     }
 }
-CMMNElement.registerType(CaseTask, 'Case Task', 'images/casetaskmenu_32.png');
+CMMNElement.registerType(CaseTask, 'Case Task', 'images/svg/casetaskmenu.svg', 'images/casetaskmenu_32.png');

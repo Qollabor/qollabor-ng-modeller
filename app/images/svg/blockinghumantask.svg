@@ -1,0 +1,23 @@
+<!-- Blocking Human SVG to be shown in the Human Tasks -->
+<svg viewBox="4,-2,24,26" xmlns="http://www.w3.org/2000/svg">
+    <g style="fill:none;stroke:black;stroke-width:1">     
+        <!-- head -->
+        <circle cx="16" cy="10" r="4.2"/>
+        <!-- hair -->
+        <path d="M12,10 A3.5,3.5 0 0,1 20,10 A6,6 0 0,0 12,10" style="fill:black"/>
+        <!-- torso -->
+        <path d="M9,22.5 C8,12 24,12 23,22.5"/>
+        <!-- collars -->
+        <g style="stroke-width:0.7">
+            <path d="M14,14.7 A3,3 1 0,0 18,14.7" />
+            <path d="M12.7,15.2 A4.5,4.5 1 0,0 19.3,15.2" />
+        </g>
+        <!-- arms -->
+        <path d="M11,22.4 C12.5,18 13,20 13,22.4"/>
+        <path d="M21,22.4 C19.5,18 19,20 19,22.4"/>
+        <!-- bottom lines -->
+        <path d="M12.67,22.2 L19.34,22.2"/>
+        <path d="M8.66,22.2 L11.3,22.2"/>
+        <path d="M20.7,22.2 L23.32,22.2"/>
+    </g>
+</svg>

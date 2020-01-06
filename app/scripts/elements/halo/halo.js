@@ -53,6 +53,7 @@ class Halo {
      * Deletes the html of the halo and the event listeners
      */
     delete() {
+        this.element.case.paperContainer.off('scroll', this.scrollListener);
         Util.removeHTML(this.html);
     }
 
@@ -60,6 +61,8 @@ class Halo {
         this.clearItems();
         this.createItems();
         this.setHaloPosition();
+        // Always first remove scroll listener to avoid it getting added twice.
+        this.element.case.paperContainer.off('scroll', this.scrollListener);
         this.element.case.paperContainer.on('scroll', this.scrollListener);
         this.html.css('display', 'block');
     }

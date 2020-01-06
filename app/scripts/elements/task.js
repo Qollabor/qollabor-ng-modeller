@@ -135,10 +135,10 @@
 
     get markup() {
         return `<g class="scalable">
-                    <rect class="cmmn-shape cmmn-border cmmn-${this.constructor.name.toLowerCase()}-shape" rx="5" ry="5" width="100" height="60"/>
+                    <rect class="cmmn-shape cmmn-border cmmn-${this.constructor.name.toLowerCase()}-shape" rx="5" ry="5" width="100" height="60" />
                 </g>
                 <text class="cmmn-text" />
-                <image class="taskImage" x="4" y="4" width="16" height="16" xlink:href="${this.imageURL}" />
+                <image class="taskImage" x="0" y="-4" width="24" height="24" xlink:href="${this.imageURL}" />
                 ${this.decoratorBox}`;
     }
 

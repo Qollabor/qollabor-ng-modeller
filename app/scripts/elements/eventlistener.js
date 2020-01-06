@@ -14,10 +14,8 @@
     }
 
     get markup() {
-        return `<circle class="cmmn-shape cmmn-border cmmn-eventlistener-outershape" transform="translate(16,16)" r="16"/>
-                <circle class="cmmn-border cmmn-eventlistener-innershape" transform="translate(16,16)" r="12"/>
-                <image x="8" y="8" width="16" height="16" xlink:href="${this.imageURL}" />
-                <text class="cmmn-text" x="10" y="45" text-anchor="middle" />`;
+        return `<image x="0" y="0" width="32px" height="32px" xlink:href="${this.imageURL}" />
+                <text class="cmmn-text" x="16" y="50" text-anchor="middle" />`;
     }
 
     /**

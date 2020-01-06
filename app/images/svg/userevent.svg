@@ -1,0 +1,27 @@
+<!-- User Event (shown on the canvas)-->
+<svg viewBox="0,0,32,32" xmlns="http://www.w3.org/2000/svg">
+    <g style="fill:none;stroke:black;stroke-width:1">
+        <circle cx="16" cy="16" r="15" />
+        <circle cx="16" cy="16" r="12" />
+        <g style="stroke-width:0.7">
+            <!-- head -->
+            <circle cx="16" cy="11" r="4.2" />
+            <!-- hair -->
+            <path d="M12,11 A3.5,3.5 0 0,1 20,11 A6,6 0 0,0 12,11" style="fill:black"/>
+            <!-- torso -->
+            <path d="M9,22.5 C8,13 24,13 23,22.5" />
+            <!-- collars -->
+            <g style="stroke-width:0.5">
+                <path d="M14,15.7 A3,3 1 0,0 18,15.7" />
+                <path d="M12.7,16.2 A4.5,4.5 1 0,0 19.3,16.2" />
+            </g>
+            <!-- arms -->
+            <path d="M11,22.4 C12.5,18 13,20 13,22.4" />
+            <path d="M21,22.4 C19.5,18 19,20 19,22.4" />
+            <!-- bottom lines -->
+            <path d="M12.67,22.2 L19.34,22.2" />
+            <path d="M8.66,22.2 L11.3,22.2" />
+            <path d="M20.7,22.2 L23.32,22.2" />
+        </g>
+    </g>
+</svg>

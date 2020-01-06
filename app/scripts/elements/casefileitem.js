@@ -55,4 +55,4 @@
         return definitionId == this.shape.contextRef;
     }
 }
-CMMNElement.registerType(CaseFileItem, 'Case File Item', 'images/casefileitem_32.png');
+CMMNElement.registerType(CaseFileItem, 'Case File Item', 'images/svg/casefileitem.svg');

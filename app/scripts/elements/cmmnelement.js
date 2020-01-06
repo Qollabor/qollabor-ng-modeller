@@ -573,11 +573,13 @@ class CMMNElement {
      * @param {Function} cmmnElementType 
      * @param {String} typeDescription Friendly description of the type
      * @param {String} smallImageURL url of small image (for drag/drop, shapebox, etc.)
+     * @param {String} menuImageURL optional url of image shown in repository browser
      */
-    static registerType(cmmnElementType, typeDescription, smallImageURL = '') {
+    static registerType(cmmnElementType, typeDescription, smallImageURL = '', menuImageURL = smallImageURL) {
         CMMNElement.constructors[cmmnElementType.name] = cmmnElementType;
         cmmnElementType.typeDescription = typeDescription;
         cmmnElementType.smallImage = smallImageURL;
+        cmmnElementType.menuImage = menuImageURL;
     }
 }
 CMMNElement.constructors = {};

@@ -5,14 +5,7 @@ const IMPLEMENTATION_PREFIX = 'xmlns:cafienne';
 const IMPLEMENTATION_TAG = 'cafienne:implementation';
 const STARTCASEMODEL_TAG = 'cafienne:start-case-model';
 
-//images of element types  (define as element type + '_IMG')
-const EXPANDEDSTAGE_IMG = 'images/expandedstage_32.png';
-const EXPANDEDPLANFRAGMENT_IMG = 'images/expandedplanfragment_32.png';
-const COLLAPSEDPLANFRAGMENT_IMG = 'images/collapsedplanfragment_32.png';
-const COLLAPSEDPLANNINGTABLE_IMG = 'images/collapsedplanningtable_32.png';
 const EXPANDEDPLANNINGTABLE_IMG = 'images/expandedplanningtable_32.png';
-const ENTRYSENTRY_IMG = 'images/entrysentry_20.png';
-const EXITSENTRY_IMG = 'images/exitsentry_20.png';
 
 //decorator images  (define as decorator + '_IMG')
 const REPETITION_IMG = 'images/repetitiondecorator_32.png';

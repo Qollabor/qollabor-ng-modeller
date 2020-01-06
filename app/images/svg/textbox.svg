@@ -1,0 +1,6 @@
+<svg viewBox="0,0,32,32" xmlns="http://www.w3.org/2000/svg">
+    <g style="fill:none;stroke:black;stroke-width:1">
+        <path d="M16,8 L4,8 L4,26 L16,26" />
+        <text x="6" y="21" style="fill:black;stroke:black;font-size:12px;font-family:Arial;stroke-width:0.5">Text</text>
+    </g>
+</svg>

@@ -350,6 +350,6 @@ class ExitCriterion extends Sentry {
         return new ExitCriterionHalo(this);
     }
 }
-CMMNElement.registerType(EntryCriterion, 'Entry Criterion', ENTRYSENTRY_IMG);
-CMMNElement.registerType(ExitCriterion, 'Exit Criterion', EXITSENTRY_IMG);
+CMMNElement.registerType(EntryCriterion, 'Entry Criterion', 'images/svg/entrycriterion.svg');
+CMMNElement.registerType(ExitCriterion, 'Exit Criterion', 'images/svg/exitcriterion.svg');
 
