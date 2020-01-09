@@ -1,6 +1,4 @@
 class AssignmentDefinition extends UnnamedCMMNElementDefinition {
-    static TAG = 'assignment';
-
     constructor(importNode, caseDefinition, parent) {
         super(importNode, caseDefinition, parent);
         this.expression = this.parseElement('condition', ExpressionDefinition);
@@ -20,6 +18,9 @@ class AssignmentDefinition extends UnnamedCMMNElementDefinition {
         }
     }
 
+    /**
+     * @returns {ExpressionDefinition}
+     */
     getExpression() {
         if (! this.expression) {
             this.expression = super.createDefinition(ExpressionDefinition);
@@ -45,3 +46,4 @@ class AssignmentDefinition extends UnnamedCMMNElementDefinition {
         return this.expression ? this.expression.body : '';
     }
 }
+AssignmentDefinition.TAG = 'assignment';
