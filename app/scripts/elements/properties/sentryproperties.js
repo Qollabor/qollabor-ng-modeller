@@ -231,6 +231,9 @@ class SentryProperties extends Properties {
             } else if (onPart) {
                 onPart.sourceRef = undefined;
             }
+            if (connector) {
+                connector.remove();
+            }
             html.find('.standard-event').html(this.getPlanItemStandardEvents(onPart))
             this.done();
             this.show();
@@ -349,34 +352,11 @@ class SentryProperties extends Properties {
         // Event handler for removing the onpart
         html.find('.btnDelete').on('click', e => this.deleteOnPart(onPart, connector));
         html.find('.zoombt').on('click', e => {
-            this.cmmnElement.case.cfiEditor.open(cfi => {
-                const newOnPart = onPart ? onPart : this.cmmnElement.definition.createCaseFileItemOnPart();
-                if (!onPart) {
-                    newOnPart.standardEvent = 'create';
-                }
-                this.change(newOnPart, 'sourceRef', cfi.id);
-                html.find('.valuelabel').html(cfi.name);
-
-                // Render again.
-                this.show();
-            });
+            this.cmmnElement.case.cfiEditor.open(cfi => this.changeCaseFileItemOnPart(onPart, connector, html, cfi));
         });
         html.find('.zoomRow').on('pointerover', e => {
             e.stopPropagation();
-            this.cmmnElement.case.cfiEditor.dropHandler = cfi => {
-                const newSourceRef = cfi.id;
-                const newOnPart = onPart ? onPart : this.cmmnElement.definition.createCaseFileItemOnPart();
-                if (!onPart) {
-                    newOnPart.standardEvent = 'create';
-                }
-                this.change(newOnPart, 'sourceRef', newSourceRef);
-                const name = newSourceRef ? this.cmmnElement.definition.caseDefinition.getElement(newSourceRef).name : '';
-                html.find('.valuelabel').html(name);
-                html.find('.standard-event').html(this.getCaseFileItemStandardEvents(newOnPart));
-
-                // Render again.
-                this.show();
-            }
+            this.cmmnElement.case.cfiEditor.dropHandler = cfi => this.changeCaseFileItemOnPart(onPart, connector, html, cfi);
         });
         html.find('.zoomRow').on('pointerout', e => {
             this.cmmnElement.case.cfiEditor.dropHandler = undefined;
@@ -416,5 +396,33 @@ class SentryProperties extends Properties {
             this.done();
         });
         return html;
+    }
+
+    /**
+     * 
+     * @param {OnPartDefinition} onPart 
+     * @param {Connector} connector 
+     * @param {JQuery<HTMLElement>} html 
+     * @param {CaseFileItemDef} cfi 
+     */
+    changeCaseFileItemOnPart(onPart, connector, html, cfi) {
+        const currentSourceRef = onPart ? onPart.sourceRef : '';
+        if (cfi.id === currentSourceRef) {
+            // Nothing changes
+            return;
+        }
+
+        const newOnPart = onPart ? onPart : this.cmmnElement.definition.createCaseFileItemOnPart();
+        if (!onPart) {
+            newOnPart.standardEvent = 'create';
+        }
+        if (cfi.id !== currentSourceRef && connector) {
+            connector.remove();
+        }
+        this.change(newOnPart, 'sourceRef', cfi.id);
+        html.find('.valuelabel').html(cfi.name);
+
+        // Render again.
+        this.show();
     }
 }
