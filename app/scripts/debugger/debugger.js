@@ -183,11 +183,21 @@ class Debugger extends StandardForm {
         this._setContent('', startMsg);
         Util.clearHTML(this.eventTable);
         let i = 0;
+
+        const getBackgroundColor = event => {
+            console.log("Getting bgc")
+            if (event.type !== 'PlanItemTransitioned') return '';
+            if (event.content.currentState == 'Failed') return 'color: red; font-weight: bold';
+            if (event.content.currentState == 'Completed') return 'color: green; font-weight: bold';
+            if (event.content.currentState == 'Terminated') return 'color: darkblue; font-weight: bold';
+        }
+
         const newRows = this.events.map(event => {
-            const timestamp = event.type == 'CaseModified' ? event.content.lastModified : '';
+            const timestamp = event.type.indexOf('Modified') >=0 ? event.content.lastModified : '';
+            const bgc = getBackgroundColor(event);
             return `<tr event-nr="${i++}">
                 <td>${event.nr}</td>
-                <td>${event.type}</td>
+                <td style="${bgc}">${event.type}</td>
                 <td>${this.getEventName(event)}</td>
                 <td>${timestamp}</td>
             </tr>\n`
