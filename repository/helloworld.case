@@ -39,11 +39,9 @@
         </humanTask>
         <humanTask id="pid_cm_cs3hg_196" name="Read response" isBlocking="true">
             <inputs id="inTP_cm_cs3hg_196_0" name="Response" bindingRef="cfi_csVQy_1"/>
-            <outputs id="_nTPPc_6" name="Greeting" bindingRef="cfi_csVQy_0"/>
             <extensionElements mustUnderstand="false">
                 <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="readresponse.humantask">
                     <parameterMapping id="inPM_cm_cs3hg_196_0" sourceRef="inTP_cm_cs3hg_196_0" targetRef="Response"/>
-                    <parameterMapping id="_nTPPc_5" targetRef="_nTPPc_6"/>
                     <assignment id="_nTPPc_12" contextRef="cfi_csVQy_0">
                         <condition id="_nTPPc_13" language="spel">
                             <body>
