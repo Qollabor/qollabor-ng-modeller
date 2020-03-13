@@ -137,6 +137,7 @@ class Debugger extends StandardForm {
         this.html.css('top', '0px');
         this.html.css('left', '0px');
 
+        $(document.body).off('keydown', this.keyDownHandler);
         $(document.body).on('keydown', this.keyDownHandler);
         this.html.find('.btnShowEvents').focus();
     }
@@ -173,8 +174,21 @@ class Debugger extends StandardForm {
         if (!planItemId) return '';
         // console.log("Searching for event with id "+planItemId)
         const eventWithName = this.events.find(earlierEvent => earlierEvent.content.planItemId == planItemId && earlierEvent.content.name)
+        const eventIndex = this.getIndex(eventWithName);
         // console.log("Event with name: "+(eventWithName ? (eventWithName.content.name) : 'none'));
-        return eventWithName && eventWithName.content.name || '';
+        return eventWithName && (eventWithName.content.name + eventIndex) || '';
+    }
+
+    getIndex(eventWithName) {
+        if (! eventWithName) return '';
+        if (! eventWithName.content) return '';
+        if (! eventWithName.content.planitem) return '';
+        const index = eventWithName.content.planitem.index;
+        if (index) {
+            return '.' + index;
+        } else {
+            return '';
+        }
     }
 
     renderEvents() {
