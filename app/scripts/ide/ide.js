@@ -68,32 +68,39 @@ class IDE {
 
                 // Create .humantask files
                 XML.getElementsByTagName(xmlElement, 'humanTask').forEach(humanTask => {
-                    XML.getElementsByTagName(humanTask, 'cafienne:implementation').forEach(implementation => {
-                        // Create a copy of implementation and put it in a new XML document
+                    XML.getElementsByTagName(humanTask, 'cafienne:implementation').forEach(humanTaskExtensionElement => {
+                        // Create a copy of implementation
+                        /** @type {Element} */
+                        const standAloneHumanTaskDefinition = humanTaskExtensionElement.cloneNode(true);
+                        // Put the copy in a new XML document
                         const task = XML.loadXMLString('<humantask />')
-                        const taskImplementation = implementation.cloneNode(true);
-                        task.documentElement.appendChild(taskImplementation);
-                        // Remove parameter mappings from implementation, they belong in case model
-                        taskImplementation.removeAttribute('humanTaskRef');
-                        implementation.removeAttribute('class');
-                        implementation.removeAttribute('name');
-                        implementation.removeAttribute('description');
-                        XML.getElementsByTagName(task, 'parameterMapping').forEach(mapping => mapping.parentNode.removeChild(mapping));
+                        task.documentElement.appendChild(standAloneHumanTaskDefinition);
+
+                        // Handy remover function
+                        const removeChildrenWithName = (element, ...tagNames) => tagNames.forEach(tagName => XML.getElementsByTagName(element, tagName).forEach(child => child.parentNode.removeChild(child)));
+
+                        // First clean up the extension element inside the case definition. Remove attributes and elements that belong to the standalone implementation of the humantask.
+                        humanTaskExtensionElement.removeAttribute('class');
+                        humanTaskExtensionElement.removeAttribute('name');
+                        humanTaskExtensionElement.removeAttribute('description');
                         // And remove input and output and task-model from implementation node inside case model
-                        XML.getElementsByTagName(implementation, 'input').forEach(parameter => parameter.parentNode.removeChild(parameter));
-                        XML.getElementsByTagName(implementation, 'output').forEach(parameter => parameter.parentNode.removeChild(parameter));
-                        XML.getElementsByTagName(implementation, 'task-model').forEach(mapping => mapping.parentNode.removeChild(mapping));
+                        removeChildrenWithName(humanTaskExtensionElement, 'input', 'output', 'task-model');
+
+                        // Now cleanup the standalone implementation of the task. Remove attributes and elements that belong to the case model.
+                        standAloneHumanTaskDefinition.removeAttribute('humanTaskRef');
+                        // Remove parameter mappings, duedate and assignment elements, they belong in case model
+                        removeChildrenWithName(standAloneHumanTaskDefinition, 'parameterMapping', 'duedate', 'assignment');
 
                         // Compose name of .humantask file. Prefer to take humanTaskRef attribute, but if that is not available,
                         //  we'll try to take the name from the implementation tag; and if that is also not there, we try to
                         //  take the name of the task itself inside the case model. Also remove spaces from it.
                         //  Then also set it again inside the case model's implementation of the task.
-                        const id = implementation.getAttribute('humanTaskRef');
-                        const name = implementation.getAttribute('name');
-                        const backupName = implementation.parentNode.parentNode.getAttribute('name').replace(/ /g, '').toLowerCase() + '.humantask';
+                        const id = humanTaskExtensionElement.getAttribute('humanTaskRef');
+                        const name = humanTaskExtensionElement.getAttribute('name');
+                        const backupName = humanTaskExtensionElement.parentNode.parentNode.getAttribute('name').replace(/ /g, '').toLowerCase() + '.humantask';
                         const fileName = id ? id : name ? name.toLowerCase() + '.humantask' : backupName;
                         // Now also set the reference on the implementation attribute (for the case it wasn't there yet)
-                        implementation.setAttribute('humanTaskRef', fileName);
+                        humanTaskExtensionElement.setAttribute('humanTaskRef', fileName);
                         newFiles.push({fileName, xmlElement: task});
                     })
                 })
