@@ -18,6 +18,10 @@ const config = {
     ,deploy: deployPath
 
 /*/
+    // Settings for cmmn test framework tests.
+    // ,repository: '../cmmn-test-framework/casemodels/src'
+    // ,deploy: '../cmmn-test-framework/casemodels/bin'
+
     // Settings for cafienne engine tests.
     ,repository: '../cafienne-engine/case-engine/src/test/resources/cmmn-modeler'
     // ,deploy: '../cafienne-engine/case-engine/src/test/resources/testdefinition'
