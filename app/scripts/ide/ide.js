@@ -68,7 +68,7 @@ class IDE {
 
                 // Create .humantask files
                 XML.getElementsByTagName(xmlElement, 'humanTask').forEach(humanTask => {
-                    XML.getElementsByTagName(humanTask, 'cafienne:implementation').forEach(humanTaskExtensionElement => {
+                    XML.getChildrenByTagName(humanTask, 'cafienne:implementation').forEach(humanTaskExtensionElement => {
                         // Create a copy of implementation
                         /** @type {Element} */
                         const standAloneHumanTaskDefinition = humanTaskExtensionElement.cloneNode(true);
