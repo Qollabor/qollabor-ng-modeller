@@ -32,6 +32,11 @@ class ApplicabilityRuleDefinition extends ConstraintDefinition {
         super(importNode, caseDefinition, parent);
     }
 
+    // Override isNamedElement; by default Constraints are unnamed, but applicability rules form the exception
+    isNamedElement() {
+        return true;
+    }
+
     set sourceRef(ref) {
         this.contextRef = ref;
     }

@@ -176,8 +176,14 @@ class XMLElementDefinition {
     createDefinition(constructor, id = undefined, name = undefined) {
         const element = new constructor(undefined, this.modelDefinition, this);
         element.id = id ? id : this.modelDefinition.getNextIdOfType(constructor);
-        element.name = name ? name : this.modelDefinition.getNextNameOfType(constructor);
+        if (name || element.isNamedElement()) {
+            element.name = name ? name : this.modelDefinition.getNextNameOfType(constructor);
+        }
         return element;
+    }
+
+    isNamedElement() {
+        return true;
     }
 
     /**
@@ -262,20 +268,20 @@ class XMLElementDefinition {
      * @param {*} propertyValue 
      */
     exportProperty(propertyName, propertyValue) {
-        if (propertyValue == undefined) return;
-        if (propertyValue == null) return; // Hmmmm.... Null properties is bad code smell?
+        // Do not write '' or 'undefined' attributes.
+        if (propertyValue === undefined) return;
+        if (propertyValue === '') return;
+        // Hmmmm.... Null properties is bad code smell?
+        if (propertyValue === null) return;
         if (propertyValue.constructor.name == 'Array') {
+            // Convert arrays into individual property-writes
             propertyValue.forEach(singularPropertyValue => this.exportProperty(propertyName, singularPropertyValue));
         } else if (propertyValue instanceof XMLElementDefinition) {
+            // Write XML properties as-is, without converting them to string
             propertyValue.createExportNode(this.exportNode, propertyName);
         } else {
             if (typeof (propertyValue) == 'object') {
                 console.warn('Writing property ' + propertyName + ' has a value of type object', propertyValue);
-            }
-            if (propertyValue == undefined) return;
-            if (propertyValue == null) return;
-            if (typeof (propertyValue) != 'string') {
-                propertyValue = propertyValue.toString();
             }
             if (propertyName == 'description' && this instanceof CMMNElementDefinition && !this.__description) {
                 // Do not write description if it is not specifically set.
@@ -285,7 +291,11 @@ class XMLElementDefinition {
                 // Do not write name either if it is not specifically set.
                 return;
             }
-            if (propertyValue) { // Do not write '' or 'undefined' attributes.
+
+            // Convert all values to string
+            const stringifiedValue = propertyValue.toString()
+            // If the "toString" version of the property still has a value, then write it into the attribute
+            if (stringifiedValue) { 
                 this.exportNode.setAttribute(propertyName, propertyValue);
             }
         }
