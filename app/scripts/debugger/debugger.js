@@ -166,17 +166,48 @@ class Debugger extends StandardForm {
      */
     set events(events) {
         this._events = events;
+        this.pics = events.filter(event => event.type === 'PlanItemCreated');
+        console.log(`Found ${events.length} events`)
         this.renderEvents();
+
+        const picPrinter = (pic, index) => {
+            return `${index}: ${pic.content.type}[${pic.content.name + '.' + pic.content.planitem.index}]`;
+        }
+        if (this.pics.length > 0) { // Otherwise probably a tenant is rendered
+            console.log(`Case has ${this.pics.length} plan items:\n ${this.pics.map(picPrinter).join('\n ')}`);
+        }
+    }
+
+    getStage(event) {
+        const stageId = event.content.stageId;
+        if (! stageId) {
+            return "TOP";
+        }
+        const stagePIC = this.pics.find(pic => pic.content.planItemId === stageId);
+        if (!stagePIC) {
+            return "missing stage "+ stageId
+        }
+        return stagePIC.content.name + "." + stagePIC.content.planitem.index;
     }
 
     getEventName(event) {
         const planItemId = event.content.planItemId || event.content.taskId;
         if (!planItemId) return '';
         // console.log("Searching for event with id "+planItemId)
-        const eventWithName = this.events.find(earlierEvent => earlierEvent.content.planItemId == planItemId && earlierEvent.content.name)
+        const eventWithName = this.getPlanItemName(planItemId);
         const eventIndex = this.getIndex(eventWithName);
         // console.log("Event with name: "+(eventWithName ? (eventWithName.content.name) : 'none'));
-        return eventWithName && (eventWithName.content.name + eventIndex) || '';
+        return eventWithName;
+    }
+
+    getPlanItemName(planItemId) {
+        const pic = this.pics.find(p => p.content.planItemId === planItemId);
+        if (pic) {
+            return pic.content.name + '.' + pic.content.planitem.index;
+        } else {
+            return '';
+        }
+
     }
 
     getIndex(eventWithName) {
@@ -187,7 +218,7 @@ class Debugger extends StandardForm {
         if (index) {
             return '.' + index;
         } else {
-            return '';
+            return '.0';
         }
     }
 
@@ -199,7 +230,6 @@ class Debugger extends StandardForm {
         let i = 0;
 
         const getBackgroundColor = event => {
-            console.log("Getting bgc")
             if (event.type !== 'PlanItemTransitioned') return '';
             if (event.content.currentState == 'Failed') return 'color: red; font-weight: bold';
             if (event.content.currentState == 'Completed') return 'color: green; font-weight: bold';
@@ -249,6 +279,11 @@ class Debugger extends StandardForm {
         if (eventId) {
             this.selectedEventId = eventId;
             const event = this.events[eventId];
+            if (event.type === 'CaseDefinitionApplied') {
+                console.group('CaseDefinition');
+                console.log(event.content.definition.source);
+                console.groupEnd();
+            }
             this.eventTable.find('tr').css('background-color', '')
             $(tr).css('background-color', 'rgb(156, 175, 226)');
             const content = JSON.parse(JSON.stringify(event.content));
