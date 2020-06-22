@@ -9,6 +9,7 @@ class CFIDefinitionUnspecified {
     constructor(editor, container) {
         this.editor = editor;
         this.container = container;
+        this.biTooltip = `Cases and Tasks can be queried on business identifiers.\nThe identifiers are tracked in a separate index, but adding identifiers does have a performance impact`
         this.html = $(`<div class="cfiDefinitionUnspecPropertyTreeTable">
                 <label>Properties</label>
                 <div class="divTable">
@@ -29,12 +30,14 @@ class CFIDefinitionUnspecified {
                                     <col class="propertyDeletebtcol" width="20px" ></col>
                                     <col class="propertyNamecol" width="180px"></col>
                                     <col class="propertyTypecol" width="100px"></col>
+                                    <col class="propertyBusinessIdentifier" width="120px"></col>
                                 </colgroup>
                                 <thead>
                                     <tr>
                                         <th></th>
                                         <th>Name</th>
                                         <th>Type</th>
+                                        <th title="${this.biTooltip}">Business Identifier</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -55,6 +58,7 @@ class CFIDefinitionUnspecified {
             property = this.data.createDefinition(PropertyDefinition);
             property.name = '';
             property.type = '';
+            property.isBusinessIdentifier = false;
             property.isNew = true;
         }
 
@@ -87,6 +91,9 @@ class CFIDefinitionUnspecified {
                     <option value="http://www.omg.org/spec/CMMN/PropertyType/Unspecified">Unspecified</option>
                 </select>
             </td>
+            <td>
+                <input type="checkbox" class="inputBusinessIdentifier" ${property.isBusinessIdentifier?' checked':''} />
+            </td>
         </tr>`);
         html.find('.removeProperty').on('click', e => {
             if (property.isNew) {
@@ -96,14 +103,15 @@ class CFIDefinitionUnspecified {
             Util.removeHTML(html);
             this.editor.saveModel();
         });
-        html.find('.inputPropertyName').on('change', e => this.changeProperty(html, property, e.currentTarget.value, property.type));
+        html.find('.inputPropertyName').on('change', e => this.changeProperty(html, property, e.currentTarget.value, property.type, property.isBusinessIdentifier));
         // Remove "readonly" upon dblclick; id's are typically generated because they must be unique across multiple models
-        html.find('.selectPropertyType').on('change', e => this.changeProperty(html, property, property.name, e.currentTarget.value));
+        html.find('.selectPropertyType').on('change', e => this.changeProperty(html, property, property.name, e.currentTarget.value, property.isBusinessIdentifier));
         html.find('.selectPropertyType').val(property.type);
+        html.find('.inputBusinessIdentifier').on('change', e => this.changeProperty(html, property, property.name, property.type, e.target.checked));
         this.html.find('tbody').append(html);
     }
 
-    changeProperty(html, parameter, name, type) {
+    changeProperty(html, parameter, name, type, isBusinessIdentifier) {
         if (parameter.isNew) {
             // No longer transient parameter
             parameter.isNew = false;
@@ -112,6 +120,7 @@ class CFIDefinitionUnspecified {
         }
         parameter.name = name;
         parameter.type = type;
+        parameter.isBusinessIdentifier = isBusinessIdentifier;
         if (! parameter.id) parameter.id = Util.createID('_', 4) + '_' + name.replace(/\s/g, '');
         if (! parameter.name) parameter.name = parameter.id;
         // Make sure a newly generated id is rendered as well.
