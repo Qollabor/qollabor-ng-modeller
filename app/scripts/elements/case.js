@@ -27,10 +27,10 @@
             <div class="divCaseCanvas basicbox">
                 <div class="paper-container-scroller">
                     <div class="paper-container" />
+                    <div class="divResizers"></div>
+                    <div class="divHalos"></div>
+                    <img class="halodragimgid" />
                 </div>
-                <div class="divResizers"></div>
-                <div class="divHalos"></div>
-                <img class="halodragimgid" />
             </div>
             <div class="divCaseFileEditor"></div>
         </div>
