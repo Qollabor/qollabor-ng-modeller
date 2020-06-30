@@ -12,6 +12,7 @@ class HumanTask extends Task {
      */
     constructor(parent, definition) {
         super(parent, definition);
+        this.workflowProperties = new WorkflowProperties(this);
     }
 
     /** @returns {HumanTaskDefinition} */
@@ -25,6 +26,14 @@ class HumanTask extends Task {
 
     createProperties() {
         return new HumanTaskProperties(this);
+    }
+
+    showWorkflowProperties() {
+        this.workflowProperties.show(true);
+    }
+
+    createHalo() {
+        return new HumanTaskHalo(this);
     }
 
     /**

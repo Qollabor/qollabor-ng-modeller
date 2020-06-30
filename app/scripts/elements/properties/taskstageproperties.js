@@ -17,7 +17,7 @@ class TaskStageProperties extends PlanItemProperties {
                                 <img src="${imageURL}" />
                                 <label for="${inputDiscretionary}">${label}</label>
                             </div>
-                            <div style="display:${isDiscretionary?'block':'none'}" class="discretionaryBlock">
+                            <div style="display:${isDiscretionary?'block':'none'}" title="Select case roles allowed to plan the item (not to perform the item, but to plan the item).\nA team member must have one of the roles in order to plan.\nIf empty, all team members can plan the item." class="discretionaryBlock">
                                 <div class="authorizedRolesBlock">
                                     <label>Authorized Roles</label>
                                 </div>

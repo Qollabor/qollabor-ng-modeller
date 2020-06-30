@@ -26,7 +26,7 @@ class StageProperties extends TaskStageProperties {
     }
 
     addAutoComplete() {
-        this.addCheckField('Auto Complete', AUTOCOMPLETE_IMG, 'autoComplete', this.cmmnElement.planItemDefinition);
+        this.addCheckField('Auto Complete', 'Determines whether the stage should auto complete or not.', AUTOCOMPLETE_IMG, 'autoComplete', this.cmmnElement.planItemDefinition);
     }
 
     addPlanItemTable() {

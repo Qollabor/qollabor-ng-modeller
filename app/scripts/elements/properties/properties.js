@@ -21,11 +21,18 @@ class Properties extends MovableEditor {
         this.renderData();
     }
 
+    /**
+     * @returns {String}
+     */
+    get label() {
+        return 'Properties'
+    }
+
     renderHead() {
         this.html = $(
 `<div element="${this.cmmnElement.name}" id="${this.id}" class="basicbox basicform properties ${this.cmmnElement.constructor.name.toLowerCase()}-properties">
     <div class="formheader">
-        <label>Properties</label>
+        <label>${this.label}</label>
         <div class="propertiespin">
             <img src="images/pin-icon_32.png" />
         </div>
@@ -168,6 +175,18 @@ class Properties extends MovableEditor {
     }
 
     /**
+     * Add a label, e.g. for an explanation.
+     * @param {Array<String>} labels 
+     */
+    addLabelField(...labels) {
+        const html = $(`<div class="propertyBlock">
+                            ${labels.map(label => `<label>${label}</label>`).join('\n')}                            
+                        </div>`);
+        this.htmlContainer.append(html);
+        return html;
+    }
+
+    /**
      * Adds a plain input field to show the property
      * @param {String} label 
      * @param {String} propertyType 
@@ -251,10 +270,10 @@ class Properties extends MovableEditor {
      * @param {*} element 
      * @returns {JQuery<HTMLElement>}
      */
-    addCheckField(label, imageURL, propertyType, element = this.cmmnElement.definition) {
+    addCheckField(label, title, imageURL, propertyType, element = this.cmmnElement.definition) {
         const checked = element[propertyType] == true ? ' checked' : '';
         const checkId = Util.createID();
-        const html = $(`<div class="propertyRule">
+        const html = $(`<div class="propertyRule" title="${title}">
                             <div class="propertyRow">
                                 <input id="${checkId}" type="checkbox" ${checked} />
                                 <img src="${imageURL}" />

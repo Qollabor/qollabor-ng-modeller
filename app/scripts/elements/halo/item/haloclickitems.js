@@ -40,7 +40,7 @@ class InputParametersHaloItem extends HaloClickItem {
      * @param {Halo} halo 
      */
     static defaultBar(halo) {
-        return halo.leftBar;
+        return halo.bottomBar;
     }
 
     constructor(halo) {
@@ -54,7 +54,7 @@ class OutputParametersHaloItem extends HaloClickItem {
      * @param {Halo} halo 
      */
     static defaultBar(halo) {
-        return halo.rightBar;
+        return halo.bottomBar;
     }
 
     constructor(halo) {
@@ -68,7 +68,7 @@ class ZoomTaskImplementationHaloItem extends HaloClickItem {
      * @param {Halo} halo 
      */
     static defaultBar(halo) {
-        return halo.leftBar;
+        return halo.bottomBar;
     }
 
     constructor(halo) {
@@ -91,5 +91,20 @@ class NewTaskImplemenationHaloItem extends HaloClickItem {
 
     constructor(halo) {
         super(halo, 'images/model_24.png', 'Create a new implementation for the task', e => this.element.generateNewTaskImplementation());
+    }
+}
+
+
+class WorkflowHaloItem extends HaloClickItem {
+    /**
+     * Returns the default bar in which this item appears
+     * @param {Halo} halo 
+     */
+    static defaultBar(halo) {
+        return halo.leftBar;
+    }
+
+    constructor(halo) {
+        super(halo, 'images/svg/blockinghumantaskhalo.svg', 'Open workflow properties', e => this.element.showWorkflowProperties());
     }
 }

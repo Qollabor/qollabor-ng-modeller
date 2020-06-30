@@ -16,7 +16,7 @@ class PlanItemProperties extends Properties {
      * @param {String} label2 
      * @param {String} defaultValue 
      */
-    addRuleBlock(ruleName, imageURL, label1, label2 = label1, defaultValue = 'true') {
+    addRuleBlock(ruleName, title, imageURL, label1, label2 = label1, defaultValue = 'true') {
         const element = this.cmmnElement.definition;
         const propertyType = ruleName;
         const ruleAcronym = label1.split(' ').map(part => part.substring(0, 3)).join('. ');
@@ -27,7 +27,7 @@ class PlanItemProperties extends Properties {
         const ruleBody = rule ? rule.body : defaultValue;
         const rulePresenceIdentifier = Util.createID();
         // const checked = ;
-        const html = $(`<div class="propertyRule">
+        const html = $(`<div class="propertyRule" title="${title}">
                             <div class="propertyRow">
                                 <input id="${rulePresenceIdentifier}" type="checkbox" ${ruleAvailable?'checked':''}/>
                                 <img src="${imageURL}" />
@@ -86,15 +86,15 @@ class PlanItemProperties extends Properties {
     }
 
     addRepeatRuleBlock() {
-        this.addRuleBlock('repetitionRule', REPETITION_IMG, 'Repeat', 'Repetition');
+        this.addRuleBlock('repetitionRule', 'Provide a condition under which the item repeats.\nBy default items do not repeat.', REPETITION_IMG, 'Repeat', 'Repetition');
     }
 
     addRequiredRuleBlock() {
-        this.addRuleBlock('requiredRule', REQUIRED_IMG, 'Required');
+        this.addRuleBlock('requiredRule', 'Provide an expression determining whether or not the item is required.\nIf an item is required, the parent stage will not complete if the item is not completed.', REQUIRED_IMG, 'Required');
     }
 
     addManualActivationRuleBlock() {
-        this.addRuleBlock('manualActivationRule', MANUALACTIVATION_IMG, 'Manual Activation', 'Manual Activation', 'false');
+        this.addRuleBlock('manualActivationRule', MANUALACTIVATION_IMG, '', 'Manual Activation', 'Manual Activation', 'false');
     }
 
     /**
@@ -104,7 +104,7 @@ class PlanItemProperties extends Properties {
      * @param {String} buttonClass
      */
     getRolesAsHTMLSelect(currentRoleId, buttonClass) {
-        const existingRolesAsOptions = this.case.caseDefinition.caseRoles.map(role => `<option value="${role.id}" ${role.id == currentRoleId?" selected":""}>${role.name}</option>`).join('');
+        const existingRolesAsOptions = this.case.caseDefinition.caseRoles.map(role => `<option value="${role.id}" ${role.id == currentRoleId?' selected':''}>${role.name}</option>`).join('');
         return `<div class="role-selector">
                     <span>
                         <select>

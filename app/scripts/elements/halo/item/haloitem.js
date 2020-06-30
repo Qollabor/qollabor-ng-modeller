@@ -3,7 +3,7 @@ class HaloItem {
      * 
      * @param {Halo} halo 
      */
-    constructor(halo, imgURL, title, html = $(`<img class="haloitem" src="${imgURL}" title="${title}" />`)) {
+    constructor(halo, imgURL, title, html = $(`<img class="haloitem" style="height:21px;width:21px" src="${imgURL}" title="${title}" />`)) {
         this.halo = halo;
         this.imgURL = imgURL;
         this.title = title;

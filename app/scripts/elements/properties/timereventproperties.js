@@ -166,7 +166,7 @@ class TimerEventProperties extends PlanItemProperties {
 
     addTimerExpression() {
         const ruleBody = this.cmmnElement.planItemDefinition.timerExpression ? this.cmmnElement.planItemDefinition.timerExpression.body : '';
-        const html = $(`<div class="propertyBlock">
+        const html = $(`<div class="propertyBlock" title="Provide an expression that returns a duration.\nThis can be an expression returning a string that can be parsed to XSD duration format.\nIt can also be a reference to a property in the Case File that holds the duration">
                             <label>Timer Expression</label>
                             <textarea class="multi">${ruleBody}</textarea>
                         </div>`);

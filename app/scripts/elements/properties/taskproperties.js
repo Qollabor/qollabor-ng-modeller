@@ -57,8 +57,8 @@ class TaskProperties extends TaskStageProperties {
         const implementation = taskDefinition.validatorRef ? taskDefinition.validatorRef : '';
 
         const options = this.case.editor.ide.repository.getProcesses().map(model => `<option value="${model.fileName}" ${model.fileName == implementation?" selected":""}>${model.name}</option>`).join('');
-        const html = $(`<div class="propertymodelzoomfield">
-                            <label>Task Validator</label>
+        const html = $(`<div class="propertymodelzoomfield" title="Select a web service to be invoked to validate task output">
+                            <label>Task Output Validator</label>
                             <div class="properties_filefield">
                                 <div>
                                     <select>
@@ -103,7 +103,7 @@ class TaskProperties extends TaskStageProperties {
     }
 
     addIsBlocking() {
-        this.addCheckField('Is Blocking', ISBLOCKING_IMG, 'isBlocking', this.task.planItemDefinition);
+        this.addCheckField('Is Blocking', 'If the task is non-blocking, the case will continue without awaiting the task to complete', ISBLOCKING_IMG, 'isBlocking', this.task.planItemDefinition);
     }
 
     renderData() {
