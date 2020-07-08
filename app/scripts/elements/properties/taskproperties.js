@@ -35,7 +35,7 @@ class TaskProperties extends TaskStageProperties {
             if (model) {
                 this.task.changeTaskImplementation(model);
             } else if (reference == '__new__') {
-                ide.info("This functionality is not yet implemented")
+                this.task.generateNewTaskImplementation();
             } else {
                 // if (confirm("Do you want to remove the mappings too?")) {
                 //     console.log("Removing mappings too...")
