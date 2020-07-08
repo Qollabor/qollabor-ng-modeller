@@ -14,7 +14,7 @@ const router = express.Router();
 const xmlParser = bodyParser.text({ type: 'application/xml' });
 
 /**
- * Returns the repository contents by name and last modified timestamp
+ * Returns the repository contents by name, last modified timestamp and usage information
  */
 router.get('/list', function(req, res, next) {
     const list = repository.list();
@@ -25,9 +25,9 @@ router.get('/list', function(req, res, next) {
  *  Get a file from the repository.
  */
 router.get('/load/*', function(req, res, next) {
-    const filename = req.params[0];
+    const fileName = req.params[0];
     try {
-        const content = repository.load(filename);
+        const content = repository.load(fileName);
         res.setHeader('Content-Type', 'application/xml');
         res.setHeader('x-sent', 'true');
         res.send(content);
@@ -47,27 +47,11 @@ router.get('/load/*', function(req, res, next) {
  */
 router.post('/save/*', xmlParser, function(req, res, next) {
     try {
-        const filename = req.params[0];
-        repository.save(filename, req.body);
+        const fileName = req.params[0];
+        repository.save(fileName, req.body);
 
         const list = repository.list();
         res.json(list);
-    } catch (err) {
-        console.error(err);
-        res.status(500).send(err);
-    }
-});
-
-/**
- * Show the dependencies on the specified model, i.e., all models that have a reference to this model
- */
-router.get('/usage/*', function (req, res, next) {
-    try {
-        const artifactId = req.params[0];
-        const response = repository.usage(artifactId);
-        res.setHeader('Content-Type', 'application/json');
-        res.setHeader('x-sent', 'true');
-        res.send(response);
     } catch (err) {
         console.error(err);
         res.status(500).send(err);
@@ -95,9 +79,9 @@ router.get('/deploy/*', xmlParser, function(req, res, next) {
  */
 router.get('/viewCMMN/*', (req, res, next) => {
     try {
-        const filename = req.params[0];
+        const fileName = req.params[0];
 
-        const definitions = repository.composeDefinitionsDocument(filename);
+        const definitions = repository.composeDefinitionsDocument(fileName);
         const response = definitions.deployContents;
         res.setHeader('Content-Type', 'application/xml');
         res.setHeader('x-sent', 'true');
@@ -112,8 +96,8 @@ router.get('/viewCMMN/*', (req, res, next) => {
  * Validate a potential deployment file (with it's dependencies) against a configured Backend Service
  */
 router.get('/validate/*', (req, res, next) => {
-    const filename = req.params[0];
-    const definitions = repository.composeDefinitionsDocument(filename);
+    const fileName = req.params[0];
+    const definitions = repository.composeDefinitionsDocument(fileName);
     if (definitions.hasErrors()) {
         res.status(200);
         res.setHeader('Content-Type', 'application/json');

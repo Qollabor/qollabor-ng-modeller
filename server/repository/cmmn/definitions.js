@@ -37,7 +37,7 @@ class Definitions {
     }
 
     /**
-     * @returns {String} The filename into which this case definition with all it's contents is stored.
+     * @returns {String} The fileName into which this case definition with all it's contents is stored.
      */
     get deployFileName() {
         return this.rootCaseName + Consts.CASE_DEFINITION_EXT;
@@ -76,8 +76,8 @@ class Definitions {
      * Fills the Map cachedDef with filenames and their content
      * @param {String[]} refs an array with filenames of models from repository (e.g. processes refered to from processTasks)
      * @param {Map<String, Element>} cachedDefinitions Map object, a list of entries, each entry
-     *   - [0] filename (ref)
-     *   - [1] xml node with content of filename (element)
+     *   - [0] fileName (ref)
+     *   - [1] xml node with content of fileName (element)
      */
     _loadArtifactByIds(refs, cachedDefinitions) {
         for (const ref of refs) {
@@ -110,9 +110,9 @@ class Definitions {
             if (!this.loadedCases.has(caseId)) {
 
                 const index = caseId.indexOf(Consts.CASE_EXT); // Cut it short at the first .case occurrence
-                const filename = caseId.substring(0, index);
+                const fileName = caseId.substring(0, index);
 
-                new CaseDefinition(filename, this, this.store);
+                new CaseDefinition(fileName, this, this.store);
             }
         }
     }

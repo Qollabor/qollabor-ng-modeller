@@ -3,25 +3,46 @@
 const Loki = require('lokijs');
 const Utilities = require('./utilities').Utilities;
 const XML = require('./xml').XML;
+const Store = require('./store').Store;
+const ModelInfo = require('./store').ModelInfo;
 
 /**
  * This class keeps track of artifacts usage.
  */
 class Usage {
-    constructor() {
+    /**
+     * 
+     * @param {Store} store 
+     */
+    constructor(store) {
+        this.store = store;
         this.artifacts = new Map(); // artifacts are just stored in an simple object; no needs for loki
         const db = new Loki('ide_artifacts');
-        this.whereUsedData = db.addCollection('where_used', { indices: ['filename', 'artifactId', 'referencedArtifactId'] });
+        this.whereUsedData = db.addCollection('where_used', { indices: ['fileName', 'artifactId', 'referencedArtifactId'] });
     }
 
-    put(artifactName, data) {
-        const xml = XML.loadXMLElement(data);
-        const id = xml.getAttribute('id') || artifactName;
-        const name = xml.getAttribute('name') || '';
-        const description = xml.getAttribute('description') || '';
-        const referencedArtifacts = this._extractReferencedArtifacts(xml)
-        const metadata = {id, name, description, referencedArtifacts};
-        this._addWhereUsedDataForFile(artifactName, metadata);
+    /**
+     * Create analysis information for all models in the list. Parses them as XML, searches for referencing attributes.
+     * @param {Array<ModelInfo>} models 
+     */
+    analyze(models) {
+        models.forEach(artifact => {
+            const xml = XML.loadXMLElement(artifact.content);
+            const id = xml.getAttribute('id') || artifact.fileName;
+            const name = xml.getAttribute('name') || '';
+            const description = xml.getAttribute('description') || '';
+            const referencedArtifacts = this._extractReferencedArtifacts(xml)
+            const metadata = {id, name, description, referencedArtifacts};
+            this._addWhereUsedDataForFile(artifact.fileName, metadata);    
+        });
+    }
+
+    /**
+     * Extend the model information with the usage information
+     * @param {Array<ModelInfo>} models 
+     */
+    addUsageInformation(models) {
+        models.forEach(model => model.usage = this.getUsage(model.fileName));
     }
 
     /**
@@ -39,7 +60,7 @@ class Usage {
         });
     }
 
-    _addWhereUsedDataForFile(filename, artifact) {
+    _addWhereUsedDataForFile(fileName, artifact) {
         this.artifacts.set(artifact.id, {
             id: artifact.id,
             name: artifact.name,
@@ -51,7 +72,7 @@ class Usage {
             for (let i = 0; i < nofArtifacts; i++) {
                 const referencedArtifact = artifact.referencedArtifacts[i];
                 this.whereUsedData.insert({
-                    filename: filename,
+                    fileName: fileName,
                     artifactId: artifact.id,
                     referencedArtifactId: referencedArtifact.id
                 });
@@ -70,10 +91,11 @@ class Usage {
             XML.findElementsWithTag(caseTree, tagName) // Search for elements with the tagname
                 .map(element => element.getAttribute(attributeName)) // returns an array with the attribute values for the elements
                 .filter(string => string !== undefined) // only take attributes with a value
-                .map(id => {return {id};}) // and return a new object with {'id': [attr-value]}
+                .map(id => Object.assign({id})) // and return a new object with {'id': [attr-value]}
 
         const refs = getReferences(caseTree, 'caseTask', 'caseRef');
         refs.push(...getReferences(caseTree, 'processTask', 'processRef'))
+        refs.push(...getReferences(caseTree, 'caseFileItem', 'definitionRef'));
         refs.push(...getReferences(caseTree, 'cafienne:implementation', 'humanTaskRef'))
         return refs;
     }

@@ -4,10 +4,9 @@ Repository is a [Node.js](http://nodejs.org) library for storing, retrieving and
 ##URLs
 The repository can be accessed on URL http:/localhost:2081 and supports the following operations:
 
-+ /repository/load/filename (filename including file extension)
-+ /repository/save/filename (filename including file extension)
-+ /repository/list (retrieve all available models)
-+ /repository/usage/filename (returns a json document with all models that hold a reference to this model)
++ /repository/load/fileName (fileName including file extension)
++ /repository/save/fileName (fileName including file extension)
++ /repository/list (retrieve all available models with last modified information and usage information)
 + /repository/viewCMMN/modelname (combine all CMMN models (cases/processes) to one CMMN model)
 + /repository/validate/modelname (combine all CMMN models (cases/processes) to one CMMN model)
 + /repository/deploy/modelname (combine all CMMN models (cases/processes/humantask/cfid) to one &lt;definitions> document and store this in the deployment folder)

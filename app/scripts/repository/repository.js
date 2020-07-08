@@ -63,7 +63,7 @@ class Repository {
             url: '/repository/list',
             type: 'get',
             success: (data, status, xhr) => {
-                this.updateFileList(data);
+                this.updateFileList(data.map(item => new Metadata(item)));
                 // Callback if there is a callback.
                 if (callback) callback();
             },
@@ -96,7 +96,7 @@ class Repository {
      * Updates the cache with the most recent 'lastModified' information from the server.
      * This includes a full list of the filenames of all models in the server, as well as the lastModified timestamp
      * of each file in the server. Based on this, the locally cached contents is removed if it is stale.
-     * @param {Array<*>} newServerFileList
+     * @param {Array<Metadata>} newServerFileList
      */
     updateFileList(newServerFileList) {
         // Make a copy of the old list, to be able to clean up old models afterwards;
@@ -104,7 +104,7 @@ class Repository {
         // Map the new server list into a list of structured objects. Also re-use existing objects as much as possible.
         /** @type {Array<ServerFile>} */
         this.list = newServerFileList.map(fileMetadata => {
-            const fileName = fileMetadata.filename;
+            const fileName = fileMetadata.fileName;
             const existingServerFile = this.list.find(file => file.fileName == fileName);
             if (!existingServerFile) {
                 return new ServerFile(this, fileName, fileMetadata);

@@ -13,43 +13,46 @@ class Store {
     }
 
     load(artifactName) {
-        const filename = Utilities.createAbsolutePath(this.repositoryPath, artifactName);
-        return fs.readFileSync(filename, { encoding: 'utf8' });
+        const fileName = Utilities.createAbsolutePath(this.repositoryPath, artifactName);
+        return fs.readFileSync(fileName, { encoding: 'utf8' });
     }
 
     save(artifactName, data) {
-        const filename = Utilities.createAbsolutePath(this.repositoryPath, artifactName);
-        mkdirp.sync(pathLib.dirname(filename));
-        fs.writeFileSync(filename, data);
-    }
-
-    getUsage(artifactId) {
-        const usage = new Usage();
-        const artifactList = this.list();
-        for (let i = 0; i < artifactList.length; i++) {
-            const filename = artifactList[i].filename;
-            const data = this.load(filename);
-            usage.put(artifactList[i].filename, data);
-        }
-        return usage.getUsage(artifactId);
+        const fileName = Utilities.createAbsolutePath(this.repositoryPath, artifactName);
+        mkdirp.sync(pathLib.dirname(fileName));
+        fs.writeFileSync(fileName, data);
     }
 
     list() {
-        const response = [];
-        const entries = walkSync.entries(this.repositoryPath, { directories: false, ignore: ['**/.*'] });
-        for (let i = 0; i < entries.length; i++) {
-            const entry = entries[i];
-            const filename = entry.relativePath;
-            const lastModified = entry.mtime;
-            const extension = pathLib.extname(filename);
-            if (Utilities.isKnownRepositoryExtension(extension)) {
-                response.push({ filename, lastModified });
-            } else {
-                console.log("Skipping file "+filename)
-            }
-        }
-        return response;
+        const files = walkSync.entries(this.repositoryPath, { directories: false, ignore: ['**/.*'] });
+        const models = files.filter(file => Utilities.isKnownRepositoryExtension(pathLib.extname(file.relativePath))).map(entry => new ModelInfo(this, entry));
+        const usage = new Usage(this);
+        usage.analyze(models);
+        usage.addUsageInformation(models);
+        return models.map(modelInfo => modelInfo.apiInformation);
+    }
+}
+
+class ModelInfo {
+    /**
+     * 
+     * @param {Store} store 
+     * @param {*} entry 
+     */
+    constructor(store, entry) {
+        this.store = store;
+        this.fileName = entry.relativePath;
+        this.lastModified = entry.mtime;
+        this.content = store.load(this.fileName);
+        this.usage = [];
+    }
+
+    get apiInformation() {
+        delete this.store;
+        delete this.content;
+        return this;
     }
 }
 
 exports.Store = Store;
+exports.ModelInfo = ModelInfo;

@@ -6,7 +6,7 @@ class ModelEditor {
      * @param {IDE} ide 
      * @param {String} fileName The full file name to be loaded, e.g. 'helloworld.case', 'sendresponse.humantask'
      * @param {String} modelName The file name without the extension, e.g. 'helloworld'
-     * @param {String} modelType  The extension of the filename, e.g. 'case', 'process', 'humantask'
+     * @param {String} modelType  The extension of the fileName, e.g. 'case', 'process', 'humantask'
      */
     constructor(ide, fileName, modelName, modelType) {
         this.ide = ide;
@@ -94,7 +94,7 @@ class ModelEditor {
     }
 
     /**
-     * Create a new model with given name and description and return the filename of the model.
+     * Create a new model with given name and description and return the fileName of the model.
      * @param {IDE} ide 
      * @param {String} name 
      * @param {String} description 

@@ -44,10 +44,8 @@ class ModelListPanel {
                                 <a name="${modelName}" fileType="${fileType}" href="${(modelURL)}">${modelName}</a>
                             </div>`);
 
-            model.usage(data => {
-                const tip = "Used in:\n" + data.map(e => '- ' + e.id).join('\n')
-                html.attr('title', tip)
-            });
+            const tip = `Used in\n${model.usage.map(e => '- ' + e.id).join('\n')}`;
+            html.attr('title', tip)
             
             this.container.append(html);
             // Add event handler for dragging.

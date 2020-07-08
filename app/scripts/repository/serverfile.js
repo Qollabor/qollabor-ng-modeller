@@ -1,3 +1,11 @@
+class Metadata {
+    constructor(json) {
+        this.fileName = json.fileName;
+        this.lastModified = json.lastModified;
+        this.usage = json.usage;
+    }
+}
+
 class ServerFile {
     /**
      * Creates a new local reference of the server file, based on the json structure given
@@ -17,9 +25,10 @@ class ServerFile {
 
     /**
      * Refreshes the metadata of the model, based on the server side content.
-     * @param {*} serverMetadata 
+     * @param {Metadata} serverMetadata 
      */
     refreshMetadata(serverMetadata) {
+        this.metadata = serverMetadata;
         const dotSplitter = this.fileName.split('.');
         this.fileType = dotSplitter[dotSplitter.length - 1];
         this.name = dotSplitter.slice(0, dotSplitter.length - 1).join('');
@@ -52,30 +61,9 @@ class ServerFile {
     /**
      * Simple method that logs in the console where all this file is used according to the server side repository.
      * 
-     * @param {Function} callback 
      */
-    usage(callback) {
-        const url = '/repository/usage/' + this.fileName;
-        $.ajax({
-            url,
-            type: 'get',
-            success: (data, status, xhr) => {
-                if (xhr.responseText == '') {
-                    const msg = this.fileName + ' does not exist in the repository';
-                    console.warn(msg);
-                    this.ide.info(msg);
-                } else {
-                    callback(data);
-                    // console.log("Usage of " + this.fileName + ": ", xhr.responseText)
-                }
-            },
-            error: (xhr, error, eThrown) => {
-                console.warn('Could not open ' + url, eThrown)
-                // Cut the error message short.
-                const str = ('' + eThrown).split('\n')[0];
-                this.ide.danger('Could not read file ' + this.fileName + ' due to an error:<div>' + str + '</div>');
-            }
-        });
+    get usage() {
+        return this.metadata.usage;
     }
 
     /**

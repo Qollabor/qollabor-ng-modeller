@@ -4,7 +4,7 @@ class XMLModelEditor extends ModelEditor {
      * @param {IDE} ide 
      * @param {String} fileName The full file name to be loaded, e.g. 'helloworld.case', 'sendresponse.humantask'
      * @param {String} modelName The file name without the extension, e.g. 'helloworld'
-     * @param {String} modelType  The extension of the filename, e.g. 'case', 'process', 'humantask'
+     * @param {String} modelType  The extension of the fileName, e.g. 'case', 'process', 'humantask'
      */
     constructor(ide, fileName, modelName, modelType) {
         super(ide, fileName, modelName, modelType);

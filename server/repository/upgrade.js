@@ -13,23 +13,23 @@ class Upgrade {
   start() {
     const files = this.store.list();
     for (let i = 0; i < files.length; i++) {
-      const filename = files[i].filename;
-      const extension = Path.extname(filename);
+      const fileName = files[i].fileName;
+      const extension = Path.extname(fileName);
       if (extension === Consts.CASE_EXT) {
-        this.migrateCase(filename);
+        this.migrateCase(fileName);
       }
     }
   }
 
-  migrateCase(filename) {
-    const content = this.store.load(filename);
+  migrateCase(fileName) {
+    const content = this.store.load(fileName);
     const rootElement = XML.loadXMLElement(content);
     if (rootElement.nodeName === 'definitions') {
-      console.log('Upgrading ' + filename);
+      console.log('Upgrading ' + fileName);
       const caseElement = rootElement.getElementsByTagName("case")[0];
       this.migrateCaseAttribute(caseElement, 'id');
       this.migrateCaseTaskIds(caseElement);
-      this.store.save(filename, XML.printNiceXML(caseElement));
+      this.store.save(fileName, XML.printNiceXML(caseElement));
     }
   }
 

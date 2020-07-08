@@ -96,7 +96,7 @@
     }
 
     /**
-     * Creates a new model with the specified filename, and renders it.
+     * Creates a new model with the specified fileName, and renders it.
      * The new model is not saved by this editor.
      */
     createNewModel(definitionRef) {
