@@ -106,7 +106,7 @@
             const iWarnings = validator.warnings.length;
 
             const validateLabel = $('.validateLabel');
-            validateLabel.html(`CMMN Validation found ${iErrors} problem${iErrors==1?'':'s'} and ${iWarnings} suggestion${iWarnings==1?'':'s'}`);
+            validateLabel.html(`CMMN Validation found ${iErrors} problem${iErrors == 1 ? '' : 's'} and ${iWarnings} suggestion${iWarnings == 1 ? '' : 's'}`);
             validateLabel.css('color', iErrors > 0 ? 'red' : iWarnings > 0 ? 'orange' : 'grey');
             if (iErrors == 0 && iWarnings == 0) {
                 validateLabel.html('');
@@ -141,6 +141,7 @@
         this.paper.on('cell:pointerup', (elementView, e, x, y) => handlePointerUpPaper(elementView, e, x, y));
         this.paper.on('element:pointerdown', (elementView, e, x, y) => handlePointerDownPaper(elementView, e, x, y));
         this.paper.on('element:pointermove', (elementView, e, x, y) => handlePointerMovePaper(elementView, e, x, y));
+        this.paper.on('element:pointerdblclick', (elementView, e, x, y) => elementView.model.xyz_cmmn.propertiesView.show(true));
         this.paper.on('blank:pointerclick', e => this.clearSelection());
         // When we move over an element with the mouse, an event is raised.
         //  This event is captured to enable elements to register themselves with ShapeBox and RepositoryBrowser
@@ -228,7 +229,7 @@
     viewSource() {
         this.clearSelection();
         this.hideMovableEditors();
-        
+
         this.runValidation();
         if (this.validator.problems.length > 0) {
             this.validateForm.show();
