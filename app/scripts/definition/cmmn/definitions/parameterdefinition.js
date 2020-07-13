@@ -69,15 +69,9 @@ class ParameterDefinition extends CMMNElementDefinition {
     }
 }
 
-class ImplementationParameterDefinition extends XMLElementDefinition {
+class ImplementationParameterDefinition extends ReferableElementDefinition {
     constructor(importNode, modelDefinition, parent) {
         super(importNode, modelDefinition, parent);
-        this.name = this.parseAttribute('name', '');
-        this.id = this.parseAttribute('id', this.name);
         this.isNew = false;
-    }
-
-    createExportNode(parentNode, tagName) {
-        super.createExportNode(parentNode, tagName, 'id', 'name');
     }
 }

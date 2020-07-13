@@ -1,4 +1,4 @@
-class CMMNElementDefinition extends XMLElementDefinition {
+class CMMNElementDefinition extends ReferableElementDefinition {
     /**
      * Creates a new, abstract CMMNElementDefinition object based on the given XML element 'importNode'.
      * Also parses 'id', 'name' and 'description' attributes, and adds the element to the case definition.
@@ -15,18 +15,6 @@ class CMMNElementDefinition extends XMLElementDefinition {
     constructor(importNode, caseDefinition, parent = undefined) {
         super(importNode, caseDefinition, parent);
         this.caseDefinition = caseDefinition;
-        this.id = this.parseAttribute('id');
-        this.name = this.parseAttribute('name');
-        this.description = this.parseAttribute('description');
-    }
-
-    /** @param {String} newId */
-    set id(newId) {
-        this.__id = newId;
-    }
-
-    get id() {
-        return this.__id;
     }
 
     get name() {
@@ -99,10 +87,6 @@ class CMMNElementDefinition extends XMLElementDefinition {
             }
         }
         return this._shape;
-    }
-
-    createExportNode(parentNode, tagName, ...propertyNames) {
-        super.createExportNode(parentNode, tagName, 'id', 'name', 'description', propertyNames);
     }
 
     toString() {

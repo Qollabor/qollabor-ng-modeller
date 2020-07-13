@@ -15,9 +15,6 @@ class CaseFileDefinitionDefinition extends ModelDefinition {
      */
     constructor(importNode, definitionDocument) {
         super(importNode, definitionDocument);
-        this.id = this.parseAttribute('id');
-        this.name = this.parseAttribute('name');
-        this.description = this.parseAttribute('description');
         this.definitionType = this.parseAttribute('definitionType', UNSPECIFIED_URI);
         this.importRef = this.parseAttribute('import', '');
         this.structureRef = this.parseAttribute('structure', '');
