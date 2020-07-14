@@ -142,7 +142,8 @@
         this.paper.on('element:pointerdown', (elementView, e, x, y) => handlePointerDownPaper(elementView, e, x, y));
         this.paper.on('element:pointermove', (elementView, e, x, y) => handlePointerMovePaper(elementView, e, x, y));
         this.paper.on('element:pointerdblclick', (elementView, e, x, y) => elementView.model.xyz_cmmn.propertiesView.show(true));
-        this.paper.on('blank:pointerclick', e => this.clearSelection());
+        this.paper.on('blank:pointerclick', e => this.clearSelection()); // For some reason pointerclick not always works, so also listening to pointerdown on blank.
+        this.paper.on('blank:pointerdown', e => this.clearSelection()); // see e.g. https://stackoverflow.com/questions/35443524/jointjs-why-pointerclick-event-doesnt-work-only-pointerdown-gets-fired
         // When we move over an element with the mouse, an event is raised.
         //  This event is captured to enable elements to register themselves with ShapeBox and RepositoryBrowser
         //  Note: this code relies on elements to always have a xyz_cmmn CMMNElement pointer.
