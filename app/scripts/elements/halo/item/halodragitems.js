@@ -1,5 +1,11 @@
 
 class HaloDragItem extends HaloItem {
+    /**
+     * 
+     * @param {Halo} halo 
+     * @param {String} imgURL 
+     * @param {String} title 
+     */
     constructor(halo, imgURL, title) {
         super(halo, imgURL, title);
         this.html.on('pointerdown', e => this.handleMouseDown(e));
@@ -70,6 +76,9 @@ class ConnectorHaloItem extends HaloDragItem {
      * @param {Halo} halo 
      */
     static defaultBar(halo) {
+        if (halo.element instanceof EventListener) {
+            return halo.topRightBar;
+        }
         return halo.rightBar;
     }
 
