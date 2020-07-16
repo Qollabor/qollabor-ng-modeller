@@ -134,23 +134,24 @@ class ParameterMappingDefinition extends UnnamedCMMNElementDefinition {
             return false;
         }
 
+        /** @type {TaskDefinition} */
         const taskDefinition = this.parent;
         if (taskDefinition.implementationModel) {
             // If we have an implementation contract available, we can look up the source and/or target ref in the contract.
-            if (sourceRef && taskDefinition.implementationModel.outputParameters.find(parameter => parameter.id == sourceRef)) {
+            if (sourceRef && taskDefinition.implementationModel.findOutputParameter(sourceRef)) {
                 return false;
-            } else if (targetRef && taskDefinition.implementationModel.inputParameters.find(parameter => parameter.id == targetRef)) {
+            } else if (targetRef && taskDefinition.implementationModel.findInputParameter(targetRef)) {
                 return true;
             } else {
                 // this is really an error; source and/or target are filled, but without proper refererences
-                console.error('The mapping ' + this.id + ' in task ' + taskDefinition.name + ' has invalid source and target references', this)
+                console.error(`The mapping '${this.id}' in task '${taskDefinition.name}' has invalid source and target references (sourceRef = "${this.sourceRef}", targetRef = "${this.targetRef}")`, this)
                 return false;
             }
         } else {
             // No implementation available yet. Let's assume that a bit here.
             if (sourceRef && targetRef) {
                 // Both are set?! Must be some error here, since either should have been found in the task definition itself.
-                console.error('The mapping ' + this.id + ' in task ' + taskDefinition.name + ' has invalid source and target references', this)
+                console.error(`The mapping '${this.id}' in task '${taskDefinition.name}' has invalid source and target references (sourceRef = "${this.sourceRef}", targetRef = "${this.targetRef}")`, this)
                 return false;
             } else if (sourceRef) {
                 return false;

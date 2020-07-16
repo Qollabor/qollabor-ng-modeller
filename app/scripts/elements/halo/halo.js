@@ -9,6 +9,7 @@ class Halo {
         this.element = element;
         const html = this.html = $(`<div class="halobox" element="${element.toString()}">
     <div class="halobar top"></div>
+    <div class="halobar top-right"></div>
     <div class="halobar right"></div>
     <div class="halobar left"></div>
     <div class="halobar bottom"></div>
@@ -16,6 +17,7 @@ class Halo {
         this.element.case.haloContainer.append(html);
         this.rightBar = new HaloBar(this, html.find('.right'));
         this.topBar = new HaloBar(this, html.find('.top'));
+        this.topRightBar = new HaloBar(this, html.find('.top-right'));
         this.leftBar = new HaloBar(this, html.find('.left'));
         this.bottomBar = new HaloBar(this, html.find('.bottom'));
 
@@ -45,6 +47,7 @@ class Halo {
     clearItems() {
         this.rightBar.clear();
         this.topBar.clear();
+        this.topRightBar.clear();
         this.leftBar.clear();
         this.bottomBar.clear();
     }

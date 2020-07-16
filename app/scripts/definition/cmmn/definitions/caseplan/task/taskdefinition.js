@@ -193,31 +193,35 @@ class TaskDefinition extends TaskStageDefinition {
             this.inputMappings.forEach(mapping => {
                 if (mapping.targetRef) {
                     // Note: if the input parameter cannot be found in the implementation model, the targetRef will be cleared from the mapping
-                    mapping.implementationParameter = this.implementationModel.inputParameters.find(p => p.id == mapping.targetRef);
+                    mapping.implementationParameter = this.implementationModel.findInputParameter(mapping.targetRef);
                 }
             });
 
             // Now iterate all implementation's input parameters and check for unused ones. For those we will generate new, transient mappings.
-            const unusedTaskImplementationInputParameters = this.implementationModel.inputParameters.filter(parameter => !this.inputMappings.find(mapping => parameter.id == mapping.targetRef));
-            unusedTaskImplementationInputParameters.forEach(parameter => {
-                console.log('Generating transient input mapping for implementation parameter ' + parameter.name + ' in task "' + this.name + '"');
-                const inputParameter = this.getInputParameterWithName(parameter.name);
-                this.createInputMapping(inputParameter, parameter);
+            this.implementationModel.inputParameters.forEach(parameter => {
+                const existingMapping = this.inputMappings.find(mapping => parameter.hasIdentifier(mapping.targetRef));
+                if (! existingMapping) {
+                    console.log('Generating transient input mapping for implementation parameter ' + parameter.name + ' in task "' + this.name + '"');
+                    const inputParameter = this.getInputParameterWithName(parameter.name);
+                    this.createInputMapping(inputParameter, parameter);
+                }
             });
 
             this.outputMappings.forEach(mapping => {
                 if (mapping.sourceRef) {
-                    mapping.implementationParameter = this.implementationModel.outputParameters.find(p => p.id == mapping.sourceRef);
+                    mapping.implementationParameter = this.implementationModel.findOutputParameter(mapping.sourceRef);
                 }
             });
 
             // Now iterate all task output parameters and check for unused ones. For those we will generate a mapping, in order to have them directly visible in the UI.
             // It also has no sense to have unused output parameters.
-            const unusedTaskOutputParameters = this.outputs.filter(taskOutputParameter => !this.outputMappings.find(mapping => taskOutputParameter.id == mapping.targetRef));
-            unusedTaskOutputParameters.forEach(parameter => {
-                console.log("Creating mapping for task output parameter " + parameter.name)
-                const newMapping = this.createOutputMapping(parameter, undefined);
-                newMapping.targetRef = parameter.id ? parameter.id : parameter.name;
+            this.implementationModel.outputParameters.forEach(parameter => {
+                const existingMapping = this.outputMappings.find(mapping => parameter && parameter.hasIdentifier(mapping.sourceRef));
+                if (! existingMapping) {
+                    console.log('Generating transient output mapping for implementation parameter ' + parameter.name + ' in task "' + this.name + '"');
+                    const newMapping = this.createOutputMapping(undefined, parameter);
+                    newMapping.sourceRef = parameter.id ? parameter.id : parameter.name;
+                }
             });
         }
     }

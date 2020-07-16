@@ -27,8 +27,6 @@ class CMMNElement {
         }
         this.createJointElement();
         this.__resizable = true;
-        // Area distance is the bandwith around the visual element that is catched by the mouse-move to show/hide the halo element.
-        this.areaDistance = 5;
     }
 
     get id() {
@@ -76,6 +74,17 @@ class CMMNElement {
         return {};
     }
 
+    /**
+     * Determines whether or not the cmmn element is our parent or another ancestor of us.
+     * @param {CMMNElement} potentialAncestor 
+     */
+    hasAncestor(potentialAncestor) {
+        if (! potentialAncestor) return false;
+        if (this.parent === potentialAncestor) return true;
+        if (this.parent === this.case) return false;
+        return this.parent.hasAncestor(potentialAncestor);
+    }
+
     createJointElement() {
         const jointSVGSetup = {
             // Markup is the SVG that is rendered through the joint element; we surround the markup with an addition <g> element that holds the element id
@@ -102,45 +111,27 @@ class CMMNElement {
     }
 
     /**
-     * Determines whether the cursor is near the element, i.e., within a certain range of 5px around this element.
+     * Determines whether the cursor is near the element, i.e., within a certain range of 'distance' pixels around this element.
      * Used to show/hide the halo of the element.
+     * distance is a parameter to distinguish between moving from within to outside the element, or moving from outside towards the element.
+     * In case.js, moving towards an element is "near" when within 10px, moving out of an element can be done up to 40px. 
+     * 
      * @param {*} e 
+     * @param {Number} distance
      */
-    nearElement(e) {
+    nearElement(e, distance) {
         const offset = this.html.offset();
-        const nearLeft = offset.left - this.areaDistance;
-        const nearTop = offset.top - this.areaDistance;
-        const nearRight = nearLeft + this.shape.width + this.areaDistance * 2; // More room on the right for the halo width
-        const nearBottom = nearTop + this.shape.height + this.areaDistance * 2; // Little more room at the bottom for sentry's halo
 
-        if (e.clientX >= nearLeft && e.clientX <= nearRight) {
-            if (e.clientY >= nearTop && e.clientY <= nearBottom) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Determines whether the cursor is near the border of the element.
-     * Used to show/hide the resizer of the element.
-     * @param {*} e 
-     */
-    nearElementBorder(e) {
-        const borderDistanceOutside = 3;
-        const borderDistanceInside = 20;
-
+        // EventListener somehow have an unclear and weird positioning with jointjs. Hence we need to do some correction for that.
+        //  Note that this is still not a flawless improvement :(
+        const left = this instanceof EventListener ? offset.left - 0.5 * distance : offset.left - distance;
+        const right = this instanceof EventListener ? offset.left + this.shape.width + 1.5 * distance : offset.left + this.shape.width + distance;
+        const top = offset.top - distance;
+        const bottom = offset.top + this.shape.height + distance;
         const x = e.clientX;
         const y = e.clientY;
 
-        const offset = this.html.offset();
-        const left = offset.left;
-        const right = offset.left + this.shape.width;
-        const top = offset.top;
-        const bottom = offset.top + this.shape.height;
-
-        const near = (a, b) => a >= (b - borderDistanceInside) && a <= (b + borderDistanceOutside);
-        return near(left, x) || near(x, right) || near(top, y) || near(y, bottom);
+        return x > left && x < right && y > top && y < bottom;
     }
 
     /**
@@ -291,15 +282,22 @@ class CMMNElement {
         if (selected) {
             //do not select element twice
             this.html.find('.cmmn-shape').addClass('cmmn-selected-element');
-            this.resizer.visible = true;
-            this.halo.visible = true;
+            this.__renderBoundary(true);
         } else {
             // Give ourselves default color again.
             this.html.find('.cmmn-shape').removeClass('cmmn-selected-element');
             this.propertiesView.hide();
-            this.resizer.visible = false;
-            this.halo.visible = false;
+            this.__renderBoundary(false);
         }
+    }
+
+    /**
+     * Show or hide the halo and resizer
+     * @param {Boolean} show 
+     */
+    __renderBoundary(show) {
+        this.resizer.visible = show;
+        this.halo.visible = show;
     }
 
     /**

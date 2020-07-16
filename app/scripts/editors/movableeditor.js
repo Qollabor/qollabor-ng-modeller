@@ -28,11 +28,14 @@ class MovableEditor {
 
     /** @param {Boolean} visible */
     set visible(visible) {
+        const previouslyVisible = this._visible;
         this._visible = visible;
         if (visible) {
             this.renderForm();
             this.toFront();
-            this.positionEditor();
+            if (! previouslyVisible) {
+                this.positionEditor();
+            }
         }
         if (this._html) {
             this.html.css('display', visible ? 'block' : 'none');

@@ -1,4 +1,4 @@
-class HumanTaskModelElementDefinition extends XMLElementDefinition {
+class HumanTaskModelElementDefinition extends ReferableElementDefinition {
     /**
      * @param {Element} importNode 
      * @param {HumanTaskModelDefinition} modelDefinition
@@ -6,9 +6,5 @@ class HumanTaskModelElementDefinition extends XMLElementDefinition {
      */
     constructor(importNode, modelDefinition, parent = undefined) {
         super(importNode, modelDefinition, parent);
-        this.id = this.parseAttribute('id');
-        this.name = this.parseAttribute('name');
-        this.description = this.parseAttribute('description');
     }
-
 }

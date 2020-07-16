@@ -142,7 +142,8 @@
         this.paper.on('element:pointerdown', (elementView, e, x, y) => handlePointerDownPaper(elementView, e, x, y));
         this.paper.on('element:pointermove', (elementView, e, x, y) => handlePointerMovePaper(elementView, e, x, y));
         this.paper.on('element:pointerdblclick', (elementView, e, x, y) => elementView.model.xyz_cmmn.propertiesView.show(true));
-        this.paper.on('blank:pointerclick', e => this.clearSelection());
+        this.paper.on('blank:pointerclick', e => this.clearSelection()); // For some reason pointerclick not always works, so also listening to pointerdown on blank.
+        this.paper.on('blank:pointerdown', e => this.clearSelection()); // see e.g. https://stackoverflow.com/questions/35443524/jointjs-why-pointerclick-event-doesnt-work-only-pointerdown-gets-fired
         // When we move over an element with the mouse, an event is raised.
         //  This event is captured to enable elements to register themselves with ShapeBox and RepositoryBrowser
         //  Note: this code relies on elements to always have a xyz_cmmn CMMNElement pointer.
@@ -284,31 +285,36 @@
     }
 
     showHaloAndResizer(e) {
+        // Algorithm for showing halo and resizers when hovering with mouse/pointer over the canvas is as follows:
+        //  1. In drag/drop mode, no changes to current situation, just return;
+        //  2. If an element is selected, likewise. When an element is selected, halo and resizer of that element are shown in fixed modus.
+        //  3. In all other cases:
+        //     - Halo of CasePlan is always visible, unless moving outside of CasePlan; resizer is only shown if CasePlan is selected.
+        //       This makes the image more stable when hovering around with mouse.
+        //     - When moving towards an element (including a 10px surrounding of the element), halo for that element is shown.
+        //     - When moving out of element, wider border around element is used (40px), so that halo doesn't disappear too fast.
+        //     - When moving out of CasePlan, then CasePlan halo is no longer visible (so that print-screens and so do not show halo always)
+
         if (this.editor.ide.dragging) return;
-        // If an element is selected, avoid on/off behavior when the mouse moves. Except if the case plan model is the selected element
-        if (this.selectedElement && !(this.selectedElement instanceof CasePlanModel)) {
+        // If an element is selected, avoid on/off behavior when the mouse moves.
+        if (this.selectedElement) {
             return;
         }
-        const itemUnderMouse = this.getItemUnderMouse(e);
-        this.items.forEach(item => {
-            if (item == itemUnderMouse && item.nearElementBorder(e)) {
-                if (!item.halo.visible) {
-                    // Only render if it is not yet visible
-                    item.halo.visible = true;
-                }
-                if (!item.resizer.visible) {
-                    item.resizer.visible = true;
-                }
-            } else {
-                item.resizer.visible = false;
-                item.halo.visible = false;
-            }
-        });
-    }
 
-    getItemsUnderMouse(e) {
-        const itemsUnderMouse = this.items.filter(item => item.nearElement(e));
-        return itemsUnderMouse;
+        // Determine on which element the cursor is and also which halo/resizer is currently visible
+        const itemUnderMouse = this.getItemUnderMouse(e);
+        const currentlyVisibleHalo = this.items.find(item => item != this.case.casePlanModel && item.halo.visible);
+
+        if (currentlyVisibleHalo && currentlyVisibleHalo.nearElement(e, 40) && !(itemUnderMouse && itemUnderMouse.hasAncestor(currentlyVisibleHalo))) {
+            // Current halo is still visible, and we're still in the wide border around it; 
+            //  Also current item under mouse is NOT a child of current halo ...
+            // Then: do nothing; just keep current halo visible
+        } else {
+            // Hide all halos (perhaps it is sufficient to just hide current one), and show the new one (if any)
+            this.items.forEach(item => item.__renderBoundary(false));
+            if (itemUnderMouse) itemUnderMouse.__renderBoundary(true);
+            else this.casePlanModel.hideHalo();          
+        }
     }
 
     /**
@@ -319,7 +325,7 @@
      * @returns {CMMNElement}
      */
     getItemUnderMouse(e, self = undefined) {
-        const itemsUnderMouse = this.getItemsUnderMouse(e);
+        const itemsUnderMouse = this.items.filter(item => item.nearElement(e, 10));
         const parentsUnderMouse = itemsUnderMouse.filter(item => item.parent instanceof CMMNElement).map(item => item.parent);
 
         // If self is passed, then the collections need to filter it out.

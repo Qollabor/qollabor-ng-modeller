@@ -8,9 +8,6 @@
         super(parent, definition);
         //define default color
         this.__resizable = false;
-
-        // For some unclear reason we need to have more room to the right for event listeners (the svg element seems to be off-edged)
-        super.areaDistance = 30;
     }
 
     get markup() {

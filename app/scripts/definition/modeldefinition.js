@@ -1,39 +1,19 @@
 /**
  * A ModelDefinition is the base class of a model, such as CaseDefinition, ProcessDefinition, HumanTaskDefinition, CaseFileDefinitionDefinition 
  */
-class ModelDefinition extends XMLElementDefinition {
+class ModelDefinition extends ReferableElementDefinition {
     /**
      * Imports an XML element and parses it into a in-memory definition structure.
      * @param {Element} importNode 
      * @param {DefinitionParser} definitionDocument 
      */
     constructor(importNode, definitionDocument) {
-        super(importNode, undefined);
+        super(importNode, undefined, undefined);
         this.definitionDocument = definitionDocument;
         this.typeCounters = new TypeCounter(this);
         /** @type {Array<XMLElementDefinition>} */
         this.elements = [];
         this.elements.push(this);
-
-        this.id = this.parseAttribute('id');
-        this.name = this.parseAttribute('name');
-        this.description = this.parseAttribute('description');
-    }
-
-    get name() {
-        return this.__name;
-    }
-
-    set name(name) {
-        this.__name = name;
-    }
-
-    get description() {
-        return this.__description;
-    }
-
-    set description(description) {
-        this.__description = description;
     }
 
     /**
@@ -50,6 +30,24 @@ class ModelDefinition extends XMLElementDefinition {
      */
     get outputParameters() {
         throw new Error('This method must be implemented in ' + this.constructor.name);
+    }
+
+    /**
+     * 
+     * @param {String} identifier 
+     * @returns {ImplementationParameterDefinition}
+     */
+    findInputParameter(identifier) {
+        return this.inputParameters.find(p => p.hasIdentifier(identifier));
+    }
+
+    /**
+     * 
+     * @param {String} identifier 
+     * @returns {ImplementationParameterDefinition}
+     */
+    findOutputParameter(identifier) {
+        return this.outputParameters.find(p => p.hasIdentifier(identifier));
     }
 
     /**

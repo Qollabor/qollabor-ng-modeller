@@ -24,6 +24,12 @@
   height: 24px;
 }
 
+.halobar.top-right {
+  top: -24px;
+  height: 24px;
+  right: -12px;
+}
+
 .halobar.left {
   top: -10px;
   left: -24px;

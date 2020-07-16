@@ -40,6 +40,7 @@ class XMLElementDefinition {
      * 
      * @param {String} name 
      * @param {Number} defaultValue 
+     * @returns {Number}
      */
     parseNumberAttribute(name, defaultValue = undefined) {
         const value = this.parseAttribute(name, defaultValue);
@@ -71,6 +72,7 @@ class XMLElementDefinition {
      * Searches for the first child element with the given tag name, and, if found, returns it's text content as string.
      * @param {String} childName 
      * @param {String} defaultValue
+     * @returns {String}
      */
     parseElementText(childName, defaultValue) {
         const childElement = XML.getChildByTagName(this.importNode, childName);
@@ -84,6 +86,7 @@ class XMLElementDefinition {
      * Searches for the first child element with the given tag name, and, if found, instantiates it with the constructor and returns it.
      * @param {String} childName 
      * @param {Function} constructor 
+     * @returns {*}
      */
     parseElement(childName, constructor) {
         return this.instantiateChild(XML.getChildByTagName(this.importNode, childName), constructor);
@@ -94,6 +97,7 @@ class XMLElementDefinition {
      * @param {String} childName 
      * @param {Function} constructor 
      * @param {*} collection 
+     * @returns {Array<*>}
      */
     parseElements(childName, constructor, collection = [], node = this.importNode) {
         XML.getChildrenByTagName(node, childName).forEach(childNode => this.instantiateChild(childNode, constructor, collection));
@@ -105,6 +109,7 @@ class XMLElementDefinition {
      * @param {String} childName The name of the xml element inside the extensionElements
      * @param {Function} constructor 
      * @param {Function} extensionType
+     * @returns {*}
      */
     parseExtensionElement(constructor, childName = constructor.TAG, extensionType = CafienneExtension) {
         const tagname = CafienneExtension.TAG;

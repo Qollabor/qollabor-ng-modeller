@@ -35,23 +35,21 @@ class CasePlanModel extends Stage {
         return new CasePlanHalo(this);
     }
 
-    nearElementBorder(e) {
-        // We are overriding "nearElementBorder", in order to have a broader top border match on the inside for the caseplan model
-        // The reason is that the case plan halo is then shown earlier. Just for convenience.
-        const borderDistanceOutside = 3;
-        const borderDistanceInside = 20;
+    /**
+     * Show or hide the halo and resizer
+     * @param {Boolean} show 
+     */
+    __renderBoundary(show) {
+        if (this.case.selectedElement === this) {
+            this.resizer.visible = true;
+        } else {
+            this.resizer.visible = false;
+        }
+        this.halo.visible = true;
+    }
 
-        const x = e.clientX;
-        const y = e.clientY;
-
-        const offset = this.html.offset();
-        const left = offset.left;
-        const right = offset.left + this.shape.width;
-        const top = offset.top;
-        const bottom = offset.top + this.shape.height;
-
-        const near = (a, b) => a >= (b - borderDistanceInside) && a <= (b + borderDistanceOutside);
-        return near(left, x) || near(x, right) || near(top, y) || near(top+24, y) || near(y, bottom);
+    hideHalo() {
+        this.halo.visible = false;
     }
 
     get __planningTablePosition() {
