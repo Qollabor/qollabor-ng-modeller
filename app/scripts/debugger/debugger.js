@@ -64,6 +64,27 @@ class Debugger extends StandardForm {
         this.codeMirrorCaseXML = CodeMirror(codeMirrorHTML, codeMirrorXMLConfiguration);
 
         this.keyDownHandler = e => this.handleKeyDown(e);
+
+        // Scan for pasted text. It can upload and re-engineer a deployed model into a set of files
+        this.html.find('.event-content').on('paste', e => this.handlePasteText(e));
+    }
+
+    /**
+     * 
+     * @param {JQuery.Event} e 
+     */
+    handlePasteText(e) {
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        const pastedText = e.originalEvent.clipboardData.getData('text/plain');
+        try {
+            const potentialEvents = JSON.parse(pastedText);
+            this.events = potentialEvents;
+        } catch (error) {
+            console.log("Cannot paste text events")
+            return false;
+        }
     }
 
     /**
