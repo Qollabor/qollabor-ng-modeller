@@ -8,6 +8,8 @@
 class Debugger extends StandardForm {
     constructor(cs) {
         super(cs, 'Debugger', 'debug-form');
+        this.eventTypeFilter = '';
+        this.eventNameFilter = '';
     }
 
     renderData() {
@@ -64,7 +66,64 @@ class Debugger extends StandardForm {
         this.codeMirrorCaseXML = CodeMirror(codeMirrorHTML, codeMirrorXMLConfiguration);
 
         this.keyDownHandler = e => this.handleKeyDown(e);
+
+        // Scan for pasted text. It can upload and re-engineer a deployed model into a set of files
+        this.html.find('.event-content').on('paste', e => this.handlePasteText(e));
     }
+
+    /**
+     * 
+     * @param {JQuery.Event} e 
+     */
+    handlePasteText(e) {
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        const pastedText = e.originalEvent.clipboardData.getData('text/plain');
+        try {
+            const potentialEvents = JSON.parse(pastedText);
+            this.events = potentialEvents;
+        } catch (error) {
+            console.log("Cannot paste text events")
+            return false;
+        }
+    }
+
+    /**
+     * 
+     * @param {JQuery.ChangeEvent} e 
+     */
+    searchWith(e) {
+        const searchBox = $(e.currentTarget);
+        const searchText = searchBox.val();
+        const filterName = searchBox.attr('filter');
+        this[filterName] = searchText;
+        this.renderEvents();
+    }
+
+    /**
+     * Determines recursively whether each character of text1 is available in text2
+     * @param {String} searchFor 
+     * @param {String} searchIn 
+     */
+    hasSearchText(searchFor, searchIn) {
+        if (!searchFor) { // Nothing left to search for, so found a hit
+            return true;
+        }
+        if (!searchIn) { // Nothing left to search in, so did not find it.
+            return false;
+        }
+        searchFor = searchFor.toLowerCase();
+        searchIn = searchIn.toLowerCase();
+        const index = searchIn.indexOf(searchFor.charAt(0));
+        if (index < 0) { // Did not find any results, so returning false.
+            return false;
+        }
+        // Continue the search in the remaining parts of text2
+        const remainingText2 = searchIn.substring(index + 1, searchIn.length);
+        const remainingText1 = searchFor.substring(1);
+        return this.hasSearchText(remainingText1, remainingText2);
+    }    
 
     /**
      * @returns {Boolean}
@@ -227,7 +286,6 @@ class Debugger extends StandardForm {
         const startMsg = this.events.length > 0 ? '' : 'If there are no events, check case instance id and context variables';
         this._setContent('', startMsg);
         Util.clearHTML(this.eventTable);
-        let i = 0;
 
         const getBackgroundColor = event => {
             if (event.type !== 'PlanItemTransitioned') return '';
@@ -236,26 +294,53 @@ class Debugger extends StandardForm {
             if (event.content.currentState == 'Terminated') return 'color: darkblue; font-weight: bold';
         }
 
-        const newRows = this.events.map(event => {
-            const timestamp = event.type.indexOf('Modified') >=0 ? event.content.lastModified : '';
+        const eventTypes = this.eventTypeFilter.split(' ');
+        const eventNames = this.eventNameFilter.split(' ');
+
+        const applyFilter = event => {
+            const eventType = event.type;
+            const eventName = this.getEventName(event);
+            const hasOneOfEventTypes = eventTypes[0] == '' || eventTypes.find(type => this.hasSearchText(type, eventType));
+            const hasOneOfEventNames = eventNames[0] == '' || eventNames.find(name => this.hasSearchText(name, eventName));
+            return hasOneOfEventTypes && hasOneOfEventNames;
+        }
+
+        let currentTimestamp = '';
+        let numTransactions = 0;
+
+        const eventSelection = this.events.filter(applyFilter);
+        const newRows = eventSelection.map(event => {
+            const timestamp = event.content.modelEvent.timestamp ? event.content.modelEvent.timestamp : event.type.indexOf('Modified') >=0 ? event.content.lastModified : '';
+            let timestampString = timestamp;
+            if (! currentTimestamp) { // bootstrap
+                currentTimestamp = timestamp;
+                numTransactions = 1;
+                timestampString = `<strong>${timestamp}</strong>`;
+            }
+            if (currentTimestamp != timestamp) {
+                currentTimestamp = timestamp;
+                numTransactions++;
+                timestampString = `<strong>${timestamp}</strong>`;
+            }
             const bgc = getBackgroundColor(event);
-            return `<tr event-nr="${i++}">
+            return `<tr event-nr="${event.nr - 1}">
                 <td>${event.nr}</td>
                 <td style="${bgc}">${event.type}</td>
                 <td>${this.getEventName(event)}</td>
-                <td>${timestamp}</td>
+                <td>${timestampString}</td>
             </tr>\n`
         }).reverse().join('');
         this.eventTable.html(`<table>
             <tr>
-                <td><strong>Nr</strong></td>
-                <td><strong>Type</strong></td>
-                <td><strong>Name</strong></td>
-                <td><strong>Time</strong></td>
+                <td><strong>Nr</strong><br/><div>count: ${eventSelection.length}</div></td>
+                <td><strong>Type</strong><br/><input type="text"  filter="eventTypeFilter" value="${this.eventTypeFilter}" /></td>
+                <td><strong>Name</strong><br/><input type="text" filter="eventNameFilter" value="${this.eventNameFilter}" /></td>
+                <td><strong>Time</strong><div>batches: ${numTransactions}</div></td>
             </tr>
             ${newRows}
         </table>`);
         this.eventTable.find('tr').on('click', e => this.selectEvent(e.currentTarget));
+        this.eventTable.find('input[filter]').on('change', e => this.searchWith(e));
 
         if (this.eventTable.width() < this.eventTable.find('table').width()) {
             this.splitter.repositionSplitter(this.eventTable.find('table').width() + 20);
