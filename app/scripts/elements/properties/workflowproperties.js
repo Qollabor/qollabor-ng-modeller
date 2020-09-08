@@ -70,22 +70,22 @@ class WorkflowProperties extends TaskProperties {
             }
             this.done();
         });
-        html.find('textarea').on('change', e => this.change(assignmentExpression, 'body', e.target.value));
+        html.find('textarea').on('change', e => this.change(this.humanTaskDefinition.assignment, 'body', e.target.value));
         html.find('.zoombt').on('click', e => {
             this.cmmnElement.case.cfiEditor.open(cfi => {
-                this.change(assignmentExpression, 'contextRef', cfi.id);
+                this.change(this.humanTaskDefinition.assignment, 'contextRef', cfi.id);
                 html.find('.valuelabel').html(cfi.name);
             });
         });
         html.find('.removeReferenceButton').on('click', e => {
-            this.change(assignmentExpression, 'contextRef', undefined);
+            this.change(this.humanTaskDefinition.assignment, 'contextRef', undefined);
             html.find('.valuelabel').html('');
         });
         html.find('.zoomRow').on('pointerover', e => {
             e.stopPropagation();
             this.cmmnElement.case.cfiEditor.dropHandler = cfi => {
                 const newContextRef = cfi.id;
-                this.change(assignmentExpression, 'contextRef', newContextRef);
+                this.change(this.humanTaskDefinition.assignment, 'contextRef', newContextRef);
                 const name = cfi ? cfi.name : '';
                 html.find('.valuelabel').html(name);
             }
@@ -137,22 +137,22 @@ class WorkflowProperties extends TaskProperties {
             }
             this.done();
         });
-        html.find('textarea').on('change', e => this.change(dueDateExpression, 'body', e.target.value));
+        html.find('textarea').on('change', e => this.change(this.humanTaskDefinition.dueDate, 'body', e.target.value));
         html.find('.zoombt').on('click', e => {
             this.cmmnElement.case.cfiEditor.open(cfi => {
-                this.change(dueDateExpression, 'contextRef', cfi.id);
+                this.change(this.humanTaskDefinition.dueDate, 'contextRef', cfi.id);
                 html.find('.valuelabel').html(cfi.name);
             });
         });
         html.find('.removeReferenceButton').on('click', e => {
-            this.change(dueDateExpression, 'contextRef', undefined);
+            this.change(this.humanTaskDefinition.dueDate, 'contextRef', undefined);
             html.find('.valuelabel').html('');
         });
         html.find('.zoomRow').on('pointerover', e => {
             e.stopPropagation();
             this.cmmnElement.case.cfiEditor.dropHandler = cfi => {
                 const newContextRef = cfi.id;
-                this.change(dueDateExpression, 'contextRef', newContextRef);
+                this.change(this.humanTaskDefinition.dueDate, 'contextRef', newContextRef);
                 const name = cfi ? cfi.name : '';
                 html.find('.valuelabel').html(name);
             }
