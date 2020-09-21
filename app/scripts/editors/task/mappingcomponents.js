@@ -16,7 +16,6 @@ class InputMappingDeleter {
             // Then, figure out if the task parameter is used in other mappings; if not, then delete it.
             row.mapping.source = null;
             row.mapping.body = null;
-            row.mapping.transient = true; // Make it so that it will not be sent to the server, unless it is really changed
 
             // If the task parameter is not used in other mappings, we can safely delete it too.
             if (! row.taskDefinition.inputMappings.find(mapping => mapping.sourceRef == taskInputParameter.id)) {
@@ -158,6 +157,7 @@ class MappingExpression {
         column.html(`<div><textarea>${row.mapping.body}</textarea></div>`).find('textarea').on('change', e => {
             row.mapping.body = e.currentTarget.value;
             row.case.editor.completeUserAction();
+            row.editor.refresh();
         });
     }
 }
@@ -203,6 +203,7 @@ class OutputParameterSelector {
             const newParameter = implementationParameters.find(p => p.id == parameterId);
             row.mapping.implementationParameter = newParameter;
             row.case.editor.completeUserAction();
+            row.editor.refresh();
         });
     }
 }

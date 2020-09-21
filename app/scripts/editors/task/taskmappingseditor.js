@@ -137,7 +137,12 @@ class OutputMappingControl extends MappingControl {
     }
 
     get data() {
-        return this.taskDefinition.outputMappings;
+        // Sort the output mappings such that the empty mapping (that is the one without a sourceRef) is shown last
+        return this.taskDefinition.outputMappings.sort((m1, m2) => {
+            if (m1.sourceRef && m2.sourceRef) return 0;
+            if (m1.sourceRef) return -1;
+            return 1;
+        });
     }
 
     get columns() {
@@ -158,7 +163,7 @@ class OutputMappingControl extends MappingControl {
      */
     addRenderer(mapping = undefined) {
         if (mapping == undefined) {
-            if (this.taskDefinition.outputMappings.find(m => m.transient)) {
+            if (this.taskDefinition.outputMappings.find(m => !m.sourceRef && !m.targetRef && !m.body)) {
                 // console.log("Not adding last renderer ...")
                 return;
             }
@@ -200,9 +205,7 @@ class MappingRow extends RowRenderer {
      * @returns {ParameterMappingDefinition}
      */
     createElement() {
-        const mapping = this.taskDefinition.createEmptyMapping();
-        mapping.transient = true; // Then not to save.
-        return mapping;
+        return this.taskDefinition.createMapping();
     }
 
     /**

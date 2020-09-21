@@ -48,7 +48,7 @@ class ParameterDefinition extends CMMNElementDefinition {
         // Parameter is transient if it has no bindingRef and no transformation, and also is not being used in a non-transient parameter mapping
         const task = this.parent;
         if (task instanceof TaskDefinition) {
-            if (task.mappings.find(mapping => (mapping.sourceRef == this.id || mapping.targetRef == this.id) && !mapping.transient)) {
+            if (task.mappings.find(mapping => (mapping.sourceRef == this.id || mapping.targetRef == this.id) && !mapping.isEmpty())) {
                 // console.log("Parameter is used in a non-transient mapping ... hence not transient.")
                 return false;
             }
@@ -72,6 +72,6 @@ class ParameterDefinition extends CMMNElementDefinition {
 class ImplementationParameterDefinition extends ReferableElementDefinition {
     constructor(importNode, modelDefinition, parent) {
         super(importNode, modelDefinition, parent);
-        this.isNew = false;
+        this.isNew = false; // This property is used in the HumanTaskEditor and ProcessTaskEditor
     }
 }

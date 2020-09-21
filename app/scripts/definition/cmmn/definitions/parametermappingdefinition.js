@@ -17,15 +17,6 @@ class ParameterMappingDefinition extends UnnamedCMMNElementDefinition {
         return '';
     }
 
-    get transient() {
-        return this._isTransient;
-    }
-
-    /** @param {Boolean} transient */
-    set transient(transient) {
-        this._isTransient = transient;
-    }
-
     /**
      * Creates a new input or output parameter (depending on the type of mapping)
      * @param {String} name 
@@ -97,7 +88,6 @@ class ParameterMappingDefinition extends UnnamedCMMNElementDefinition {
 
     set source(parameter) {
         this.sourceRef = parameter ? parameter.id : undefined;
-        this.transient = false;
     }
 
     /**
@@ -110,7 +100,28 @@ class ParameterMappingDefinition extends UnnamedCMMNElementDefinition {
 
     set target(parameter) {
         this.targetRef = parameter ? parameter.id : undefined;
-        this.transient = false;
+    }
+
+    /**
+     * Returns true if there are no fields set in the mapping (i.e., it was a generated one)
+     */
+    isEmpty() {
+        if (this.targetRef) { // Perhaps an empty input mapping
+            // Check whether it is a generated mapping, by determining whether a binding is set
+            if (this.sourceRef && this.source && this.source == this.taskParameter && !this.taskParameter.bindingRef) {
+                if (! this.body) {
+                    return true;
+                }
+            }
+            return ! this.sourceRef && ! this.body;
+        } else if (this.sourceRef) { // Perhaps and empty output mapping 
+            return ! this.targetRef && ! this.body;
+        } else if (this.body) { // Probably empty generated output mapping
+            return false;
+        } else {
+            // That is really weird, how could we end up here
+            return true;
+        }
     }
 
     get isInputMapping() {
@@ -171,7 +182,6 @@ class ParameterMappingDefinition extends UnnamedCMMNElementDefinition {
                 this.transformation = this.createDefinition(ExpressionDefinition);
             }
             this.transformation.body = expression;
-            this.transient = false;
         } else {
             if (this.transformation) {
                 this.transformation.removeDefinition();
@@ -180,8 +190,8 @@ class ParameterMappingDefinition extends UnnamedCMMNElementDefinition {
     }
 
     createExportNode(parentNode) {
-        if (this.transient) {
-            // console.log("We are a transient mapping in task "+this.parent.name);
+        if (this.isEmpty()) {
+            // console.log("Not persisting empty mapping in task "+this.parent.name);
             return;
         }
         super.createExportNode(parentNode, 'parameterMapping', 'sourceRef', 'targetRef', 'transformation');
