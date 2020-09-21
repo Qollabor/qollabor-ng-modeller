@@ -85,24 +85,16 @@ class InputParameterNameChanger {
                         //  Note: changing the name of an existing parameter is somewhat complex since same parameter can be used in multiple mappings.
                         //   Approach:
                         //   1. Check whether another parameter with the new name already exists. If so, associate only this mapping to that new parameter
-                        //   2. Else, check whether there are multiple mappings using this parameter;
-                        //      a. if there are more mappings for this parameter, then only change the parameter name if this mapping is the first one;
-                        //      b. if this is a second or third mapping, then create a new parameter with the new name and only associate this mapping with it.
+                        //   2. Else, create a new parameter with the new name and only associate this mapping with it.
                         const existingParameter = row.taskDefinition.inputs.find(p => p.name == newParameterName);
                         if (existingParameter) {
                             // console.log("Associating mapping with a new source")
                             row.mapping.source = existingParameter;
                         } else {
-                            const allMappingsWithThisParameter = row.taskDefinition.inputMappings.find(mapping => mapping.sourceRef == currentParameter.id);
-                            if (row.mapping == allMappingsWithThisParameter[0]) {
-                                // It is the first mapping using this parameter, let's change the name of the parameter
-                                // console.log("Changing parameter name across")
-                                currentParameter.name = newParameterName;
-                            } else {
-                                // Create a new parameter altogether
-                                // console.log("Creating a new parameter because this is not the first mapping in the list for which parameter name changes")
-                                row.mapping.source = row.control.taskDefinition.getInputParameterWithName(newParameterName);
-                            }
+                            // Create a new parameter
+                            row.mapping.source = row.control.taskDefinition.getInputParameterWithName(newParameterName);
+                            // Keep the link with the existing parameter's bindingRef
+                            row.mapping.taskParameter.bindingRef = currentParameter.bindingRef;
                         }
                     }
                 }
