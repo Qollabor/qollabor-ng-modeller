@@ -18,7 +18,7 @@ class InputMappingDeleter {
             row.mapping.body = null;
 
             // If the task parameter is not used in other mappings, we can safely delete it too.
-            if (! row.taskDefinition.inputMappings.find(mapping => mapping.sourceRef == taskInputParameter.id)) {
+            if (taskInputParameter && !row.taskDefinition.inputMappings.find(mapping => mapping.sourceRef == taskInputParameter.id)) {
                 taskInputParameter.removeDefinition();
             }
 
