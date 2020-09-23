@@ -47,6 +47,10 @@ class ReferableElementDefinition extends XMLElementDefinition {
         return this.id === identifier || this.name === identifier;
     }
 
+    getIdentifier() {
+        return this.id ? this.id : this.name ? this.name : '';
+    }
+
     createExportNode(parentNode, tagName, ...propertyNames) {
         super.createExportNode(parentNode, tagName, 'id', 'name', 'description', propertyNames);
     }

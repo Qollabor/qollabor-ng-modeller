@@ -106,7 +106,7 @@ class InputMappingControl extends MappingControl {
         return [
             new ColumnRenderer('', '25px', 'Remove mapping', InputMappingDeleter),
             new ColumnRenderer('Case File Item', '150px', 'Case File Item that binds to the input parameter of the task', MappingCFI),
-            new ColumnRenderer('Input Task Parameter', '100px', 'Name of the input parameter of the task', InputParameterNameChanger),
+            // new ColumnRenderer('Input Task Parameter', '100px', 'Name of the input parameter of the task', InputParameterNameChanger),
             new ColumnRenderer('Transformation', '', 'Expression executed when the task becomes active\nTakes the value from the task parameter, transforms it and puts it in the model input parameter', MappingExpression),
             new ColumnRenderer('Model Input Parameter', '160px', 'Input parameter for the underlying model', InputParameterSelector),
             new ColumnRenderer('Order', '38px', 'Parameter assignment order', MappingOrderChanger)
@@ -150,7 +150,7 @@ class OutputMappingControl extends MappingControl {
             new ColumnRenderer('', '25px', 'Delete mapping', OutputMappingDeleter),
             new ColumnRenderer('Model Output Parameter', '160px', 'Output parameter of the underlying model', OutputParameterSelector),
             new ColumnRenderer('Transformation', '', 'Expression executed when the task completes or fails\nTakes the value from the output parameter, transforms it and puts it in the task output parameter\nand then binds that to the case file item', MappingExpression),
-            new ColumnRenderer('Output Task Parameter', '100px', 'Name of the output parameter of this task', OutputParameterNameChanger),
+            // new ColumnRenderer('Output Task Parameter', '100px', 'Name of the output parameter of this task', OutputParameterNameChanger),
             new ColumnRenderer('Case File Item', '150px', 'Case File Item to which the task output parameter is bound', MappingCFI),
             new ColumnRenderer('R', '20px', 'Required - Indicates that this parameter must have a value upon completing the task', RequiredChanger),
             new ColumnRenderer('Order', '38px', 'Parameter assignment order', MappingOrderChanger)

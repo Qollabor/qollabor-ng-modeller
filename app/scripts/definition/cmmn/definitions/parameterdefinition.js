@@ -43,24 +43,16 @@ class ParameterDefinition extends CMMNElementDefinition {
         return this.bindingRefinement;
     }
 
-    /** @returns {Boolean} */
-    get transient() {
-        // Parameter is transient if it has no bindingRef and no transformation, and also is not being used in a non-transient parameter mapping
-        const task = this.parent;
-        if (task instanceof TaskDefinition) {
-            if (task.mappings.find(mapping => (mapping.sourceRef == this.id || mapping.targetRef == this.id) && !mapping.isEmpty())) {
-                // console.log("Parameter is used in a non-transient mapping ... hence not transient.")
-                return false;
+    createExportNode(parentNode, tagName) {
+        // Task parameters will not be saved, unless they are used in a non-empty mapping
+        if (this.parent instanceof TaskDefinition) {
+            const nonEmptyMappings = this.parent.mappings.filter(mapping => (mapping.sourceRef == this.id || mapping.targetRef == this.id) && !mapping.isEmpty());
+            if (nonEmptyMappings.length == 0) {
+                // console.log("Parameter "+this.name+" in "+this.parent.name+" is not used in any mapping");
+                return;
             }
         }
-        return !this.bindingRefinement && !this.bindingRef;
-    }
 
-    createExportNode(parentNode, tagName) {
-        if (this.transient) {
-            // console.log("Parameter "+this.name+" in "+this.parent.name+" is transient");
-            return;
-        }
         // Parameters have different tagnames depending on their type, so this must be passed.
         super.createExportNode(parentNode, tagName, 'bindingRef', 'bindingRefinement');
         if (this.required) { // Required is a customization to the spec, put in an extension element

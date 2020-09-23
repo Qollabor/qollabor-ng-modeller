@@ -57,57 +57,7 @@ class InputParameterNameChanger {
      * @param {JQuery<HTMLTableCellElement>} column 
      */
     constructor(row, column) {
-        const html = column.html(`<input class="mappingParameterName" type="text" value="${row.taskParameterName}" />`);
-        //add an autocomplete input for the parameters
-        //autocomplete content determined by the available task parameters
-        // Make this an autoComplete field with the task input parameters as source
-        html.find('input').autocomplete({
-            source: row.taskDefinition.inputs.map(parameter => parameter.name),
-            change: e => {
-                const currentParameter = row.mapping.taskParameter;
-                const newParameterName = e.currentTarget.value;
-                // Get the name of the task parameter entered
-                // Check if this name is available in the task parameters treetable
-                // - if not: create a new task parameter and set task parameter node in mapping
-                // - if so: set task parameter node in mapping
-                if (newParameterName == '') {
-                    // Remove the task parameter altogether;
-                    row.mapping.source.removeDefinition();
-                } else {
-                    // Determine if the parameter already exists. If so, just change the name. Otherwise, create a new one.
-                    if (!currentParameter) {
-                        // Create a new parameter altogether
-                        row.mapping.source = row.control.taskDefinition.getInputParameterWithName(newParameterName);
-                    } else {
-                        // If the parameter already exists, we'll check if we need to change the name or bind to another existing parameter
-                        //  with that name.
-                        //  Note: changing the name of an existing parameter is somewhat complex since same parameter can be used in multiple mappings.
-                        //   Approach:
-                        //   1. Check whether another parameter with the new name already exists. If so, associate only this mapping to that new parameter
-                        //   2. Else, create a new parameter with the new name and only associate this mapping with it.
-                        const existingParameter = row.taskDefinition.inputs.find(p => p.name == newParameterName);
-                        if (existingParameter) {
-                            // console.log("Associating mapping with a new source")
-                            row.mapping.source = existingParameter;
-                        } else {
-                            // Create a new parameter
-                            row.mapping.source = row.control.taskDefinition.getInputParameterWithName(newParameterName);
-                            // Keep the link with the existing parameter's bindingRef
-                            row.mapping.taskParameter.bindingRef = currentParameter.bindingRef;
-                        }
-                    }
-                }
-
-                // Now check whether the old parameter is still in use in any of the mappings; if not, remove it.
-                if (currentParameter && !row.taskDefinition.inputMappings.find(mapping => mapping.sourceRef == currentParameter.id)) {
-                    // console.log("Parameter "+currentParameter.name+" is no longer used, removign it.");
-                    currentParameter.removeDefinition();
-                }
-
-                row.control.refresh();
-                row.case.editor.completeUserAction();
-            }
-        });
+        const html = column.html(`<input class="mappingParameterName" type="text" value="${row.taskParameterName}" readOnly />`);
     }
 }
 class OutputParameterNameChanger {
@@ -117,32 +67,7 @@ class OutputParameterNameChanger {
      * @param {JQuery<HTMLTableCellElement>} column 
      */
     constructor(row, column) {
-        column.html(`<input class="mappingParameterName" type="text" value="${row.taskParameterName}" />`).on('change', e => {
-            const newOutputParameterName = e.target.value;
-            // OUTPUT task parameter must be unique. Check output task parameters if exists.
-            // If not create the task parameter and add to task parameters                
-            if (newOutputParameterName == '') {
-                // Remove the current task output parameter
-                delete row.mapping.targetRef;
-            } else {
-                if (row.editor.taskDefinition.outputs.find(p => p.name == newOutputParameterName)) {
-                    //taskparameter with name==value exists, must be unique
-                    ide.danger('The output task parameter must be unique. A parameter name can occur only once.');
-                    e.target.select();
-                    return false;
-                } else {
-                    if (!row.mapping.target) {
-                        row.mapping.targetRef = row.editor.taskDefinition.getOutputParameterWithName(newOutputParameterName).id;
-                    }
-                    row.mapping.target.name = newOutputParameterName;
-                    // const newParameter = this.editor.taskDefinition.getOutputParameterWithName(value);
-                    // this.mapping.targetRef = newParameter.id;
-                }
-            }
-            row.editor.refresh();
-            row.case.editor.completeUserAction();
-        });
-
+        column.html(`<input class="mappingParameterName" type="text" value="${row.taskParameterName}" readonly />`)
     }
 }
 
@@ -253,7 +178,6 @@ class MappingCFI {
      * @param {JQuery<HTMLTableCellElement>} column 
      */
     constructor(row, column) {
-
         const parameter = row.mapping.taskParameter;
 
         const currentExpression = parameter ? parameter.bindingRefinementExpression : '';
@@ -289,7 +213,7 @@ class MappingCFI {
      */
     removeBindingRef(row) {
         if (row.mapping.taskParameter) {
-            row.mapping.taskParameter.bindingRef = undefined;
+            row.mapping.updateBindingRef(undefined);
             row.control.refresh(); // This will also refresh the task parameters editor, and hence this zoom field
             //update the column UsedIn in the case file items treetable
             row.control.task.case.cfiEditor.showUsedIn();
@@ -304,12 +228,7 @@ class MappingCFI {
      * @param {MappingRow} row
      */
     changeBindingRef(newBinding, row) {
-        if (!row.mapping.taskParameter) {
-            const newParameter = row.mapping.createTaskParameter(newBinding.name);
-            newParameter.bindingRef = newBinding.id;
-        } else {
-            row.mapping.taskParameter.bindingRef = newBinding.id;
-        }
+        row.mapping.updateBindingRef(newBinding);
         row.control.refresh(); // This will also refresh the task parameters editor, and hence this zoom field
         //update the column UsedIn in the case file items treetable
         row.control.task.case.cfiEditor.showUsedIn();
