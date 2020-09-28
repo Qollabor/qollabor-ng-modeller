@@ -16,8 +16,8 @@ class XMLModelEditor extends ModelEditor {
      * adds the html of the entire page
      */
     generateHTML() {
-        const html = $(
-            `<div class="basicbox model-source-tabs">
+        const html = $(`
+            <div class="basicbox model-source-tabs">
                 <ul>
                     <li><a href="#modelEditor">Editor</a></li>
                     <li><a href="#sourceEditor">Source</a></li>
@@ -43,7 +43,8 @@ class XMLModelEditor extends ModelEditor {
                     </div>
                 </div>
                 <div class="xml-source-editor" id="sourceEditor"></div>
-            </div>`);
+            </div>
+        `);
 
         this.htmlContainer.append(html);
 
@@ -74,7 +75,7 @@ class XMLModelEditor extends ModelEditor {
             lineNumbers: true
         };
         //add code mirror to 1st codeField
-        this.freeContentEditor = CodeMirror(this.html.find('.xml-model-editor .model-content-editor>div')[0], codeMirrorConfiguration);
+        this.freeContentEditor = CodeMirror(this.html.find('.xml-model-editor .model-content-editor>div')[0], codeMirrorConfiguration);   
 
         /*Events for saving and keeping track of changes in the task model editor
         The model should only be saved when there is a change and the codemirror is blurred.
@@ -91,7 +92,9 @@ class XMLModelEditor extends ModelEditor {
                 this._validateAndSave();
             }
         });
-        this.freeContentEditor.on('change', () => this._enableAutoSave());
+        this.freeContentEditor.on('change', () => {
+            this._enableAutoSave()
+        });
 
         //add the source part
         this.viewSourceEditor = new ModelSourceEditor(this.html.find('.model-source-tabs .xml-source-editor'), this);

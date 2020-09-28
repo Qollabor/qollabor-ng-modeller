@@ -11,12 +11,16 @@ class HumantaskModelEditor extends XMLModelEditor {
     constructor(ide, fileName, modelName, modelType) {
         super(ide, fileName, modelName, modelType);
 
-        this.html[0].id = "divHumanTaskEditor";
-
-        this._taskModelNode = null;
-
         //set the label of the Task Model (free data area)
         this.html.find('.model-source-tabs .model-content-editor label').html('Task Model (JSON)');
+        //Add the div for model content viewer
+        this.html.find('.model-source-tabs').append(`
+            <div class="model-content-viewer" style="height:100%;width:45%;float:right;position:relative;border-left:1px solid black">
+                <div class="task-preview" style="height:100%;overflow:auto;background-color:#f5f5f5"></div>
+            </div>
+        `);
+        this.contentViewer = this.html.find('.model-content-viewer');
+        this.taskPreview = this.html.find('.task-preview');
     }
 
     getModelConstructor() {
@@ -48,6 +52,35 @@ class HumantaskModelEditor extends XMLModelEditor {
 
         this._save();
     }
+
+    _enableAutoSave() {
+        super._enableAutoSave();
+        this.renderPreview();
+    }
+
+    render() {
+        super.render();
+        this.renderPreview();
+    }
+
+    renderPreview() {
+        const formData = this.freeContentEditor.getValue();
+
+        const parseResult = Util.parseJSON(formData);
+        if (parseResult.object) {
+            const jsonForm = parseResult.object;
+            jsonForm.options = {
+                focus: false
+            }
+            // Clear current content
+            this.taskPreview.html('');
+            // Render the task view
+            this.taskPreview.alpaca(jsonForm);
+        } else {
+            this.taskPreview.html(parseResult.description);
+        }
+    }
+
 
     /**
      * Create a new HumanTask model with given name and description 

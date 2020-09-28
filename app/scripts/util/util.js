@@ -95,4 +95,38 @@
             return Util.isSubClassOf(superClass, Object.getPrototypeOf(subClass));
         }
     }
+
+    /**
+     * Parse (any) content, but typically a string into a JSON structure.
+     * @returns {ParseResult}
+     * @param {*} source 
+     */
+    static parseJSON(source) {
+        return new ParseResult(source);
+    }
+}
+
+class ParseResult {
+    constructor(source) {
+        this.source = source;
+    }
+
+    get object() {
+        try {
+            return JSON.parse(this.source);
+        } catch (error) {
+            const lines = this.source.split('\n');
+            const message = error.message;
+            const brokenMessage = message.split('at position');
+            const position = Number.parseInt(brokenMessage.length > 1 ? brokenMessage[1] : 0);
+            const validLines = this.source.substring(0, position).split('\n');
+            this.lineNumber = validLines.length;
+            this.column = validLines[validLines.length - 1].length;
+            // console.log((`<br /> ${this.lineNumber - 2}: ${lines[this.lineNumber - 2]}<br />${this.lineNumber - 1}:${ lines[this.lineNumber - 1]}<br /> `))
+            // const bothLines = this.lineNumber > 1 ? ('<br />' + validLines[this.lineNumber - 2] + '<br />' + validLines[this.lineNumber - 1]+'<br />' ): '' ;
+            this.description = brokenMessage[0] + ' at line ' + this.lineNumber + ', column ' + this.column;
+            this.error = error;
+            return undefined;
+        }
+    }
 }
