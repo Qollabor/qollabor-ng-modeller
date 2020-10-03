@@ -1,4 +1,16 @@
 class MappingOrderChanger {
+    static get label() {
+        return 'Order';
+    }
+
+    static get width() {
+        return '38px';
+    }
+
+    static get tooltip() {
+        return 'Parameter assignment order';
+    }
+
     /**
      * 
      * @param {MappingRow} row 

@@ -1,4 +1,16 @@
 class RequiredChanger {
+    static get label() {
+        return 'R';
+    }
+
+    static get width() {
+        return '20px';
+    }
+
+    static get tooltip() {
+        return 'Required - Indicates that this parameter must have a value upon completing the task';
+    }
+
     /**
      * 
      * @param {MappingRow} row 

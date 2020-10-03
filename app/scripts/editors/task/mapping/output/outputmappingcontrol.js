@@ -21,13 +21,13 @@ class OutputMappingControl extends MappingControl {
 
     get columns() {
         return [
-            new ColumnRenderer(OutputMappingDeleter, '', '25px', 'Delete mapping'),
-            new ColumnRenderer(OutputParameterSelector, 'Model Output Parameter', '160px', 'Output parameter of the underlying model'),
-            new ColumnRenderer(MappingExpression, 'Transformation', '', 'Expression executed when the task completes or fails\nTakes the value from the output parameter, transforms it and puts it in the task output parameter\nand then binds that to the case file item'),
-            new ColumnRenderer(OperationSelector, 'Operation', '65px'),
-            new ColumnRenderer(MappingCFI, 'Case File Item', '150px', 'Case File Item to which the task output parameter is bound'),
-            new ColumnRenderer(RequiredChanger, 'R', '20px', 'Required - Indicates that this parameter must have a value upon completing the task'),
-            new ColumnRenderer(MappingOrderChanger, 'Order', '38px', 'Parameter assignment order')
+            new ColumnRenderer(OutputMappingDeleter),
+            new ColumnRenderer(OutputParameterSelector),
+            new ColumnRenderer(OutputMappingExpression),
+            new ColumnRenderer(OperationSelector),
+            new ColumnRenderer(MappingCFI, 'Case File Item to which the task output parameter is bound'),
+            new ColumnRenderer(RequiredChanger),
+            new ColumnRenderer(MappingOrderChanger)
         ];
     }
 

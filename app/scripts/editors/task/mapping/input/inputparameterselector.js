@@ -1,4 +1,16 @@
 class InputParameterSelector {
+    static get label() {
+        return 'Model Input Parameter';
+    }
+
+    static get width() {
+        return '160px';
+    }
+
+    static get tooltip() {
+        return 'Input parameter for the underlying model';
+    }
+
     /**
      * 
      * @param {MappingRow} row 

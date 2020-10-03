@@ -1,4 +1,16 @@
 class OutputParameterSelector {
+    static get label() {
+        return 'Model Output Parameter';
+    }
+
+    static get width() {
+        return '160px';
+    }
+
+    static get tooltip() {
+        return 'Output parameter of the underlying model';
+    }
+
     /**
      * 
      * @param {MappingRow} row 

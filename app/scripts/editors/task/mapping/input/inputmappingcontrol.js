@@ -16,11 +16,11 @@ class InputMappingControl extends MappingControl {
 
     get columns() {
         return [
-            new ColumnRenderer(InputMappingDeleter, '', '25px', 'Remove mapping'),
-            new ColumnRenderer(MappingCFI, 'Case File Item', '150px', 'Case File Item that binds to the input parameter of the task'),
-            new ColumnRenderer(MappingExpression, 'Transformation', '', 'Expression executed when the task becomes active\nTakes the value from the task parameter, transforms it and puts it in the model input parameter'),
-            new ColumnRenderer(InputParameterSelector, 'Model Input Parameter', '160px', 'Input parameter for the underlying model'),
-            new ColumnRenderer(MappingOrderChanger, 'Order', '38px', 'Parameter assignment order')
+            new ColumnRenderer(InputMappingDeleter),
+            new ColumnRenderer(MappingCFI, 'Case File Item that binds to the input parameter of the task'),
+            new ColumnRenderer(InputMappingExpression),
+            new ColumnRenderer(InputParameterSelector),
+            new ColumnRenderer(MappingOrderChanger)
         ];
     }
 

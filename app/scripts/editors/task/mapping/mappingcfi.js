@@ -1,4 +1,12 @@
 class MappingCFI {
+    static get label() {
+        return 'Case File Item';
+    }
+
+    static get width() {
+        return '150px';
+    }
+
     /**
      * 
      * @param {MappingRow} row 

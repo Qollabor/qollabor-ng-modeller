@@ -1,4 +1,12 @@
 class OperationSelector {
+    static get label() {
+        return 'Operation';
+    }
+
+    static get width() {
+        return '65px';
+    }
+
     static get tooltip() {
         return `Operation to be performed on the Case File Item
 - Update (default): merges the task output into the case file

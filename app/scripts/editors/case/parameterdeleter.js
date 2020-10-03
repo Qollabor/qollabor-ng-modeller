@@ -1,4 +1,12 @@
 class ParameterDeleter {
+    static get label() {
+        return '';
+    }
+
+    static get width() {
+        return '20px'
+    }
+
     static get tooltip() {
         return 'Delete the parameter';
     }

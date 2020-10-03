@@ -1,4 +1,16 @@
 class OutputMappingDeleter {
+    static get label() {
+        return '';
+    }
+
+    static get width() {
+        return '25px';
+    }
+
+    static get tooltip() {
+        return 'Delete mapping';
+    }
+
     /**
      * 
      * @param {MappingRow} row 

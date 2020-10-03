@@ -1,4 +1,16 @@
 class CFIZoom {
+    static get label() {
+        return 'Case File Item';
+    }
+
+    static get width() {
+        return '150px';
+    }
+
+    static get tooltip() {
+        return ;
+    }
+
     /**
      * 
      * @param {ParameterRow} row 

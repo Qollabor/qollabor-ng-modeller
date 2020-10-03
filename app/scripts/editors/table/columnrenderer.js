@@ -6,7 +6,7 @@ class ColumnRenderer {
      * @param {String} width 
      * @param {String} tooltip 
      */
-    constructor(renderer, label = '', width = '', tooltip = '') {
+    constructor(renderer, tooltip = '', label = '', width = '') {
         this.renderer = renderer;
         this.label = renderer.label || label;
         this.width = renderer.width || width;

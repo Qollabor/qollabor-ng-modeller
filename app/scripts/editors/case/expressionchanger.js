@@ -1,4 +1,12 @@
 class ExpressionChanger {
+    static get label() {
+        return 'Expression';
+    }
+
+    static get width() {
+        return '';
+    }
+
     /**
      * 
      * @param {ParameterRow} row 

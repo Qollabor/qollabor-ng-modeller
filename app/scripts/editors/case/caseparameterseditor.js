@@ -118,10 +118,10 @@ class InputParametersControl extends ParametersControl {
 
     get columns() {
         return [
-            new ColumnRenderer(ParameterDeleter, '', '20px'),
-            new ColumnRenderer(NameChanger, 'Name', '120px'),
-            new ColumnRenderer(ExpressionChanger, 'Expression', '', 'The transformation that is executed while binding the case file item to the parameter'),
-            new ColumnRenderer(CFIZoom, 'Case File Item', '150px', 'The case file item that binds to the parameter.\nAn empty binding means the parameter will not be used.')
+            new ColumnRenderer(ParameterDeleter),
+            new ColumnRenderer(NameChanger),
+            new ColumnRenderer(ExpressionChanger, 'The transformation that is executed while binding parameter to the case file item'),
+            new ColumnRenderer(CFIZoom, 'The case file item that binds to the parameter.\nAn empty binding means the parameter will not be used.')
         ];
     }
 }
@@ -137,10 +137,10 @@ class OutputParametersControl extends ParametersControl {
 
     get columns() {
         return [
-            new ColumnRenderer(ParameterDeleter, '', '20px'),
-            new ColumnRenderer(NameChanger, 'Name', '120px'),
-            new ColumnRenderer(ExpressionChanger, 'Expression', '', 'The transformation that is executed while binding the case file item to the parameter'),
-            new ColumnRenderer(CFIZoom, 'Case File Item', '150px', 'The case file item that is used to fill the output parameter.\nAn empty binding means the parameter will be filled with the outcome of the expression.')
+            new ColumnRenderer(ParameterDeleter),
+            new ColumnRenderer(NameChanger),
+            new ColumnRenderer(ExpressionChanger, 'The transformation that is executed while binding the case file item to the parameter'),
+            new ColumnRenderer(CFIZoom, 'The case file item that is used to fill the output parameter.\nAn empty binding means the parameter will be filled with the outcome of the expression.')
         ];
     }
 }
