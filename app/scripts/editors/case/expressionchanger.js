@@ -20,7 +20,5 @@ class ExpressionChanger {
             }
             row.case.editor.completeUserAction();
         });
-
     }
-
 }

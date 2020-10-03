@@ -13,6 +13,10 @@ class CaseFileItemDef extends CaseFileItemCollection {
         this.parseGrandChildren('caseFileItem', CaseFileItemDef, this.children);
     }
 
+    get isArray() {
+        return this.multiplicity.endsWith('OrMore');
+    }
+
     /**
      * Returns the default transition for this type of plan item.
      * @returns {String}

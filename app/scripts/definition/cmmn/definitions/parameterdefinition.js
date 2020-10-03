@@ -19,12 +19,20 @@ class ParameterDefinition extends CMMNElementDefinition {
         return this.bindingRef ? this.binding.name : '';
     }
 
+    get defaultOperation() {
+        return this.binding ? this.binding.isArray ? 'add' : 'update' : ''; 
+    }
+
+    get hasUnusualBindingRefinement() {
+        return this.bindingRefinement && ['add', 'update', 'replace'].indexOf(this.bindingRefinement.body.toLowerCase()) < 0;
+    }
+
     get bindingRefinementExpression() {
-        return this.bindingRefinement ? this.bindingRefinement.body : '';
+        return this.bindingRefinement ? this.bindingRefinement.body : this.defaultOperation;
     }
 
     set bindingRefinementExpression(expression) {
-        if (expression) {
+        if (expression && expression != this.defaultOperation) {
             this.getBindingRefinement().body = expression;
         } else {
             if (this.bindingRefinement) {

@@ -56,6 +56,9 @@ class ParameterMappingDefinition extends UnnamedCMMNElementDefinition {
         this.taskParameter.bindingRef = newBinding ? newBinding.id : undefined;
     }
 
+    /**
+     * @returns {ParameterDefinition}
+     */
     get taskParameter() {
         if (this.isInputMapping) {
             return this.source;

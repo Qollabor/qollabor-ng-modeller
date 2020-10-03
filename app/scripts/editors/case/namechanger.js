@@ -1,4 +1,8 @@
 class NameChanger {
+    static get tooltip() {
+        return 'Name of the parameter';
+    }
+
     /**
      * 
      * @param {ParameterRow} row 
