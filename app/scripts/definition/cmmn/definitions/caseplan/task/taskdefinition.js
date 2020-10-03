@@ -58,12 +58,31 @@ class TaskDefinition extends TaskStageDefinition {
     }
 
     /**
-     * Checks whether an output parameter with the given name exists, and, if not,
-     * creates a new one with the specified name.
+     * Checks whether an output parameter with the given name exists, and, if so,
+     * creates a new one with the specified name plus a separator plus a number.
      * @param {String} name 
      */
     getOutputParameterWithName(name) {
-        return this.getParameterWithName(name, this.outputs);
+        const newParameter = this.createDefinition(ParameterDefinition, undefined, this.generateUniqueOutputParameterName(name));
+        this.outputs.push(newParameter);
+        return newParameter;
+    }
+
+    /**
+     * Generate a name for a task output parameter that is unique according to the pattern
+     * - 'Response' ---> (there is no other parameter with the name response)
+     * - 'Response.1' ---> the second one generated
+     * - 'Response.2' ---> the third one
+     * If in the meantime 'Response.1' is deleted or has a new name, then the fourth one will get that "free spot"
+     * @param {string} name 
+     * @returns {string}
+     */
+    generateUniqueOutputParameterName(name) {
+        const separator = '.';
+        if (!this.outputs.find(p => p.name == name)) return name;
+        let counter = 1;
+        while (this.outputs.find(p => p.name == name + separator + counter) !== undefined) counter++;
+        return name + separator + counter;
     }
 
     /**
@@ -109,21 +128,18 @@ class TaskDefinition extends TaskStageDefinition {
      * @param {ParameterDefinition} taskParameter 
      * @param {ImplementationParameterDefinition} implementationParameter 
      */
-    createInputMapping(taskParameter, implementationParameter) {
-        const sourceRef = taskParameter ? taskParameter.id : '';
-        const targetRef = implementationParameter ? implementationParameter.id : '';
-        return this.createMapping(sourceRef, targetRef, taskParameter, implementationParameter);
+    createInputMapping(implementationParameter) {
+        const targetRef = implementationParameter.getIdentifier();
+        return this.createMapping('', targetRef, undefined, implementationParameter);
     }
 
     /**
      * 
-     * @param {ParameterDefinition} taskParameter 
      * @param {ImplementationParameterDefinition} implementationParameter 
      */
-    createOutputMapping(taskParameter, implementationParameter) {
-        const sourceRef = implementationParameter ? implementationParameter.id : '';
-        const targetRef = taskParameter ? taskParameter.id : '';
-        return this.createMapping(sourceRef, targetRef, taskParameter, implementationParameter);
+    createOutputMapping(implementationParameter) {
+        const sourceRef = implementationParameter.getIdentifier();
+        return this.createMapping(sourceRef, '', undefined, implementationParameter);
     }
 
     /**
@@ -144,21 +160,8 @@ class TaskDefinition extends TaskStageDefinition {
 
         // Generate new task input and output parameters and mappings
         //  for each of the input and output parameters of the contract
-        this.implementationModel.inputParameters.forEach(parameter => {
-            console.log('Generating default input mapping for implementation parameter ' + parameter.name + ' in task "' + this.name + '"');
-            const newTaskInputParameter = this.getInputParameterWithName(parameter.name);
-            const newMapping = this.createInputMapping(newTaskInputParameter, parameter);
-            // newMapping.sourceRef = newTaskInputParameter.id;
-            // newMapping.taskParameter = newTaskInputParameter;
-            // newMapping.targetRef = parameter.id ? parameter.id : parameter.name;
-            // newMapping.implementationParameter = parameter;
-            // newMapping.xyz = "ABC" + parameter.name;
-            // console.log("This.mappings: ", this.mappings)
-        });
-        this.implementationModel.outputParameters.forEach(parameter => {
-            const newTaskOutputParameter = this.getOutputParameterWithName(parameter.name);
-            this.createOutputMapping(newTaskOutputParameter, parameter);
-        });
+        this.implementationModel.inputParameters.forEach(parameter => this.createInputMapping(parameter));
+        this.implementationModel.outputParameters.forEach(parameter => this.createOutputMapping(parameter));
         // Show a message if we've generated new parameters
         if (this.mappings.length > 0) {
             ide.info('Generated task parameters for ' + this.name, 2000);
@@ -189,9 +192,8 @@ class TaskDefinition extends TaskStageDefinition {
             this.implementationModel.inputParameters.forEach(parameter => {
                 const existingMapping = this.inputMappings.find(mapping => parameter.hasIdentifier(mapping.targetRef));
                 if (! existingMapping) {
-                    console.log('Generating default input mapping for implementation parameter ' + parameter.name + ' in task "' + this.name + '"');
-                    const inputParameter = this.getInputParameterWithName(parameter.name);
-                    this.createInputMapping(inputParameter, parameter);
+                    // console.log('Generating default input mapping for implementation parameter ' + parameter.name + ' in task "' + this.name + '"');
+                    this.createInputMapping(parameter);
                 }
             });
 
@@ -206,9 +208,8 @@ class TaskDefinition extends TaskStageDefinition {
             this.implementationModel.outputParameters.forEach(parameter => {
                 const existingMapping = this.outputMappings.find(mapping => parameter && parameter.hasIdentifier(mapping.sourceRef));
                 if (! existingMapping) {
-                    console.log('Generating default output mapping for implementation parameter ' + parameter.name + ' in task "' + this.name + '"');
-                    const newMapping = this.createOutputMapping(undefined, parameter);
-                    newMapping.sourceRef = parameter.id ? parameter.id : parameter.name;
+                    // console.log('Generating default output mapping for implementation parameter ' + parameter.name + ' in task "' + this.name + '"');
+                    const newMapping = this.createOutputMapping(parameter);
                 }
             });
         }

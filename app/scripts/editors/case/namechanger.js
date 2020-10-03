@@ -1,4 +1,16 @@
 class NameChanger {
+    static get label() {
+        return 'Name';
+    }
+
+    static get width() {
+        return '120px';
+    }
+
+    static get tooltip() {
+        return 'Name of the parameter';
+    }
+
     /**
      * 
      * @param {ParameterRow} row 

@@ -18,16 +18,47 @@ class ParameterMappingDefinition extends UnnamedCMMNElementDefinition {
     }
 
     /**
-     * Creates a new input or output parameter (depending on the type of mapping)
-     * @param {String} name 
-     * @returns {ParameterDefinition}
+     * 
+     * @param {CaseFileItemDef} newBinding 
      */
-    createTaskParameter(name) {
-        const task = this.parent;
-        this.taskParameter = this.isInputMapping ? task.getInputParameterWithName(name) : task.getOutputParameterWithName(name);
-        return this.taskParameter;
+    updateBindingRef(newBinding) {
+        // In input mappings we try to reuse parameters. In output mappings they are unique
+        if (this.isInputMapping) {
+            if (this.taskParameter) {
+                // If we have other mappings for this parameter, then we must create a new parameter;
+                // If we do not have a bindingRef currently, then we will get a parameter based on the new binding
+                if (this.parent.mappings.find(m => m != this && m.taskParameter == this.taskParameter)) {
+                    // The name of the new parameter is either from the new binding or we take it from the implementation parameter.
+                    const newParameterName = newBinding ? newBinding.name : this.implementationParameter.name;
+                    this.taskParameter = this.parent.getInputParameterWithName(newParameterName);
+                } else if (this.taskParameter.binding != newBinding) {
+                    this.taskParameter = this.parent.getInputParameterWithName(newBinding.name);
+                }
+            } else if (newBinding) { // We have no task parameter, let's try to find one with the CaseFileItem's name
+                this.taskParameter = this.parent.getInputParameterWithName(newBinding.name);
+            } else {
+                // We have no task parameter, but also no new binding. Quite strange.
+                // Let's just simply return to avoid script error in last line of method
+                return;
+            }
+        } else {
+            if (! this.taskParameter) {
+                if (! newBinding) {
+                    // Again strange situation
+                    return;
+                }
+                this.taskParameter = this.parent.getOutputParameterWithName(newBinding.name);
+            } else {
+                this.taskParameter.name = this.parent.generateUniqueOutputParameterName(newBinding.name);
+            }
+        }
+        // On the (potentially new) task parameter we can now set the new bindingRef
+        this.taskParameter.bindingRef = newBinding ? newBinding.id : undefined;
     }
 
+    /**
+     * @returns {ParameterDefinition}
+     */
     get taskParameter() {
         if (this.isInputMapping) {
             return this.source;
