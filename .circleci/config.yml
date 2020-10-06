@@ -4,7 +4,7 @@ jobs:
     working_directory: ~/cafienne-ide
     docker:
       - image: circleci/node:10.9.0
-    steps:        
+    steps:
       - checkout
       - run:
           name: Giving permissions
@@ -23,9 +23,10 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}    
+          key: v1-dependencies-{{ checksum "package.json" }}
       - setup_remote_docker:
-          docker_layer_caching: false
+          version: 19.03.13
+          docker_layer_caching: true
       - run:
           name: Build docker image
           command: |
@@ -45,7 +46,7 @@ jobs:
     working_directory: ~/cafienne-ide
     docker:
       - image: circleci/node:10.9.0
-    steps:        
+    steps:
       - checkout
       - run:
           name: Giving permissions
@@ -71,7 +72,7 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}    
+          key: v1-dependencies-{{ checksum "package.json" }}
       - setup_remote_docker:
           docker_layer_caching: false
       - run:
@@ -83,9 +84,7 @@ jobs:
           command: |
             echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
             docker push cafienne/ide:$CIRCLE_TAG
-            
 
-            
 workflows:
   version: 2
   ci:
