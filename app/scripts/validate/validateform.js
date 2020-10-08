@@ -68,8 +68,6 @@ class ValidateForm extends StandardForm {
 
         this.html.find('#hideProblemsBt').on('click', () => this.handleHideProblems());
         this.html.find('#showAllProblemsBt').on('click', () => this.handleShowAllProblems());
-
-        this.positionEditor();
     }
 
     renderForm() {
@@ -127,14 +125,13 @@ class ValidateForm extends StandardForm {
         this.hiddenProblems = relevantProblems;
     }
 
-    /**
-     * shows the errors and warnings form
-     */
-    show() {
-        //show the form
-        super.visible = true;
+    onShow() {
         ValidateForm.Settings.visible = true;
         this.showProblemsInForm();
+    }
+
+    onHide() {
+        ValidateForm.Settings.visible = false;
     }
 
     /**
@@ -181,11 +178,6 @@ class ValidateForm extends StandardForm {
                 }
             }
         }
-    }
-
-    hide() {
-        super.visible = false;
-        ValidateForm.Settings.visible = false;
     }
 
     /**

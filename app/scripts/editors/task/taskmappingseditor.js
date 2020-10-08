@@ -47,17 +47,6 @@ class TaskMappingsEditor extends StandardForm {
         this.outputMappings.renderTable();
     }
 
-    open() {
-        this.visible = true;
-    }
-
-    /**
-     * Closes the editor form (hides it)
-     */
-    close() {
-        this.visible = false;
-    }
-
     refresh() {
         if (this._html) {
             this.renderForm();

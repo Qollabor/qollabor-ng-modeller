@@ -213,10 +213,6 @@
         this.sourceEditor.open();
     }
 
-    openDebugger() {
-        this.debugEditor.open();
-    }
-
     runValidation() {
         this.validator.run();
     }
@@ -229,7 +225,7 @@
         // First tell all items to update their properties, if they refer to this element.
         this.items.forEach(item => item.refreshReferencingFields(definitionElement));
         // Also update the sub editors.
-        this.movableEditors.forEach(editor => editor.refreshReferencingFields(definitionElement));
+        this.editor.movableEditors.forEach(editor => editor.refreshReferencingFields(definitionElement));
     }
 
     /**

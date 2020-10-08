@@ -69,12 +69,12 @@ class TableEditor extends MovableEditor {
         this.html.resizable();
 
         //add the event handles, for adding and removing data at top level
-        this.html.find('.formclose').on('click', e => this.close());
+        this.html.find('.formclose').on('click', e => this.hide());
 
         //add event for OK, cancel and close buttons (bottom)
         this.html.find('.btnOK').on('click', e => this.clickOK(e));
-        this.html.find('.btnCancel').on('click', e => this.close());
-        this.html.find('.btnClose').on('click', e => this.close());
+        this.html.find('.btnCancel').on('click', e => this.hide());
+        this.html.find('.btnClose').on('click', e => this.hide());
 
         //add event for click/mousedown on tree editor
         this.html.on('pointerdown', e => this.toFront());
@@ -111,21 +111,6 @@ class TableEditor extends MovableEditor {
      */
     get data() {
         throw new Error('Property data is not implemented for ' + this.constructor.name);
-    }
-
-    /**
-     * Opens the editor form, optionally in "selection modus", which enables "ok" and "cancel" button and invokes the callback upon pressing OK.
-     */
-    open() {
-        // Upon opening, always refresh the content of the form by rendering it again.
-        this.visible = true;
-    }
-
-    /**
-     * Closes the editor form (hides it)
-     */
-    close() {
-        this.visible = false;
     }
 
     clickOK(e) {
@@ -238,7 +223,7 @@ class RowEditor {
         // Avoid pressing delete key leads to remove elements selected.
         html.on('keydown', e => {
             if (e.keyCode == 27) { // 'Esc' closes editor
-                this.editor.close();
+                this.editor.hide();
             }
             e.stopPropagation();
         });

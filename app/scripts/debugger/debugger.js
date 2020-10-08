@@ -190,11 +190,7 @@ class Debugger extends StandardForm {
         // console.log("Ignoring the move ;)")
     }
 
-    /**
-     * Opens the deploy form and sets the model name
-     */
-    open() {
-        super.visible = true;
+    onShow() {
         this.html.css('height', '100%');
         this.html.css('width', '100%');
         this.html.css('top', '0px');
@@ -205,7 +201,7 @@ class Debugger extends StandardForm {
         this.html.find('.btnShowEvents').focus();
     }
 
-    hide() {
+    onHide() {
         $(document.body).off('keydown', this.keyDownHandler);
         this.selectedEventId = undefined;
     }

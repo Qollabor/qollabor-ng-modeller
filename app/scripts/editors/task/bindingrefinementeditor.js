@@ -12,8 +12,7 @@ class BindingRefinementEditor extends TableEditor {
         this.taskParameter = this.mappingRow.mapping.taskParameter;
     }
 
-    close() {
-        super.close();
+    onHide() {
         this.mappingRow.control.refresh();
     }
 

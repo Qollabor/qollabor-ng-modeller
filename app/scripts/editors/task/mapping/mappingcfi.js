@@ -37,7 +37,7 @@ class MappingCFI {
         });
         zoomRow.find('.openBindingReferenceButton').on('click', e => {
             const bindingRefinementEditor = new BindingRefinementEditor(row);
-            bindingRefinementEditor.open();
+            bindingRefinementEditor.show();
         });
     }
 

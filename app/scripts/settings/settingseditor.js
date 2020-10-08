@@ -3,11 +3,11 @@ class SettingsEditor extends StandardForm {
         if (!this._editor) {
             this._editor = new SettingsEditor();
         }
-        this._editor.open();
+        this._editor.show();
     }
 
     static hide() {
-        if (this._editor) this._editor.close();
+        if (this._editor) this._editor.hide();
     }
 
     static isOpen() {
@@ -93,9 +93,7 @@ class SettingsEditor extends StandardForm {
         }
     }
 
-    open() {
-        this.visible = true;
-
+    onShow() {
         // Upon opening the editor, set the value with the current start-case-schema, or use the default value.
         //  Note, default value will not be written into case definition if it is not changed.
         this.value = JSON.stringify(SettingsStorage.store, null, 2);

@@ -33,7 +33,7 @@ class StandardForm extends MovableEditor {
         this.html.find('label').css('cursor', 'move');
 
         this.html.resizable();
-        this.html.find('img').on('click', e => this.close());
+        this.html.find('img').on('click', e => this.hide());
 
         this._container = this.html.find('.standardformcontainer');
     }
@@ -54,10 +54,6 @@ class StandardForm extends MovableEditor {
         Util.removeHTML(this.html);
     }
 
-    close() {
-        super.visible = false;
-    }
-
     get label() {
         return this._label;
     }
@@ -65,15 +61,6 @@ class StandardForm extends MovableEditor {
     set label(sLabel) {
         this._label = sLabel;
         this.html.find('.standardformheader label').html(sLabel);
-    }
-
-    /** @param {JQuery<HTMLElement>} html */
-    set html(html) {
-        this._html = html;
-    }
-
-    get html() {
-        return $(this._html);
     }
 
     get htmlContainer() {

@@ -160,7 +160,7 @@ class Properties extends MovableEditor {
     hide() {
         // Only hide if not pinned.
         if (!this.pinned) {
-            this.visible = false;
+            super.hide();
         }
     }
 

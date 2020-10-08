@@ -32,17 +32,6 @@ class CaseParametersEditor extends StandardForm {
         this.outputParameters.renderTable();
     }
 
-    open() {
-        this.visible = true;
-    }
-
-    /**
-     * Closes the editor form (hides it)
-     */
-    close() {
-        this.visible = false;
-    }
-
     refresh() {
         if (this._html) {
             this.renderForm();

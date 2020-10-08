@@ -36,6 +36,74 @@ class ModelEditor {
     }
 
     /**
+     * 
+     * @param {MovableEditor} editor 
+     */
+    registerMovableEditor(editor) {
+        this.movableEditors.push(editor);
+    }
+
+    /**
+     * Make sure the editor is on top of the others
+     * @param {MovableEditor} editor 
+     */
+    selectMovableEditor(editor) {
+        Util.removeFromArray(this.movableEditors, this);
+        this.movableEditors.push(editor);
+        // Now reset z-index of editors, oldest at bottom, newest (this) at top.
+        this.movableEditors.forEach((editor, index) => $(editor.html).css('z-index', index + 1));
+    }
+
+    /**
+     * Give the editor an (initial) position
+     * @param {MovableEditor} editor 
+     */
+    positionMovableEditor(editor) {
+        const newPosition = editor.html.offset();
+        if (newPosition.left == 0) {
+            newPosition.left = 220;
+        }
+        if (newPosition.top == 0) {
+            newPosition.top = 60;
+        }
+
+        const MINIMUM_MARGIN_BETWEEN_EDITORS = 30;
+
+        // Do not put this editor at exact same location as one of the others
+        //  There must be at least 30 px difference
+        this.movableEditors.forEach(sibling => {
+            if (sibling != editor && sibling.html.css('display') == 'block') {
+                const editorOffset = sibling.html.offset();
+
+                const leftMargin = editorOffset.left - MINIMUM_MARGIN_BETWEEN_EDITORS;
+                const rightMargin = editorOffset.left + MINIMUM_MARGIN_BETWEEN_EDITORS;
+                if (newPosition.left > leftMargin && newPosition.left < rightMargin) {
+                    newPosition.left = rightMargin;
+                }
+
+                const topMargin = editorOffset.top - MINIMUM_MARGIN_BETWEEN_EDITORS;
+                const bottomMargin = editorOffset.top + MINIMUM_MARGIN_BETWEEN_EDITORS;
+                if (newPosition.top > topMargin && newPosition.top < bottomMargin) {
+                    newPosition.top = bottomMargin;
+                }
+            }
+        });
+
+        // Also keep editor inside the browser window
+        const bodyWidth = document.body.offsetWidth;
+        const bodyHeight = document.body.offsetHeight;
+        if ((newPosition.left + editor.html.width()) > bodyWidth) {
+            newPosition.left = Math.max(0, bodyWidth - editor.html.width() - MINIMUM_MARGIN_BETWEEN_EDITORS);
+        }
+        if ((newPosition.top + editor.html.height()) > bodyHeight) {
+            newPosition.top = Math.max(0, bodyHeight - editor.html.height() - MINIMUM_MARGIN_BETWEEN_EDITORS);
+        }
+
+        editor.html.css('top', newPosition.top);
+        editor.html.css('left', newPosition.left);        
+    }
+
+    /**
      * Hide all movable editors.
      */
     hideMovableEditors() {

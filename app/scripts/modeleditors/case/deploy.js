@@ -39,13 +39,6 @@ class Deploy extends StandardForm {
         this.codeMirrorCaseXML = CodeMirror(codeMirrorHTML, codeMirrorXMLConfiguration);
     }
 
-    /**
-     * Opens the deploy form and sets the model name
-     */
-    open() {
-        this.visible = true;
-    }
-
     _setDeployedTimestamp(text) {
         this.html.find('.deployed_timestamp').text(text);
     }

@@ -88,8 +88,7 @@ class StartCaseEditor extends StandardForm {
         this.case.editor.completeUserAction();
     }
 
-    open() {        
-        this.visible = true;
+    onShow() {
         const defaultValue = 
 `{
     "schema":{
