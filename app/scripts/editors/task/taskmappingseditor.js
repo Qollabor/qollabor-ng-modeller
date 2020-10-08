@@ -3,7 +3,7 @@ class TaskMappingsEditor extends StandardForm {
      * @param {Task} task 
      */
     constructor(task) {
-        super(task.case, 'Edit mappings of task ' + task.definition.name, 'tableeditorform', 'mappingform');
+        super(task.editor, 'Edit mappings of task ' + task.definition.name, 'tableeditorform', 'mappingform');
         this.task = task;
     }
 

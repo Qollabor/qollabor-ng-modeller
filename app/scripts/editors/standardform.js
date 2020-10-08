@@ -3,12 +3,12 @@
 class StandardForm extends MovableEditor {
 
     /**
-     * @param {Case} cs 
+     * @param {ModelEditor} modelEditor 
      * @param {String} label 
      * @param {Array<String>} classNames      * 
      */
-    constructor(cs, label, ...classNames) {
-        super(cs);
+    constructor(modelEditor, label, ...classNames) {
+        super(modelEditor);
         this._label = label;
         this.classNames = classNames;
     }

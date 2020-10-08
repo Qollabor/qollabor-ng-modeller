@@ -3,13 +3,39 @@ class MovableEditor {
      * A movable editor resides typically within the context of a case.
      * Usually it is something that pops up upon button click (e.g., Properties of an element, Roles Editor, Parameters Editor, etc)
      * It can be moved around and resized.
-     * @param {Case} cs 
+     * @param {ModelEditor} modelEditor 
      */
-    constructor(cs) {
-        this.case = cs;
-        this.editors = this.case.movableEditors;
-        this.htmlParent = this.case.divMovableEditors;
+    constructor(modelEditor) {
+        this.modelEditor = modelEditor;
+        this.htmlParent = this.modelEditor.divMovableEditors;
+        this.registerEditor();
+    }
+
+    registerEditor() {
         this.editors.push(this);
+    }
+
+    get case() {
+        return this.modelEditor instanceof CaseModelEditor ? this.modelEditor.case : undefined;
+    }
+
+    get editors() {
+        return this.modelEditor.movableEditors;
+    }
+
+    get html() {
+        return $(this._html);
+    }
+
+    /**
+     * @param {JQuery<HTMLElement>} html
+     */
+    set html(html) {
+        this._html = $(html);
+    }
+
+    renderForm() {
+        console.warn('The editor ' + this.constructor.name + ' does not implement the renderForm() function, but that is expected');
     }
 
     /**
@@ -53,21 +79,6 @@ class MovableEditor {
 
     hide() {
         // mechanism to handle fact that editor is hidden
-    }
-
-    get html() {
-        return $(this._html);
-    }
-
-    /**
-     * @param {JQuery<HTMLElement>} html
-     */
-    set html(html) {
-        this._html = $(html);
-    }
-
-    renderForm() {
-        console.warn('The editor ' + this.constructor.name + ' does not implement the renderForm() function, but that is expected');
     }
 
     /**

@@ -13,6 +13,8 @@ class ModelEditor {
         this.fileName = fileName;
         this.modelName = modelName;
         this.modelType = modelType;
+        /** @type {Array<MovableEditor>} */
+        this.movableEditors = [];
         this.html = $(
 `<div class="model-editor-base">
     <div class="model-editor-header">
@@ -24,11 +26,35 @@ class ModelEditor {
             <img src="images/close_32.png" />
         </div>
     </div>
+    <div class="divMovableEditors"></div>
     <div class="model-editor-content"></div>
 </div>`);
         this.htmlContainer = this.html.find('.model-editor-content');
+        this.divMovableEditors = this.html.find('.divMovableEditors');
         this.html.find('.closeButton').on('click', e => this.close());
         this.html.find('.refreshButton').on('click', e => this.refresh());
+    }
+
+    /**
+     * Hide all movable editors.
+     */
+    hideMovableEditors() {
+        this.movableEditors.forEach(editor => editor.visible = false);
+    }
+
+    /**
+     * Hides the movable editor on top.
+     * @returns {Boolean} true if an editor was hidden, false if no editors are visible
+     */
+    hideTopEditor() {
+        const editorsReversed = Array.from(this.movableEditors).reverse();
+        const visibleEditor = editorsReversed.find(editor => editor.visible)
+        if (visibleEditor) {
+            visibleEditor.visible = false;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**

@@ -3,12 +3,12 @@
 class BindingRefinementEditor extends TableEditor {
     /**
      * This editor enables manipulation of bindingRef and bindingRefinement of task parameters.
-     * @param {MappingRow} editor 
+     * @param {MappingRow} mappingRow 
      */
-    constructor(editor) {
-        super(editor.case);
-        this.mappingRow = editor;
-        this.task = editor.control.task;
+    constructor(mappingRow) {
+        super(mappingRow.case.editor);
+        this.mappingRow = mappingRow;
+        this.task = mappingRow.control.task;
         this.taskParameter = this.mappingRow.mapping.taskParameter;
     }
 

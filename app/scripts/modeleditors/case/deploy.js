@@ -6,8 +6,8 @@
  * @constructor
  */
 class Deploy extends StandardForm {
-    constructor(cs) {
-        super(cs, 'Deploy CMMN Model - ' + cs.name, 'deployform');
+    constructor(editor) {
+        super(editor, 'Deploy CMMN Model - ' + editor.case.name, 'deployform');
     }
 
     renderData() {

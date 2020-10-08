@@ -11,12 +11,12 @@ class ValidateForm extends StandardForm {
     /**
      * This object handles the validation of the CMMN schema drawn by the user;
      * If holds track of the problems found in the CMMN schema of the case; these problems have a @type {ProblemType}
-     * @param {Case} cs
+     * @param {CaseModelEditor} editor
      */
-    constructor(cs) {
-        super(cs, '');
-        this.validator = cs.validator;
-        cs.validator.addListener(validator => this.renderData());
+    constructor(editor) {
+        super(editor, '');
+        this.validator = editor.case.validator;
+        this.validator.addListener(validator => this.renderData());
         if (ValidateForm.Settings.visible) {
             this.show();
         } else {

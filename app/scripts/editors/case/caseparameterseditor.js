@@ -1,10 +1,10 @@
 class CaseParametersEditor extends StandardForm {
     /**
      * 
-     * @param {Case} cs 
+     * @param {CaseModelEditor} editor 
      */
-    constructor(cs) {
-        super(cs, 'Edit case parameters', 'caseparameters');
+    constructor(editor) {
+        super(editor, 'Edit case parameters', 'caseparameters');
     }
 
     renderHead() {

@@ -6,8 +6,12 @@
  * @constructor
  */
 class Debugger extends StandardForm {
-    constructor(cs) {
-        super(cs, 'Debugger', 'debug-form');
+    /**
+     * 
+     * @param {CaseModelEditor} editor 
+     */
+    constructor(editor) {
+        super(editor, 'Debugger', 'debug-form');
         this.eventTypeFilter = '';
         this.eventNameFilter = '';
     }

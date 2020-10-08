@@ -3,10 +3,10 @@
 class StartCaseEditor extends StandardForm {
     /**
      * Editor for the content of the extension element <start-case-schema>
-     * @param {Case} cs
+     * @param {CaseModelEditor} editor 
      */
-    constructor(cs) {
-        super(cs, 'Start Case Schema Editor', 'jsoneditor');
+    constructor(editor) {
+        super(editor, 'Start Case Schema Editor', 'jsoneditor');
     }
 
     renderData() {

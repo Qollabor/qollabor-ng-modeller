@@ -52,12 +52,12 @@ class CaseModelEditor extends ModelEditor {
             console.log("No case, but already pressing a key?! You're too quick ;)");
             return;
         }
-        const visibleMovableEditor = this.case.movableEditors.find(e => e.visible);
+        const visibleMovableEditor = this.movableEditors.find(e => e.visible);
         const selectedElement = this.case.selectedElement;
         switch (e.keyCode) {
         case 27: // esc
             // Clicking Escape closes Movable editors one by one, and if none is left, it deselects current selection
-            if (!this.case.hideTopEditor()) {
+            if (!this.hideTopEditor()) {
                 if (this.case) {
                     this.case.clearSelection();
                 }

@@ -2,11 +2,11 @@ class TableEditor extends MovableEditor {
     /**
      * Defines a generic editor for collections of CMMNElementDefinition, to select and edit data in a table
      * Defines a generic TableEditor, to select and edit data in a table
-     * @param {Case} cs 
+     * @param {CaseModelEditor} modelEditor 
      */
-    constructor(cs) {
-        super(cs);
-        this.id = cs.id + '_' + this.constructor.name;
+    constructor(modelEditor) {
+        super(modelEditor);
+        // this.id = this.case.id + '_' + this.constructor.name;
         /** @type {Array<RowEditor>} */
         this.rows = []; // Reset array of row renderers
     }
