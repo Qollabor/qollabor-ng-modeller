@@ -1,0 +1,88 @@
+
+.model-parameters {
+    top: 60px;
+    position: absolute;
+    height: 180px;
+    min-width: 640px;
+}
+
+.model-parameters>div {
+    width: 300px;
+    border: 1px solid rgb(169, 169, 169);
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+}
+
+.model-parameters>div:first-child {
+    left: 0px;
+}
+
+.model-parameters>div:last-child {
+    left: 320px;
+}
+
+.modelparametertable {
+    padding: 10px;
+}
+
+.modelparametertable>label {
+    display: block;
+}
+
+.modelparametertable>button {
+    display: inline-block;
+    margin: 3px 5px 5px 0px;
+}
+
+.modelparametertable>div {
+    position: absolute;
+    top: 30px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.modelparametertable table colgroup .modelparameterdeletebtcol {
+    width: 20px;
+}
+
+.modelparametertable table .modelparameternamecol {
+    width: 100px;
+}
+
+.modelparametertable table .modelparameteridcol {
+    width: 80px;
+}
+
+.modelparametertable tbody tr {
+    border-color: none;
+}
+
+.modelparametertable tbody button {
+    height: 14px;
+    width: 14px;
+    background-image: url(/images/close_black_32.png);
+    background-position: 2px 2px;
+    background-repeat: no-repeat;
+    background-size: 8px 8px;
+    border: 1px solid rgb(221, 221, 221);
+}
+
+.modelparametertable tbody input {
+    margin: 1px 4px 1px 0px;
+    border: 1px solid rgb(169, 169, 169);
+    padding-left: 1px;
+}
+
+.modelparametertable tbody input.modelparameternamecol {
+    width: 156px;
+}
+
+.modelparametertable tbody input.modelparameteridcol {
+    width: 75px;
+    background-color: #f5f5f5;
+    border-width: 1px;
+}

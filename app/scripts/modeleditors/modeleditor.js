@@ -132,8 +132,24 @@ class ModelEditor {
         throw new Error('This method must be implemented in ' + this.constructor.name);
     }
 
+    /**
+     * Hook to indicate that a user action is completed, e.g. changing an input field
+     * has been handled. Can be used by controls to tell the editor something changed.
+     * Editor can then decide whether or not to immediately save the model (or await e.g. a timeout)
+     */
+    completeUserAction() {
+        throw new Error('This method must be implemented in ' + this.constructor.name);
+    }
 
     loadModel() {
+        throw new Error('This method must be implemented in ' + this.constructor.name);
+    }
+
+    /**
+     * 
+     * @param {string} source 
+     */
+    loadSource(source) {
         throw new Error('This method must be implemented in ' + this.constructor.name);
     }
 

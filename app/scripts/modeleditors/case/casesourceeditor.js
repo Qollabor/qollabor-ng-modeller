@@ -1,12 +1,12 @@
 class CaseSourceEditor {
     /**
      * 
-     * @param {Case} cs 
+     * @param {CaseModelEditor} editor 
      * @param {JQuery<HTMLElement>} parentHTML 
      * @param {DefinitionDocument} definition 
      */
-    constructor(cs, parentHTML, definition) {
-        this.case = cs;
+    constructor(editor, parentHTML, definition) {
+        this.editor = editor;
         this.definition = definition;
         this.parentHTML = parentHTML;
         this.html = $(`<div class="case-source-editor">
@@ -53,9 +53,9 @@ class CaseSourceEditor {
             return;
         }
 
-        this.case.editor.loadDefinition(newDefinition);
+        this.editor.loadDefinition(newDefinition);
         // Completing the action will save the model and add a corresponding action to the undo/redo buffer
-        this.case.editor.completeUserAction();
+        this.editor.completeUserAction();
         this.close();
     }
 

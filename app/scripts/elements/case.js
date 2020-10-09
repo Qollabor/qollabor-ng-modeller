@@ -45,7 +45,7 @@
         this.paperContainer = this.html.find('.paper-container');
 
         this.deployForm = new Deploy(editor);
-        this.sourceEditor = new CaseSourceEditor(this, this.html, definitionDocument);
+        this.sourceEditor = new CaseSourceEditor(editor, this.html, definitionDocument);
         this.cfiEditor = new CaseFileItemsEditor(this, this.divCFIEditor);
         this.undoBox = new UndoRedoBox(this, this.divUndoRedo);
         this.shapeBox = new ShapeBox(this, this.divShapeBox);

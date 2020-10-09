@@ -109,8 +109,14 @@ Hidden text
                                                                                 
                                                                         
                                                                                 
+                                                                                
+                                                                        
+                                                                                
                                                                                 <br/> has been 
                                                                         
+                                                                                
+                                                                        
+                                                                                
                                                                                 
                                                                         
                                                                                 
@@ -123,10 +129,16 @@ Hidden text
                                                                             
                                                                     
                                                                             
+                                                                            
+                                                                    
+                                                                            
                                                                             <br/>
                             ${fromName}
                         
                                                                 
+                                                                        
+                                                                
+                                                                        
                                                                         
                                                                 
                                                                         
@@ -178,6 +190,7 @@ Hidden text
         <reply-to>${fromAddress}</reply-to>
         <to>
             <address name="${toName}">${toAddress}</address>
-        </to>
+        </to>undefined
+    
     </cafienne:implementation>
-</extensionElements></process>
+</extensionElements>undefinedundefined</process>
