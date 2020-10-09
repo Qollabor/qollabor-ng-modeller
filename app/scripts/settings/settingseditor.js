@@ -14,14 +14,20 @@ class SettingsEditor extends StandardForm {
         return this._editor && this._editor.visible;
     }
 
+    static get ModelEditor() {
+        return {
+                divMovableEditors: ide.html,
+                registerMovableEditor: () => {},
+                selectMovableEditor: () => {},
+                positionMovableEditor: () => {}
+        }
+    }
+
     /**
      * Editor for the content of the settings of the case model editor
      */
     constructor() {
-        super({
-            divMovableEditors: ide.html,
-            movableEditors: []
-        }, 'Settings (raw JSON)', 'jsoneditor settings-editor');
+        super(SettingsEditor.ModelEditor, 'Settings (raw JSON)', 'jsoneditor settings-editor');
     }
 
     renderData() {
