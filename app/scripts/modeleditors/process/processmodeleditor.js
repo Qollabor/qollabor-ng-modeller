@@ -44,7 +44,7 @@ class ProcessModelEditor extends ModelEditor {
                     </div>
                     <div class="process-model-source">
                         <label>Process Implementation (XML)</label>
-                        <div></div>
+                        <div class="code-mirror-container"></div>
                     </div>
                 </div>
                 <div class="model-source-editor" id="sourceEditor"></div>
@@ -71,16 +71,8 @@ class ProcessModelEditor extends ModelEditor {
             }
         });
 
-        //add an editor to the free data area (task model, or Process Implementation)
-        const codeMirrorConfiguration = {
-            matchBrackets: true,
-            autoCloseBrackets: true,
-            lineWrapping: true,
-            mode: 'xml',
-            lineNumbers: true
-        };
-        //add code mirror to 1st codeField
-        this.freeContentEditor = CodeMirror(this.html.find('.process-model-editor .process-model-source>div')[0], codeMirrorConfiguration);   
+        // Add code mirror xml style
+        this.freeContentEditor = CodeMirrorConfig.createXMLEditor(this.html.find('.code-mirror-container'));
 
         /*Events for saving and keeping track of changes in the task model editor
         The model should only be saved when there is a change and the codemirror is blurred.

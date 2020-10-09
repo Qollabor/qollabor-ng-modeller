@@ -112,8 +112,20 @@ Hidden text
                                                                                 
                                                                         
                                                                                 
+                                                                                
+                                                                        
+                                                                                
+                                                                                
+                                                                        
+                                                                                
                                                                                 <br/> has been 
                                                                         
+                                                                                
+                                                                        
+                                                                                
+                                                                                
+                                                                        
+                                                                                
                                                                                 
                                                                         
                                                                                 
@@ -132,10 +144,22 @@ Hidden text
                                                                             
                                                                     
                                                                             
+                                                                            
+                                                                    
+                                                                            
+                                                                            
+                                                                    
+                                                                            
                                                                             <br/>
                             ${fromName}
                         
                                                                 
+                                                                        
+                                                                
+                                                                        
+                                                                        
+                                                                
+                                                                        
                                                                         
                                                                 
                                                                         
@@ -191,6 +215,10 @@ Hidden text
         <to>
             <address name="${toName}">${toAddress}</address>
         </to>undefined
+    
+    undefined
+    
+    undefined
     
     </cafienne:implementation>
 </extensionElements>undefinedundefined</process>

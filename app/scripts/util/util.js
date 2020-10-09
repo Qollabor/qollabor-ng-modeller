@@ -28,26 +28,6 @@
     }
 
     /**
-     * returns the row index of the select or input in the standard events property table
-     */
-    static getRowIndex(htmlElement) {
-
-        let counter = -1;
-
-        while (htmlElement && htmlElement.nodeName.toLowerCase() != 'tr') {
-            htmlElement = htmlElement.parentNode;
-        }
-        if (htmlElement) {
-            counter = 0;
-            while (htmlElement.previousSibling) {
-                counter++;
-                htmlElement = htmlElement.previousSibling;
-            }
-        }
-        return counter;
-    }
-
-    /**
      * returns a random character set of length n
      */
     static getRandomSet(n) {

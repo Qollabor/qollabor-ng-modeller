@@ -29,14 +29,7 @@ class Deploy extends StandardForm {
         this.html.find('.btnViewCMMN').on('click', () => this.viewCMMN());
         this.html.find('.btnServerValidation').on('click', () => this.runServerValidation());
 
-        // Add code mirror for decent printing
-        const codeMirrorXMLConfiguration = {
-            mode: 'xml',
-            lineNumbers : true
-        }
-
-        const codeMirrorHTML = this.htmlContainer.find('.deployFormContent')[0];
-        this.codeMirrorCaseXML = CodeMirror(codeMirrorHTML, codeMirrorXMLConfiguration);
+        this.codeMirrorCaseXML = CodeMirrorConfig.createXMLEditor(this.htmlContainer.find('.deployFormContent'));
     }
 
     _setDeployedTimestamp(text) {

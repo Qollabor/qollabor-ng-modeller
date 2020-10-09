@@ -48,22 +48,8 @@ class SettingsEditor extends StandardForm {
         html.find('.btnSavePreferences').on('click', e => this._save());
         this.htmlContainer.append(html);
 
-        //get the container of the form to add the code mirror editor
-        const codeField = this.htmlContainer.find('.jsoncode')[0];
-
-        //add code mirror to 1st codeField
-        this._codeMirrorEditor = CodeMirror(
-            codeField, {
-                matchBrackets: true,
-                foldGutter: true,
-                gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
-                autoCloseBrackets: true,
-                lineWrapping: true,
-                mode: 'application/json',
-                fold: 'brace',
-                lineNumbers: true
-            }
-        );
+        // Add CodeMirror
+        this._codeMirrorEditor = CodeMirrorConfig.createJSONEditor(this.html.find('.jsoncode'));
 
         // CodeMirror onchange fires when content is changed, every change so on keydown (not just after loss of focus)
         this._codeMirrorEditor.on('change', () => this.validateJSON());

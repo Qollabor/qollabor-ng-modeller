@@ -12,12 +12,7 @@ class ModelSourceEditor {
         this._changed = false;
 
         // Add the code mirror object to the model-container
-        const codeMirrorConfig = {
-            mode: 'xml',
-            lineNumbers: true
-        }
-
-        this._codeMirrorEditor = CodeMirror(this.html[0], codeMirrorConfig);
+        this._codeMirrorEditor = CodeMirrorConfig.createXMLEditor(this.html);
 
         // Code Mirror generates to many change events, we
         // handle them only upon blur, and keep track of changes in _changed flag

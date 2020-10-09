@@ -34,7 +34,7 @@ class HumantaskModelEditor extends ModelEditor {
                         </div>
                         <div class="task-model-source">
                             <label>Task Model (JSON)</label>
-                            <div></div>
+                            <div class="code-mirror-source"></div>
                         </div>
                     </div>
                     <div>
@@ -80,18 +80,10 @@ class HumantaskModelEditor extends ModelEditor {
     }
 
     createCodeMirrorEditor() {
-        //add an editor to the free data area (task model, or Process Implementation)
-        const codeMirrorConfiguration = {
-            matchBrackets: true,
-            autoCloseBrackets: true,
-            lineWrapping: true,
-            mode: 'application/json',
-            lineNumbers: true
-        };
-        //add code mirror to 1st codeField
-        this.freeContentEditor = CodeMirror(this.html.find('.humantask-model-editor .task-model-source>div')[0], codeMirrorConfiguration);   
+        //add code mirror JSON style
+        this.freeContentEditor = CodeMirrorConfig.createJSONEditor(this.html.find('.code-mirror-source'));
 
-        /*Events for saving and keeping track of changes in the task model editor
+        /* Events for saving and keeping track of changes in the task model editor
         The model should only be saved when there is a change and the codemirror is blurred.
         The onchange event of codemirror fires after every keydown, this is not wanted.
         So only save after blur, but only when there is a change in content.
@@ -109,7 +101,6 @@ class HumantaskModelEditor extends ModelEditor {
         this.freeContentEditor.on('change', () => {
             this._enableAutoSave()
         });
-
     }
 
     /**

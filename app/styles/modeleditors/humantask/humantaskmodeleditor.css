@@ -38,7 +38,7 @@
     position: absolute;
 }
 
-.humantask-model-editor .task-model-source>div {
+.humantask-model-editor .code-mirror-source {
     position: absolute;
     top: 15px;
     left: 0px;
@@ -47,7 +47,7 @@
     border: 1px solid rgb(169, 169, 169);
 }
 
-.humantask-model-editor .task-model-source>div>div {
+.humantask-model-editor .code-mirror-source>div {
     height: 100%;
 }
 

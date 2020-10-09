@@ -58,16 +58,7 @@ class Debugger extends StandardForm {
         this.eventTable = this.html.find('.tableDiv');
 
         // Add code mirror for decent printing
-        const codeMirrorXMLConfiguration = {
-            matchBrackets: true,
-            autoCloseBrackets: true,
-            lineWrapping: true,
-            mode: 'application/json',
-            lineNumbers: true
-        }
-
-        const codeMirrorHTML = this.htmlContainer.find('.debugFormContent')[0];
-        this.codeMirrorCaseXML = CodeMirror(codeMirrorHTML, codeMirrorXMLConfiguration);
+        this.codeMirrorEventViewer = CodeMirrorConfig.createJSONEditor(this.htmlContainer.find('.debugFormContent'));
 
         this.keyDownHandler = e => this.handleKeyDown(e);
 
@@ -212,8 +203,8 @@ class Debugger extends StandardForm {
 
     _setContent(label, content) {
         this.html.find('.debugFormLabel').text(label);
-        this.codeMirrorCaseXML.setValue(content);
-        this.codeMirrorCaseXML.refresh();
+        this.codeMirrorEventViewer.setValue(content);
+        this.codeMirrorEventViewer.refresh();
     }
 
     get events() {

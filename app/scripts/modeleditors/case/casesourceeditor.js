@@ -31,14 +31,8 @@ class CaseSourceEditor {
         this.html.find('.btnImport').on('click', e => this.import());
         this.html.find('.btnClose').on('click', () => this.close());
 
-        const codeMirrorXMLConfiguration = {
-            mode: 'xml',
-            lineNumbers: true,
-            scrollbarStyle: 'null'
-        }
-
-        this.codeMirrorCaseXML = CodeMirror(this.html.find('.left .codemirrorsource')[0], codeMirrorXMLConfiguration);
-        this.codeMirrorDimensionsXML = CodeMirror(this.html.find('.right .codemirrorsource')[0], codeMirrorXMLConfiguration);
+        this.codeMirrorCaseXML = CodeMirrorConfig.createXMLEditor(this.html.find('.left .codemirrorsource'));
+        this.codeMirrorDimensionsXML = CodeMirrorConfig.createXMLEditor(this.html.find('.right .codemirrorsource'));
     }
 
     import() {
