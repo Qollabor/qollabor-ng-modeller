@@ -23,6 +23,8 @@ class Debugger extends StandardForm {
         <label>Case instance</label>
         <input class="caseInstanceId" type="text"></input>
         <button class="btnShowEvents">Show Events</button>
+        <input style="margin-left:20px;margin-top:10px" id="ht" class="inputShowAllTimestamps" type="checkbox"></input>
+        <label for="ht">Show all timestamps</label>
         <input style="margin-left:20px;margin-top:10px" id="hd" class="inputHideDetails" type="checkbox" checked></input>
         <label for="hd">Hide/show event user details</label>
     </div>
@@ -50,9 +52,13 @@ class Debugger extends StandardForm {
         this.html.find('.caseInstanceId').val(localStorage.getItem('debug-case-id'))
         this.login = JSON.parse(localStorage.getItem('login') || '{}')
         this.html.find('.inputHideDetails').prop('checked', this.hideDetails);
-
-        this.html.find('.btnShowEvents').on('click', () => this.showEvents());
         this.html.find('.inputHideDetails').on('change', e => this.hideDetails = e.currentTarget.checked);
+        this.html.find('.inputShowAllTimestamps').prop('checked', this.showAllTimestamps);
+        this.html.find('.inputShowAllTimestamps').on('change', e => {
+            this.showAllTimestamps = e.currentTarget.checked;
+            this.renderEvents();
+        });
+        this.html.find('.btnShowEvents').on('click', () => this.showEvents());
 
         this.splitter = new RightSplitter(this.html.find('.debug-container'), '150px');
         this.eventTable = this.html.find('.tableDiv');
@@ -133,6 +139,18 @@ class Debugger extends StandardForm {
     }
 
     /**
+     * @returns {Boolean}
+     */
+    get showAllTimestamps() {
+        const hide = localStorage.getItem('hideTimestamps') === 'true';
+        return hide;
+    }
+
+    set showAllTimestamps(show) {
+        localStorage.setItem('hideTimestamps', show.toString());
+    }
+
+    /**
      * 
      * @param {JQuery.KeyDownEvent} e 
      */
@@ -197,11 +215,7 @@ class Debugger extends StandardForm {
         this.selectedEventId = undefined;
     }
 
-    _setDeployedTimestamp(text) {
-        this.html.find('.debug_timestamp').text(text);
-    }
-
-    _setContent(label, content) {
+    setEventContent(label, content) {
         this.html.find('.debugFormLabel').text(label);
         this.codeMirrorEventViewer.setValue(content);
         this.codeMirrorEventViewer.refresh();
@@ -273,9 +287,12 @@ class Debugger extends StandardForm {
     }
 
     renderEvents() {
+        if (! this.events) {
+            return;
+        }
         const renderedBefore = this.eventTable.find('tr').length > 1;
         const startMsg = this.events.length > 0 ? '' : 'If there are no events, check case instance id and context variables';
-        this._setContent('', startMsg);
+        this.setEventContent('', startMsg);
         Util.clearHTML(this.eventTable);
 
         const getBackgroundColor = event => {
@@ -302,36 +319,41 @@ class Debugger extends StandardForm {
         const eventSelection = this.events.filter(applyFilter);
         const newRows = eventSelection.map(event => {
             const timestamp = event.content.modelEvent.timestamp ? event.content.modelEvent.timestamp : event.type.indexOf('Modified') >=0 ? event.content.lastModified : '';
+            const format = timestamp => timestamp.substring(0, timestamp.indexOf('.') + 4);
             let timestampString = timestamp;
             if (! currentTimestamp) { // bootstrap
                 currentTimestamp = timestamp;
                 numTransactions = 1;
-                timestampString = `<strong>${timestamp}</strong>`;
+                timestampString = `<strong>${format(timestamp)}</strong>`;
             }
             if (currentTimestamp != timestamp) {
                 currentTimestamp = timestamp;
                 numTransactions++;
-                timestampString = `<strong>${timestamp}</strong>`;
+                timestampString = `<strong>${format(timestamp)}</strong>`;
+            } else {
+                timestampString = this.showAllTimestamps ? format(timestamp) : '';
             }
             const bgc = getBackgroundColor(event);
             return `<tr event-nr="${event.nr - 1}">
                 <td>${event.nr}</td>
                 <td style="${bgc}">${event.type}</td>
-                <td>${this.getEventName(event)}</td>
-                <td>${timestampString}</td>
+                <td style="white-space:nowrap"><span>${this.getEventName(event)}</span></td>
+                <td style="white-space:nowrap">${timestampString}</td>
             </tr>\n`
         }).reverse().join('');
         this.eventTable.html(`<table>
             <tr>
                 <td><strong>Nr</strong><br/><div>count: ${eventSelection.length}</div></td>
                 <td><strong>Type</strong><br/><input type="text"  filter="eventTypeFilter" value="${this.eventTypeFilter}" /></td>
-                <td><strong>Name</strong><br/><input type="text" filter="eventNameFilter" value="${this.eventNameFilter}" /></td>
-                <td><strong>Time</strong><div>batches: ${numTransactions}</div></td>
+                <td style="white-space:nowrap"><strong>Name</strong><br/><input type="text" filter="eventNameFilter" value="${this.eventNameFilter}" /></td>
+                <td style="white-space:nowrap"><strong>Time</strong><div>batches: ${numTransactions}</div></td>
             </tr>
             ${newRows}
         </table>`);
         this.eventTable.find('tr').on('click', e => this.selectEvent(e.currentTarget));
         this.eventTable.find('input[filter]').on('change', e => this.searchWith(e));
+        this.eventTable.find('.nameF').css('width', 'fit-content');
+        this.eventTable.find('.nameF').css('text-wrap', 'false');
 
         if (this.eventTable.width() < this.eventTable.find('table').width()) {
             this.splitter.repositionSplitter(this.eventTable.find('table').width() + 20);
@@ -367,7 +389,7 @@ class Debugger extends StandardForm {
                 delete content.modelEvent;
                 delete content.caseInstanceId;
             }
-            this._setContent('', JSON.stringify(content, undefined, 3));
+            this.setEventContent('', JSON.stringify(content, undefined, 3));
         }
     }
 
