@@ -79,6 +79,34 @@ class ZoomTaskImplementationHaloItem extends HaloClickItem {
         super(halo, imgURL, title, e => window.location.hash = implementationRef, html);
     }
 }
+class PreviewTaskFormHaloItem extends HaloClickItem {
+    /**
+     * Returns the default bar in which this item appears
+     * @param {Halo} halo 
+     */
+    static defaultBar(halo) {
+        return halo.bottomBar;
+    }
+
+    constructor(halo) {
+        super(halo, 'images/preview_32.png', 'Preview Task Form', e => this.element.previewTaskForm());
+    }
+}
+class InvalidPreviewTaskFormHaloItem extends HaloClickItem {
+    /**
+     * Returns the default bar in which this item appears
+     * @param {Halo} halo 
+     */
+    static defaultBar(halo) {
+        return halo.bottomBar;
+    }
+
+    constructor(halo) {
+        super(halo, 'images/preview_32.png', 'Task Preview not available', e => {});
+        // this.html.css('background-color', 'red');
+        this.html.css('border', '2px solid red');
+    }
+}
 
 class NewTaskImplemenationHaloItem extends HaloClickItem {
     /**

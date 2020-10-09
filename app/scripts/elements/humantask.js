@@ -13,6 +13,7 @@ class HumanTask extends Task {
     constructor(parent, definition) {
         super(parent, definition);
         this.workflowProperties = new WorkflowProperties(this);
+        this.previewForm = new PreviewTaskForm(this.editor, this);
     }
 
     /** @returns {HumanTaskDefinition} */
@@ -30,6 +31,10 @@ class HumanTask extends Task {
 
     showWorkflowProperties() {
         this.workflowProperties.show(true);
+    }
+
+    previewTaskForm() {
+        this.previewForm.visible = true;
     }
 
     createHalo() {
