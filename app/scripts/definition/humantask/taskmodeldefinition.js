@@ -8,7 +8,7 @@ class TaskModelDefinition extends HumanTaskModelElementDefinition {
      * @returns {String}
      */
     get value() {
-        return this.taskModel || '{ Specify the JSON here }';
+        return this.taskModel || '';
     }
 
     set value(value) {

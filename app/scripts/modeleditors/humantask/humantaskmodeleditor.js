@@ -17,7 +17,7 @@ class HumantaskModelEditor extends ModelEditor {
                     <li><a href="#sourceEditor">Source</a></li>
                 </ul>
                 <div class="humantask-model-editor" id="modelEditor">
-                    <div style="margin-left:10px;position:absolute">
+                    <div class="left-pane">
                         <div class="modelgenericfields">
                             <div>
                                 <label>Name</label>
@@ -34,6 +34,7 @@ class HumantaskModelEditor extends ModelEditor {
                         </div>
                         <div class="task-model-source">
                             <label>Task Model (JSON)</label>
+                            <span class="json-error-description"></span>
                             <div class="code-mirror-source"></div>
                         </div>
                     </div>
@@ -41,7 +42,7 @@ class HumantaskModelEditor extends ModelEditor {
                         <div class="model-content-viewer">
                             <div class="task-preview-header">
                                 <h3>Preview</h3>
-                                <label>Note: the preview is rendered with AlpacaJS; Cafienne UI uses React JSON Schema Forms, which renders slightly different.</label>
+                                <label>Note: the preview below is rendered with <a target="_blank" href="http://www.alpacajs.org/">AlpacaJS</a>; Cafienne UI uses <b><a target="_new" href="https://react-jsonschema-form.readthedocs.io">React JSON Schema Forms</a></b>, which renders slightly different.</label>
                             </div>
                             <div class="task-preview-content"></div>
                         </div>
@@ -76,6 +77,7 @@ class HumantaskModelEditor extends ModelEditor {
         this.viewSourceEditor = new ModelSourceEditor(this.html.find('.model-source-tabs .model-source-editor'), this);
         this.contentViewer = this.html.find('.model-content-viewer');
         this.taskPreview = this.html.find('.task-preview-content');
+        this.jsonErrorDiv = this.html.find('.json-error-description');
         this.createCodeMirrorEditor();
     }
 
@@ -98,9 +100,7 @@ class HumantaskModelEditor extends ModelEditor {
                 this.saveModel();
             }
         });
-        this.freeContentEditor.on('change', () => {
-            this._enableAutoSave()
-        });
+        this.freeContentEditor.on('change', () => this.taskModelChanged());
     }
 
     /**
@@ -127,15 +127,46 @@ class HumantaskModelEditor extends ModelEditor {
         this.renderPreview();
     }
 
+    renderPreview() {
+        // Clear current content
+        this.taskPreview.html('');
+        this.jsonErrorDiv.html('');
+
+        // Now check if there is a "sensible" expectation that we have a JSON schema in the taskmodel
+        const taskModel = this.model.implementation.taskModel.value;
+        if (! taskModel || taskModel.trim().indexOf('{')<0) {
+            return;
+        }
+
+        const parseResult = Util.parseJSON(taskModel);
+        if (parseResult.object) {
+            const jsonForm = parseResult.object;
+            jsonForm.options = {
+                focus: false
+            }
+            // Render the task view
+            this.taskPreview.alpaca(jsonForm);
+        } else {
+            this.jsonErrorDiv.html(parseResult.description);
+        }
+    }
+
     /**
      * Sets or replaces the auto save timer (which runs 10 seconds after the last change)
      */
-    _enableAutoSave() {
+    taskModelChanged() {
         // Set 'changed' flag.
         this._changed = true;
 
-        this.renderPreview();
+        // Take latest and greatest json schema
+        this.model.implementation.taskModel.value = this.freeContentEditor.getValue();
 
+
+        this.renderPreview();
+        this.setAutoSaveTimer();
+    }
+
+    setAutoSaveTimer() {
         // Remove any existing timers
         this._removeAutoSave();
 
@@ -147,10 +178,6 @@ class HumantaskModelEditor extends ModelEditor {
         }, 10000);
     }
 
-    completeUserAction() {
-        this.saveModel();
-    }
-
     /**
      * Removes the auto save timer, if it is defined.
      */
@@ -158,6 +185,10 @@ class HumantaskModelEditor extends ModelEditor {
         if (this._currentAutoSaveTimer) {
             window.clearTimeout(this._currentAutoSaveTimer);
         }
+    }
+
+    completeUserAction() {
+        this.saveModel();
     }
 
     onHide() {
@@ -195,9 +226,6 @@ class HumantaskModelEditor extends ModelEditor {
     }
 
     saveModel() {
-        // Take latest and greatest json schema
-        this.model.implementation.taskModel.value = this.freeContentEditor.getValue();
-
         // Remove 'changed' flag just prior to saving
         this._changed = false;
 
@@ -215,25 +243,6 @@ class HumantaskModelEditor extends ModelEditor {
     get label() {
         return 'Edit Human Task - ' + this.fileName;
     }
-
-    renderPreview() {
-        const formData = this.freeContentEditor.getValue();
-
-        const parseResult = Util.parseJSON(formData);
-        if (parseResult.object) {
-            const jsonForm = parseResult.object;
-            jsonForm.options = {
-                focus: false
-            }
-            // Clear current content
-            this.taskPreview.html('');
-            // Render the task view
-            this.taskPreview.alpaca(jsonForm);
-        } else {
-            this.taskPreview.html(parseResult.description);
-        }
-    }
-
 
     /**
      * Create a new HumanTask model with given name and description 
