@@ -4,7 +4,7 @@ class ModelParameters {
     /**
      * This object handles the input and output parameters of task model editor.
      * 
-     * @param {XMLModelEditor} editor 
+     * @param {ModelEditor} editor 
      * @param {JQuery<HTMLElement>} htmlContainer 
      * @param {String} label 
      */
@@ -68,7 +68,7 @@ class ModelParameters {
         html.find('.inputParameterName').val(parameter.name);
         html.find('.inputParameterId').val(parameter.id);
         html.find('.inputParameterId').attr('readonly', 'true');
-        this.editor._save();
+        this.editor.completeUserAction();
     }
 
     /**
@@ -94,7 +94,7 @@ class ModelParameters {
             }
             Util.removeFromArray(this.parameters, parameter);
             Util.removeHTML(html);
-            this.editor._save();
+            this.editor.completeUserAction();
         });
         html.find('.inputParameterName').on('change', e => this.changeParameter(html, parameter, e.currentTarget.value, parameter.id));
         // Remove "readonly" upon dblclick; id's are typically generated because they must be unique across multiple models

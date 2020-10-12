@@ -1,0 +1,33 @@
+
+.model-source-tabs {
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    left: 2px;
+    right: 2px;
+    height: auto;
+    font-size: 0.8em;
+}
+
+/* style the tabs*/
+.model-source-tabs ul {
+    background-color: white;
+    border: 0px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+.model-source-tabs li {
+    background-color: #f5f5f5 !important;
+}
+
+.model-source-tabs li a {
+    opacity: 0.8;
+}
+
+.model-source-tabs ul .ui-state-active {
+    border-color: rgb(221, 221, 221) !important;
+}
+
+.model-source-tabs ul .ui-state-active a {
+    color: #333333;
+}

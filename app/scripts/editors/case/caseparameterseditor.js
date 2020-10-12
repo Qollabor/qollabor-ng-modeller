@@ -1,10 +1,10 @@
 class CaseParametersEditor extends StandardForm {
     /**
      * 
-     * @param {Case} cs 
+     * @param {CaseModelEditor} editor 
      */
-    constructor(cs) {
-        super(cs, 'Edit case parameters', 'caseparameters');
+    constructor(editor) {
+        super(editor, 'Edit case parameters', 'caseparameters');
     }
 
     renderHead() {
@@ -30,17 +30,6 @@ class CaseParametersEditor extends StandardForm {
     renderData() {
         this.inputParameters.renderTable();
         this.outputParameters.renderTable();
-    }
-
-    open() {
-        this.visible = true;
-    }
-
-    /**
-     * Closes the editor form (hides it)
-     */
-    close() {
-        this.visible = false;
     }
 
     refresh() {

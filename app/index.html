@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="bower_components/jquery-ui/themes/base/jquery-ui.css" />
     <link rel="stylesheet" href="bower_components/jquery.fancytree/dist/skin-lion/ui.fancytree.css" />
     <link rel="stylesheet" href="bower_components/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="bower_components/codemirror/addon/fold/foldgutter.css" />
     <link rel="stylesheet" href="bower_components/codemirror/addon/hint/show-hint.css">
     <!-- endbower -->
     <!-- endbuild -->
@@ -51,7 +52,11 @@
     <link rel="stylesheet" href="styles/editors/jsoneditor.css" />
     <link rel="stylesheet" href="styles/editors/task/taskmappingseditor.css" />
     <link rel="stylesheet" href="styles/modeleditors/modeleditor.css" />
-    <link rel="stylesheet" href="styles/modeleditors/xmleditor/xmlmodeleditor.css" />
+    <link rel="stylesheet" href="styles/modeleditors/xmleditor/modelparameters.css" />
+    <link rel="stylesheet" href="styles/modeleditors/xmleditor/modelsourceeditor.css" />
+    <link rel="stylesheet" href="styles/modeleditors/xmleditor/tabs.css" />
+    <link rel="stylesheet" href="styles/modeleditors/humantask/humantaskmodeleditor.css" />
+    <link rel="stylesheet" href="styles/modeleditors/process/processmodeleditor.css" />
     <link rel="stylesheet" href="styles/modeleditors/case/casemodeleditor.css" />
     <link rel="stylesheet" href="styles/modeleditors/case/caseparameters.css" />
     <link rel="stylesheet" href="styles/modeleditors/case/deploy.css" />
@@ -87,7 +92,12 @@
     <script src="bower_components/codemirror/mode/javascript/javascript.js"></script>
     <script src="bower_components/codemirror/addon/edit/matchbrackets.js"></script>
     <script src="bower_components/codemirror/addon/edit/closebrackets.js"></script>
+    <script src="bower_components/codemirror/addon/fold/brace-fold.js"></script>
+    <script src="bower_components/codemirror/addon/fold/foldcode.js"></script>
+    <script src="bower_components/codemirror/addon/fold/xml-fold.js"></script>
+    <script src="bower_components/codemirror/addon/fold/foldgutter.js"></script>
     <script src="bower_components/codemirror/addon/hint/javascript-hint.js"></script>
+    <script src="bower_components/codemirror/mode/javascript/javascript.js"></script>
     <script src="bower_components/col-resizable/colResizable-1.6.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
@@ -111,6 +121,7 @@
     <script src="scripts/settings/settings.js"></script>
     <script src="scripts/settings/settingseditor.js"></script>
     <script src="scripts/settings/settingsstorage.js"></script>
+    <script src="scripts/util/codemirrorconfig.js"></script>
     <script src="scripts/util/util.js"></script>
     <script src="scripts/util/xml.js"></script>
     <!-- endbower -->
@@ -140,6 +151,7 @@
     <script src="scripts/elements/properties/taskproperties.js"></script>
     <script src="scripts/elements/properties/humantaskproperties.js"></script>
     <script src="scripts/elements/properties/workflowproperties.js"></script>
+    <script src="scripts/editors/task/previewtaskform.js"></script>
     <script src="scripts/elements/properties/textboxproperties.js"></script>
     <script src="scripts/elements/properties/timereventproperties.js"></script>
     <script src="scripts/elements/properties/usereventproperties.js"></script>
@@ -287,11 +299,11 @@
     
     <script src="scripts/modeleditors/modeleditor.js"></script>
     <script src="scripts/modeleditors/modeleditormetadata.js"></script>
-    <script src="scripts/modeleditors/xmleditor/xmlmodeleditor.js"></script>
     <script src="scripts/modeleditors/xmleditor/modelsourceeditor.js"></script>
+    <script src="scripts/modeleditors/xmleditor/modelparameters.js"></script>
     <script src="scripts/modeleditors/case/casemodeleditor.js"></script>
-    <script src="scripts/modeleditors/xmleditor/processmodeleditor.js"></script>
-    <script src="scripts/modeleditors/xmleditor/humantaskmodeleditor.js"></script>
+    <script src="scripts/modeleditors/process/processmodeleditor.js"></script>
+    <script src="scripts/modeleditors/humantask/humantaskmodeleditor.js"></script>
 
     <script src="scripts/modeleditors/case/casesourceeditor.js"></script>
     <script src="scripts/modeleditors/case/shapebox.js"></script>
@@ -301,11 +313,17 @@
     <script src="scripts/modeleditors/case/grid.js"></script>
     <script src="scripts/debugger/debugger.js"></script>
     <script src="scripts/modeleditors/case/deploy.js"></script>
-    <script src="scripts/editors/modelparameters.js"></script>
     <script src="scripts/editors/startcaseeditor.js"></script>
     <script src="scripts/editors/expressioneditor.js"></script>
     <script src="scripts/editors/intellisense.js"></script>
 
+    <!-- handlebars -->
+    <script type="text/javascript" src="bower_components/handlebars/handlebars.min.js"></script>
+   
+    <!-- alpaca -->
+    <link type="text/css" href="bower_components/alpaca/dist/alpaca/bootstrap/alpaca.min.css" rel="stylesheet"/>
+    <script type="text/javascript" src="bower_components/alpaca/dist/alpaca/bootstrap/alpaca.min.js"></script>
+    
     <!-- endbower -->
     <!-- endbuild -->
 </head>

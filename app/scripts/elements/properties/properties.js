@@ -4,7 +4,8 @@ class Properties extends MovableEditor {
      * @param {CMMNElement} cmmnElement 
      */
     constructor(cmmnElement) {
-        super(cmmnElement.case);
+        // console.log("Creating properties for " + cmmnElement)
+        super(cmmnElement.editor);
         this.cmmnElement = cmmnElement;
 
         //set the properties to get the html elements from index.html
@@ -44,7 +45,7 @@ class Properties extends MovableEditor {
     <div class="properties-footer"></div>
 </div>`);
 
-        this.html.appendTo(this.case.divMovableEditors);
+        this.htmlParent.append(this.html);
 
         this.htmlContainer = this.html.find('.properties-container');
 
@@ -86,6 +87,7 @@ class Properties extends MovableEditor {
     renderData() {}
 
     delete() {
+        // console.log("Deleting properties for " + cmmnElement)
         Util.removeHTML(this.html);
     }
 
@@ -158,7 +160,7 @@ class Properties extends MovableEditor {
     hide() {
         // Only hide if not pinned.
         if (!this.pinned) {
-            this.visible = false;
+            super.hide();
         }
     }
 

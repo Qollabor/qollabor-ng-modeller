@@ -13,6 +13,8 @@ class ModelEditor {
         this.fileName = fileName;
         this.modelName = modelName;
         this.modelType = modelType;
+        /** @type {Array<MovableEditor>} */
+        this.movableEditors = [];
         this.html = $(
 `<div class="model-editor-base">
     <div class="model-editor-header">
@@ -24,11 +26,103 @@ class ModelEditor {
             <img src="images/close_32.png" />
         </div>
     </div>
+    <div class="divMovableEditors"></div>
     <div class="model-editor-content"></div>
 </div>`);
         this.htmlContainer = this.html.find('.model-editor-content');
+        this.divMovableEditors = this.html.find('.divMovableEditors');
         this.html.find('.closeButton').on('click', e => this.close());
         this.html.find('.refreshButton').on('click', e => this.refresh());
+    }
+
+    /**
+     * 
+     * @param {MovableEditor} editor 
+     */
+    registerMovableEditor(editor) {
+        this.movableEditors.push(editor);
+    }
+
+    /**
+     * Make sure the editor is on top of the others
+     * @param {MovableEditor} editor 
+     */
+    selectMovableEditor(editor) {
+        Util.removeFromArray(this.movableEditors, this);
+        this.movableEditors.push(editor);
+        // Now reset z-index of editors, oldest at bottom, newest (this) at top.
+        this.movableEditors.forEach((editor, index) => $(editor.html).css('z-index', index + 1));
+    }
+
+    /**
+     * Give the editor an (initial) position
+     * @param {MovableEditor} editor 
+     */
+    positionMovableEditor(editor) {
+        const newPosition = editor.html.offset();
+        if (newPosition.left == 0) {
+            newPosition.left = 220;
+        }
+        if (newPosition.top == 0) {
+            newPosition.top = 60;
+        }
+
+        const MINIMUM_MARGIN_BETWEEN_EDITORS = 30;
+
+        // Do not put this editor at exact same location as one of the others
+        //  There must be at least 30 px difference
+        this.movableEditors.forEach(sibling => {
+            if (sibling != editor && sibling.html.css('display') == 'block') {
+                const editorOffset = sibling.html.offset();
+
+                const leftMargin = editorOffset.left - MINIMUM_MARGIN_BETWEEN_EDITORS;
+                const rightMargin = editorOffset.left + MINIMUM_MARGIN_BETWEEN_EDITORS;
+                if (newPosition.left > leftMargin && newPosition.left < rightMargin) {
+                    newPosition.left = rightMargin;
+                }
+
+                const topMargin = editorOffset.top - MINIMUM_MARGIN_BETWEEN_EDITORS;
+                const bottomMargin = editorOffset.top + MINIMUM_MARGIN_BETWEEN_EDITORS;
+                if (newPosition.top > topMargin && newPosition.top < bottomMargin) {
+                    newPosition.top = bottomMargin;
+                }
+            }
+        });
+
+        // Also keep editor inside the browser window
+        const bodyWidth = document.body.offsetWidth;
+        const bodyHeight = document.body.offsetHeight;
+        if ((newPosition.left + editor.html.width()) > bodyWidth) {
+            newPosition.left = Math.max(0, bodyWidth - editor.html.width() - MINIMUM_MARGIN_BETWEEN_EDITORS);
+        }
+        if ((newPosition.top + editor.html.height()) > bodyHeight) {
+            newPosition.top = Math.max(0, bodyHeight - editor.html.height() - MINIMUM_MARGIN_BETWEEN_EDITORS);
+        }
+
+        editor.html.css('top', newPosition.top);
+        editor.html.css('left', newPosition.left);        
+    }
+
+    /**
+     * Hide all movable editors.
+     */
+    hideMovableEditors() {
+        this.movableEditors.forEach(editor => editor.visible = false);
+    }
+
+    /**
+     * Hides the movable editor on top.
+     * @returns {Boolean} true if an editor was hidden, false if no editors are visible
+     */
+    hideTopEditor() {
+        const editorsReversed = Array.from(this.movableEditors).reverse();
+        const visibleEditor = editorsReversed.find(editor => editor.visible)
+        if (visibleEditor) {
+            visibleEditor.visible = false;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -38,8 +132,24 @@ class ModelEditor {
         throw new Error('This method must be implemented in ' + this.constructor.name);
     }
 
+    /**
+     * Hook to indicate that a user action is completed, e.g. changing an input field
+     * has been handled. Can be used by controls to tell the editor something changed.
+     * Editor can then decide whether or not to immediately save the model (or await e.g. a timeout)
+     */
+    completeUserAction() {
+        throw new Error('This method must be implemented in ' + this.constructor.name);
+    }
 
     loadModel() {
+        throw new Error('This method must be implemented in ' + this.constructor.name);
+    }
+
+    /**
+     * 
+     * @param {string} source 
+     */
+    loadSource(source) {
         throw new Error('This method must be implemented in ' + this.constructor.name);
     }
 

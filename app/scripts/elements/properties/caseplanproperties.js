@@ -45,8 +45,8 @@ class CasePlanProperties extends StageProperties {
                                 <button class="btnCaseSchemaEditor">Edit Schema</button>
                             </div>
                         </div>`);
-        html.find('.btnCaseRolesEditor').on('click', e => this.cmmnElement.case.rolesEditor.open());
-        html.find('.btnCaseSchemaEditor').on('click', e => this.cmmnElement.case.startCaseEditor.open());
+        html.find('.btnCaseRolesEditor').on('click', e => this.cmmnElement.case.rolesEditor.show());
+        html.find('.btnCaseSchemaEditor').on('click', e => this.cmmnElement.case.startCaseEditor.show());
         this.htmlContainer.append(html);
         return html;
     }
@@ -61,8 +61,8 @@ class CasePlanProperties extends StageProperties {
                                 <img src="images/output_128.png" />
                             </div>
                         </div>`);
-        html.find('.btnCaseInputParameters').on('click', e => this.cmmnElement.case.caseParametersEditor.open());
-        html.find('.btnCaseOutputParameters').on('click', e => this.cmmnElement.case.caseParametersEditor.open());
+        html.find('.btnCaseInputParameters').on('click', e => this.cmmnElement.case.caseParametersEditor.show());
+        html.find('.btnCaseOutputParameters').on('click', e => this.cmmnElement.case.caseParametersEditor.show());
         this.htmlContainer.append(html);
         return html;
     }

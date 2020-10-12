@@ -1,0 +1,100 @@
+.humantask-model-editor {
+    background-color: #f5f5f5 !important;
+    position: absolute;
+    /* needed for tabs: | Editor | Source | */
+    top: 33px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    border: 0px;
+}
+
+.humantask-model-editor .left-pane {
+    padding-top: 10px;
+    margin-left: 10px;
+    left: 10px;
+    right: 10px;
+    position: absolute
+}
+
+/*name and description fields*/
+.humantask-model-editor .modelgenericfields {
+    top: 10px;
+}
+
+.humantask-model-editor .modelgenericfields div label:first-child,
+.humantask-model-editor .modelgenericfields div input:first-child {
+    width: 200px;
+}
+
+.humantask-model-editor .modelgenericfields div label:last-child,
+.humantask-model-editor .modelgenericfields div input:last-child {
+    width: 417px;
+}
+
+/*Task Model json editor*/
+.humantask-model-editor .task-model-source {
+    top: 255px;
+    bottom: 10px;
+    width: 620px;
+    position: absolute;
+}
+
+.humantask-model-editor .json-error-description {
+    color: red;
+    font-weight: bold;
+    padding-left: 30px;
+}
+
+.humantask-model-editor .code-mirror-source {
+    position: absolute;
+    top: 15px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    border: 1px solid rgb(169, 169, 169);
+}
+
+.humantask-model-editor .code-mirror-source>div {
+    height: 100%;
+}
+
+.humantask-model-editor .horizontal-splitter {
+    /* Giving splitter a color  gives the 'Preview' a clear space */
+    border-left: 2px solid grey;
+    /* Top 1px puts the splitter in the middle of the screen. Otherwise it goes too low. */
+    top: 1px;
+}
+
+.humantask-model-editor .model-content-viewer {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding-right: 30px;
+    padding-left: 30px;
+    background-color: #f5f5f5;
+}
+
+.humantask-model-editor .task-preview-header {
+    position: absolute;
+    left: 0px;
+    right: 60px;
+}
+
+.humantask-model-editor .task-preview-content {
+    position: absolute;
+    top: 80px;
+    left: 0px;
+    right: 60px;
+    bottom: 10px;
+    /* indent a bit to the right */
+    margin-left: 10px;
+    /* little extra space for a scrollbar */
+    padding-right: 5px;
+    /* put a light border around the actual preview */
+    border: 1px solid rgb(169, 169, 169);
+    /* let the content scroll */
+    overflow: auto;
+}

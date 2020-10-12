@@ -11,12 +11,12 @@ class ValidateForm extends StandardForm {
     /**
      * This object handles the validation of the CMMN schema drawn by the user;
      * If holds track of the problems found in the CMMN schema of the case; these problems have a @type {ProblemType}
-     * @param {Case} cs
+     * @param {CaseModelEditor} editor
      */
-    constructor(cs) {
-        super(cs, '');
-        this.validator = cs.validator;
-        cs.validator.addListener(validator => this.renderData());
+    constructor(editor) {
+        super(editor, '');
+        this.validator = editor.case.validator;
+        this.validator.addListener(validator => this.renderData());
         if (ValidateForm.Settings.visible) {
             this.show();
         } else {
@@ -68,8 +68,6 @@ class ValidateForm extends StandardForm {
 
         this.html.find('#hideProblemsBt').on('click', () => this.handleHideProblems());
         this.html.find('#showAllProblemsBt').on('click', () => this.handleShowAllProblems());
-
-        this.positionEditor();
     }
 
     renderForm() {
@@ -127,14 +125,13 @@ class ValidateForm extends StandardForm {
         this.hiddenProblems = relevantProblems;
     }
 
-    /**
-     * shows the errors and warnings form
-     */
-    show() {
-        //show the form
-        super.visible = true;
+    onShow() {
         ValidateForm.Settings.visible = true;
         this.showProblemsInForm();
+    }
+
+    onHide() {
+        ValidateForm.Settings.visible = false;
     }
 
     /**
@@ -181,11 +178,6 @@ class ValidateForm extends StandardForm {
                 }
             }
         }
-    }
-
-    hide() {
-        super.visible = false;
-        ValidateForm.Settings.visible = false;
     }
 
     /**

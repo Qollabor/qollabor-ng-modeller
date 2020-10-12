@@ -29,12 +29,20 @@ class HumanTaskHalo extends TaskHalo {
     }
 
     createItems() {
+        const task = this.element;
         this.addItems(ConnectorHaloItem, PropertiesHaloItem, WorkflowHaloItem, DeleteHaloItem);
         if (!this.element.definition.isDiscretionary) {
             this.addItems(EntryCriterionHaloItem, ExitCriterionHaloItem);
         }
         if (this.element.planItemDefinition.implementationRef) {
-            this.addItems(ZoomTaskImplementationHaloItem, InputParametersHaloItem, OutputParametersHaloItem);
+            const model = task.planItemDefinition.implementationModel && task.planItemDefinition.implementationModel.taskModel;
+            const taskModel = model && model.taskModel || '';
+            try {
+                JSON.parse(taskModel)
+                this.addItems(ZoomTaskImplementationHaloItem, InputParametersHaloItem, OutputParametersHaloItem, PreviewTaskFormHaloItem);                
+            } catch (error) {
+                this.addItems(ZoomTaskImplementationHaloItem, InputParametersHaloItem, OutputParametersHaloItem, InvalidPreviewTaskFormHaloItem);
+            }
         } else {
             this.addItems(NewTaskImplemenationHaloItem);
         }

@@ -1,12 +1,12 @@
 class CaseSourceEditor {
     /**
      * 
-     * @param {Case} cs 
+     * @param {CaseModelEditor} editor 
      * @param {JQuery<HTMLElement>} parentHTML 
      * @param {DefinitionDocument} definition 
      */
-    constructor(cs, parentHTML, definition) {
-        this.case = cs;
+    constructor(editor, parentHTML, definition) {
+        this.editor = editor;
         this.definition = definition;
         this.parentHTML = parentHTML;
         this.html = $(`<div class="case-source-editor">
@@ -31,14 +31,8 @@ class CaseSourceEditor {
         this.html.find('.btnImport').on('click', e => this.import());
         this.html.find('.btnClose').on('click', () => this.close());
 
-        const codeMirrorXMLConfiguration = {
-            mode: 'xml',
-            lineNumbers: true,
-            scrollbarStyle: 'null'
-        }
-
-        this.codeMirrorCaseXML = CodeMirror(this.html.find('.left .codemirrorsource')[0], codeMirrorXMLConfiguration);
-        this.codeMirrorDimensionsXML = CodeMirror(this.html.find('.right .codemirrorsource')[0], codeMirrorXMLConfiguration);
+        this.codeMirrorCaseXML = CodeMirrorConfig.createXMLEditor(this.html.find('.left .codemirrorsource'));
+        this.codeMirrorDimensionsXML = CodeMirrorConfig.createXMLEditor(this.html.find('.right .codemirrorsource'));
     }
 
     import() {
@@ -53,9 +47,9 @@ class CaseSourceEditor {
             return;
         }
 
-        this.case.editor.loadDefinition(newDefinition);
+        this.editor.loadDefinition(newDefinition);
         // Completing the action will save the model and add a corresponding action to the undo/redo buffer
-        this.case.editor.completeUserAction();
+        this.editor.completeUserAction();
         this.close();
     }
 

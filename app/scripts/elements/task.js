@@ -17,7 +17,7 @@
 
     showMappingsEditor() {
         this.fetchTaskImplementation();
-        this.mappingsEditor.open();
+        this.mappingsEditor.show();
     }
 
     /**

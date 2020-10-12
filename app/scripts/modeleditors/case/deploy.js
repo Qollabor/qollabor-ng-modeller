@@ -6,8 +6,8 @@
  * @constructor
  */
 class Deploy extends StandardForm {
-    constructor(cs) {
-        super(cs, 'Deploy CMMN Model - ' + cs.name, 'deployform');
+    constructor(editor) {
+        super(editor, 'Deploy CMMN Model - ' + editor.case.name, 'deployform');
     }
 
     renderData() {
@@ -29,21 +29,7 @@ class Deploy extends StandardForm {
         this.html.find('.btnViewCMMN').on('click', () => this.viewCMMN());
         this.html.find('.btnServerValidation').on('click', () => this.runServerValidation());
 
-        // Add code mirror for decent printing
-        const codeMirrorXMLConfiguration = {
-            mode: 'xml',
-            lineNumbers : true
-        }
-
-        const codeMirrorHTML = this.htmlContainer.find('.deployFormContent')[0];
-        this.codeMirrorCaseXML = CodeMirror(codeMirrorHTML, codeMirrorXMLConfiguration);
-    }
-
-    /**
-     * Opens the deploy form and sets the model name
-     */
-    open() {
-        this.visible = true;
+        this.codeMirrorCaseXML = CodeMirrorConfig.createXMLEditor(this.htmlContainer.find('.deployFormContent'));
     }
 
     _setDeployedTimestamp(text) {

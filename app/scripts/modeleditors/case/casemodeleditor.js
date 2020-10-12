@@ -52,12 +52,12 @@ class CaseModelEditor extends ModelEditor {
             console.log("No case, but already pressing a key?! You're too quick ;)");
             return;
         }
-        const visibleMovableEditor = this.case.movableEditors.find(e => e.visible);
+        const visibleMovableEditor = this.movableEditors.find(e => e.visible);
         const selectedElement = this.case.selectedElement;
         switch (e.keyCode) {
         case 27: // esc
             // Clicking Escape closes Movable editors one by one, and if none is left, it deselects current selection
-            if (!this.case.hideTopEditor()) {
+            if (!this.hideTopEditor()) {
                 if (this.case) {
                     this.case.clearSelection();
                 }
@@ -91,7 +91,7 @@ class CaseModelEditor extends ModelEditor {
             if (e.ctrlKey) { // Avoid the browser's save, and save the current model.
                 e.stopPropagation();
                 e.preventDefault();
-                this.autoSaveModel();
+                this.saveModel();
             }
             break;
         case 89: //y
@@ -194,7 +194,7 @@ class CaseModelEditor extends ModelEditor {
                     // console.log("Removing timer and saving changes")
                     delete this.autoSaveTimer;
                     // Tell the repository to save
-                    this.autoSaveModel();
+                    this.saveModel();
                 }, 0);
             } else {
                 // console.warn("There is already an auto save timer in progress")
@@ -205,7 +205,7 @@ class CaseModelEditor extends ModelEditor {
     /**
      * to be used to save the current active model
      */
-    autoSaveModel() {
+    saveModel() {
         // Validate all models currently active in the ide
         this.case.runValidation();
         // Get the modelName from the url every thing after the hash (#), excluding the hash

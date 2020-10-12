@@ -8,8 +8,7 @@
     constructor(editor, htmlParent, definitionDocument) {
         const now = new Date();
         this.editor = editor;
-        /** @type {Array<MovableEditor>} */
-        this.movableEditors = [];
+        this.editor.case = this; // Quick hack to have inline editors have access to the case in their constructor
         this.definitionDocument = definitionDocument;
         this.caseDefinition = definitionDocument.caseDefinition;
         this.dimensions = definitionDocument.dimensions;
@@ -35,20 +34,18 @@
             <div class="divCaseFileEditor"></div>
         </div>
     </div>
-    <div class="divMovableEditors"></div>
 </div>`);
         this.htmlParent.append(this.html);
 
         this.divCaseModel = this.html.find('.divCaseModel');
-        this.divMovableEditors = this.html.find('.divMovableEditors');
         this.divUndoRedo = this.html.find('.undoredobox');
         this.divShapeBox = this.html.find('.shapebox');
         this.divCFIEditor = this.html.find('.divCaseFileEditor');
         this.canvas = this.divCaseModel.find('.divCaseCanvas');
         this.paperContainer = this.html.find('.paper-container');
 
-        this.deployForm = new Deploy(this);
-        this.sourceEditor = new CaseSourceEditor(this, this.html, definitionDocument);
+        this.deployForm = new Deploy(editor);
+        this.sourceEditor = new CaseSourceEditor(editor, this.html, definitionDocument);
         this.cfiEditor = new CaseFileItemsEditor(this, this.divCFIEditor);
         this.undoBox = new UndoRedoBox(this, this.divUndoRedo);
         this.shapeBox = new ShapeBox(this, this.divShapeBox);
@@ -62,10 +59,10 @@
         this.createJointStructure();
 
         //create the editor forms for roles, case file items, and case input and output parameters
-        this.rolesEditor = new RolesEditor(this);
-        this.caseParametersEditor = new CaseParametersEditor(this);
-        this.startCaseEditor = new StartCaseEditor(this);
-        this.debugEditor = new Debugger(this);
+        this.rolesEditor = new RolesEditor(editor);
+        this.caseParametersEditor = new CaseParametersEditor(editor);
+        this.startCaseEditor = new StartCaseEditor(editor);
+        this.debugEditor = new Debugger(editor);
 
         const casePlanDefinition = this.caseDefinition.casePlan;
         if (casePlanDefinition) {
@@ -99,7 +96,7 @@
         }
         // create object for validation of CMMN schema
         this.validator = new Validator(this);
-        this.validateForm = new ValidateForm(this);
+        this.validateForm = new ValidateForm(editor);
         this.validator.addListener(validator => {
             // Shows the number of errors and warnings in the case footer
             const iErrors = validator.errors.length;
@@ -203,43 +200,17 @@
     }
 
     /**
-     * Hide all movable editors.
-     */
-    hideMovableEditors() {
-        this.movableEditors.forEach(editor => editor.visible = false);
-    }
-
-    /**
-     * Hides the movable editor on top.
-     * @returns {Boolean} true if an editor was hidden, false if no editors are visible
-     */
-    hideTopEditor() {
-        const editorsReversed = Array.from(this.movableEditors).reverse();
-        const visibleEditor = editorsReversed.find(editor => editor.visible)
-        if (visibleEditor) {
-            visibleEditor.visible = false;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
      * Renders the "source" view tab
      */
     viewSource() {
         this.clearSelection();
-        this.hideMovableEditors();
+        this.editor.hideMovableEditors();
 
         this.runValidation();
         if (this.validator.problems.length > 0) {
             this.validateForm.show();
         }
         this.sourceEditor.open();
-    }
-
-    openDebugger() {
-        this.debugEditor.open();
     }
 
     runValidation() {
@@ -254,7 +225,7 @@
         // First tell all items to update their properties, if they refer to this element.
         this.items.forEach(item => item.refreshReferencingFields(definitionElement));
         // Also update the sub editors.
-        this.movableEditors.forEach(editor => editor.refreshReferencingFields(definitionElement));
+        this.editor.movableEditors.forEach(editor => editor.refreshReferencingFields(definitionElement));
     }
 
     /**

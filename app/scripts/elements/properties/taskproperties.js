@@ -96,8 +96,8 @@ class TaskProperties extends TaskStageProperties {
                                 <button id="btnOutputMapping">Output</button>
                             </div>
                         </div>`);
-        html.find('#btnInputMapping').on('click', e => this.task.mappingsEditor.open());
-        html.find('#btnOutputMapping').on('click', e => this.task.mappingsEditor.open());
+        html.find('#btnInputMapping').on('click', e => this.task.mappingsEditor.show());
+        html.find('#btnOutputMapping').on('click', e => this.task.mappingsEditor.show());
         this.htmlContainer.append(html);
         return html;
     }
