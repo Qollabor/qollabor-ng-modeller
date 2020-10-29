@@ -3,14 +3,72 @@
 const XMLSerializer = require('xmldom').XMLSerializer;
 const DOMParser = require('xmldom').DOMParser;
 
+class XMLParseResult {
+    /**
+     * Result of parsing a string to xml document
+     * 
+     * @param {String} source 
+     */
+    constructor(source) {
+        this.source = source;
+        this.errors = [];
+        this.parse();
+    }
+
+    /**
+     * @returns {Document}
+     */
+    parse() {
+        if (! this.source) {
+            this.setError('File is empty');
+            return undefined;
+        }
+        // treat warnings as errors too
+        const errorHandler = (level, msg) => this.setError(msg, level);
+        this.document = new DOMParser({errorHandler}).parseFromString(this.source);
+        if (! this.document.documentElement && this.errors.length == 0) {
+            this.setError('Missing root xml element');
+        }
+    }
+
+    /**
+     * The documentElement if parsing was succesful.
+     * @returns {Element}
+     */
+    get element() {
+        return this.document && this.document.documentElement;
+    }
+
+    /**
+     * Indicates whether parsing resulted in errors or not
+     * @returns {Boolean}
+     */
+    get hasErrors() {
+        return this.errors.length > 0;
+    }
+
+    setError(message, errorLevel) {
+        this.errors.push(message);
+    }
+}
+
 class XML {
+    /** 
+     * Parses the xml string and returns an XMLParseResult object
+     * @param {String} string 
+     * @returns {XMLParseResult}
+     */
+    static parse(string) {
+        return new XMLParseResult(string);
+    }
+
     /** 
      * Parses the xml string and returns the documentElement
      * @param {String} string 
      * @returns {Element}
      */
     static loadXMLElement(string) {
-        return new DOMParser().parseFromString(string).documentElement;
+        return XML.parse(string).element;
     }
 
     /**
