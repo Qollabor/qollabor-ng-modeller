@@ -25,6 +25,11 @@ class PreviewTaskForm extends StandardForm {
         const validJSON = parseResult.object;
         if (validJSON) {
             validJSON.options = { focus : false };
+            validJSON.error = e => {
+                divPreview.attr('style', 'border: 2px solid orange')
+                const msg = `The task definition has an error: ${e.message}`;
+                divPreview.attr('title', msg);
+            } // Ignore any errors.
             this.htmlContainer.find('.taskpreview').alpaca(validJSON);
         } else {
             divPreview.html(`<h3 style="color:red;font-weight: bold;">${parseResult.description}</h3>`);
