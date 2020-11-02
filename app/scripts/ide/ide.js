@@ -220,6 +220,9 @@ class IDE {
         // Show the editor with the fileName (if available), hide all the ones with a different fileName
         this.editors.forEach(editor => editor.visible = (editor.fileName == fileName));
 
+        //show model name on browser tab
+        document.title = 'Cafienne IDE - ' + modelName;
+
         // If we already have an editor for the fileName, no need to go further in the loading logic
         const existingEditor = this.editors.find(editor => editor.fileName == fileName);
         if (existingEditor) {
@@ -229,9 +232,6 @@ class IDE {
         // By default open the cover panel. If the model is present and loads,
         //  the cover panel will be closed.
         this.coverPanel.show('Opening ' + fileName);
-
-        //show model name on browser tab
-        document.title = 'Cafienne IDE - ' + modelName;
 
         const editor = editorMetadata.createEditor(this, fileName, modelName, modelType);
         editor.loadModel();

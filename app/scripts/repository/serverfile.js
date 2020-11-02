@@ -3,6 +3,8 @@ class Metadata {
         this.fileName = json.fileName;
         this.lastModified = json.lastModified;
         this.usage = json.usage;
+        this.error = json.error;
+        this.type = json.type;
     }
 }
 
@@ -105,7 +107,7 @@ class ServerFile {
         $.ajax({ url, type,
             success: (data, status, xhr) => {
                 if (xhr.responseText == '') {
-                    const msg = this.fileName + ' does not exist in the repository';
+                    const msg = this.fileName + ' does not exist or is an empty file in the repository';
                     console.warn(msg);
                     this.ide.info(msg);
                 } else {

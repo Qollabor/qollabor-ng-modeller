@@ -1,7 +1,6 @@
 'use strict';
 
 const Loki = require('lokijs');
-const Utilities = require('./utilities').Utilities;
 const XML = require('./xml').XML;
 const Store = require('./store').Store;
 const ModelInfo = require('./store').ModelInfo;
@@ -27,13 +26,15 @@ class Usage {
      */
     analyze(models) {
         models.forEach(artifact => {
-            const xml = XML.loadXMLElement(artifact.content);
-            const id = xml.getAttribute('id') || artifact.fileName;
-            const name = xml.getAttribute('name') || '';
-            const description = xml.getAttribute('description') || '';
-            const referencedArtifacts = this._extractReferencedArtifacts(xml)
-            const metadata = {id, name, description, referencedArtifacts};
-            this._addWhereUsedDataForFile(artifact.fileName, metadata);    
+            const xml = artifact.load();
+            if (xml) {
+                const id = xml.getAttribute('id') || artifact.fileName;
+                const name = xml.getAttribute('name') || '';
+                const description = xml.getAttribute('description') || '';
+                const referencedArtifacts = this._extractReferencedArtifacts(xml)
+                const metadata = { id, name, description, referencedArtifacts };
+                this._addWhereUsedDataForFile(artifact.fileName, metadata);
+            }
         });
     }
 
@@ -87,11 +88,11 @@ class Usage {
          * @param {String} tagName 
          * @param {String} attributeName 
          */
-        const getReferences = (caseTree, tagName, attributeName) => 
+        const getReferences = (caseTree, tagName, attributeName) =>
             XML.findElementsWithTag(caseTree, tagName) // Search for elements with the tagname
                 .map(element => element.getAttribute(attributeName)) // returns an array with the attribute values for the elements
                 .filter(string => string !== undefined) // only take attributes with a value
-                .map(id => Object.assign({id})) // and return a new object with {'id': [attr-value]}
+                .map(id => Object.assign({ id })) // and return a new object with {'id': [attr-value]}
 
         const refs = getReferences(caseTree, 'caseTask', 'caseRef');
         refs.push(...getReferences(caseTree, 'processTask', 'processRef'))

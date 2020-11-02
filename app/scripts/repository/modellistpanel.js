@@ -14,10 +14,10 @@ class ModelListPanel {
         this.htmlPanel = $(
             `<h3 filetype="${type.modelType}" createMessage="Create ${type.description}">${type.description}</h3>
              <div class="file-list-${type.modelType}"></div>`);
-        
+
         this.accordion.append(this.htmlPanel);
         this.accordion.accordion('refresh');
-        this.container = this.accordion.find('.file-list-'+type.modelType);
+        this.container = this.accordion.find('.file-list-' + type.modelType);
     }
 
     /**
@@ -38,15 +38,15 @@ class ModelListPanel {
             const modelName = model.name;
             const fileType = model.fileType;
             const fileName = model.fileName;
+            const error = model.metadata && model.metadata.error;
+            const usageTooltip = `Used in ${model.usage.length} other model${model.usage.length == 1 ? '' : 's'}\n${model.usage.length ? model.usage.map(e => '- ' + e.id).join('\n') : ''}`;
+            const tooltip = error ? error : usageTooltip;
+            const nameStyle = error ? 'style="color:red"' : '';
             const modelURL = urlPrefix + model.fileName;
-            const html = $(`<div class="model-item" title="used in information is loading ..." fileName="${model.fileName}">
+            const html = $(`<div class="model-item" title="${tooltip}" fileName="${model.fileName}">
                                 <img src="${shapeImg}" />
-                                <a name="${modelName}" fileType="${fileType}" href="${(modelURL)}">${modelName}</a>
+                                <a name="${modelName}" fileType="${fileType}" href="${modelURL}"><span ${nameStyle}>${modelName}</span></a>
                             </div>`);
-
-            const tip = `Used in\n${model.usage.map(e => '- ' + e.id).join('\n')}`;
-            html.attr('title', tip)
-            
             this.container.append(html);
             // Add event handler for dragging.
             html.on('pointerdown', e => {
