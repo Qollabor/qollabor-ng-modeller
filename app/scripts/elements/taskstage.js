@@ -39,8 +39,15 @@ class TaskStage extends PlanItemView {
      * Renders the element border freshly, based on whether this is a discretionary item or not.
      */
     refreshDiscretionaryBorder() {
-        const classOperation = this.definition.isDiscretionary ? 'addClass' : 'removeClass';
-        this.html.find('.cmmn-shape')[classOperation]('cmmn-discretionary-border');
+        const className = 'cmmn-discretionary-border';
+        const cmmnShape = this.html.find('.cmmn-shape');
+        if (this.definition.isDiscretionary) {
+            // cmmnShape.addClass(className);
+            Util.addClassOverride(cmmnShape, className);
+        } else {
+            // cmmnShape.removeClass(className);
+            Util.removeClassOverride(cmmnShape, className);
+        }
     }
 
     /**

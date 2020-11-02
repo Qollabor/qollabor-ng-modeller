@@ -1,4 +1,29 @@
 ﻿class Util {
+
+    /**
+     * 
+     * @param {JQuery<HTMLElement>} html 
+     * @param  {...string} classNames 
+     */
+    static addClassOverride(html, ...classNames) {
+        // For some reason alpaca seems to kill the jquery-ui addClass override in some places in the editor. No clue why.
+        //  It seems to be that case only on svg elements???
+        //  This code gives a quick hack ( grrr.... ) around it.
+        const existingClasses = html.attr('class').split(' ');
+        classNames.forEach(newClass => {
+            if (existingClasses.indexOf(newClass) < 0) {
+                existingClasses.push(newClass);
+            }
+        });
+        html.attr('class', existingClasses.join(' '));
+    }
+
+    static removeClassOverride(html, ...classNames) {
+        const existingClasses = html.attr('class') ? html.attr('class').split(' ') : [];
+        classNames.forEach(name => Util.removeFromArray(existingClasses, name));
+        html.attr('class', existingClasses.join(' '));
+    }
+
     /**
      * Detaches all event handlers from a JQuery selected HTML element.
      * @param {JQuery<HTMLElement>} html 
