@@ -43,6 +43,8 @@ class HumantaskModelEditor extends ModelEditor {
                             <div class="task-preview-header">
                                 <h3>Preview</h3>
                                 <label>Note: the preview below is rendered with <a target="_blank" href="http://www.alpacajs.org/">AlpacaJS</a>; Cafienne UI uses <b><a target="_new" href="https://react-jsonschema-form.readthedocs.io">React JSON Schema Forms</a></b>, which renders slightly different.</label>
+                                <br />
+                                <label class="alpaca-error-description"></label>
                             </div>
                             <div class="task-preview-content"></div>
                         </div>
@@ -77,6 +79,7 @@ class HumantaskModelEditor extends ModelEditor {
         this.viewSourceEditor = new ModelSourceEditor(this.html.find('.model-source-tabs .model-source-editor'), this);
         this.contentViewer = this.html.find('.model-content-viewer');
         this.taskPreview = this.html.find('.task-preview-content');
+        this.taskPreviewErrors = this.html.find('.alpaca-error-description');
         this.jsonErrorDiv = this.html.find('.json-error-description');
         this.createCodeMirrorEditor();
     }
@@ -130,6 +133,7 @@ class HumantaskModelEditor extends ModelEditor {
     renderPreview() {
         // Clear current content
         this.taskPreview.html('');
+        this.taskPreviewErrors.html('');
         this.jsonErrorDiv.html('');
 
         // Now check if there is a "sensible" expectation that we have a JSON schema in the taskmodel
@@ -138,12 +142,15 @@ class HumantaskModelEditor extends ModelEditor {
             return;
         }
 
+        const errorHandler = e => this.taskPreviewErrors.html(`Alpaca Error Message: ${e.message}`);
+
         const parseResult = Util.parseJSON(taskModel);
         if (parseResult.object) {
             const jsonForm = parseResult.object;
             jsonForm.options = {
                 focus: false
             }
+            jsonForm.error = errorHandler;
             // Render the task view
             this.taskPreview.alpaca(jsonForm);
         } else {

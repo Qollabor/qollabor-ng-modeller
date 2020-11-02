@@ -98,3 +98,9 @@
     /* let the content scroll */
     overflow: auto;
 }
+
+.alpaca-error-description {
+    color: red;
+    font-weight: bold;
+    padding-left: 30px;
+}
