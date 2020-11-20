@@ -230,6 +230,8 @@ class Debugger extends StandardForm {
      */
     set events(events) {
         this._events = events;
+        this.currentDefinition = ''; // Clear current case definition
+        this.events.filter(event => event.type === 'CaseDefinitionApplied').forEach(event => this.currentDefinition = event.content.definition.source);
         this.pics = events.filter(event => event.type === 'PlanItemCreated');
         console.log(`Found ${events.length} events`)
         this.renderEvents();
@@ -341,7 +343,13 @@ class Debugger extends StandardForm {
                 <td style="white-space:nowrap">${timestampString}</td>
             </tr>\n`
         }).reverse().join('');
-        this.eventTable.html(`<table>
+        this.eventTable.html(`
+        <span class="spanCopyButtons">
+            <button class="buttonCopyEvents" style="height:18px;font-size:xx-small">Copy events</button>
+            <button class="buttonCopyEvents" style="height:18px;font-size:xx-small;${this.events.length != eventSelection.length ? '' : 'display:none'}">Copy filtered events</button>
+            <button class="buttonCopyDefinition" style="height:18px;font-size:smaller;${this.currentDefinition ? '' : 'display:none'}">Copy case definition</button>            
+        </span>
+        <table>
             <tr>
                 <td><strong>Nr</strong><br/><div>count: ${eventSelection.length}</div></td>
                 <td><strong>Type</strong><br/><input type="text"  filter="eventTypeFilter" value="${this.eventTypeFilter}" /></td>
@@ -350,6 +358,8 @@ class Debugger extends StandardForm {
             </tr>
             ${newRows}
         </table>`);
+        this.eventTable.find('.buttonCopyDefinition').on('click', e => Util.copyText(this.currentDefinition));
+        this.eventTable.find('.buttonCopyEvents').on('click', e => Util.copyText(JSON.stringify(this.events, undefined, 2)));
         this.eventTable.find('tr').on('click', e => this.selectEvent(e.currentTarget));
         this.eventTable.find('input[filter]').on('change', e => this.searchWith(e));
         this.eventTable.find('.nameF').css('width', 'fit-content');

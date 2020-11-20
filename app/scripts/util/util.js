@@ -1,4 +1,20 @@
 ﻿class Util {
+    /**
+     * Copies the text to clipboard
+     * @param {string} text 
+     */
+    static copyText(text) {
+        if (! text) {
+            console.warn('No text to copy to clipboard');
+            return;
+        }
+        const textarea = $('<textarea>');
+        $(document.body).append(textarea);
+        $(textarea.val(text)).select();
+        document.execCommand('copy');
+        textarea.remove();
+        console.log('Copied text to clipboard');
+    }
 
     /**
      * 
