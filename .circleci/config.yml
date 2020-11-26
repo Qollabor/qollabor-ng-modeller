@@ -29,14 +29,14 @@ jobs:
       - run:
           name: Build docker image
           command: |
-            docker build -t qollabor-ng-modeler:latest .
+            docker build -t qollabor/ng-modeler:latest .
       - run:
           name: Push docker image
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ];
             then
               echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-              docker push qollabor-ng-modeler:latest
+              docker push qollabor/ng-modeler:latest
             else
               echo "Not pushing image to docker hub"
             fi
