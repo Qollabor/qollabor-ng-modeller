@@ -1,9 +1,9 @@
 ﻿// Some constants
 const EXTENSIONELEMENTS = 'extensionElements';
-const IMPLEMENTATION_NAMESPACE = 'org.cafienne';
-const IMPLEMENTATION_PREFIX = 'xmlns:cafienne';
-const IMPLEMENTATION_TAG = 'cafienne:implementation';
-const STARTCASEMODEL_TAG = 'cafienne:start-case-model';
+const IMPLEMENTATION_NAMESPACE = 'org.qollabor';
+const IMPLEMENTATION_PREFIX = 'xmlns:qollabor';
+const IMPLEMENTATION_TAG = 'qollabor:implementation';
+const STARTCASEMODEL_TAG = 'qollabor:start-case-model';
 
 const EXPANDEDPLANNINGTABLE_IMG = 'images/expandedplanningtable_32.png';
 

@@ -9,9 +9,9 @@
                 <inputs id="inTP_cm_cs2F1_174_1" name="Greeting" bindingRef="cfi_csVQy_0"/>
                 <outputs id="outTP_cm_cs2F1_174_1" name="Response" bindingRef="cfi_csVQy_1"/>
                 <extensionElements mustUnderstand="false"
-                    xmlns:cafienne="org.cafienne">
-                    <cafienne:implementation
-                        xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" humanTaskRef="sendresponse.humantask">
+                    xmlns:qollabor="org.qollabor">
+                    <qollabor:implementation
+                        xmlns:qollabor="org.qollabor" class="org.qollabor.cmmn.definition.task.WorkflowTaskDefinition" humanTaskRef="sendresponse.humantask">
                         <parameterMapping id="inPM_cm_cshJq_4_0" sourceRef="inTP_cm_cs2F1_174_1" targetRef="Greeting"/>
                         <parameterMapping id="inPM_cm_cshJq_4_1" sourceRef="inTP_cm_cs2F1_174_1" targetRef="DueDate">
                             <transformation language="spel">
@@ -28,7 +28,7 @@
                             </transformation>
                         </parameterMapping>
                         <parameterMapping id="outPM_cm_csuYs_174_0" sourceRef="Response" targetRef="outTP_cm_cs2F1_174_1"/>
-                    </cafienne:implementation>
+                    </qollabor:implementation>
                 </extensionElements>
             </humanTask>
             <planItem id="cm_cs3hg_196" name="Read response" definitionRef="pid_cm_cs3hg_196" entryCriteriaRefs="cm_cs3hg_198"/>
@@ -42,9 +42,9 @@
                 <inputs id="inTP_cm_cs3hg_196_1" name="DueDate"/>
                 <inputs id="inTP_cm_cs3hg_196_2" name="Greeting" bindingRef="cfi_csVQy_0"/>
                 <extensionElements mustUnderstand="false"
-                    xmlns:cafienne="org.cafienne">
-                    <cafienne:implementation
-                        xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" humanTaskRef="readresponse.humantask">
+                    xmlns:qollabor="org.qollabor">
+                    <qollabor:implementation
+                        xmlns:qollabor="org.qollabor" class="org.qollabor.cmmn.definition.task.WorkflowTaskDefinition" humanTaskRef="readresponse.humantask">
                         <parameterMapping id="inPM_cm_cs3hg_196_0" sourceRef="inTP_cm_cs3hg_196_0" targetRef="Response"/>
                         <parameterMapping id="inPM_cm_cs3hg_196_1" sourceRef="inTP_cm_cs3hg_196_1" targetRef="DueDate">
                             <transformation language="spel">
@@ -60,15 +60,15 @@
                                 </body>
                             </transformation>
                         </parameterMapping>
-                    </cafienne:implementation>
+                    </qollabor:implementation>
                 </extensionElements>
             </humanTask>
         </casePlanModel>
         <caseRoles id="role_csT3f_0" name="ADMIN" description="admin of the world"/>
         <input id="csVQy_inCPs_0" name="Greeting" bindingRef="cfi_csVQy_0"/>
         <extensionElements>
-            <cafienne:start-case-model
-                xmlns:cafienne="org.cafienne">{
+            <qollabor:start-case-model
+                xmlns:qollabor="org.qollabor">{
   "schema": {
     "title": "Greeting",
     "type": "object",
@@ -105,6 +105,6 @@
     }
   }
 }
-            </cafienne:start-case-model>
+            </qollabor:start-case-model>
         </extensionElements>
     </case>

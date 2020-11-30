@@ -36,7 +36,7 @@ multiplelines
     </output>
     <output id="csARK_outCPs_2" name="case_output_parameter_03" />
     <extensionElements>
-        <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+        <qollabor:start-case-model xmlns:qollabor="org.qollabor">{
   "schema":{
     "title": "",
     "type": "object",
@@ -44,6 +44,6 @@ multiplelines
     }
   }
 }
-            </cafienne:start-case-model>
+            </qollabor:start-case-model>
     </extensionElements>
 </case>
