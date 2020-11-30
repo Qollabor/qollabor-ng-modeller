@@ -141,23 +141,23 @@ Multiple lines
             </inputs>
             <outputs id="_ArOOj" name="ht_output_parameter_01">
                 <extensionElements mustUnderstand="false">
-                    <cafienne:implementation xmlns:cafienne="org.cafienne" required="true"/>
+                    <qollabor:implementation xmlns:qollabor="org.qollabor" required="true"/>
                 </extensionElements>
             </outputs>
             <outputs id="_inIxf" name="ht_output_parameter_02"/>
             <outputs id="_n9QgM" name="ht_output_parameter_03">
                 <extensionElements mustUnderstand="false">
-                    <cafienne:implementation xmlns:cafienne="org.cafienne" required="true"/>
+                    <qollabor:implementation xmlns:qollabor="org.qollabor" required="true"/>
                 </extensionElements>
             </outputs>
             <extensionElements mustUnderstand="false">
-                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="test_humantaskmodel_parameters.humantask">
+                <qollabor:implementation xmlns:qollabor="org.qollabor" humanTaskRef="test_humantaskmodel_parameters.humantask">
                     <parameterMapping id="_i3E28" sourceRef="_mzPAD" targetRef="_mBnf_ht_input_parameter_02"/>
                     <parameterMapping id="_Weqx5" sourceRef="_qVRDD" targetRef="_M8L9_ht_input_parameter_01"/>
                     <parameterMapping id="_yEzZT" sourceRef="_q9ow_ht_output_parameter_01" targetRef="_ArOOj"/>
                     <parameterMapping id="_tR8yE" sourceRef="_8d79_ht_output_parameter_02" targetRef="_inIxf"/>
                     <parameterMapping id="_eBcca" sourceRef="_kZIR_ht_output_parameter_03" targetRef="_n9QgM"/>
-                </cafienne:implementation>
+                </qollabor:implementation>
             </extensionElements>
         </humanTask>
         <humanTask id="pid_cm_cscw1_45" name="With Planning Table Applicability Rules and Multiple Discretionary Tasks" description="With Planning Table&#10;Applicability Rules&#10;and Multiple Discretionary Tasks" isBlocking="true">
@@ -237,13 +237,13 @@ Multiple lines
                     </body>
                 </bindingRefinement>
                 <extensionElements mustUnderstand="false">
-                    <cafienne:implementation xmlns:cafienne="org.cafienne" required="true"/>
+                    <qollabor:implementation xmlns:qollabor="org.qollabor" required="true"/>
                 </extensionElements>
             </outputs>
             <outputs id="_geeCE" name="case_output_parameter_03"/>
             <outputs id="_09Psv" name="custom_parameter">
                 <extensionElements mustUnderstand="false">
-                    <cafienne:implementation xmlns:cafienne="org.cafienne" required="true"/>
+                    <qollabor:implementation xmlns:qollabor="org.qollabor" required="true"/>
                 </extensionElements>
             </outputs>
             <parameterMapping id="_Le6ho" sourceRef="_bQAdT" targetRef="csARK_inCPs_0">
@@ -489,7 +489,7 @@ Multiple Lines
     <caseRoles id="role_csgXo_1" name="role2"/>
     <caseRoles id="role_csgXo_2" name="role3" description="Third role"/>
     <extensionElements mustUnderstand="false">
-        <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+        <qollabor:start-case-model xmlns:qollabor="org.qollabor">{
   "schema":{
     "title": "",
     "type": "object",
@@ -498,6 +498,6 @@ Multiple Lines
       "number_of_options": "many"
     }
   }
-}</cafienne:start-case-model>
+}</qollabor:start-case-model>
     </extensionElements>
 </case>

@@ -10,7 +10,7 @@ class IDEHeader {
     <div class="ide-header basicbox">
         <div class="btn-toolbar" role="toolbar">
             <div class="btn-group appname">
-                <label>Cafienne IDE</label>
+                <label>Qollabor IDE</label>
             </div>
         </div>
     </div>`);

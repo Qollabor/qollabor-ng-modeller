@@ -97,7 +97,7 @@ class Usage {
         const refs = getReferences(caseTree, 'caseTask', 'caseRef');
         refs.push(...getReferences(caseTree, 'processTask', 'processRef'))
         refs.push(...getReferences(caseTree, 'caseFileItem', 'definitionRef'));
-        refs.push(...getReferences(caseTree, 'cafienne:implementation', 'humanTaskRef'))
+        refs.push(...getReferences(caseTree, 'qollabor:implementation', 'humanTaskRef'))
         return refs;
     }
 }
