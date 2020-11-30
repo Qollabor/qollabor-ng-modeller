@@ -1,7 +1,4 @@
-﻿
-# This is a copy of https://github.com/qollabor/qollabor-ide created on 25 november 2020
- 
-# Qollabor IDE
+﻿# Qollabor IDE
 
 ## License
 
@@ -17,8 +14,8 @@ This code is available under the [Mozilla Public License v2](app/LICENSE).
 
 ### Getting the code and building the modeler
 
-* Clone the Qollabor IDE and run index.html `git clone https://github.com/qollabor/qollabor-ide.git`
-* change into the `qollabor-ide` directory
+* Clone the Qollabor IDE and run index.html `git clone https://github.com/Qollabor/qollabor-ng-modeller`
+* change into the `qollabor-ng-modeller` directory
 * run `npm install`
 * run `bower install`
 
@@ -28,7 +25,7 @@ This assumes you have [Docker](https://www.docker.com/products/overview) up and 
 
 To build the docker image use the following commands:
 
-1. change into the `qollabor-ide` directory
+1. change into the `qollabor-ng-modeller` directory
 2. run `docker build -t ide .`
 
 To create/run a container use the following commands:
