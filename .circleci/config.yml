@@ -42,7 +42,7 @@ jobs:
             fi
 
   # build for release:
-  #   working_directory: ~/qollabor-ng-modeler
+  #   working_directory: ~/cafienne-ide
   #   docker:
   #     - image: circleci/node:10.9.0
   #   steps:
@@ -77,12 +77,12 @@ jobs:
   #     - run:
   #         name: Build docker image
   #         command: |
-  #           docker build -t qollabor/ng-modeler:$CIRCLE_TAG .
+  #           docker build -t cafienne/ide:$CIRCLE_TAG .
   #     - run:
   #         name: Push docker image
   #         command: |
   #           echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-  #           docker push qollabor/ng-modeler:$CIRCLE_TAG
+  #           docker push cafienne/ide:$CIRCLE_TAG
 
 workflows:
   version: 2

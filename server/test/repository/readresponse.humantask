@@ -1,6 +1,6 @@
 <humantask>
-    <qollabor:implementation
-        xmlns:qollabor="org.qollabor" class="org.qollabor.cmmn.definition.task.WorkflowTaskDefinition">
+    <cafienne:implementation
+        xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
         <input name="Response" id="Response"/>
         <input name="DueDate" id="DueDate"/>
         <input id="_VOzX_Assignee" name="Assignee"/>
@@ -43,5 +43,5 @@
 				}
 			}
 		</task-model>
-    </qollabor:implementation>
+    </cafienne:implementation>
 </humantask>

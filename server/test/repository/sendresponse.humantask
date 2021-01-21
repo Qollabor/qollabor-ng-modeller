@@ -1,6 +1,6 @@
 <humantask>
-    <qollabor:implementation
-        xmlns:qollabor="org.qollabor" class="org.qollabor.cmmn.definition.task.WorkflowTaskDefinition" name="SendResponse" description="Sends a response back to the initiator of the hello world case">
+    <cafienne:implementation
+        xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" name="SendResponse" description="Sends a response back to the initiator of the hello world case">
         <input name="Greeting" id="Greeting"/>
         <input name="DueDate" id="DueDate"/>
         <output name="Response" id="Response"/>
@@ -67,5 +67,5 @@
 	}
 }
 </task-model>
-    </qollabor:implementation>
+    </cafienne:implementation>
 </humantask>

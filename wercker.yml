@@ -41,7 +41,7 @@ deploy-modeler:
           rm -rf /usr/src/app/repository/*
     - internal/docker-push:
         disable-sync: true
-        author: Qollabor <info@qollabor.io>
+        author: Cafienne <info@cafienne.io>
         tag: $DOCKER_HUB_TAG
         username: $DOCKER_HUB_USERNAME
         password: $DOCKER_HUB_PASSWORD

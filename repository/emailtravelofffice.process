@@ -10,7 +10,7 @@
     <input id="fromName" name="fromName"/>
     <input id="fromAddress" name="fromAddress"/>
     <extensionElements>
-        <qollabor:implementation xmlns:qollabor="org.qollabor" class="org.qollabor.processtask.implementation.smtp.SMTPCallDefinition">
+        <cafienne:implementation xmlns:cafienne="org.cafienne" class="org.cafienne.processtask.implementation.smtp.SMTPCallDefinition">
             <smtp-server>mailcatcher</smtp-server>
             <smtp-port>1025</smtp-port>
             <subject>Please arrange travel requirements for ${fromName}</subject>
@@ -179,6 +179,6 @@ Hidden text
             <to>
                 <address name="Travel Office">info@travel-office.com</address>
             </to>
-        </qollabor:implementation>
+        </cafienne:implementation>
     </extensionElements>
 </process>

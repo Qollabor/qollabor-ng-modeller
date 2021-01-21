@@ -138,7 +138,7 @@ router.get('/validate/*', (req, res, next) => {
 
 router.get('/api/events/*', (req, res, next) => {
     const caseInstanceId = req.params[0];
-    caseService.getEvents(caseInstanceId, req.header('QOLLABOR-JWT-TOKEN')).then(data => {
+    caseService.getEvents(caseInstanceId, req.header('CAFIENNE-JWT-TOKEN')).then(data => {
         res.status(200);
         res.setHeader('Content-Type', 'application/json');
         res.send(data.body);

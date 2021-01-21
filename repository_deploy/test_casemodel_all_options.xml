@@ -147,17 +147,17 @@ Mapping" isBlocking="true">
                 </inputs>
                 <outputs id="_ArOOj" name="ht_output_parameter_01">
                     <extensionElements mustUnderstand="false">
-                        <qollabor:implementation xmlns:qollabor="org.qollabor" required="true"/>
+                        <cafienne:implementation xmlns:cafienne="org.cafienne" required="true"/>
                     </extensionElements>
                 </outputs>
                 <outputs id="_inIxf" name="ht_output_parameter_02"/>
                 <outputs id="_n9QgM" name="ht_output_parameter_03">
                     <extensionElements mustUnderstand="false">
-                        <qollabor:implementation xmlns:qollabor="org.qollabor" required="true"/>
+                        <cafienne:implementation xmlns:cafienne="org.cafienne" required="true"/>
                     </extensionElements>
                 </outputs>
                 <extensionElements mustUnderstand="false">
-                    <qollabor:implementation xmlns:qollabor="org.qollabor" name="HTModel_allOptions" description="Humantask model for testing all options in a case" class="org.qollabor.cmmn.definition.task.WorkflowTaskDefinition" humanTaskRef="test_humantaskmodel_parameters.humantask">
+                    <cafienne:implementation xmlns:cafienne="org.cafienne" name="HTModel_allOptions" description="Humantask model for testing all options in a case" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" humanTaskRef="test_humantaskmodel_parameters.humantask">
                         <input id="_M8L9_ht_input_parameter_01" name="ht_input_parameter_01"/>
                         <input id="_mBnf_ht_input_parameter_02" name="ht_input_parameter_02"/>
                         <output id="_q9ow_ht_output_parameter_01" name="ht_output_parameter_01"/>
@@ -173,7 +173,7 @@ Mapping" isBlocking="true">
                         <parameterMapping id="_yEzZT" sourceRef="_q9ow_ht_output_parameter_01" targetRef="_ArOOj"/>
                         <parameterMapping id="_tR8yE" sourceRef="_8d79_ht_output_parameter_02" targetRef="_inIxf"/>
                         <parameterMapping id="_eBcca" sourceRef="_kZIR_ht_output_parameter_03" targetRef="_n9QgM"/>
-                    </qollabor:implementation>
+                    </cafienne:implementation>
                 </extensionElements>
             </humanTask>
             <humanTask id="pid_cm_cscw1_45" name="With Planning Table Applicability Rules and Multiple Discretionary Tasks" description="With Planning Table
@@ -270,13 +270,13 @@ Reorder, Expressions, CFI" isBlocking="true" caseRef="test_casemodel_parameters.
                         </body>
                     </bindingRefinement>
                     <extensionElements mustUnderstand="false">
-                        <qollabor:implementation xmlns:qollabor="org.qollabor" required="true"/>
+                        <cafienne:implementation xmlns:cafienne="org.cafienne" required="true"/>
                     </extensionElements>
                 </outputs>
                 <outputs id="_geeCE" name="case_output_parameter_03"/>
                 <outputs id="_09Psv" name="custom_parameter">
                     <extensionElements mustUnderstand="false">
-                        <qollabor:implementation xmlns:qollabor="org.qollabor" required="true"/>
+                        <cafienne:implementation xmlns:cafienne="org.cafienne" required="true"/>
                     </extensionElements>
                 </outputs>
                 <parameterMapping id="_Le6ho" sourceRef="_bQAdT" targetRef="csARK_inCPs_0">
@@ -550,7 +550,7 @@ and Outside Parent" definitionRef="pid_cm_cscw1_51"/>
         <caseRoles id="role_csgXo_1" name="role2"/>
         <caseRoles id="role_csgXo_2" name="role3" description="Third role"/>
         <extensionElements mustUnderstand="false">
-            <qollabor:start-case-model xmlns:qollabor="org.qollabor">{
+            <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
   "schema":{
     "title": "",
     "type": "object",
@@ -559,7 +559,7 @@ and Outside Parent" definitionRef="pid_cm_cscw1_51"/>
       "number_of_options": "many"
     }
   }
-}</qollabor:start-case-model>
+}</cafienne:start-case-model>
         </extensionElements>
     </case>
     <case description="Case model for testing all options in a case" id="test_casemodel_parameters.case" name="test_casemodel_parameters">
@@ -600,7 +600,7 @@ multiplelines
         </output>
         <output id="csARK_outCPs_2" name="case_output_parameter_03"/>
         <extensionElements>
-            <qollabor:start-case-model xmlns:qollabor="org.qollabor">{
+            <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
   "schema":{
     "title": "",
     "type": "object",
@@ -608,7 +608,7 @@ multiplelines
     }
   }
 }
-            </qollabor:start-case-model>
+            </cafienne:start-case-model>
         </extensionElements>
     </case>
     <process name="process_all_options" description="Process for testing all options in a case" id="test_processmodel_parameters.process">
@@ -618,11 +618,11 @@ multiplelines
         <output id="_CGna_process_output_parameter_02" name="process_output_parameter_02"/>
         <output id="_ccHd_process_output_parameter_03" name="process_output_parameter_03"/>
         <extensionElements>
-            <qollabor:implementation xmlns:qollabor="org.qollabor" class="org.qollabor.processtask.implementation.http.HTTPCallDefinition" async="true">
+            <cafienne:implementation xmlns:cafienne="org.cafienne" class="org.cafienne.processtask.implementation.http.HTTPCallDefinition" async="true">
                 <testnode options="all">
     All process options
   </testnode>
-            </qollabor:implementation>
+            </cafienne:implementation>
         </extensionElements>
     </process>
     <caseFileItemDefinition name="test_cfi_def_01" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified" id="test_cfi_def_01.cfid">
