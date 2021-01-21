@@ -9,6 +9,6 @@
     </caseFileModel>
     <casePlanModel id="cm_testCaseFile.case_0" name="testCaseFile" autoComplete="true"/>
     <extensionElements mustUnderstand="false">
-        <qollabor:start-case-model xmlns:qollabor="org.qollabor"/>
+        <cafienne:start-case-model xmlns:cafienne="org.cafienne"/>
     </extensionElements>
 </case>

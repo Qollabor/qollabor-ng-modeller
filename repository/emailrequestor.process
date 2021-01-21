@@ -10,7 +10,7 @@
     <input id="toName" name="toName"/>
     <input id="toAddress" name="toAddress"/>
     <extensionElements>
-        <qollabor:implementation xmlns:qollabor="org.qollabor" class="org.qollabor.processtask.implementation.smtp.SMTPCallDefinition">
+        <cafienne:implementation xmlns:cafienne="org.cafienne" class="org.cafienne.processtask.implementation.smtp.SMTPCallDefinition">
             <smtp-server>mailcatcher</smtp-server>
             <smtp-port>1025</smtp-port>
             <subject>Your Travel request has been ${approvalStatus}</subject>
@@ -220,5 +220,5 @@ Hidden text
     
     undefined
     
-    </qollabor:implementation>
+    </cafienne:implementation>
 </extensionElements>undefinedundefined</process>

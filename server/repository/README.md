@@ -33,7 +33,7 @@ that separates semantic changes from visual changes.
 ##Packages
 Support for packages is provided by adding slashes.
 
-Example: qollabor/org/helloworld
+Example: cafienne/org/helloworld
 
 ##Configuration
 File /config/config.js.

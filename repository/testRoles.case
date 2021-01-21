@@ -41,10 +41,10 @@
             <inputs id="_3GznZ_14" name="Greeting"/>
             <outputs id="_3GznZ_20" name="Response"/>
             <extensionElements mustUnderstand="false">
-                <qollabor:implementation xmlns:qollabor="org.qollabor" humanTaskRef="sendresponse.humantask">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="sendresponse.humantask">
                     <parameterMapping id="_3GznZ_15" sourceRef="_3GznZ_14" targetRef="Greeting"/>
                     <parameterMapping id="_3GznZ_21" sourceRef="Response" targetRef="_3GznZ_20"/>
-                </qollabor:implementation>
+                </cafienne:implementation>
             </extensionElements>
         </humanTask>
         <humanTask id="ht__3GznZ_1" name="HumanTask_1" isBlocking="true"/>

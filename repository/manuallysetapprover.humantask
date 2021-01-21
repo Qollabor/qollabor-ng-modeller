@@ -1,5 +1,5 @@
 <humantask>
-    <qollabor:implementation name="ManuallySetApprover" xmlns:qollabor="org.qollabor" class="org.qollabor.cmmn.definition.task.WorkflowTaskDefinition" description="">
+    <cafienne:implementation name="ManuallySetApprover" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" description="">
         <input id="TravelRequest_1" name="TravelRequest"/>
         <input id="DueDate_1" name="DueDate"/>
         <output id="Project_1" name="Project"/>
@@ -361,5 +361,5 @@
   }
 }
 </task-model>
-    </qollabor:implementation>
+    </cafienne:implementation>
 </humantask>

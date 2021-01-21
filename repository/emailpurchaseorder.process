@@ -9,7 +9,7 @@
     <input id="toAddress" name="toAddress"/>
     <input id="filename" name="filename"/>
     <extensionElements>
-        <qollabor:implementation xmlns:qollabor="org.qollabor" class="org.qollabor.processtask.implementation.smtp.SMTPCallDefinition">
+        <cafienne:implementation xmlns:cafienne="org.cafienne" class="org.cafienne.processtask.implementation.smtp.SMTPCallDefinition">
             <smtp-server>mailcatcher</smtp-server>
             <smtp-port>1025</smtp-port>
             <subject>Your Travel approval document</subject>
@@ -198,5 +198,5 @@ div[style*="margin: 16px 0;"] { margin: 0 !important; }
     
     undefined
     
-    </qollabor:implementation>
+    </cafienne:implementation>
 </extensionElements>undefinedundefined</process>

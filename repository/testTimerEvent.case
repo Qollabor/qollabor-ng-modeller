@@ -29,13 +29,13 @@
         </timerEvent>
     </casePlanModel>
     <extensionElements mustUnderstand="false">
-        <qollabor:start-case-model xmlns:qollabor="org.qollabor">{
+        <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
   "schema":{
     "title": "",
     "type": "object",
     "properties":{
     }
   }
-}</qollabor:start-case-model>
+}</cafienne:start-case-model>
     </extensionElements>
 </case>

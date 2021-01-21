@@ -1,4 +1,7 @@
-﻿# Qollabor IDE
+﻿
+# This is a copy of https://github.com/cafienne/cafienne-ide created on 25 november 2020
+ 
+# Cafienne IDE
 
 ## License
 
@@ -14,8 +17,8 @@ This code is available under the [Mozilla Public License v2](app/LICENSE).
 
 ### Getting the code and building the modeler
 
-* Clone the Qollabor IDE and run index.html `git clone https://github.com/Qollabor/qollabor-ng-modeller`
-* change into the `qollabor-ng-modeller` directory
+* Clone the Cafienne IDE and run index.html `git clone https://github.com/cafienne/cafienne-ide.git`
+* change into the `cafienne-ide` directory
 * run `npm install`
 * run `bower install`
 
@@ -25,7 +28,7 @@ This assumes you have [Docker](https://www.docker.com/products/overview) up and 
 
 To build the docker image use the following commands:
 
-1. change into the `qollabor-ng-modeller` directory
+1. change into the `cafienne-ide` directory
 2. run `docker build -t ide .`
 
 To create/run a container use the following commands:
@@ -96,13 +99,13 @@ See the `config.js` file for the settings.
 
 ## Usage
 
-The Qollabor IDE is intended for regular software developers.
+The Cafienne IDE is intended for regular software developers.
 The OMG has published the [Case Management and Model Notation (CMMN) specification](http://www.omg.org/spec/CMMN/).
 You can use this specification for creating case models in the IDE.
 
 ### RESTRICTIONS
 
-Development and testing of the Qollabor IDE is mostly done with latest versions of Google Chrome.
+Development and testing of the Cafienne IDE is mostly done with latest versions of Google Chrome.
 
 ### Other info
 

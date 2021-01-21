@@ -4,7 +4,7 @@ class ParameterDefinition extends CMMNElementDefinition {
         super(importNode, caseDefinition, parent);
         this.bindingRef = this.parseAttribute('bindingRef');
         this.bindingRefinement = this.parseElement('bindingRefinement', ExpressionDefinition);
-        this.extensionImplementation = this.parseExtension(QollaborExtension);
+        this.extensionImplementation = this.parseExtension(CafienneExtension);
         this.required = this.extensionImplementation ? this.extensionImplementation.parseBooleanAttribute('required', false) : false;
     }
 

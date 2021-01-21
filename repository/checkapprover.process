@@ -5,7 +5,7 @@
     <input id="enddate" name="enddate"/>
     <output id="availability" name="availability"/>
     <extensionElements>
-        <qollabor:implementation xmlns:qollabor="org.qollabor" class="org.qollabor.processtask.implementation.http.HTTPCallDefinition">
+        <cafienne:implementation xmlns:cafienne="org.cafienne" class="org.cafienne.processtask.implementation.http.HTTPCallDefinition">
             <url>http://localhost:8380/checkavailability</url>
             <method>POST</method>
             <post-content>{
@@ -17,6 +17,6 @@
             <http-headers>
                 <http-header name="Content-Type">application/json</http-header>
             </http-headers>
-        </qollabor:implementation>
+        </cafienne:implementation>
     </extensionElements>
 </process>

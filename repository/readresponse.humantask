@@ -1,5 +1,5 @@
 <humantask>
-    <qollabor:implementation name="ReadRespose" description="Read Response" xmlns:qollabor="org.qollabor" class="org.qollabor.cmmn.definition.task.WorkflowTaskDefinition">
+    <cafienne:implementation name="ReadRespose" description="Read Response" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
         <input id="Response" name="Response"/>
         <task-model>{
   "schema": {
@@ -39,5 +39,5 @@
   }
 }
 </task-model>
-    </qollabor:implementation>
+    </cafienne:implementation>
 </humantask>

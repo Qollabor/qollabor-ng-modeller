@@ -111,20 +111,20 @@ class XMLElementDefinition {
      * @param {Function} extensionType
      * @returns {*}
      */
-    parseExtensionElement(constructor, childName = constructor.TAG, extensionType = QollaborExtension) {
-        const tagname = QollaborExtension.TAG;
-        const qollaborExtension = this.parseExtension(extensionType, extensionType.TAG);
-        return qollaborExtension ? qollaborExtension.parseElement(childName, constructor) : undefined;
+    parseExtensionElement(constructor, childName = constructor.TAG, extensionType = CafienneExtension) {
+        const tagname = CafienneExtension.TAG;
+        const cafienneExtension = this.parseExtension(extensionType, extensionType.TAG);
+        return cafienneExtension ? cafienneExtension.parseElement(childName, constructor) : undefined;
     }
 
     /**
-     * Parses the <qollabor:implementation> node from <extensionElements>. If present, then an instance of the constructor is returned for it.
+     * Parses the <cafienne:implementation> node from <extensionElements>. If present, then an instance of the constructor is returned for it.
       * 
       * @param {Function} constructor 
       * @param {String} tagName
       * @returns {*} an instance of the given constructor if the extension element is found.
       */
-    parseExtension(constructor = QollaborExtension, tagName = IMPLEMENTATION_TAG) {
+    parseExtension(constructor = CafienneExtension, tagName = IMPLEMENTATION_TAG) {
         this.extensionElement = XML.getChildByTagName(this.importNode, 'extensionElements');
         const extensionImplementation = this.instantiateChild(XML.getChildByTagName(this.extensionElement, tagName), constructor);
         return extensionImplementation;
@@ -320,8 +320,8 @@ class XMLElementDefinition {
     }
 
     /**
-     * Creates and returns an extension element with a custom tag inside having the given tagName (it defaults to <qollabor:implementation>).
-     * Sets the namespace attribute to 'org.qollabor'
+     * Creates and returns an extension element with a custom tag inside having the given tagName (it defaults to <cafienne:implementation>).
+     * Sets the namespace attribute to 'org.cafienne'
      * Does NOT set the class attribute on it (e.g. for WorkflowTaskDefinition)
      * @param {String} tagName 
      */

@@ -68,7 +68,7 @@ class IDE {
 
                 // Create .humantask files
                 XML.getElementsByTagName(xmlElement, 'humanTask').forEach(humanTask => {
-                    XML.getChildrenByTagName(humanTask, 'qollabor:implementation').forEach(humanTaskExtensionElement => {
+                    XML.getChildrenByTagName(humanTask, 'cafienne:implementation').forEach(humanTaskExtensionElement => {
                         // Create a copy of implementation
                         /** @type {Element} */
                         const standAloneHumanTaskDefinition = humanTaskExtensionElement.cloneNode(true);
@@ -221,7 +221,7 @@ class IDE {
         this.editors.forEach(editor => editor.visible = (editor.fileName == fileName));
 
         //show model name on browser tab
-        document.title = 'Qollabor IDE - ' + modelName;
+        document.title = 'Cafienne IDE - ' + modelName;
 
         // If we already have an editor for the fileName, no need to go further in the loading logic
         const existingEditor = this.editors.find(editor => editor.fileName == fileName);
