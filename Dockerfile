@@ -22,8 +22,8 @@ RUN mkdir -p /opt/repository
 RUN mkdir -p /opt/repository_deploy
 RUN mkdir -p /opt/repository_default
 RUN mkdir -p /opt/repository_deploy_default
-RUN cp /usr/src/app/repository/* /opt/repository_default
-RUN cp /usr/src/app/repository_deploy/* /opt/repository_deploy_default
+RUN cp /usr/src/repository/* /opt/repository_default
+RUN cp /usr/src/repository_deploy/* /opt/repository_deploy_default
 
 # ENV NODE_ENV=docker (is now set in entrypoint.sh)
 EXPOSE 2081
