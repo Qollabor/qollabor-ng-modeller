@@ -18,6 +18,8 @@ COPY . /usr/src/app
 
 # clean the repository
 RUN rm -rf /usr/src/app/repository/*
+RUN mkdir -p /opt/repository
+RUN mkdir -p /opt/repository_deploy
 
 # ENV NODE_ENV=docker (is now set in entrypoint.sh)
 EXPOSE 2081
