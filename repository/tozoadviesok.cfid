@@ -1,0 +1,6 @@
+<caseFileItemDefinition name="tozoadviesok" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified">
+    <property name="toekennen" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="VierOgenNodig" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="onderbouwing4ogen" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="beterBedrag" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+</caseFileItemDefinition>

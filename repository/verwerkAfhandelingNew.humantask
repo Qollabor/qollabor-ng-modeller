@@ -1,0 +1,134 @@
+<humantask>
+    <cafienne:implementation name="verwerkAfhandelingNew" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" description="">
+        <input id="_fkI3_TOZOadviesOK" name="TOZOadviesOK"/>
+        <input id="_mFbA_TOZOresultaat4ogen" name="TOZOresultaat4ogen"/>
+        <output id="_hht0_TOZObetalingsOpdracht" name="TOZObetalingsOpdracht"/>
+        <output id="_GMta_TOZObriefBesluit" name="TOZObriefBesluit"/>
+        <task-model>{
+    "schema": {
+        "title": "Verwerk afhandeling",
+        "type": "object",
+        "properties": {
+          	"TOZOadviesOK": {
+                "type": "object",
+                "title": "TOZO Advies",
+                "properties": {
+                    "beterbedrag": {
+                        "format": "bedrag",
+                        "description": "het na behandelen van aanvraag door ambtenaar aangepaste TOZO-bedrag",
+                        "title": "bedrag aan TOZO uit te keren",
+                        "type": "string"
+                    },
+                    "onderbouwing4ogen": {
+                        "format": "text",
+                        "description": "reden dat ambtenaar vindt dat bedrag aanpassing behoeft",
+                        "title": "waarom ander bedrag nodig is",
+                        "type": "string"
+                    },
+                    "toekennen": {
+                        "format": "janee",
+                        "description": "uitkomst van behandeling: nee als er volgens jou iets niet goed gaat",
+                        "title": "in principe gewoon ja",
+                        "type": "string",
+                      	"enum": ["ja", "nee"]
+                    },
+                    "VierOgenNodig": {
+                        "format": "janee",
+                        "description": "als het bedrag of toekenning veranderd is, moet toch even iemand anders er naar kijken",
+                        "title": "iemand naar laten kijken?",
+                        "type": "string",
+                      	"enum": ["ja", "nee"]
+                    }
+                }
+            },
+            "TOZOresultaat4ogen": {
+                "title": "Besluit na review collega",
+                "type": "object",
+                "properties": {
+                    "besluit": {
+                        "description": "omschrijf het besluit (gebruik standaard-zinnen)",
+                        "format": "text",
+                        "title": "omschrijf het besluit",
+                        "type": "string"
+                    },
+                    "bezwaarNaVierOgenBedrag": {
+                        "description": "bedrag dat uiteindelijk toegekend moet worden",
+                        "format": "bedrag",
+                        "title": "het toe te kennen bedrag",
+                        "type": "string"
+                    }
+                }
+            },
+            "TOZObetalingsOpdracht": {
+                "type": "object",
+               	"title": "Betalingsopdracht",
+                "properties": {
+                    "betaaldatum": {
+                        "format": "dd/mm/yyyy",
+                        "description": "datum waarop betaalopdracht gegeven moet worden",
+                        "title": "datum betaalopdracht",
+                        "type": "string"
+                    }
+                }
+            },
+            "TOZObriefBesluit": {
+                "type": "object",
+                "title": "Briefbesluit",
+                "properties": {
+                    "beslotenBedrag": {
+                        "format": "bedrag",
+                        "description": "het bedrag dat afdeling toegekend heeft aan aanvrager",
+                        "title": "het toegekende bedrag",
+                        "type": "string"
+                    },
+                    "verzenddatum": {
+                        "format": "dd/mm/yyyy",
+                        "description": "datum waarop brief verzonden moet worden",
+                        "title": "datum verzending brief",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    },
+    "uiSchema": {
+      "ui:order": ["TOZOadviesOK", "TOZOresultaat4ogen", "TOZObetalingsOpdracht", "TOZObriefBesluit"],
+      	"TOZOadviesOK": {
+          	"beterbedrag": {
+                 "ui:readonly" : true   
+            },
+          "onderbouwing4ogen": {
+				"ui:readonly" : true
+          },
+          "toekennen": {
+				"ui:readonly" : true
+          },
+          "VierOgenNodig": {
+			 	"ui:readonly" : true
+          }
+        },
+        "TOZOresultaat4ogen":{
+           "besluit": {
+                "ui:readonly" : true      
+           },
+           "bezwaarNaVierOgenBedrag": {
+               "ui:readonly" : true  
+           }
+        },
+        "TOZObetalingsOpdracht": {
+            "betaaldatum": {
+                "ui:widget": "textarea"
+            }
+        },
+        "TOZObriefBesluit": {
+            "beslotenBedrag": {
+                "ui:widget": "textarea"
+            },
+            "verzenddatum": {
+                "ui:widget": "textarea"
+            }
+        }
+    }
+}</task-model>
+    </cafienne:implementation>
+</humantask>

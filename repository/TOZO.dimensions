@@ -1,0 +1,152 @@
+<CMMNDI>
+    <CMMNDiagram>
+        <CMMNShape cmmnElementRef="cm__4eotk_0">
+            <Bounds y="40" width="800" height="940"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ms__4eotk_0">
+            <Bounds x="130" y="210" width="170" height="40"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ms__4eotk_1">
+            <Bounds x="400" y="210" width="210" height="40"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__4eotk_0">
+            <Bounds x="470" y="330" width="140" height="80"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__4eotk_1">
+            <Bounds x="140" y="320" width="190" height="80"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_4eotk_7">
+            <Bounds x="204" y="310" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_4eotk_9">
+            <Bounds x="544" y="320" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_4eotk_11">
+            <Bounds x="234" y="200" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_4eotk_13">
+            <Bounds x="494" y="200" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ms__4eotk_2">
+            <Bounds x="120" y="500" width="170" height="40"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ms__4eotk_3">
+            <Bounds x="330" y="510" width="100" height="40"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__4eotk_2">
+            <Bounds x="500" y="470" width="140" height="90"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_4eotk_27">
+            <Bounds x="494" y="480" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_4eotk_29">
+            <Bounds x="614" y="460" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_4eotk_34">
+            <Bounds x="374" y="500" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_4eotk_36">
+            <Bounds x="184" y="490" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__4eotk_3">
+            <Bounds x="240" y="640" width="250" height="120"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_4eotk_45">
+            <Bounds x="444" y="630" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_4eotk_49">
+            <Bounds x="264" y="630" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_4eotk_57">
+            <Bounds x="484" y="720" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_4eotk_33">
+            <Bounds x="604" y="370" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_4eotk_66">
+            <Bounds x="134" y="360" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__4eotk_4">
+            <Bounds x="80" y="790" width="140" height="80"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_4eotk_54">
+            <Bounds x="214" y="810" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__4eotk_5">
+            <Bounds x="610" y="640" width="140" height="80"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_4eotk_58">
+            <Bounds x="604" y="670" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__4eotk_6">
+            <Bounds x="490" y="850" width="140" height="80"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_4eotk_76">
+            <Bounds x="484" y="900" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_4eotk_78">
+            <Bounds x="794" y="870" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__4eotk_7">
+            <Bounds x="630" y="110" width="140" height="80"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="_4eotk_81">
+            <Bounds y="53" width="24" height="16"/>
+        </CMMNShape>
+        <casefileitem cmmnElementRef="_4eotk_shape_7" parentId="cm__4eotk_0" contextRef="_4eotk_2">
+            <Bounds x="360" y="80" width="25" height="40"/>
+        </casefileitem>
+        <casefileitem cmmnElementRef="_4eotk_shape_10" parentId="cm__4eotk_0" contextRef="_4eotk_1">
+            <Bounds x="490" y="90" width="25" height="40"/>
+        </casefileitem>
+        <casefileitem cmmnElementRef="_4eotk_shape_16" parentId="cm__4eotk_0" contextRef="_4eotk_23">
+            <Bounds x="710" y="400" width="25" height="40"/>
+        </casefileitem>
+        <casefileitem cmmnElementRef="_4eotk_shape_19" parentId="cm__4eotk_0" contextRef="_4eotk_38">
+            <Bounds x="60" y="410" width="25" height="40"/>
+        </casefileitem>
+        <casefileitem cmmnElementRef="_4eotk_shape_29" parentId="cm__4eotk_0" contextRef="_4eotk_56">
+            <Bounds x="530" y="760" width="25" height="40"/>
+        </casefileitem>
+        <casefileitem cmmnElementRef="_4eotk_shape_30" parentId="cm__4eotk_0" contextRef="_4eotk_62">
+            <Bounds x="680" y="530" width="25" height="40"/>
+        </casefileitem>
+        <casefileitem cmmnElementRef="_4eotk_shape_34" parentId="cm__4eotk_0" contextRef="_4eotk_0">
+            <Bounds x="170" y="100" width="25" height="40"/>
+        </casefileitem>
+        <casefileitem cmmnElementRef="_4eotk_shape_35" parentId="cm__4eotk_0" contextRef="_4eotk_31">
+            <Bounds x="670" y="780" width="25" height="40"/>
+        </casefileitem>
+        <CMMNEdge sourceCMMNElementRef="pi_ms__4eotk_0" targetCMMNElementRef="_4eotk_7"/>
+        <CMMNEdge sourceCMMNElementRef="pi_ms__4eotk_1" targetCMMNElementRef="_4eotk_9"/>
+        <CMMNEdge sourceCMMNElementRef="_4eotk_shape_7" targetCMMNElementRef="_4eotk_13"/>
+        <CMMNEdge sourceCMMNElementRef="_4eotk_13" targetCMMNElementRef="_4eotk_shape_10"/>
+        <CMMNEdge sourceCMMNElementRef="pi_ms__4eotk_3" targetCMMNElementRef="_4eotk_27"/>
+        <CMMNEdge sourceCMMNElementRef="pi_ht__4eotk_0" targetCMMNElementRef="_4eotk_29"/>
+        <CMMNEdge sourceCMMNElementRef="pi_ht__4eotk_1" targetCMMNElementRef="_4eotk_34">
+            <waypoint x="350" y="490"/>
+        </CMMNEdge>
+        <CMMNEdge sourceCMMNElementRef="pi_ht__4eotk_1" targetCMMNElementRef="_4eotk_36"/>
+        <CMMNEdge sourceCMMNElementRef="pi_ht__4eotk_2" targetCMMNElementRef="_4eotk_45">
+            <waypoint x="450" y="620"/>
+        </CMMNEdge>
+        <CMMNEdge sourceCMMNElementRef="pi_ms__4eotk_2" targetCMMNElementRef="_4eotk_49"/>
+        <CMMNEdge sourceCMMNElementRef="_4eotk_shape_29" targetCMMNElementRef="_4eotk_57"/>
+        <CMMNEdge sourceCMMNElementRef="_4eotk_shape_16" targetCMMNElementRef="_4eotk_33"/>
+        <CMMNEdge sourceCMMNElementRef="_4eotk_shape_19" targetCMMNElementRef="_4eotk_66"/>
+        <CMMNEdge sourceCMMNElementRef="pi_ht__4eotk_3" targetCMMNElementRef="_4eotk_54"/>
+        <CMMNEdge sourceCMMNElementRef="pi_ht__4eotk_3" targetCMMNElementRef="_4eotk_58"/>
+        <CMMNEdge sourceCMMNElementRef="_4eotk_58" targetCMMNElementRef="_4eotk_shape_35"/>
+        <CMMNEdge sourceCMMNElementRef="_4eotk_13" targetCMMNElementRef="_4eotk_shape_34"/>
+        <CMMNEdge sourceCMMNElementRef="pi_ht__4eotk_4" targetCMMNElementRef="_4eotk_76"/>
+        <CMMNEdge label="complete" sourceCMMNElementRef="pi_ht__4eotk_6" targetCMMNElementRef="_4eotk_78"/>
+        <CMMNEdge sourceCMMNElementRef="_4eotk_45" targetCMMNElementRef="_4eotk_shape_30"/>
+        <CMMNEdge sourceCMMNElementRef="_4eotk_29" targetCMMNElementRef="_4eotk_shape_16"/>
+        <CMMNEdge sourceCMMNElementRef="_4eotk_36" targetCMMNElementRef="_4eotk_shape_19"/>
+        <CMMNEdge sourceCMMNElementRef="_4eotk_54" targetCMMNElementRef="_4eotk_shape_29"/>
+        <CMMNEdge sourceCMMNElementRef="_4eotk_58" targetCMMNElementRef="_4eotk_shape_29"/>
+        <CMMNEdge sourceCMMNElementRef="_4eotk_11" targetCMMNElementRef="_4eotk_shape_10"/>
+        <CMMNEdge sourceCMMNElementRef="_4eotk_11" targetCMMNElementRef="_4eotk_shape_7"/>
+        <CMMNEdge sourceCMMNElementRef="_4eotk_11" targetCMMNElementRef="_4eotk_shape_34"/>
+    </CMMNDiagram>
+</CMMNDI>

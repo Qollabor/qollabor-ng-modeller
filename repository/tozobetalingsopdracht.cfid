@@ -1,0 +1,3 @@
+<caseFileItemDefinition name="tozobetalingsopdracht" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified">
+    <property name="betaaldatum" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+</caseFileItemDefinition>

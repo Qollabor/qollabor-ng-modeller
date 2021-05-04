@@ -1,0 +1,57 @@
+<humantask>
+    <cafienne:implementation name="verwerkAfhandeling1" description="test" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <output id="_yceh_TOZObetalingsOpdracht" name="TOZObetalingsOpdracht"/>
+        <output id="_Odov_TOZObriefBesluit" name="TOZObriefBesluit"/>
+        <task-model>{
+    "schema": {
+        "title": "humantask-verwerkAfhandeling",
+        "type": "object",
+        "properties": {
+            "TOZObetalingsOpdracht": {
+                "type": "object",
+                "properties": {
+                    "betaaldatum": {
+                        "format": "dd/mm/yyyy",
+                        "description": "datum waarop betaalopdracht gegeven moet worden",
+                        "title": "datum betaalopdracht",
+                        "type": "string"
+                    }
+                }
+            },
+            "TOZObriefBesluit": {
+                "type": "object",
+                "properties": {
+                    "beslotenBedrag": {
+                        "format": "bedrag",
+                        "description": "het bedrag dat afdeling toegekend heeft aan aanvrager",
+                        "title": "het toegekende bedrag",
+                        "type": "string"
+                    },
+                    "verzenddatum": {
+                        "format": "dd/mm/yyyy",
+                        "description": "datum waarop brief verzonden moet worden",
+                        "title": "datum verzending brief",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    },
+    "ui_schema": {
+        "TOZObetalingsOpdracht": {
+            "betaaldatum": {
+                "ui:widget": "textarea"
+            }
+        },
+        "TOZObriefBesluit": {
+            "beslotenBedrag": {
+                "ui:widget": "textarea"
+            },
+            "verzenddatum": {
+                "ui:widget": "textarea"
+            }
+        }
+    }
+}</task-model>
+    </cafienne:implementation>
+</humantask>

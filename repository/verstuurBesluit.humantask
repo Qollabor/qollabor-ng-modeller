@@ -1,0 +1,69 @@
+<humantask>
+    <cafienne:implementation name="verstuurBesluit" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" description="">
+        <input id="_gxRN_TOZObriefBesluit" name="TOZObriefBesluit"/>
+        <output id="_Nbbk_TOZObriefBesluitVerstuurd" name="TOZObriefBesluitVerstuurd"/>
+        <task-model>{
+    "schema": {
+        "description": "U verstuurt het besluit naar de aanvrager",
+        "title": "Verstuur brief aan aanvrager",
+        "type": "object",
+        "properties": {
+          	"TOZObriefBesluit": {
+                "type": "object",
+                "title": "Briefbesluit",
+                "properties": {
+                    "beslotenBedrag": {
+                        "format": "bedrag",
+                        "description": "het bedrag dat afdeling toegekend heeft aan aanvrager",
+                        "title": "het toegekende bedrag",
+                        "type": "string"
+                    },
+                    "verzenddatum": {
+                        "format": "dd/mm/yyyy",
+                        "description": "datum waarop brief verzonden moet worden",
+                        "title": "datum verzending brief",
+                        "type": "string"
+                    }
+                }
+            },
+            "TOZObriefBesluitVerstuurd": {
+                "title": "Wat wilt u over de verzending van de brief opslaan bij de case?",
+                "type": "object",
+                "properties": {
+                    "opmerkingen": {
+                        "description": "indien nodig",
+                        "format": "text",
+                        "title": "heeft u nog opmerkingen?",
+                        "type": "string"
+                    },
+                    "verstuurd": {
+                        "description": "ja of nee",
+                        "format": "boolean",
+                        "title": "is de betaling naar Aanvrager gestuurd?",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    },
+    "uiSchema": {
+      "TOZObriefBesluit": {
+         "beslotenBedrag": {
+               "ui:readonly" : true
+          },
+         "verzenddatum": {
+           		"ui:readonly" : true
+         }
+      	},
+        "TOZObriefBesluitVerstuurd": {
+            "opmerkingen": {
+                "ui:widget": "textarea"
+            },
+            "verstuurd": {
+                "ui:widget": "textarea"
+            }
+        }
+    }
+}</task-model>
+    </cafienne:implementation>
+</humantask>

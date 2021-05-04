@@ -1,0 +1,4 @@
+<caseFileItemDefinition name="tozoaanvraagformulier" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified">
+    <property name="vindplaats" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="dagIndienenAanvraag" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+</caseFileItemDefinition>

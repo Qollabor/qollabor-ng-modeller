@@ -1,0 +1,42 @@
+<humantask>
+    <cafienne:implementation name="sluitTOZOzaakAf" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" description="">
+        <output id="_Ibii_TOZOgearchiveerd" name="TOZOgearchiveerd"/>
+        <task-model>{
+    "schema": {
+        "description": "U sluit de zaak af en archiveert hen",
+        "title": "Afhandeling is klaar",
+        "type": "object",
+        "properties": {
+            "TOZOgearchiveerd": {
+                "title": "Wat wilt u bij afsluiten van de zaak nog melden over de case?",
+                "type": "object",
+                "properties": {
+                    "gearchiveerd": {
+                        "description": "ja of nee",
+                        "format": "boolean",
+                        "title": "is de betaling naar Archief gestuurd?",
+                        "type": "string"
+                    },
+                    "opmerkingen": {
+                        "description": "indien nodig",
+                        "format": "text",
+                        "title": "heeft u nog opmerkingen?",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    },
+    "ui_schema": {
+        "TOZOgearchiveerd": {
+            "gearchiveerd": {
+                "ui:widget": "textarea"
+            },
+            "opmerkingen": {
+                "ui:widget": "textarea"
+            }
+        }
+    }
+}</task-model>
+    </cafienne:implementation>
+</humantask>

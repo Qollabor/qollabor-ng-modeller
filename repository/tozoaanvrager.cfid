@@ -1,0 +1,16 @@
+<caseFileItemDefinition name="tozoaanvrager" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified">
+    <property name="naamAanvrager" type="http://www.omg.org/spec/CMMN/PropertyType/string">
+        <extensionElements mustUnderstand="false">
+            <cafienne:implementation xmlns:cafienne="org.cafienne" isBusinessIdentifier="true"/>
+        </extensionElements>
+    </property>
+    <property name="geboortedatumAanvrager" type="http://www.omg.org/spec/CMMN/PropertyType/string">
+        <extensionElements mustUnderstand="false">
+            <cafienne:implementation xmlns:cafienne="org.cafienne" isBusinessIdentifier="true"/>
+        </extensionElements>
+    </property>
+    <property name="kvkAanvrager" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="deNaamVanHetBedrijf" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="bankrekeningNummerAanvrager" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="BSNAanvrager" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+</caseFileItemDefinition>

@@ -1,0 +1,5 @@
+<caseFileItemDefinition name="tozoadviesbezwaar" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified">
+    <property name="TOZOtoekennen" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="OnderbouwingAdvies" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="bezwaarbedrag" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+</caseFileItemDefinition>

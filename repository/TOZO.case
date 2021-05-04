@@ -1,0 +1,511 @@
+<case id="TOZO.case" name="TOZO" guid="_4eotk">
+    <caseFileModel>
+        <caseFileItem id="_4eotk_0" name="TOZOaanvrager" multiplicity="ExactlyOne" definitionRef="tozoaanvrager.cfid"/>
+        <caseFileItem id="_4eotk_1" name="TOZOstatusStart" multiplicity="ExactlyOne" definitionRef="tozostatusstart.cfid"/>
+        <caseFileItem id="_4eotk_2" name="TOZOaanvraagFormulier" multiplicity="ExactlyOne" definitionRef="tozoaanvraagformulier.cfid"/>
+        <caseFileItem id="_4eotk_23" name="TOZOadviesBezwaar" multiplicity="ExactlyOne" definitionRef="tozoadviesbezwaar.cfid"/>
+        <caseFileItem id="_4eotk_38" name="TOZOadviesOK" multiplicity="ExactlyOne" definitionRef="tozoadviesok.cfid"/>
+        <caseFileItem id="_4eotk_56" name="TOZObriefBesluit" multiplicity="ExactlyOne" definitionRef="tozobriefbesluit.cfid"/>
+        <caseFileItem id="_4eotk_62" name="TOZOresultaat4ogen" multiplicity="ExactlyOne" definitionRef="tozoresultaat4ogen.cfid"/>
+        <caseFileItem id="_4eotk_31" name="TOZObetalingsOpdracht" multiplicity="ExactlyOne" definitionRef="tozobetalingsopdracht.cfid"/>
+        <caseFileItem id="_4eotk_82" name="TOZOherbepaling" multiplicity="ExactlyOne" definitionRef="tozoaanvraagformulier.cfid"/>
+        <caseFileItem id="_4eotk_132" name="TOZObriefBesluitVerstuurd" multiplicity="ExactlyOne" definitionRef="tozobriefbesluitverstuurd.cfid"/>
+        <caseFileItem id="_4eotk_133" name="TOZOgearchiveerd" multiplicity="ExactlyOne" definitionRef="tozogearchiveerd_1.cfid"/>
+        <caseFileItem id="_4eotk_139" name="TOZObetalingsOpdrachtVerwerkt" multiplicity="ExactlyOne" definitionRef="tozobetalingsopdrachtverwerkt.cfid"/>
+    </caseFileModel>
+    <casePlanModel id="cm__4eotk_0" name="TOZO" autoComplete="false">
+        <planItem id="pi_ms__4eotk_0" name="aanvraagOKgeenBezwaar" definitionRef="ms__4eotk_0">
+            <entryCriterion id="_4eotk_11" name="EntryCriterion_2" sentryRef="crit__4eotk_2"/>
+            <itemControl id="_4eotk_4">
+                <repetitionRule id="_4eotk_75" contextRef="_4eotk_2">
+                    <condition id="_4eotk_80" language="spel">
+                        <body>
+                            <![CDATA[true]]>
+                        </body>
+                    </condition>
+                </repetitionRule>
+            </itemControl>
+        </planItem>
+        <planItem id="pi_ms__4eotk_1" name="aanvraagNOKplusBezwaar" definitionRef="ms__4eotk_1">
+            <entryCriterion id="_4eotk_13" name="EntryCriterion_3" sentryRef="crit__4eotk_3"/>
+        </planItem>
+        <planItem id="pi_ht__4eotk_0" name="beoordeelBezwaar" definitionRef="ht__4eotk_0">
+            <entryCriterion id="_4eotk_9" name="EntryCriterion_1" sentryRef="crit__4eotk_1"/>
+            <exitCriterion id="_4eotk_33" name="ExitCriterion_2" sentryRef="crit__4eotk_15"/>
+        </planItem>
+        <planItem id="pi_ht__4eotk_1" name="beoordeelOK" definitionRef="ht__4eotk_1">
+            <entryCriterion id="_4eotk_7" name="EntryCriterion_0" sentryRef="crit__4eotk_0"/>
+            <exitCriterion id="_4eotk_66" name="ExitCriterion_3" sentryRef="crit__4eotk_16"/>
+            <itemControl id="_4eotk_24">
+                <repetitionRule id="_4eotk_92">
+                    <condition id="_4eotk_93" language="spel">
+                        <body>
+                            <![CDATA[true]]>
+                        </body>
+                    </condition>
+                </repetitionRule>
+            </itemControl>
+        </planItem>
+        <planItem id="pi_ms__4eotk_2" name="OK4ogenNietNodig" definitionRef="ms__4eotk_2">
+            <entryCriterion id="_4eotk_36" name="EntryCriterion_7" sentryRef="crit__4eotk_7"/>
+        </planItem>
+        <planItem id="pi_ms__4eotk_3" name="OK4ogenNodig" definitionRef="ms__4eotk_3">
+            <entryCriterion id="_4eotk_34" name="EntryCriterion_6" sentryRef="crit__4eotk_6"/>
+        </planItem>
+        <planItem id="pi_ht__4eotk_2" name="beslisTOZO4Ogen" definitionRef="ht__4eotk_2">
+            <entryCriterion id="_4eotk_27" name="EntryCriterion_4" sentryRef="crit__4eotk_4"/>
+            <entryCriterion id="_4eotk_29" name="EntryCriterion_5" sentryRef="crit__4eotk_5"/>
+        </planItem>
+        <planItem id="pi_ht__4eotk_3" name="verwerkAfhandeling" definitionRef="ht__4eotk_3">
+            <entryCriterion id="_4eotk_45" name="EntryCriterion_8" sentryRef="crit__4eotk_8"/>
+            <entryCriterion id="_4eotk_49" name="EntryCriterion_10" sentryRef="crit__4eotk_10"/>
+            <exitCriterion id="_4eotk_57" name="ExitCriterion_0" sentryRef="crit__4eotk_13"/>
+            <itemControl id="_4eotk_42">
+                <requiredRule id="_4eotk_43">
+                    <condition id="_4eotk_44" language="spel">
+                        <body>
+                            <![CDATA[true]]>
+                        </body>
+                    </condition>
+                </requiredRule>
+            </itemControl>
+        </planItem>
+        <planItem id="pi_ht__4eotk_4" name="verstuurBesluit" definitionRef="ht__4eotk_4">
+            <entryCriterion id="_4eotk_54" name="EntryCriterion_11" sentryRef="crit__4eotk_11"/>
+            <itemControl id="_4eotk_51">
+                <requiredRule id="_4eotk_52">
+                    <condition id="_4eotk_53" language="spel">
+                        <body>
+                            <![CDATA[true]]>
+                        </body>
+                    </condition>
+                </requiredRule>
+            </itemControl>
+        </planItem>
+        <planItem id="pi_ht__4eotk_5" name="betalingNaarBO" definitionRef="ht__4eotk_5">
+            <entryCriterion id="_4eotk_58" name="EntryCriterion_12" sentryRef="crit__4eotk_12"/>
+        </planItem>
+        <planItem id="pi_ht__4eotk_6" name="sluitTOZOzaakAf" definitionRef="ht__4eotk_6">
+            <entryCriterion id="_4eotk_76" name="EntryCriterion_13" sentryRef="crit__4eotk_17"/>
+        </planItem>
+        <sentry id="crit__4eotk_0">
+            <planItemOnPart id="_4eotk_8" sourceRef="pi_ms__4eotk_0">
+                <standardEvent>occur</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__4eotk_1">
+            <planItemOnPart id="_4eotk_10" sourceRef="pi_ms__4eotk_1">
+                <standardEvent>occur</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__4eotk_2">
+            <ifPart id="_4eotk_12" contextRef="_4eotk_1">
+                <condition id="_4eotk_18" language="spel">
+                    <body>
+                        <![CDATA[TOZOstatusStart.OPAzegtOK == "ja"]]>
+                    </body>
+                </condition>
+            </ifPart>
+            <caseFileItemOnPart id="_4eotk_19" sourceRef="_4eotk_1">
+                <standardEvent>create</standardEvent>
+            </caseFileItemOnPart>
+            <caseFileItemOnPart id="_4eotk_70" sourceRef="_4eotk_2">
+                <standardEvent>create</standardEvent>
+            </caseFileItemOnPart>
+            <caseFileItemOnPart id="_4eotk_72" sourceRef="_4eotk_0">
+                <standardEvent>create</standardEvent>
+            </caseFileItemOnPart>
+        </sentry>
+        <sentry id="crit__4eotk_3">
+            <ifPart id="_4eotk_16" contextRef="_4eotk_1">
+                <condition id="_4eotk_17" language="spel">
+                    <body>
+                        <![CDATA[TOZOstatusStart.OPAzegtOK == "nee" AND TOZOstatusStart.aanvragerNeeAanvechten == "ja"]]>
+                    </body>
+                </condition>
+            </ifPart>
+            <caseFileItemOnPart id="_4eotk_14" sourceRef="_4eotk_2">
+                <standardEvent>create</standardEvent>
+            </caseFileItemOnPart>
+            <caseFileItemOnPart id="_4eotk_15" sourceRef="_4eotk_1">
+                <standardEvent>create</standardEvent>
+            </caseFileItemOnPart>
+            <caseFileItemOnPart id="_4eotk_71" sourceRef="_4eotk_0">
+                <standardEvent>create</standardEvent>
+            </caseFileItemOnPart>
+        </sentry>
+        <sentry id="crit__4eotk_4">
+            <planItemOnPart id="_4eotk_28" sourceRef="pi_ms__4eotk_3">
+                <standardEvent>occur</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__4eotk_5">
+            <caseFileItemOnPart id="_4eotk_85" sourceRef="_4eotk_23">
+                <standardEvent>create</standardEvent>
+            </caseFileItemOnPart>
+            <planItemOnPart id="_4eotk_30" sourceRef="pi_ht__4eotk_0">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__4eotk_6">
+            <ifPart id="_4eotk_68" contextRef="_4eotk_38">
+                <condition id="_4eotk_69" language="spel">
+                    <body>
+                        <![CDATA[TOZOadviesOK.VierOgenNodig == "ja"]]>
+                    </body>
+                </condition>
+            </ifPart>
+            <caseFileItemOnPart id="_4eotk_74" sourceRef="_4eotk_38">
+                <standardEvent>create</standardEvent>
+            </caseFileItemOnPart>
+            <planItemOnPart id="_4eotk_35" sourceRef="pi_ht__4eotk_1">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__4eotk_7">
+            <ifPart id="_4eotk_39" contextRef="_4eotk_38">
+                <condition id="_4eotk_40" language="spel">
+                    <body>
+                        <![CDATA[TOZOadviesOK.VierOgenNodig == "nee"]]>
+                    </body>
+                </condition>
+            </ifPart>
+            <caseFileItemOnPart id="_4eotk_73" sourceRef="_4eotk_38">
+                <standardEvent>create</standardEvent>
+            </caseFileItemOnPart>
+            <planItemOnPart id="_4eotk_37" sourceRef="pi_ht__4eotk_1">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__4eotk_8">
+            <caseFileItemOnPart id="_4eotk_84" sourceRef="_4eotk_62">
+                <standardEvent>create</standardEvent>
+            </caseFileItemOnPart>
+            <planItemOnPart id="_4eotk_46" sourceRef="pi_ht__4eotk_2">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__4eotk_10">
+            <planItemOnPart id="_4eotk_50" sourceRef="pi_ms__4eotk_2">
+                <standardEvent>occur</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__4eotk_13">
+            <caseFileItemOnPart id="_4eotk_61" sourceRef="_4eotk_56">
+                <standardEvent>create</standardEvent>
+            </caseFileItemOnPart>
+        </sentry>
+        <sentry id="crit__4eotk_15">
+            <caseFileItemOnPart id="_4eotk_65" sourceRef="_4eotk_23">
+                <standardEvent>create</standardEvent>
+            </caseFileItemOnPart>
+        </sentry>
+        <sentry id="crit__4eotk_16">
+            <caseFileItemOnPart id="_4eotk_67" sourceRef="_4eotk_38">
+                <standardEvent>create</standardEvent>
+            </caseFileItemOnPart>
+        </sentry>
+        <sentry id="crit__4eotk_11">
+            <caseFileItemOnPart id="_4eotk_83" sourceRef="_4eotk_56">
+                <standardEvent>create</standardEvent>
+            </caseFileItemOnPart>
+            <planItemOnPart id="_4eotk_55" sourceRef="pi_ht__4eotk_3">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__4eotk_12">
+            <caseFileItemOnPart id="_4eotk_60" sourceRef="_4eotk_31">
+                <standardEvent>create</standardEvent>
+            </caseFileItemOnPart>
+            <caseFileItemOnPart id="_4eotk_86" sourceRef="_4eotk_56">
+                <standardEvent>create</standardEvent>
+            </caseFileItemOnPart>
+            <planItemOnPart id="_4eotk_59" sourceRef="pi_ht__4eotk_3">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__4eotk_17">
+            <planItemOnPart id="_4eotk_77" sourceRef="pi_ht__4eotk_4">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__4eotk_18">
+            <planItemOnPart id="_4eotk_79" sourceRef="pi_ht__4eotk_6">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <planningTable id="_4eotk_81">
+            <discretionaryItem id="pi_ht__4eotk_7" name="probeerIntelligentAdvisor" definitionRef="ht__4eotk_7" authorizedRoleRefs="_4eotk_20 _4eotk_21"/>
+        </planningTable>
+        <exitCriterion id="_4eotk_78" name="ExitCriterion_4" sentryRef="crit__4eotk_18"/>
+        <humanTask id="ht__4eotk_0" name="beoordeelBezwaar" isBlocking="true" performerRef="_4eotk_20">
+            <inputs id="_4eotk_117" name="TOZOaanvraagFormulier" bindingRef="_4eotk_2"/>
+            <inputs id="_4eotk_118" name="TOZOstatusStart" bindingRef="_4eotk_1"/>
+            <inputs id="_4eotk_119" name="TOZOaanvrager" bindingRef="_4eotk_0"/>
+            <outputs id="_4eotk_120" name="TOZOadviesBezwaar" bindingRef="_4eotk_23">
+                <bindingRefinement id="_4eotk_121" language="spel">
+                    <body>
+                        <![CDATA[add]]>
+                    </body>
+                </bindingRefinement>
+            </outputs>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="beoordeelBezwaar.humantask">
+                    <parameterMapping id="_4eotk_109" sourceRef="_4eotk_117" targetRef="_kvO0_TOZOaanvraagFormulier"/>
+                    <parameterMapping id="_4eotk_110" sourceRef="_4eotk_119" targetRef="_rAgj_TOZOaanvrager"/>
+                    <parameterMapping id="_4eotk_112" sourceRef="_4eotk_118" targetRef="_hZr9_TOZOstatusStart"/>
+                    <parameterMapping id="_4eotk_115" sourceRef="_ZSNS_TOZOadviesBezwaar" targetRef="_4eotk_120"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__4eotk_1" name="beoordeelOK" isBlocking="true" performerRef="_4eotk_21">
+            <inputs id="_4eotk_231" name="TOZOaanvraagFormulier" bindingRef="_4eotk_2"/>
+            <inputs id="_4eotk_232" name="TOZOaanvrager" bindingRef="_4eotk_0"/>
+            <inputs id="_4eotk_233" name="TOZOstatusStart" bindingRef="_4eotk_1"/>
+            <outputs id="_4eotk_234" name="TOZOadviesOK" bindingRef="_4eotk_38">
+                <bindingRefinement id="_4eotk_235" language="spel">
+                    <body>
+                        <![CDATA[add]]>
+                    </body>
+                </bindingRefinement>
+            </outputs>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="beoordeelOK.humantask">
+                    <parameterMapping id="_4eotk_226" sourceRef="_4eotk_231" targetRef="_X4rF_TOZOaanvraagFormulier"/>
+                    <parameterMapping id="_4eotk_227" sourceRef="_4eotk_232" targetRef="_LyoI_TOZOaanvrager"/>
+                    <parameterMapping id="_4eotk_228" sourceRef="_4eotk_233" targetRef="_hwvq_TOZOstatusStart"/>
+                    <parameterMapping id="_4eotk_229" sourceRef="_6Huk_TOZOadviesOK" targetRef="_4eotk_234"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__4eotk_2" name="beslisTOZO4Ogen" isBlocking="true" performerRef="_4eotk_22">
+            <inputs id="_4eotk_242" name="TOZOaanvraagFormulier" bindingRef="_4eotk_2"/>
+            <inputs id="_4eotk_243" name="TOZOaanvrager" bindingRef="_4eotk_0"/>
+            <inputs id="_4eotk_244" name="TOZOstatusStart" bindingRef="_4eotk_1"/>
+            <inputs id="_4eotk_245" name="TOZOadviesOK" bindingRef="_4eotk_38"/>
+            <outputs id="_4eotk_246" name="TOZOresultaat4ogen" bindingRef="_4eotk_62">
+                <bindingRefinement id="_4eotk_247" language="spel">
+                    <body>
+                        <![CDATA[add]]>
+                    </body>
+                </bindingRefinement>
+            </outputs>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="beslisTOZO4Ogen.humantask">
+                    <parameterMapping id="_4eotk_236" sourceRef="_4eotk_242" targetRef="_Gj3s_TOZOaanvraagFormulier"/>
+                    <parameterMapping id="_4eotk_237" sourceRef="_4eotk_243" targetRef="_tsjF_TOZOaanvrager"/>
+                    <parameterMapping id="_4eotk_238" sourceRef="_4eotk_244" targetRef="_t4k2_TOZOstatusStart"/>
+                    <parameterMapping id="_4eotk_239" sourceRef="_4eotk_245" targetRef="_ptM5_TOZOadviesOK"/>
+                    <parameterMapping id="_4eotk_240" sourceRef="_BZlD_TOZOresultaat4ogen" targetRef="_4eotk_246"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__4eotk_3" name="verwerkAfhandeling" isBlocking="true" performerRef="_4eotk_41">
+            <inputs id="_4eotk_155" name="TOZOadviesOK" bindingRef="_4eotk_38"/>
+            <inputs id="_4eotk_161" name="TOZOresultaat4ogen" bindingRef="_4eotk_62"/>
+            <outputs id="_4eotk_162" name="TOZObetalingsOpdracht" bindingRef="_4eotk_31">
+                <bindingRefinement id="_4eotk_165" language="spel">
+                    <body>
+                        <![CDATA[add]]>
+                    </body>
+                </bindingRefinement>
+            </outputs>
+            <outputs id="_4eotk_163" name="TOZObriefBesluit" bindingRef="_4eotk_56">
+                <bindingRefinement id="_4eotk_164" language="spel">
+                    <body>
+                        <![CDATA[add]]>
+                    </body>
+                </bindingRefinement>
+            </outputs>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="verwerkAfhandelingNew.humantask">
+                    <parameterMapping id="_4eotk_141" sourceRef="_4eotk_155" targetRef="_fkI3_TOZOadviesOK"/>
+                    <parameterMapping id="_4eotk_142" sourceRef="_4eotk_161" targetRef="_mFbA_TOZOresultaat4ogen"/>
+                    <parameterMapping id="_4eotk_143" sourceRef="_hht0_TOZObetalingsOpdracht" targetRef="_4eotk_162"/>
+                    <parameterMapping id="_4eotk_144" sourceRef="_GMta_TOZObriefBesluit" targetRef="_4eotk_163"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__4eotk_4" name="verstuurBesluit" isBlocking="true">
+            <inputs id="_4eotk_169" name="TOZObriefBesluit" bindingRef="_4eotk_56"/>
+            <outputs id="_4eotk_170" name="TOZObriefBesluitVerstuurd" bindingRef="_4eotk_132">
+                <bindingRefinement id="_4eotk_171" language="spel">
+                    <body>
+                        <![CDATA[add]]>
+                    </body>
+                </bindingRefinement>
+            </outputs>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="verstuurBesluit.humantask">
+                    <parameterMapping id="_4eotk_166" sourceRef="_4eotk_169" targetRef="_gxRN_TOZObriefBesluit"/>
+                    <parameterMapping id="_4eotk_167" sourceRef="_Nbbk_TOZObriefBesluitVerstuurd" targetRef="_4eotk_170"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__4eotk_5" name="betalingNaarBO" isBlocking="true">
+            <outputs id="_4eotk_250" name="TOZObetalingsOpdrachtVerwerkt" bindingRef="_4eotk_139">
+                <bindingRefinement id="_4eotk_251" language="spel">
+                    <body>
+                        <![CDATA[add]]>
+                    </body>
+                </bindingRefinement>
+            </outputs>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="betalingNaarBO.humantask">
+                    <parameterMapping id="_4eotk_248" sourceRef="_kvJs_TOZObetalingsOpdrachtVerwerkt" targetRef="_4eotk_250"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__4eotk_6" name="sluitTOZOzaakAf" isBlocking="true" performerRef="_4eotk_22">
+            <outputs id="_4eotk_174" name="TOZOgearchiveerd" bindingRef="_4eotk_133">
+                <bindingRefinement id="_4eotk_177" language="spel">
+                    <body>
+                        <![CDATA[add]]>
+                    </body>
+                </bindingRefinement>
+            </outputs>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="sluitTOZOzaakAf.humantask">
+                    <parameterMapping id="_4eotk_172" sourceRef="_Ibii_TOZOgearchiveerd" targetRef="_4eotk_174"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__4eotk_7" name="probeerIntelligentAdvisor" isBlocking="true" performerRef="_4eotk_20"/>
+        <milestone id="ms__4eotk_0" name="aanvraagOKgeenBezwaar"/>
+        <milestone id="ms__4eotk_1" name="aanvraagNOKplusBezwaar"/>
+        <milestone id="ms__4eotk_2" name="OK4ogenNietNodig"/>
+        <milestone id="ms__4eotk_3" name="OK4ogenNodig"/>
+    </casePlanModel>
+    <caseRoles id="_4eotk_20" name="seniorBehandelaar"/>
+    <caseRoles id="_4eotk_21" name="mediorBehandelaar"/>
+    <caseRoles id="_4eotk_22" name="Beslisser"/>
+    <caseRoles id="_4eotk_41" name="juniorBehandelaar"/>
+    <input id="_4eotk_89" name="TOZOaanvrager" bindingRef="_4eotk_0"/>
+    <input id="_4eotk_90" name="TOZOstatusStart" bindingRef="_4eotk_1"/>
+    <input id="_4eotk_91" name="TOZOaanvraagFormulier" bindingRef="_4eotk_2"/>
+    <extensionElements mustUnderstand="false">
+        <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+  "schema": {
+    "title": "beheerTOZO",
+    "type": "object",
+    "properties": {
+      "TOZOaanvraagFormulier": {
+        "type": "object",
+        "properties": {
+          "dagIndienenAanvraag": {
+            "type": "string",
+            "format": "dd/mm/yyyy",
+	        "title": "Dag indienen aanvraag"
+          },
+          "vindplaats": {
+            "type": "string",
+            "format": "url",
+	    	"title": "Vindplaats"
+          }
+        }
+      },
+      "TOZOaanvrager": {
+        "type": "object",
+        "properties": {
+          "bankrekeningNummerAanvrager": {
+            "type": "string",
+            "format": "rekening",
+	    	"title": "Bankrekeningnummer"
+	
+          },
+          "BSNAanvrager": {
+            "type": "string",
+            "format": "bsn",
+	    	"title": "bsn"
+          },
+          "deNaamVanHetBedrijf": {
+            "type": "string",
+            "format": "char",
+	    "title": "Bedrijfsnaam"
+          },
+          "geboortedatumAanvrager": {
+            "type": "string",
+            "format": "dd/mm/yyyy",
+	   		"title": "Geboortedatum"
+          },
+          "kvkAanvrager": {
+            "type": "string",
+            "format": "char",
+	    	"title": "Kvknummer"
+          },
+          "naamAanvrager": {
+            "type": "string",
+            "format": "char",
+	    	"title": "Naam"
+          }
+        }
+      },
+      "TOZOstatusStart": {
+        "type": "object",
+        "properties": {
+          "aanvragerNeeAanvechten": {
+            "type": "string",
+            "format": "janee",
+	   		"title": "Nee aanvechten"
+          },
+          "datumIngaanAanvrager": {
+            "type": "string",
+            "format": "dd/mm/yyyy",
+	   		"title": "Ingangsdatum"
+          },
+          "onderbouwingAanvrager": {
+            "type": "string",
+            "format": "text",
+	   		"title": "Onderbouwing"
+          },
+          "OPAzegtOK": {
+            "type": "string",
+            "format": "janee",
+           	"title": "Opa zegt ja/nee",
+            "enum": ["ja", "nee"]
+            
+          },
+          "voorvulMaandGeschatInkomen": {
+            "type": "string",
+            "format": "bedrag",
+	   		"title": "Voorgevuld geschat maandinkomen"
+          }
+        }
+      },
+      "KoppelUserAanRol": {
+        "type": "array",
+        "title": "Users",
+        "items": {
+          "type": "object",
+          "properties": {
+            "username": {
+              "type": "string"
+            },
+            "multipleChoicesList": {
+              "type": "array",
+              "uniqueitems": false,
+              "title": "rollen",
+              "items": {
+                "enum": [
+                  "casemanager",
+                  "mediorBehandelaar",
+                  "caseviewer",
+                  "juniorBehandelaar",
+                  "Beslisser",
+                  "seniorBehandelaar"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "ui_schema": {
+    "multipleChoicesList": {
+      "ui:widget": "checkboxes"
+    }
+  }
+}</cafienne:start-case-model>
+    </extensionElements>
+</case>

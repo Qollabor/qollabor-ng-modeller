@@ -1,0 +1,196 @@
+<humantask>
+    <cafienne:implementation name="beoordeelOK" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" description="">
+        <input id="_X4rF_TOZOaanvraagFormulier" name="TOZOaanvraagFormulier"/>
+        <input id="_LyoI_TOZOaanvrager" name="TOZOaanvrager"/>
+        <input id="_hwvq_TOZOstatusStart" name="TOZOstatusStart"/>
+        <output id="_6Huk_TOZOadviesOK" name="TOZOadviesOK"/>
+        <task-model>{
+    "schema": {
+        "title": "Beoordeel OK",
+        "type": "object",
+        "properties": {
+            "TOZOaanvraagFormulier": {
+                "type": "object", 
+                "title": "Aanvraag formulier",
+                "properties": {
+                    "dagIndienenAanvraag": {
+                        "format": "dd/mm/yyyy",
+                        "description": "dag waarop aanvrager de aanvraag ingediend heeft",
+                        "title": "aanvraag ontvangen op...",
+                        "type": "string"
+                    },
+                    "vindplaats": {
+                        "format": "char",
+                        "description": "de url van het TOZOaanvraagformulier van de aanvrager",
+                        "title": "formulier te vinden in...",
+                        "type": "string"
+                    }
+                }
+            },
+            "TOZOaanvrager": {
+                "type": "object",
+                "title": "Aanvrager",
+                "properties": {
+                    "bankrekeningNummerAanvrager": {
+                        "type": "string",
+                        "format": "rekening",
+                        "title": "Bankrekeningnummer"
+                    },
+                    "BSNAanvrager": {
+                        "type": "string",
+                        "format": "bsn",
+                        "title": "bsn"
+                    },
+                    "deNaamVanHetBedrijf": {
+                        "type": "string",
+                        "format": "char",
+                        "title": "Bedrijfsnaam"
+                    },
+                    "geboortedatumAanvrager": {
+                        "type": "string",
+                        "format": "dd/mm/yyyy",
+                        "title": "Geboortedatum"
+                    },
+                    "kvkAanvrager": {
+                        "type": "string",
+                        "format": "char",
+                        "title": "Kvknummer"
+                    },
+                    "naamAanvrager": {
+                        "type": "string",
+                        "format": "char",
+                        "title": "Naam"
+                    }
+                }
+            },
+            "TOZOstatusStart": {
+                "type": "object",
+                "title": "TOZO Status",
+                "properties": {
+                    "aanvragerNeeAanvechten": {
+                        "type": "string",
+                        "format": "janee",
+                        "title": "Nee aanvechten"
+                    },
+                    "datumIngaanAanvrager": {
+                        "type": "string",
+                        "format": "dd/mm/yyyy",
+                        "title": "Ingangsdatum"
+                    },
+                    "onderbouwingAanvrager": {
+                        "type": "string",
+                        "format": "text",
+                        "title": "Onderbouwing"
+                    },
+                    "OPAzegtOK": {
+                        "type": "string",
+                        "format": "janee",
+                        "title": "Opa zegt ja/nee"
+                    },
+                    "voorvulMaandGeschatInkomen": {
+                        "type": "string",
+                        "format": "bedrag",
+                        "title": "Voorgevuld geschat maandinkomen"
+                    }
+                }
+            },
+            "TOZOadviesOK": {
+                "type": "object",
+                "title": "TOZO Advies",
+                "properties": {
+                    "beterbedrag": {
+                        "format": "bedrag",
+                        "description": "het na behandelen van aanvraag door ambtenaar aangepaste TOZO-bedrag",
+                        "title": "bedrag aan TOZO uit te keren",
+                        "type": "string"
+                    },
+                    "onderbouwing4ogen": {
+                        "format": "text",
+                        "description": "reden dat ambtenaar vindt dat bedrag aanpassing behoeft",
+                        "title": "waarom ander bedrag nodig is",
+                        "type": "string"
+                    },
+                    "toekennen": {
+                        "format": "janee",
+                        "description": "uitkomst van behandeling: nee als er volgens jou iets niet goed gaat",
+                        "title": "in principe gewoon ja",
+                        "type": "string",
+                      	"enum": ["ja", "nee"]
+                    },
+                    "VierOgenNodig": {
+                        "format": "janee",
+                        "description": "als het bedrag of toekenning veranderd is, moet toch even iemand anders er naar kijken",
+                        "title": "iemand naar laten kijken?",
+                        "type": "string",
+                      	"enum": ["ja", "nee"]
+                    }
+                }
+            }
+        }
+    },
+    "uiSchema": {
+        "ui:order": [ "TOZOaanvraagFormulier", "TOZOaanvrager", "TOZOstatusStart", "TOZOadviesOK"],
+        "TOZOaanvraagFormulier": {
+            "dagIndienenAanvraag": {
+                "ui:readonly" : true
+            },
+            "vindplaats": {
+                "ui:readonly" : true,
+              	"items": {"ui:emptyValue": ""}
+            }
+        },
+      	"TOZOaanvrager": {
+          "bankrekeningNummerAanvrager": {
+            "ui:readonly" : true
+          },
+          "BSNAanvrager": {
+            "ui:readonly" : true
+          },
+          "deNaamVanHetBedrijf": {
+            "ui:readonly" : true
+          },
+          "geboortedatumAanvrager": {
+            "ui:readonly" : true
+          },
+          "kvkAanvrager": {
+            "ui:readonly" : true
+          },
+          "naamAanvrager": {
+            "ui:readonly" : true
+          }
+        },
+      	"TOZOstatusStart": {
+          "aanvragerNeeAanvechten": {
+            "ui:readonly" : true
+          },
+          "datumIngaanAanvrager": {
+            "ui:readonly" : true
+          },
+          "onderbouwingAanvrager": {
+            "ui:readonly" : true
+          },
+          "OPAzegtOK": {
+            "ui:readonly" : true
+          },
+          "voorvulMaandGeschatInkomen": {
+            "ui:readonly" : true
+          }
+        },
+        "TOZOadviesOK": {
+            "beterbedrag": {
+                "ui:widget": "textarea"
+            },
+            "onderbouwing4ogen": {
+                "ui:widget": "textarea"
+            },
+            "toekennen": {
+                "ui:widget": "radio"
+            },
+            "VierOgenNodig": {
+                "ui:widget": "radio"
+            }
+        }
+    }
+}</task-model>
+    </cafienne:implementation>
+</humantask>

@@ -1,0 +1,4 @@
+<caseFileItemDefinition name="tozoresultaat4ogen" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified">
+    <property name="besluit" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="bezwaarNaVierOgenBedrag" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+</caseFileItemDefinition>

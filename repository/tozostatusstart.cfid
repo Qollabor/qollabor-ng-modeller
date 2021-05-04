@@ -1,0 +1,7 @@
+<caseFileItemDefinition name="tozostatusstart" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified">
+    <property name="OPAzegtOK" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="aanvragerNeeAanvechten" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="onderbouwingAanvrager" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="voorvulMaandGeschatInkomen" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="datumIngaanAanvrager" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+</caseFileItemDefinition>

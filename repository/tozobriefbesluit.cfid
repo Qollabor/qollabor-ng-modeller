@@ -1,0 +1,4 @@
+<caseFileItemDefinition name="tozobriefbesluit" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified">
+    <property name="verzenddatum" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="beslotenBedrag" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+</caseFileItemDefinition>

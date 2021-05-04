@@ -1,0 +1,4 @@
+<caseFileItemDefinition name="tozobriefbesluitverstuurd" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified">
+    <property name="opmerkingen" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="verstuurd" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+</caseFileItemDefinition>

@@ -1,0 +1,42 @@
+<humantask>
+    <cafienne:implementation name="betalingNaarBO" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" description="">
+        <output id="_kvJs_TOZObetalingsOpdrachtVerwerkt" name="TOZObetalingsOpdrachtVerwerkt"/>
+        <task-model>{
+    "schema": {
+        "description": "U verzendt de betaling naar de BackOffice",
+        "title": "Betaling naar BO",
+        "type": "object",
+        "properties": {
+            "TOZObetalingsOpdrachtVerwerkt": {
+                "title": "Wat wilt u over de verzending naar de BackOffice opslaan bij de case?",
+                "type": "object",
+                "properties": {
+                    "opmerkingen": {
+                        "description": "indien nodig",
+                        "format": "text",
+                        "title": "heeft u nog opmerkingen?",
+                        "type": "string"
+                    },
+                    "verwerkt": {
+                        "description": "ja of nee",
+                        "format": "boolean",
+                        "title": "is de betaling naar BackOffice gestuurd?",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    },
+    "ui_schema": {
+        "TOZObetalingsOpdrachtVerwerkt": {
+            "opmerkingen": {
+                "ui:widget": "textarea"
+            },
+            "verwerkt": {
+                "ui:widget": "textarea"
+            }
+        }
+    }
+}</task-model>
+    </cafienne:implementation>
+</humantask>
