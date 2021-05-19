@@ -1,5 +1,5 @@
 <humantask>
-    <cafienne:implementation name="verstuurBesluit" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" description="">
+    <qollabor:implementation name="verstuurBesluit" xmlns:qollabor="org.qollabor" class="org.qollabor.cmmn.definition.task.WorkflowTaskDefinition" description="">
         <input id="_gxRN_TOZObriefBesluit" name="TOZObriefBesluit"/>
         <output id="_Nbbk_TOZObriefBesluitVerstuurd" name="TOZObriefBesluitVerstuurd"/>
         <task-model>{
@@ -65,5 +65,5 @@
         }
     }
 }</task-model>
-    </cafienne:implementation>
+    </qollabor:implementation>
 </humantask>

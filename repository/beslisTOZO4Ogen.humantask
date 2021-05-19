@@ -1,5 +1,5 @@
 <humantask>
-    <cafienne:implementation name="beslisTOZO4Ogen" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" description="">
+    <qollabor:implementation name="beslisTOZO4Ogen" xmlns:qollabor="org.qollabor" class="org.qollabor.cmmn.definition.task.WorkflowTaskDefinition" description="">
         <input id="_Gj3s_TOZOaanvraagFormulier" name="TOZOaanvraagFormulier"/>
         <input id="_tsjF_TOZOaanvrager" name="TOZOaanvrager"/>
         <input id="_t4k2_TOZOstatusStart" name="TOZOstatusStart"/>
@@ -224,5 +224,5 @@
         }
     }
 }</task-model>
-    </cafienne:implementation>
+    </qollabor:implementation>
 </humantask>

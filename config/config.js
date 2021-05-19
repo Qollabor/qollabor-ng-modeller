@@ -22,10 +22,10 @@ const config = {
     // ,repository: '../cmmn-test-framework/casemodels/src'
     // ,deploy: '../cmmn-test-framework/casemodels/bin'
 
-    // Settings for cafienne engine tests.
-    ,repository: '../cafienne-engine/case-engine/src/test/resources/cmmn-modeler'
-    // ,deploy: '../cafienne-engine/case-engine/src/test/resources/testdefinition'
-    ,deploy: '../cafienne-engine/run/case-service/definitions'
+    // Settings for qollabor engine tests.
+    ,repository: '../qollabor-engine/case-engine/src/test/resources/cmmn-modeler'
+    // ,deploy: '../qollabor-engine/case-engine/src/test/resources/testdefinition'
+    ,deploy: '../qollabor-engine/run/case-service/definitions'
 //*/
     ,backendUrl
 };

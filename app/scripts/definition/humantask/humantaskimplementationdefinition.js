@@ -12,7 +12,7 @@ class HumanTaskImplementationDefinition extends HumanTaskModelElementDefinition 
     createExportNode(parentNode) {
         super.createExportNode(parentNode, IMPLEMENTATION_TAG, 'input', 'output', 'taskModel');
         this.exportNode.setAttribute(IMPLEMENTATION_PREFIX, IMPLEMENTATION_NAMESPACE);
-        this.exportNode.setAttribute('class', 'org.cafienne.cmmn.definition.task.WorkflowTaskDefinition');
+        this.exportNode.setAttribute('class', 'org.qollabor.cmmn.definition.task.WorkflowTaskDefinition');
 
         // Hmmmm ... perhaps it is better to put name and description a level higher ...
         //  We'd have to investigate compatibility for existing models.

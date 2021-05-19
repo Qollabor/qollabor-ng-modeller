@@ -1,5 +1,5 @@
 <humantask>
-    <cafienne:implementation name="probeerIntelligentAdvisor" description="" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+    <qollabor:implementation name="probeerIntelligentAdvisor" description="" xmlns:qollabor="org.qollabor" class="org.qollabor.cmmn.definition.task.WorkflowTaskDefinition">
         <task-model></task-model>
-    </cafienne:implementation>
+    </qollabor:implementation>
 </humantask>

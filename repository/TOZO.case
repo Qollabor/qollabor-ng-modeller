@@ -250,12 +250,12 @@
                 </bindingRefinement>
             </outputs>
             <extensionElements mustUnderstand="false">
-                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="beoordeelBezwaar.humantask">
+                <qollabor:implementation xmlns:qollabor="org.qollabor" humanTaskRef="beoordeelBezwaar.humantask">
                     <parameterMapping id="_4eotk_109" sourceRef="_4eotk_117" targetRef="_kvO0_TOZOaanvraagFormulier"/>
                     <parameterMapping id="_4eotk_110" sourceRef="_4eotk_119" targetRef="_rAgj_TOZOaanvrager"/>
                     <parameterMapping id="_4eotk_112" sourceRef="_4eotk_118" targetRef="_hZr9_TOZOstatusStart"/>
                     <parameterMapping id="_4eotk_115" sourceRef="_ZSNS_TOZOadviesBezwaar" targetRef="_4eotk_120"/>
-                </cafienne:implementation>
+                </qollabor:implementation>
             </extensionElements>
         </humanTask>
         <humanTask id="ht__4eotk_1" name="beoordeelOK" isBlocking="true" performerRef="_4eotk_21">
@@ -270,12 +270,12 @@
                 </bindingRefinement>
             </outputs>
             <extensionElements mustUnderstand="false">
-                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="beoordeelOK.humantask">
+                <qollabor:implementation xmlns:qollabor="org.qollabor" humanTaskRef="beoordeelOK.humantask">
                     <parameterMapping id="_4eotk_226" sourceRef="_4eotk_231" targetRef="_X4rF_TOZOaanvraagFormulier"/>
                     <parameterMapping id="_4eotk_227" sourceRef="_4eotk_232" targetRef="_LyoI_TOZOaanvrager"/>
                     <parameterMapping id="_4eotk_228" sourceRef="_4eotk_233" targetRef="_hwvq_TOZOstatusStart"/>
                     <parameterMapping id="_4eotk_229" sourceRef="_6Huk_TOZOadviesOK" targetRef="_4eotk_234"/>
-                </cafienne:implementation>
+                </qollabor:implementation>
             </extensionElements>
         </humanTask>
         <humanTask id="ht__4eotk_2" name="beslisTOZO4Ogen" isBlocking="true" performerRef="_4eotk_22">
@@ -291,13 +291,13 @@
                 </bindingRefinement>
             </outputs>
             <extensionElements mustUnderstand="false">
-                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="beslisTOZO4Ogen.humantask">
+                <qollabor:implementation xmlns:qollabor="org.qollabor" humanTaskRef="beslisTOZO4Ogen.humantask">
                     <parameterMapping id="_4eotk_236" sourceRef="_4eotk_242" targetRef="_Gj3s_TOZOaanvraagFormulier"/>
                     <parameterMapping id="_4eotk_237" sourceRef="_4eotk_243" targetRef="_tsjF_TOZOaanvrager"/>
                     <parameterMapping id="_4eotk_238" sourceRef="_4eotk_244" targetRef="_t4k2_TOZOstatusStart"/>
                     <parameterMapping id="_4eotk_239" sourceRef="_4eotk_245" targetRef="_ptM5_TOZOadviesOK"/>
                     <parameterMapping id="_4eotk_240" sourceRef="_BZlD_TOZOresultaat4ogen" targetRef="_4eotk_246"/>
-                </cafienne:implementation>
+                </qollabor:implementation>
             </extensionElements>
         </humanTask>
         <humanTask id="ht__4eotk_3" name="verwerkAfhandeling" isBlocking="true" performerRef="_4eotk_41">
@@ -318,12 +318,12 @@
                 </bindingRefinement>
             </outputs>
             <extensionElements mustUnderstand="false">
-                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="verwerkAfhandelingNew.humantask">
+                <qollabor:implementation xmlns:qollabor="org.qollabor" humanTaskRef="verwerkAfhandelingNew.humantask">
                     <parameterMapping id="_4eotk_141" sourceRef="_4eotk_155" targetRef="_fkI3_TOZOadviesOK"/>
                     <parameterMapping id="_4eotk_142" sourceRef="_4eotk_161" targetRef="_mFbA_TOZOresultaat4ogen"/>
                     <parameterMapping id="_4eotk_143" sourceRef="_hht0_TOZObetalingsOpdracht" targetRef="_4eotk_162"/>
                     <parameterMapping id="_4eotk_144" sourceRef="_GMta_TOZObriefBesluit" targetRef="_4eotk_163"/>
-                </cafienne:implementation>
+                </qollabor:implementation>
             </extensionElements>
         </humanTask>
         <humanTask id="ht__4eotk_4" name="verstuurBesluit" isBlocking="true">
@@ -336,10 +336,10 @@
                 </bindingRefinement>
             </outputs>
             <extensionElements mustUnderstand="false">
-                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="verstuurBesluit.humantask">
+                <qollabor:implementation xmlns:qollabor="org.qollabor" humanTaskRef="verstuurBesluit.humantask">
                     <parameterMapping id="_4eotk_166" sourceRef="_4eotk_169" targetRef="_gxRN_TOZObriefBesluit"/>
                     <parameterMapping id="_4eotk_167" sourceRef="_Nbbk_TOZObriefBesluitVerstuurd" targetRef="_4eotk_170"/>
-                </cafienne:implementation>
+                </qollabor:implementation>
             </extensionElements>
         </humanTask>
         <humanTask id="ht__4eotk_5" name="betalingNaarBO" isBlocking="true">
@@ -351,9 +351,9 @@
                 </bindingRefinement>
             </outputs>
             <extensionElements mustUnderstand="false">
-                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="betalingNaarBO.humantask">
+                <qollabor:implementation xmlns:qollabor="org.qollabor" humanTaskRef="betalingNaarBO.humantask">
                     <parameterMapping id="_4eotk_248" sourceRef="_kvJs_TOZObetalingsOpdrachtVerwerkt" targetRef="_4eotk_250"/>
-                </cafienne:implementation>
+                </qollabor:implementation>
             </extensionElements>
         </humanTask>
         <humanTask id="ht__4eotk_6" name="sluitTOZOzaakAf" isBlocking="true" performerRef="_4eotk_22">
@@ -365,9 +365,9 @@
                 </bindingRefinement>
             </outputs>
             <extensionElements mustUnderstand="false">
-                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="sluitTOZOzaakAf.humantask">
+                <qollabor:implementation xmlns:qollabor="org.qollabor" humanTaskRef="sluitTOZOzaakAf.humantask">
                     <parameterMapping id="_4eotk_172" sourceRef="_Ibii_TOZOgearchiveerd" targetRef="_4eotk_174"/>
-                </cafienne:implementation>
+                </qollabor:implementation>
             </extensionElements>
         </humanTask>
         <humanTask id="ht__4eotk_7" name="probeerIntelligentAdvisor" isBlocking="true" performerRef="_4eotk_20"/>
@@ -384,7 +384,7 @@
     <input id="_4eotk_90" name="TOZOstatusStart" bindingRef="_4eotk_1"/>
     <input id="_4eotk_91" name="TOZOaanvraagFormulier" bindingRef="_4eotk_2"/>
     <extensionElements mustUnderstand="false">
-        <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+        <qollabor:start-case-model xmlns:qollabor="org.qollabor">{
   "schema": {
     "title": "beheerTOZO",
     "type": "object",
@@ -506,6 +506,6 @@
       "ui:widget": "checkboxes"
     }
   }
-}</cafienne:start-case-model>
+}</qollabor:start-case-model>
     </extensionElements>
 </case>
