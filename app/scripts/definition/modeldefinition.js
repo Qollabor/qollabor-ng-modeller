@@ -116,7 +116,7 @@ class ModelDefinition extends ReferableElementDefinition {
         // // Now dump start case schema if there is one. Should we also do ampersand replacements??? Not sure. Perhaps that belongs in business logic??
         // // const startCaseSchemaValue = this.case.startCaseEditor.value.replace(/&/g, '&amp;');
         // if (this.startCaseSchema && this.startCaseSchema.trim()) {
-        //     this.exportExtensionElement('cafienne:start-case-model').textContent = this.startCaseSchema;
+        //     this.exportExtensionElement('qollabor:start-case-model').textContent = this.startCaseSchema;
         // }
 
         // // Also export the guid that is used to generate new elements in the case. This must be removed upon deployment.

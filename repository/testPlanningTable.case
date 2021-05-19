@@ -68,13 +68,13 @@
     <caseRoles id="_j75iY_45" name="CaseRole_2"/>
     <caseRoles id="_j75iY_50" name="CaseRole_3"/>
     <extensionElements mustUnderstand="false">
-        <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+        <qollabor:start-case-model xmlns:qollabor="org.qollabor">{
   "schema":{
     "title": "",
     "type": "object",
     "properties":{
     }
   }
-}</cafienne:start-case-model>
+}</qollabor:start-case-model>
     </extensionElements>
 </case>

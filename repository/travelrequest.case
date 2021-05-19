@@ -110,7 +110,7 @@
         <humanTask id="pid_cm_cs9Q0_205" name="View Travel request" isBlocking="true" performerRef="role_csKsD_1">
             <inputs id="inTP_cm_cs9Q0_205_0" name="TravelRequest" bindingRef="cfi_csKsD_0"/>
             <extensionElements mustUnderstand="false">
-                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="managetravelrequest.humantask">
+                <qollabor:implementation xmlns:qollabor="org.qollabor" humanTaskRef="managetravelrequest.humantask">
                     <parameterMapping id="inPM_cm_csMh4_6_0" sourceRef="inTP_cm_cs9Q0_205_0" targetRef="TravelRequest"/>
                     <assignment id="_4wCNa_43" contextRef="cfi_csKsD_0">
                         <condition id="_4wCNa_44" language="spel">
@@ -126,14 +126,14 @@
                             </body>
                         </condition>
                     </duedate>
-                </cafienne:implementation>
+                </qollabor:implementation>
             </extensionElements>
         </humanTask>
         <humanTask id="pid_cm_csgxw_208" name="Approve Travel request" isBlocking="true" performerRef="role_csKsD_0">
             <inputs id="inTP_cm_csgxw_208_0" name="TravelRequest" bindingRef="cfi_csKsD_0"/>
             <outputs id="outTP_cm_csgxw_208_0" name="Approval" bindingRef="cfi_csgxw_6"/>
             <extensionElements mustUnderstand="false">
-                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="approvetravelrequest.humantask">
+                <qollabor:implementation xmlns:qollabor="org.qollabor" humanTaskRef="approvetravelrequest.humantask">
                     <parameterMapping id="inPM_cm_cslsq_10_0" sourceRef="inTP_cm_csgxw_208_0" targetRef="TravelRequest_2"/>
                     <parameterMapping id="outPM_cm_csFY2_10_0" sourceRef="Approval_2" targetRef="outTP_cm_csgxw_208_0"/>
                     <assignment id="_4wCNa_48" contextRef="cfi_csKsD_0">
@@ -150,14 +150,14 @@
                             </body>
                         </condition>
                     </duedate>
-                </cafienne:implementation>
+                </qollabor:implementation>
             </extensionElements>
         </humanTask>
         <humanTask id="pid_cm_csgxw_210" name="Create Travel Order" isBlocking="true" performerRef="role_csKsD_2">
             <inputs id="inTP_cm_csgxw_210_0" name="TravelRequest" bindingRef="cfi_csKsD_0"/>
             <outputs id="outTP_cm_csgxw_210_0" name="Project" bindingRef="cfi_cs9Q0_5"/>
             <extensionElements mustUnderstand="false">
-                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="createtravelpurchaseorder.humantask">
+                <qollabor:implementation xmlns:qollabor="org.qollabor" humanTaskRef="createtravelpurchaseorder.humantask">
                     <parameterMapping id="inPM_cm_csMHr_12_0" sourceRef="inTP_cm_csgxw_210_0" targetRef="TravelRequest_3"/>
                     <parameterMapping id="inPM_cm_csMHr_12_1" sourceRef="inTP_cm_csgxw_210_0" targetRef="DueDate_3">
                         <transformation language="spel">
@@ -167,13 +167,13 @@
                         </transformation>
                     </parameterMapping>
                     <parameterMapping id="outPM_cm_csMHr_12_0" sourceRef="Project_3" targetRef="outTP_cm_csgxw_210_0"/>
-                </cafienne:implementation>
+                </qollabor:implementation>
             </extensionElements>
         </humanTask>
         <humanTask id="pid_cm_cs3yg_484" name="Arrange Visa and ESTA" isBlocking="true" performerRef="role_csKsD_1">
             <inputs id="inTP_cm_csZvZ_679_0" name="TravelRequest" bindingRef="cfi_csKsD_0"/>
             <extensionElements mustUnderstand="false">
-                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="arrangevisa.humantask">
+                <qollabor:implementation xmlns:qollabor="org.qollabor" humanTaskRef="arrangevisa.humantask">
                     <parameterMapping id="inPM_cm_csEQz_36_1" sourceRef="inTP_cm_csZvZ_679_0" targetRef="TravelRequest"/>
                     <assignment id="_4wCNa_47" contextRef="cfi_csKsD_0">
                         <condition id="_4wCNa_52" language="spel">
@@ -190,14 +190,14 @@
                             </body>
                         </condition>
                     </duedate>
-                </cafienne:implementation>
+                </qollabor:implementation>
             </extensionElements>
         </humanTask>
         <humanTask id="pid_cm_csgxw_215" name="Select approver manually" isBlocking="true" performerRef="role_csKsD_2">
             <inputs id="inTP_cm_csgxw_215_0" name="TravelRequest" bindingRef="cfi_csKsD_0"/>
             <outputs id="outTP_cm_cs24h_12_0" name="Project" bindingRef="cfi_cs9Q0_5"/>
             <extensionElements mustUnderstand="false">
-                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="manuallysetapprover.humantask">
+                <qollabor:implementation xmlns:qollabor="org.qollabor" humanTaskRef="manuallysetapprover.humantask">
                     <parameterMapping id="inPM_cm_csd2I_4_0" sourceRef="inTP_cm_csgxw_215_0" targetRef="TravelRequest_1"/>
                     <parameterMapping id="inPM_cm_csd2I_4_1" sourceRef="inTP_cm_csgxw_215_0" targetRef="DueDate_1">
                         <transformation language="spel">
@@ -207,7 +207,7 @@
                         </transformation>
                     </parameterMapping>
                     <parameterMapping id="outPM_cm_csd2I_4_0" sourceRef="Project_1" targetRef="outTP_cm_cs24h_12_0"/>
-                </cafienne:implementation>
+                </qollabor:implementation>
             </extensionElements>
         </humanTask>
         <processTask id="pid_cm_cs3yg_479" name="Budget allocation" isBlocking="true" processRef="allocatefunds.process">
@@ -586,7 +586,7 @@ TravelRequest.TravelDetails.Destination[0].Country == "US"]]>
     <caseRoles id="role_csKsD_1" name="Requestor" description="Requestor of the Travel Request"/>
     <input id="cs9Q0_inCPs_0" name="TravelRequest" bindingRef="cfi_csKsD_0"/>
     <extensionElements mustUnderstand="false">
-        <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+        <qollabor:start-case-model xmlns:qollabor="org.qollabor">{
   "schema": {
       "type": "object",
       "properties": {"TravelRequest": {"$ref": "#/definitions/TravelRequest"}},
@@ -979,6 +979,6 @@ TravelRequest.TravelDetails.Destination[0].Country == "US"]]>
     }
   }
 }
-            </cafienne:start-case-model>
+            </qollabor:start-case-model>
     </extensionElements>
 </case>

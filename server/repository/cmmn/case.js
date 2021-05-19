@@ -33,7 +33,7 @@ class CaseDefinition {
         definitionsDocument.resolveProcessReferences(processRefs);
 
         // Add task references
-        const humanTaskRefs = this.findReferences('cafienne:implementation', 'humanTaskRef');
+        const humanTaskRefs = this.findReferences('qollabor:implementation', 'humanTaskRef');
         definitionsDocument.resolveHumanTaskReferences(humanTaskRefs);
 
         // Add case file definition references
@@ -74,7 +74,7 @@ class CaseDefinition {
     fillInHumanTask(humanTaskElement) {
         const taskName = humanTaskElement.getAttribute('name');
 
-        //get <cafienne:implementation> node inside the <humanTask> node
+        //get <qollabor:implementation> node inside the <humanTask> node
         const extensionElements = XML.findChildrenWithTag(humanTaskElement, 'extensionElements');
         if (extensionElements.length === 0) {
             console.log('Human task ' + taskName + ' does not have a custom implementation');
@@ -82,7 +82,7 @@ class CaseDefinition {
         }
 
         const extensionElement = extensionElements[0];
-        const implementationNodes = XML.findChildrenWithTag(extensionElement, 'cafienne:implementation');
+        const implementationNodes = XML.findChildrenWithTag(extensionElement, 'qollabor:implementation');
         if (implementationNodes.length === 0) {
             console.log('Human task ' + taskName + ' does not have a custom implementation');
             return;
@@ -102,10 +102,10 @@ class CaseDefinition {
             return;
         }
 
-        //locate <cafienne:implementation> node in the humantask model (external file)
-        const humanTaskImplementationNodes = humanTaskDefinition.getElementsByTagName('cafienne:implementation');
+        //locate <qollabor:implementation> node in the humantask model (external file)
+        const humanTaskImplementationNodes = humanTaskDefinition.getElementsByTagName('qollabor:implementation');
         if (humanTaskImplementationNodes.length == 0) {
-            console.log('The human task ' + ref + ' does not contain a cafienne:implementation node');
+            console.log('The human task ' + ref + ' does not contain a qollabor:implementation node');
             return;
         }
 

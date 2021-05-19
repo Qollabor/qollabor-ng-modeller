@@ -1,5 +1,5 @@
 <humantask>
-    <cafienne:implementation name="sluitTOZOzaakAf" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" description="">
+    <qollabor:implementation name="sluitTOZOzaakAf" xmlns:qollabor="org.qollabor" class="org.qollabor.cmmn.definition.task.WorkflowTaskDefinition" description="">
         <output id="_Ibii_TOZOgearchiveerd" name="TOZOgearchiveerd"/>
         <task-model>{
     "schema": {
@@ -38,5 +38,5 @@
         }
     }
 }</task-model>
-    </cafienne:implementation>
+    </qollabor:implementation>
 </humantask>

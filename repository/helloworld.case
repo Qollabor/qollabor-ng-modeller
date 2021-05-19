@@ -17,7 +17,7 @@
             <inputs id="inTP_cm_cs2F1_174_1" name="Greeting" bindingRef="cfi_csVQy_0"/>
             <outputs id="outTP_cm_cs2F1_174_1" name="Response" bindingRef="cfi_csVQy_1"/>
             <extensionElements mustUnderstand="false">
-                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="sendresponse.humantask">
+                <qollabor:implementation xmlns:qollabor="org.qollabor" humanTaskRef="sendresponse.humantask">
                     <parameterMapping id="inPM_cm_cshJq_4_0" sourceRef="inTP_cm_cs2F1_174_1" targetRef="Greeting"/>
                     <parameterMapping id="outPM_cm_csuYs_174_0" sourceRef="Response" targetRef="outTP_cm_cs2F1_174_1"/>
                     <assignment id="_nTPPc_3" contextRef="cfi_csVQy_0">
@@ -34,13 +34,13 @@
                             </body>
                         </condition>
                     </duedate>
-                </cafienne:implementation>
+                </qollabor:implementation>
             </extensionElements>
         </humanTask>
         <humanTask id="pid_cm_cs3hg_196" name="Read response" isBlocking="true">
             <inputs id="inTP_cm_cs3hg_196_0" name="Response" bindingRef="cfi_csVQy_1"/>
             <extensionElements mustUnderstand="false">
-                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="readresponse.humantask">
+                <qollabor:implementation xmlns:qollabor="org.qollabor" humanTaskRef="readresponse.humantask">
                     <parameterMapping id="inPM_cm_cs3hg_196_0" sourceRef="inTP_cm_cs3hg_196_0" targetRef="Response"/>
                     <assignment id="_nTPPc_12" contextRef="cfi_csVQy_0">
                         <condition id="_nTPPc_13" language="spel">
@@ -56,14 +56,14 @@
                             </body>
                         </condition>
                     </duedate>
-                </cafienne:implementation>
+                </qollabor:implementation>
             </extensionElements>
         </humanTask>
     </casePlanModel>
     <caseRoles id="role_csT3f_0" name="ADMIN" description="admin of the world"/>
     <input id="csVQy_inCPs_0" name="Greeting" bindingRef="cfi_csVQy_0"/>
     <extensionElements mustUnderstand="false">
-        <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+        <qollabor:start-case-model xmlns:qollabor="org.qollabor">{
   "schema": {
     "title": "Greeting",
     "type": "object",
@@ -99,6 +99,6 @@
       "From" :  {"ui:widget": "user-selector", "multiSelect" : false, "role" : "Sender"}
     }
   }
-}</cafienne:start-case-model>
+}</qollabor:start-case-model>
     </extensionElements>
 </case>

@@ -27,7 +27,7 @@ class Backend {
         const method = "GET";
         const headers = {
             'Accept': 'application/json',
-            'CAFIENNE-JWT-TOKEN': token,
+            'QOLLABOR-JWT-TOKEN': token,
             'Content-Type': 'text/plain'
         }
 

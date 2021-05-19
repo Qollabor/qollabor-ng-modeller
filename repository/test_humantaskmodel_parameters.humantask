@@ -1,5 +1,5 @@
 <humantask>
-    <cafienne:implementation name="HTModel_allOptions" description="Humantask model for testing all options in a case" xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+    <qollabor:implementation name="HTModel_allOptions" description="Humantask model for testing all options in a case" xmlns:qollabor="org.qollabor" class="org.qollabor.cmmn.definition.task.WorkflowTaskDefinition">
         <input id="_M8L9_ht_input_parameter_01" name="ht_input_parameter_01"/>
         <input id="_mBnf_ht_input_parameter_02" name="ht_input_parameter_02"/>
         <output id="_q9ow_ht_output_parameter_01" name="ht_output_parameter_01"/>
@@ -10,5 +10,5 @@
 	Content
 
         </task-model>
-    </cafienne:implementation>
+    </qollabor:implementation>
 </humantask>
